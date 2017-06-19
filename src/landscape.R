@@ -3,8 +3,9 @@
 
 require("sp")
 require("R6")
-source("model.R",local = TRUE)
-source("functions/utility.R",local = TRUE)
+source("src/model.R",local = TRUE)
+source("src/functions/utility.R",local = TRUE)
+source('src/functions/landscape_functions.R', local = TRUE)
 
 
 
@@ -26,8 +27,6 @@ gen_land <- function(nb_poly=10, width=60, height=60)
   
   # regularity of the polygonal seeds pattern
   iterations <- 100
-  
-  source('functions/landscape_functions.R')
   
   # 6 metrics can be controled
   target.metrics <- c(ENN_l = 100, # intra aggregation for laying sites (polygonal)

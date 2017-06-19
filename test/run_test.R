@@ -2,14 +2,14 @@
 
 require('RUnit')
 
-source("landscape.R")
-source("model.R")
+source("src/landscape.R")
+source("src/model.R")
 
 test.suite <- defineTestSuite("tests",
-                              dirs = file.path("../test/unit"),
+                              dirs = "./test/unit",
                               testFileRegexp = '^.+\\.R$')
 
 test.result <- runTestSuite(test.suite)
 
 printTextProtocol(test.result)
-printJUnitProtocol(test.result,"../result/result.xml")
+printJUnitProtocol(test.result,"./result/result.xml")
