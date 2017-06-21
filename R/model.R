@@ -2,7 +2,7 @@
 #
 # definir les fonction d'attarativite replusion des type
 
-require("R6")
+# require("R6")
 
 #number of type
 NB_TYPE = 5
@@ -72,7 +72,7 @@ agglo_0 <- function(lt_expr)
 
 #----------Interact class-------------#
 #Define Interact of type(undefined) with a other(defined : id_interact)
-Interact <- R6Class("Interact",
+Interact <- R6::R6Class("Interact",
    public = list(
       initialize = function(id_interact, func_interact, params)
       {
@@ -148,7 +148,7 @@ is_Interact = function(x)
 
 #----------TypeInteract class-------------#
 #Define Interact of type with others
-TypeInteract = R6Class("TypeInteract",
+TypeInteract = R6::R6Class("TypeInteract",
    public = list(
      initialize = function(id, func_agglo, interacts)
      {
@@ -364,7 +364,7 @@ is_TypeInteract = function(x)
 
 #----------TypeInteractModel class-------------#
 #Define interaction of all types with others
-TypeInteractModel = R6Class("TypeInteractModel",
+TypeInteractModel = R6::R6Class("TypeInteractModel",
   public = list(
     initialize = function(typeinteracts)
     {

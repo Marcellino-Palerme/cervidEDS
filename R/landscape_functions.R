@@ -24,10 +24,10 @@
 #   and GA function for controled landscapes generation
 # _____________________________________________________________________
 
-require(spatstat)
-require(maptools)
-require(deldir)
-require(rgeos)
+# require(spatstat)
+# require(maptools)
+# require(deldir)
+# require(rgeos)
 
 
 

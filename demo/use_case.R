@@ -1,5 +1,5 @@
 require("raster")
-source("landscape.R",local = TRUE)
+#source("landscape.R",local = TRUE)
 
 #Interact dans type 0 pres 0
 int0_0 = Interact$new(0,potentiel_0,list(0,0,0))

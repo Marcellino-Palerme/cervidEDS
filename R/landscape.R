@@ -1,11 +1,11 @@
 # Visualisation et 
 
 
-require("sp")
-require("R6")
-source("src/model.R",local = TRUE)
-source("src/functions/utility.R",local = TRUE)
-source('src/functions/landscape_functions.R', local = TRUE)
+# require("sp")
+# require("R6")
+# source("src/model.R",local = TRUE)
+# source("src/functions/utility.R",local = TRUE)
+# source('src/functions/landscape_functions.R', local = TRUE)
 
 
 
@@ -114,7 +114,6 @@ affect_type <- function(landscape, nb_type)
 
 get_neighbours <- function(landscape)
 {
-  library(spdep)  
   return(poly2nb(landscape, queen = TRUE,
                  row.names = getSpPPolygonsIDSlots(landscape)))
 }
@@ -182,7 +181,7 @@ commun_coords <- function(landscape, ids)
 
 #----------PotentialPolygon class-------------#
 #Define the potential function of polygon
-PotentialPolygon <- R6Class('PotentialPolygon',
+PotentialPolygon <- R6::R6Class('PotentialPolygon',
   public = list(
     #initialize PotentialPolygon object
     #Parameters
@@ -315,7 +314,7 @@ is_PotentialPolygon = function(x)
 
 #----------PotentialPolygons class-------------#
 #Define list of PotentialPolygon
-PotentialPolygons = R6Class("PotentialPolygons",
+PotentialPolygons = R6::R6Class("PotentialPolygons",
   public = list(
     #initialize PotentialPolygons object
     #Parameter
@@ -522,7 +521,7 @@ is_PotentialPolygons = function(x)
 
 #----------PotentialLandscape class-------------#
 #Define a landscape with potential function of each polygon
-PotentialLandscape = R6Class("PotentialLandscape",
+PotentialLandscape = R6::R6Class("PotentialLandscape",
   inherit = PotentialPolygons,
   public = list(
     #initialize PotentialLandscape object

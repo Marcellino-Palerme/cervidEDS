@@ -1,0 +1,15 @@
+Package: cervideDS
+Type: Package
+Title: cervideDS
+Version: 0.1
+Date: 
+Author: Marcellino PALERME [aut]
+Maintainer: Marcellino PALERME <marcellino.palerme@inra.fr>
+Description: SDE on movent of roar
+URL: 
+License: What license is it under?
+LazyData: TRUE
+Imports: R6, sp, spatstat, maptools, deldir, rgeos, spdep, methods
+Suggests: testthat,
+    covr
+RoxygenNote: 6.0.1
