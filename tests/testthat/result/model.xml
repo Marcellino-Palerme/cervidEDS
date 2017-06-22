@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="model unit tests" timestamp="2017-06-21 18:01:04" hostname="palerme" tests="2" skipped="0" failures="0" errors="0" time="0.19">
-    <testcase time="0.14" classname="model_unit_tests" name="test_dist_expr_nom"/>
-    <testcase time="0.05" classname="model_unit_tests" name="test_dist_expr_one_point"/>
+  <testsuite name="model unit tests" timestamp="2017-06-22 15:33:08" hostname="palerme">
+    <testcase time="0" classname="model_unit_tests" name="test_dist_expr_nom"/>
+    <testcase time="0.01" classname="model_unit_tests" name="test_dist_expr_one_point"/>
   </testsuite>
 </testsuites>
