@@ -1,3 +1,5 @@
+options("testthat.junit.output_file" = "result/landscape.xml")
+with_reporter("junit",{
 context('landscape unit tests')
 library("sp")
 library("spatstat")
@@ -268,3 +270,4 @@ test_that("test.one_point", {
   check_coords(land, 2, lt_ccoords)
 })
 
+},T)

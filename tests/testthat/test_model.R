@@ -1,3 +1,5 @@
+options("testthat.junit.output_file" = "result/model.xml")
+with_reporter("junit",{
 context('model unit tests')
 #------test dist_expr-----#
 
@@ -18,3 +20,4 @@ test_that("test.dist_expr_one_point", {
   result = eval(parse(text = expr))
   expect_equal(1, result)
 })
+},T)
