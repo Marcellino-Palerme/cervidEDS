@@ -1,22 +1,13 @@
 # Visualisation et 
 
-
-# require("sp")
-# require("R6")
-# source("src/model.R",local = TRUE)
-# source("src/functions/utility.R",local = TRUE)
-# source('src/functions/landscape_functions.R', local = TRUE)
-
-
-
-#Generer un paysage de polygone convexe
-#Parameters:
-#nb_poly : number of polygon
-#width : width of landscape
-#height : height of landscape
-#
-#Return:
-#SpatialPolygonDataFrame : landscape with convex ploygons
+#' @title Generate landscape
+#' @description  Generer un paysage de polygone convexe
+#' @param nb_poly : number of polygon
+#' @param width : width of landscape
+#' @param height : height of landscape
+#'
+#' @return SpatialPolygonDataFrame : landscape with convex ploygons
+#' @export
 gen_land <- function(nb_poly=10, width=60, height=60)
 {
   # size of the landscape in meters (min is 60*60)
@@ -78,12 +69,11 @@ gen_land <- function(nb_poly=10, width=60, height=60)
   return(landscape.res$spdf)
 }
 
-#Give Id of all polygons
-#
-#Parameters
-#land (SpatialPolygons*): the kandscape
-#Return
-#list of id
+#' @title Get identifiant of SpatialPolygons
+#' @description Give Id of all polygons
+#' @param land (SpatialPolygons*): the landscape
+#' @return list of id
+#' @export
 getIdsSpatialPolygons <- function(land)
 {
   return(sapply(slot(land, "polygons"),
@@ -98,7 +88,7 @@ getIdsSpatialPolygons <- function(land)
 #
 #Return:
 #landscape (SpatialPolygoneDataFrame): the landscape with types
-affect_type <- function(landscape, nb_type)
+affect_polygons_type <- function(landscape, nb_type)
 {
   # min number type is 1
   nb_type = max(1,nb_type)
@@ -179,6 +169,57 @@ commun_coords <- function(landscape, ids)
 
 }
 
+#' @title Extract lines of spatialpolygons
+#' 
+#'  @description  Extract lines of spatialpolygons
+#'  
+#'  @param landscape (SpatialPolygonsDataFrame)
+#'  @return SpatialLinesDataFrame
+#'  @export
+extract_lines <- function(landscape)
+{
+  # take all ids of landscape
+  lt_ids = getIdsSpatialPolygons(landscape)
+  
+  lt_lines = list()
+  lt_idpoly = list()
+  id_line = 0 
+  lt_x0 = list()
+  lt_y0 = list()
+  lt_x1 = list()
+  lt_y1 = list()
+  for (id in lt_ids)
+  {
+    # take coordonnate each polygon
+    lt_coords = getCoordsSpatialPolygons(landscape, id)
+    for (i in seq(2,along.with = lt_coords[-1,1]))
+    {
+      x0 = lt_coords[i - 1,1]
+      y0 = lt_coords[i - 1,2]
+      x1 = lt_coords[i - 1,1]
+      y1 = lt_coords[i - 1,2]
+      index_00 = match(1,(x0 == lt_x0) * (y0 == lt_y0))
+      index_01 = match(1,(x0 == lt_x1) * (y0 == lt_y1))
+      index_10 = match(1,(x1 == lt_x0) * (y1 == lt_y0))
+      index_11 = match(1,(x1 == lt_x1) * (y1 == lt_y1))
+      
+      if (index_00 == index_11)
+      {
+        
+      }
+      else if (index_01 == index_10)
+      {
+        
+      }
+      else
+      {
+        
+      }
+    }
+  }
+  # verify if same combinaison
+  all(c(4,8) %in% c(8,4))
+}
 #----------PotentialPolygon class-------------#
 #Define the potential function of polygon
 PotentialPolygon <- R6::R6Class('PotentialPolygon',

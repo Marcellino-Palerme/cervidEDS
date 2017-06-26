@@ -53,42 +53,56 @@ test_that("test.gen_land_neg", {
   check_land(land, 10, 60, 60)
 })
 
-# high case
-# test.gen_land_hi <- function()
-# {
-#   land <- gen_land(2566, 884455550, 7655550)
-#   
-#   # validate the created land
-#   check_land(land, 2566, 884455550, 7655550)
-#   
-# }
-
 # float value case
 test_that("test.gen_land_float", {
   land <- gen_land(45.23, 545.36, 843.9)
   check_land(land, 45, 545.36, 843.9)
 })
 
-# mix case
-# test.gen_land_mix0 <- function()
-# {
-#   land <- gen_land(-256, 54686536, 90)
-#   
-#   # validate the created land
-#   check_land(land, 10, 54686536, 90)
-#   
-# }
-# 
-# test.gen_land_mix1 <- function()
-# {
-#   land <- gen_land(256, -4, 48614530)
-#   
-#   # validate the created land
-#   check_land(land, 256, 60, 48614530)
-#   
-# }
 
+#-------test on extract_line function-------#
 
+# Verify if the lines are in SpatialPolygonsDataFrame
+check_lines <- function(land, line)
+{
+  ids_poly = getIdsSpatialPolygons(land)
+  for (id_poly in ids_poly)
+  {
+    # take id of all line of polygon
+    ids_lines = land$id_line[get_index(id_poly, ids_poly)]
+    # take coordinate of polygon
+    coords = getCoordsSpatialPolygons(land, id_poly)
+    for (id_line in ids_lines)
+    {
+      index = get_index(line$id, id_line)
+      # Verify if line exist
+      expect_true(index != 0)
+      # Verify if line know the polygon
+      expect_true(id_poly %in% line$id_poly[index])
+      
+      index_x0 = line$x0[index] == coords[,1]
+      index_x1 = line$x0[index] == coords[-1,1]
+      index_y0 = line$y0[index] == coords[,2]
+      index_y1 = line$y0[index] == coords[-1,2]
+      
+      # Verify if points of line are in polygon
+      index_p0 = match(1,index_x0 * index_y0)
+      index_p1 = match(1,index_x1 * index_y1)
+      
+      # Verify if the line is in polygon
+      expect_true(index_p0 != 0)
+      expect_true(index_p1 != 0)
+      expect_true(index_p0 == index_p1)
+    }
+  }
+}
+
+# nominal case
+test_that("test.extract_line_nominal",{
+  land <- gen_land(20, 80, 75)
+  ext_lin <- extract_line(land)
+  check_lines(land, ext_lin)
+})
 #------test on affect_type----------#
 
 #all element check on landscape with type

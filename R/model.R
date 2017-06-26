@@ -10,16 +10,18 @@ NB_TYPE = 5
 AGGLO = "agglo_"
 GEN_POT = "generic_potentiel"
 
-#Give expresssion of calcul of distance between line and point
-#
-#Parameters:
-#x0 (float): abscisse of first point of line
-#y0 (float): ordonate of first point of line
-#x1 (float): abscisse of second point of line
-#y1 (float): ordonate of second point of line
-#
-#Return:
-#(string): 
+
+
+#' @title Distance expression
+#' @description Give expresssion of calcul of distance between line and point
+#'
+#' @param x0 (float): abscisse of first point of line
+#' @param y0 (float): ordonate of first point of line
+#' @param x1 (float): abscisse of second point of line
+#' @param y1 (float): ordonate of second point of line
+#'
+#' @return string 
+#' @export
 dist_expr <- function(x0, y0, x1, y1)
 {
   #(x0,y0) and (x1, y1) is same points 
@@ -37,28 +39,31 @@ dist_expr <- function(x0, y0, x1, y1)
   return(paste("(sqrt((",a, "-",b,"+",c,")^2) / ",d,")"))
 }
 
-#potentiel function define by user
-#exponentiel decroissante
-#
-#Parametere
-#a,b,c (float): parameter of function
-#x0 (float): abscisse of first point of line
-#y0 (float): ordonate of first point of line
-#x1 (float): abscisse of second point of line
-#y1 (float): ordonate of second point of line
-#
-#Return
-#(string): function expression
+#' @title potentiel function define by user
+#' @description exponentiel decroissante
+#'
+#'
+#' @param a (float): parameter of function
+#' @param b (float): parameter of function
+#' @param b (float): parameter of function
+#' @param x0 (float): abscisse of first point of line
+#' @param y0 (float): ordonate of first point of line
+#' @param x1 (float): abscisse of second point of line
+#' @param y1 (float): ordonate of second point of line
+#'
+#' @return (string): function expression
+#' @export
 potentiel_0 <- function(a, b, c, x0, y0, x1, y1)
 {
   dist = dist_expr(x0, y0, x1, y1)
   return(paste("(",a,"*exp(-1*","(",dist,")^2","*",b,") + ",c,")"))
 }
 
-#agglomeration function define by user
-#
-#Parameters:
-#lt_expr(list of string): 
+#' @title agglomeration function define by user
+#' @description sum 
+#' @param lt_expr(list of string)
+#' @return string
+#' @export
 agglo_0 <- function(lt_expr)
 {
   my_expr = ""
@@ -70,8 +75,11 @@ agglo_0 <- function(lt_expr)
   return(my_expr)
 }
 
-#----------Interact class-------------#
-#Define Interact of type(undefined) with a other(defined : id_interact)
+#' @title Interact class
+#' @description Define Interact of type(undefined) with a other
+#' (defined : id_interact)
+#' 
+#' @export
 Interact <- R6::R6Class("Interact",
    public = list(
       initialize = function(id_interact, func_interact, params)

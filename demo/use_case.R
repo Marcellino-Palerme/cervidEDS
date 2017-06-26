@@ -128,7 +128,7 @@ my_land = gen_land(60)
                              #border12,border22,border32,border42))
 
 
-my_land = affect_type(my_land, 3)
+my_land = affect_polygons_type(my_land, 3)
 # my_land$id_type = c(1,2,3,1)#,0,0,0,0,0,0,0,0)
 
 pp = PotentialLandscape$new(my_land, my_model)
