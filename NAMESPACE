@@ -3,4 +3,6 @@
 export(Interact)
 export(agglo_0)
 export(dist_expr)
+export(gen_land)
+export(getIdsSpatialPolygons)
 export(potentiel_0)

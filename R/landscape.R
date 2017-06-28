@@ -174,20 +174,15 @@ commun_coords <- function(landscape, ids)
 #'  @description  Extract lines of spatialpolygons
 #'  
 #'  @param landscape (SpatialPolygonsDataFrame)
-#'  @return SpatialLinesDataFrame
+#'  @return list to named row
 #'  @export
 extract_lines <- function(landscape)
 {
   # take all ids of landscape
   lt_ids = getIdsSpatialPolygons(landscape)
   
-  lt_lines = list()
-  lt_idpoly = list()
-  id_line = 0 
-  lt_x0 = list()
-  lt_y0 = list()
-  lt_x1 = list()
-  lt_y1 = list()
+  dic_lines =  list(id = c(), id_poly1 = c(), id_poly2 = c(),
+                   x0 = c(), x1 = c(), y0 = c(), y1 = c() )
   for (id in lt_ids)
   {
     # take coordonnate each polygon
@@ -196,29 +191,33 @@ extract_lines <- function(landscape)
     {
       x0 = lt_coords[i - 1,1]
       y0 = lt_coords[i - 1,2]
-      x1 = lt_coords[i - 1,1]
-      y1 = lt_coords[i - 1,2]
-      index_00 = match(1,(x0 == lt_x0) * (y0 == lt_y0))
-      index_01 = match(1,(x0 == lt_x1) * (y0 == lt_y1))
-      index_10 = match(1,(x1 == lt_x0) * (y1 == lt_y0))
-      index_11 = match(1,(x1 == lt_x1) * (y1 == lt_y1))
+      x1 = lt_coords[i ,1]
+      y1 = lt_coords[i ,2]
+      index_00 = match(1,(x0 == dic_lines$x0) * (y0 == dic_lines$y0))
+      index_01 = match(1,(x0 == dic_lines$x1) * (y0 == dic_lines$y1))
+      index_10 = match(1,(x1 == dic_lines$x0) * (y1 == dic_lines$y0))
+      index_11 = match(1,(x1 == dic_lines$x1) * (y1 == dic_lines$y1))
       
-      if (index_00 == index_11)
+      if (!is.na(index_00) && !is.na(index_11) && index_00 == index_11)
       {
-        
+        dic_lines$id_poly2[index_00] = id
       }
-      else if (index_01 == index_10)
+      else if (!is.na(index_01) && !is.na(index_10) && index_01 == index_10)
       {
-        
+        dic_lines$id_poly2[index_01] = id
       }
       else
       {
-        
+        dic_lines$id_poly1 = c(dic_lines$id_poly1, id)
+        dic_lines$id_poly2 = c(dic_lines$id_poly2, 0)
+        dic_lines$x0 = c(dic_lines$x0, x0)
+        dic_lines$x1 = c(dic_lines$x1, x1)
+        dic_lines$y0 = c(dic_lines$y0, y0)
+        dic_lines$y1 = c(dic_lines$y1, y1)
       }
     }
   }
-  # verify if same combinaison
-  all(c(4,8) %in% c(8,4))
+  return(dic_lines)
 }
 #----------PotentialPolygon class-------------#
 #Define the potential function of polygon

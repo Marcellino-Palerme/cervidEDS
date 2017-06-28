@@ -68,22 +68,20 @@ check_lines <- function(land, line)
   ids_poly = getIdsSpatialPolygons(land)
   for (id_poly in ids_poly)
   {
-    # take id of all line of polygon
-    ids_lines = land$id_line[get_index(id_poly, ids_poly)]
+    # take index of all line of polygon
+    ids_lines = c(which(line$id_poly1 %in% id_poly),
+                  which(line$id_poly2 %in% id_poly))
     # take coordinate of polygon
     coords = getCoordsSpatialPolygons(land, id_poly)
     for (id_line in ids_lines)
     {
-      index = get_index(line$id, id_line)
       # Verify if line exist
-      expect_true(index != 0)
-      # Verify if line know the polygon
-      expect_true(id_poly %in% line$id_poly[index])
-      
-      index_x0 = line$x0[index] == coords[,1]
-      index_x1 = line$x0[index] == coords[-1,1]
-      index_y0 = line$y0[index] == coords[,2]
-      index_y1 = line$y0[index] == coords[-1,2]
+      expect_true(id_line != 0)
+
+      index_x0 = line$x0[id_line] == coords[,1]
+      index_x1 = line$x0[id_line] == coords[-1,1]
+      index_y0 = line$y0[id_line] == coords[,2]
+      index_y1 = line$y0[id_line] == coords[-1,2]
       
       # Verify if points of line are in polygon
       index_p0 = match(1,index_x0 * index_y0)
