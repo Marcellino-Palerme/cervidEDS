@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
- <testsuite hostname="palerme" name="landscape unit tests" timestamp="2017-06-29 16:29:50">
-  <testcase classname="landscape_unit_tests" name="test_gen_land_nom" time="0.14"/>
+ <testsuite hostname="palerme" name="landscape unit tests" timestamp="2017-06-29 16:45:59">
+  <testcase classname="landscape_unit_tests" name="test_gen_land_nom" time="0.15"/>
   <testcase classname="landscape_unit_tests" name="test_gen_land_min" time="0.01"/>
   <testcase classname="landscape_unit_tests" name="test_gen_land_omin" time="0.0"/>
   <testcase classname="landscape_unit_tests" name="test_gen_land_neg" time="0.0"/>
-  <testcase classname="landscape_unit_tests" name="test_gen_land_float" time="0.01"/>
-  <testcase classname="landscape_unit_tests" name="test_extract_line_nominal" time="3.91"/>
-  <testcase classname="landscape_unit_tests" name="test_affect_polygons_type_nom" time="0.16"/>
+  <testcase classname="landscape_unit_tests" name="test_gen_land_float" time="0.0"/>
+  <testcase classname="landscape_unit_tests" name="test_extract_line_nominal" time="4.04"/>
+  <testcase classname="landscape_unit_tests" name="test_affect_polygons_type_nom" time="0.17"/>
   <testcase classname="landscape_unit_tests" name="test_affect_polygons_type_more_poly" time="0.16"/>
   <testcase classname="landscape_unit_tests" name="test_affect_polygons_type_neg" time="0.16"/>
   <testcase classname="landscape_unit_tests" name="test_affect_lines_type_nom" time="0.1"/>
   <testcase classname="landscape_unit_tests" name="test_affect_lines_type_more_line" time="0.04"/>
   <testcase classname="landscape_unit_tests" name="test_affect_lines_type_neg" time="0.04"/>
-  <testcase classname="landscape_unit_tests" name="test_get_neighbours_nom" time="1.9"/>
-  <testcase classname="landscape_unit_tests" name="test_get_neighbours_min" time="1.07"/>
-  <testcase classname="landscape_unit_tests" name="test_get_neighbours_hi" time="11.33"/>
-  <testcase classname="landscape_unit_tests" name="test_commun_coords_nom" time="0.13"/>
-  <testcase classname="landscape_unit_tests" name="test_commun_coords_no" time="0.16"/>
+  <testcase classname="landscape_unit_tests" name="test_get_neighbours_nom" time="1.95"/>
+  <testcase classname="landscape_unit_tests" name="test_get_neighbours_min" time="1.04"/>
+  <testcase classname="landscape_unit_tests" name="test_get_neighbours_hi" time="11.89"/>
+  <testcase classname="landscape_unit_tests" name="test_commun_coords_nom" time="0.14"/>
+  <testcase classname="landscape_unit_tests" name="test_commun_coords_no" time="0.13"/>
   <testcase classname="landscape_unit_tests" name="test_more_two" time="0.11"/>
-  <testcase classname="landscape_unit_tests" name="test_one_point" time="0.12"/>
+  <testcase classname="landscape_unit_tests" name="test_one_point" time="0.13"/>
  </testsuite>
 </testsuites>

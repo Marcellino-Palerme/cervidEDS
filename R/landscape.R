@@ -241,6 +241,7 @@ extract_lines <- function(landscape)
   return(dic_lines)
 }
 #----------PotentialPolygon class-------------#
+
 #Define the potential function of polygon
 PotentialPolygon <- R6::R6Class('PotentialPolygon',
   public = list(
