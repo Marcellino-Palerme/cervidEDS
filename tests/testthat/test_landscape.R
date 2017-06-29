@@ -16,17 +16,21 @@ check_land <- function(land, poly, width, heigth)
 {
   print("check_land")
   # check return is SpatialPolygons or SpatialPolygons*.
-  expect_equal('SpatialPolygons', substr(class(land)[1],1,15))
+  expect_equal('SpatialPolygons', substr(class(land)[1],1,15),
+               info = "wrong class")
   # check numbers of polygons
-  expect_equal(poly, length(land))
+  expect_equal(poly, length(land), info = " wrong number of polygon")
   # check numbers of id
-  expect_equal(poly, length(getIdsSpatialPolygons(land)))
+  expect_equal(poly, length(getIdsSpatialPolygons(land)),
+               info = "wrong number of ID polygons")
   
   bbox_land <- bbox(land)
   # check width
-  expect_equal(width, bbox_land[1,2] - bbox_land[1,1])
+  expect_equal(width, bbox_land[1,2] - bbox_land[1,1],
+               info = "bad width")
   # check height
-  expect_equal(heigth, bbox_land[2,2] - bbox_land[2,1])
+  expect_equal(heigth, bbox_land[2,2] - bbox_land[2,1],
+               info = "bad heigth")
 }
 
 # nominal case
@@ -71,26 +75,40 @@ check_lines <- function(land, line)
     # take index of all line of polygon
     ids_lines = c(which(line$id_poly1 %in% id_poly),
                   which(line$id_poly2 %in% id_poly))
+
     # take coordinate of polygon
     coords = getCoordsSpatialPolygons(land, id_poly)
     for (id_line in ids_lines)
     {
       # Verify if line exist
       expect_true(id_line != 0)
-
+  
       index_x0 = line$x0[id_line] == coords[,1]
-      index_x1 = line$x0[id_line] == coords[-1,1]
+      index_x1 = line$x1[id_line] == coords[,1]
       index_y0 = line$y0[id_line] == coords[,2]
-      index_y1 = line$y0[id_line] == coords[-1,2]
-      
+      index_y1 = line$y1[id_line] == coords[,2]
+      print(coords)
       # Verify if points of line are in polygon
       index_p0 = match(1,index_x0 * index_y0)
       index_p1 = match(1,index_x1 * index_y1)
-      
+
       # Verify if the line is in polygon
-      expect_true(index_p0 != 0)
-      expect_true(index_p1 != 0)
-      expect_true(index_p0 == index_p1)
+      expect_true(index_p0 != 0, 
+                  info = paste("[",line$x0[id_line],line$y0[id_line],
+                               "] points dont belong to polygon", id_poly))
+      expect_true(index_p1 != 0, 
+                  info = paste("[",line$x1[id_line],line$y1[id_line],
+                               "] points dont belong to polygon", id_poly))
+      
+      #case line forming by the first and last point of polygone
+      flp = abs(index_p0 - index_p1) == (length(coords[,1]) - 2)
+      #case line forming by two points are following
+      follow = abs(index_p0 - index_p1) == 1
+      # The line can only forming in one of two cases
+      expect_true(xor(flp, follow), info = paste("position of x0y0 point",
+                                                 index_p0, 
+                                                 "and position of x1y1 point",
+                                                 index_p1, "not follow" ))
     }
   }
 }
@@ -98,7 +116,7 @@ check_lines <- function(land, line)
 # nominal case
 test_that("test.extract_line_nominal",{
   land <- gen_land(20, 80, 75)
-  ext_lin <- extract_line(land)
+  ext_lin <- extract_lines(land)
   check_lines(land, ext_lin)
 })
 #------test on affect_type----------#
@@ -122,8 +140,8 @@ check_land_type <- function(land, poly, width, heigth, nb_type)
   
   # check if each value of id_type is a type
   is_type = unique(land$id_type %in% 1:nb_type)
-  expect_equal(1, length(is_type))
-  expect_true(is_type)
+  expect_equal(1, length(is_type), info = "all type not used 1/2")
+  expect_true(is_type, info = "all type not used 2/2")
   
 }
 
@@ -160,8 +178,10 @@ check_nei <- function(land,lt_nei)
 {
   print("check_nei")
   # Verify if function create a liste with all polygone
-  expect_equal(length(land), length(lt_nei))
+  expect_equal(length(land), length(lt_nei), info = "size oflist of neighbour is
+               different of number of polygons")
   
+  ids = attr(lt_nei, "region.id")
   # Verify ex: poly 1 have poly 4 as neighbour. 
   # poly 4 have to poly 1 as neighbour
   index = 1
@@ -169,8 +189,9 @@ check_nei <- function(land,lt_nei)
   {
     for (id in nei)
     {
-      expect_true(index %in% lt_nei[[id]])
-      print(index)
+      expect_true(index %in% lt_nei[[id]], info = paste("polygon", ids[index],
+                                                        "have polygon", ids[id],
+                                                        "but not inverse"))
     }
     index = index + 1
   }
@@ -250,10 +271,10 @@ test_that("test.commun_coords_no", {
 
 # more two lines commun
 test_that("test.more_two", {
-  coords = matrix(c(0, 0, 30, 0, 30, 15, 30, 30, 30, 45, 30, 
+  coords = matrix(c(0, 0, 30, 0, 30, 15, 30, 30, 30, 45, 30,
                     60, 0, 60, 0, 0), 8, 2, byrow = T)
   p = Polygon(coords)
-  coords = matrix(c(30, 0, 30, 15, 30, 30, 30, 45, 30, 60, 
+  coords = matrix(c(30, 0, 30, 15, 30, 30, 30, 45, 30, 60,
                     60, 60, 60, 0, 30, 0), 8, 2, byrow = T)
   p1 = Polygon(coords)
   ps = Polygons(list(p), ID = c(1))
@@ -267,10 +288,10 @@ test_that("test.more_two", {
 
 # just one point commun
 test_that("test.one_point", {
-  coords = matrix(c(0, 0, 30, 0, 30, 15, 30, 30, 0, 30, 0, 
+  coords = matrix(c(0, 0, 30, 0, 30, 15, 30, 30, 0, 30, 0,
                     0), 6, 2, byrow = T)
   p = Polygon(coords)
-  coords = matrix(c(30, 30, 30, 45, 30, 60, 60, 60, 60, 30, 
+  coords = matrix(c(30, 30, 30, 45, 30, 60, 60, 60, 60, 30,
                     30, 30), 6, 2, byrow = T)
   p1 = Polygon(coords)
   ps = Polygons(list(p), ID = c(1))
