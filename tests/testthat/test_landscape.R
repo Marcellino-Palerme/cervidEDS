@@ -1,8 +1,17 @@
 options("testthat.junit.output_file" = "result/landscape.xml")
+
+land_test_type <- gen_land(38, 457, 965)
+land_default <- gen_land()
+land_high <- gen_land(75, 3450, 2680)
+land_nominal <- gen_land(20, 80, 75)
+land_min <- gen_land(10, 60, 60)
+land_omin <- gen_land(0, 0, 0)
+land_neg <- gen_land(-256, -8840, -755550)
+land_float <- gen_land(45.23, 545.36, 843.9)  
+
 with_reporter("junit",{
 context('landscape unit tests')
-library("sp")
-library("spatstat")
+
 #-------test on gen_land function-------#
 
 #all element check on landscape
@@ -35,31 +44,31 @@ check_land <- function(land, poly, width, heigth)
 
 # nominal case
 test_that("test.gen_land_nom", {
-  land <- gen_land(20, 80, 75)
+  land <- land_nominal
   check_land(land, 20, 80, 75)
 })
 
 # minimal case
 test_that("test.gen_land_min", {
-  land <- gen_land(10, 60, 60)
+  land <- land_min
   check_land(land, 10, 60, 60)
 })
 
 # out minimal case
 test_that("test.gen_land_omin", {
-  land <- gen_land(0, 0, 0)
+  land <- land_omin
   check_land(land, 10, 60, 60)
 })
 
 # negatif case
 test_that("test.gen_land_neg", {
-  land <- gen_land(-256, -8840, -755550)
+  land <- land_neg 
   check_land(land, 10, 60, 60)
 })
 
 # float value case
 test_that("test.gen_land_float", {
-  land <- gen_land(45.23, 545.36, 843.9)
+  land <- land_float 
   check_land(land, 45, 545.36, 843.9)
 })
 
@@ -115,11 +124,11 @@ check_lines <- function(land, line)
 
 # nominal case
 test_that("test.extract_line_nominal",{
-  land <- gen_land(20, 80, 75)
+  land <- land_nominal
   ext_lin <- extract_lines(land)
   check_lines(land, ext_lin)
 })
-#------test on affect_type----------#
+#-----test on affect_polygons_type---------#
 
 #all element check on landscape with type
 #
@@ -129,9 +138,9 @@ test_that("test.extract_line_nominal",{
 #width (float): width of landscape
 #heigth (float): heigth of landscape
 #nb_type (int): number of type
-check_land_type <- function(land, poly, width, heigth, nb_type)
+check_poly_type <- function(land, poly, width, heigth, nb_type)
 {
-  print("check_land_type")
+  print("check_poly_type")
   #verify if affect type no modify the landscape
   check_land(land, poly, width, heigth)
   
@@ -142,32 +151,57 @@ check_land_type <- function(land, poly, width, heigth, nb_type)
   is_type = unique(land$id_type %in% 1:nb_type)
   expect_equal(1, length(is_type), info = "all type not used 1/2")
   expect_true(is_type, info = "all type not used 2/2")
-  
 }
 
 #nominal case
-test_that("test.affect_type_nom", {
-  land <- gen_land(38, 457, 965)
-  land <- affect_type(land, 10)
-  check_land_type(land, 38, 457, 965, 10)
+test_that("test.affect_polygons_type_nom", {
+  land <- affect_polygons_type(land_test_type, 10)
+  check_poly_type(land, 38, 457, 965, 10)
 })
 
 #more types than polygons 
-test_that("test.affect_type_more_poly", {
-  land <- gen_land(38, 457, 965)
-  land <- affect_type(land, 150)
-  check_land_type(land, 38, 457, 965, 150)
+test_that("test.affect_polygons_type_more_poly", {
+  land <- affect_polygons_type(land_test_type, 150)
+  check_poly_type(land, 38, 457, 965, 150)
 })
 
 #number of type is negative
-test_that("test.affect_type_neg", {
-  land <- gen_land(38, 457, 965)
-  land <- affect_type(land, -25)
-  check_land_type(land, 38, 457, 965, 1)
+test_that("test.affect_polygons_type_neg", {
+  land <- affect_polygons_type(land_test_type, -25)
+  check_poly_type(land, 38, 457, 965, 1)
 })
 
-#------test on get_neighbours----------#
+#-----test on affect_lines_type---------#
 
+lt_lines_test_type <- extract_lines(land_test_type)
+
+check_lines_type <- function(typed_element, nb_type)
+{
+  print("check_type")
+  # check if each value of id_type is a type
+  is_type = unique(typed_element$id_type %in% 0:nb_type)
+  expect_equal(1, length(is_type), info = "all type not used 1/2")
+  expect_true(is_type, info = "all type not used 2/2")
+}
+
+#nominal case
+test_that("test.affect_lines_type_nom", {
+  lt_lines <- affect_lines_type(lt_lines_test_type, 10)
+  check_lines_type(lt_lines, 10)
+})
+
+#more types than polygons 
+test_that("test.affect_lines_type_more_line", {
+  lt_lines <- affect_lines_type(lt_lines_test_type, 1444)
+  check_lines_type(lt_lines, 1444)
+})
+
+#number of type is negative
+test_that("test.affect_lines_type_neg", {
+  lt_lines <- affect_lines_type(lt_lines_test_type, -25)
+  check_lines_type(lt_lines, 1)
+})
+#------test on get_neighbours----------#
 #check list of neighbours
 #
 #Parameters
@@ -199,21 +233,21 @@ check_nei <- function(land,lt_nei)
 
 #nominal case
 test_that("test.get_neighbours_nom", {
-  land <- gen_land(30, 450, 680)
+  land <- land_nominal
   lt_nei <- get_neighbours(land)
   check_nei(land, lt_nei)
 })
 
 #minimal case
 test_that("test.get_neighbours_min", {
-  land <- gen_land()
+  land = land_default
   lt_nei <- get_neighbours(land)
   check_nei(land, lt_nei)
 })
 
 #High case
 test_that("test.get_neighbours_hi", {
-  land <- gen_land(75, 3450, 2680)
+  land <- land_high
   lt_nei <- get_neighbours(land)
   check_nei(land, lt_nei)
 })
@@ -253,7 +287,7 @@ check_coords <- function(land, id, lt_ccoords)
 
 # nominal case
 test_that("test.commun_coords_nom", {
-  land = gen_land()
+  land = land_default
   nei = get_neighbours(land)
   lt_ccoords = commun_coords(land, c(2, nei[[2]][1]))
   check_coords(land, 2, lt_ccoords)
@@ -262,7 +296,7 @@ test_that("test.commun_coords_nom", {
 
 # no commun coords case
 test_that("test.commun_coords_no", {
-  land = gen_land()
+  land = land_default
   nei = get_neighbours(land)
   no_nei = c(1:10)[-c(4, nei[[4]])][1]
   lt_ccoords = commun_coords(land, c(4, no_nei))

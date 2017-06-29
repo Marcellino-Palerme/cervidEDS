@@ -1,72 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
- <testsuite hostname="palerme" name="landscape unit tests" timestamp="2017-06-29 10:38:12">
-  <testcase classname="landscape_unit_tests" name="test_gen_land_nom" time="21.52"/>
-  <testcase classname="landscape_unit_tests" name="test_gen_land_min" time="56.81"/>
-  <testcase classname="landscape_unit_tests" name="test_gen_land_omin" time="88.56"/>
-  <testcase classname="landscape_unit_tests" name="test_gen_land_neg" time="125.45"/>
-  <testcase classname="landscape_unit_tests" name="test_gen_land_float" time="98.58"/>
-  <testcase classname="landscape_unit_tests" name="test_extract_line_nominal" time="308.52"/>
-  <testcase classname="landscape_unit_tests" name="test_affect_type_nom" time="168.22">
-   <error message="impossible de trouver la fonction &quot;affect_type&quot;" type="error">impossible de trouver la fonction &quot;affect_type&quot;
-1: .handleSimpleError(function (e) 
-   {
-       handled &lt;&lt;- TRUE
-       test_error &lt;&lt;- e
-       options(expressions = expressions_opt_new)
-       on.exit(options(expressions = expressions_opt), add = TRUE)
-       e$expectation_calls &lt;- frame_calls(11, 2)
-       test_error &lt;&lt;- e
-       register_expectation(e)
-       e$handled &lt;- TRUE
-       test_error &lt;&lt;- e
-   }, &quot;impossible de trouver la fonction \&quot;affect_type\&quot;&quot;, quote(affect_type(land, 10))) at /home/palerme/Documents/EDS/cervideds/tests/testthat/test_landscape.R:151
-2: eval(code, test_env)</error>
-   
-    
-  </testcase>
-  <testcase classname="landscape_unit_tests" name="test_affect_type_more_poly" time="243.22">
-   <error message="impossible de trouver la fonction &quot;affect_type&quot;" type="error">impossible de trouver la fonction &quot;affect_type&quot;
-1: .handleSimpleError(function (e) 
-   {
-       handled &lt;&lt;- TRUE
-       test_error &lt;&lt;- e
-       options(expressions = expressions_opt_new)
-       on.exit(options(expressions = expressions_opt), add = TRUE)
-       e$expectation_calls &lt;- frame_calls(11, 2)
-       test_error &lt;&lt;- e
-       register_expectation(e)
-       e$handled &lt;- TRUE
-       test_error &lt;&lt;- e
-   }, &quot;impossible de trouver la fonction \&quot;affect_type\&quot;&quot;, quote(affect_type(land, 150))) at /home/palerme/Documents/EDS/cervideds/tests/testthat/test_landscape.R:158
-2: eval(code, test_env)</error>
-   
-    
-  </testcase>
-  <testcase classname="landscape_unit_tests" name="test_affect_type_neg" time="232.0">
-   <error message="impossible de trouver la fonction &quot;affect_type&quot;" type="error">impossible de trouver la fonction &quot;affect_type&quot;
-1: .handleSimpleError(function (e) 
-   {
-       handled &lt;&lt;- TRUE
-       test_error &lt;&lt;- e
-       options(expressions = expressions_opt_new)
-       on.exit(options(expressions = expressions_opt), add = TRUE)
-       e$expectation_calls &lt;- frame_calls(11, 2)
-       test_error &lt;&lt;- e
-       register_expectation(e)
-       e$handled &lt;- TRUE
-       test_error &lt;&lt;- e
-   }, &quot;impossible de trouver la fonction \&quot;affect_type\&quot;&quot;, quote(affect_type(land, -25))) at /home/palerme/Documents/EDS/cervideds/tests/testthat/test_landscape.R:165
-2: eval(code, test_env)</error>
-   
-    
-  </testcase>
-  <testcase classname="landscape_unit_tests" name="test_get_neighbours_nom" time="434.25"/>
-  <testcase classname="landscape_unit_tests" name="test_get_neighbours_min" time="395.48"/>
-  <testcase classname="landscape_unit_tests" name="test_get_neighbours_hi" time="252.28"/>
-  <testcase classname="landscape_unit_tests" name="test_commun_coords_nom" time="443.85"/>
-  <testcase classname="landscape_unit_tests" name="test_commun_coords_no" time="506.0"/>
-  <testcase classname="landscape_unit_tests" name="test_more_two" time="1.56"/>
-  <testcase classname="landscape_unit_tests" name="test_one_point" time="1.72"/>
+ <testsuite hostname="palerme" name="landscape unit tests" timestamp="2017-06-29 16:29:50">
+  <testcase classname="landscape_unit_tests" name="test_gen_land_nom" time="0.14"/>
+  <testcase classname="landscape_unit_tests" name="test_gen_land_min" time="0.01"/>
+  <testcase classname="landscape_unit_tests" name="test_gen_land_omin" time="0.0"/>
+  <testcase classname="landscape_unit_tests" name="test_gen_land_neg" time="0.0"/>
+  <testcase classname="landscape_unit_tests" name="test_gen_land_float" time="0.01"/>
+  <testcase classname="landscape_unit_tests" name="test_extract_line_nominal" time="3.91"/>
+  <testcase classname="landscape_unit_tests" name="test_affect_polygons_type_nom" time="0.16"/>
+  <testcase classname="landscape_unit_tests" name="test_affect_polygons_type_more_poly" time="0.16"/>
+  <testcase classname="landscape_unit_tests" name="test_affect_polygons_type_neg" time="0.16"/>
+  <testcase classname="landscape_unit_tests" name="test_affect_lines_type_nom" time="0.1"/>
+  <testcase classname="landscape_unit_tests" name="test_affect_lines_type_more_line" time="0.04"/>
+  <testcase classname="landscape_unit_tests" name="test_affect_lines_type_neg" time="0.04"/>
+  <testcase classname="landscape_unit_tests" name="test_get_neighbours_nom" time="1.9"/>
+  <testcase classname="landscape_unit_tests" name="test_get_neighbours_min" time="1.07"/>
+  <testcase classname="landscape_unit_tests" name="test_get_neighbours_hi" time="11.33"/>
+  <testcase classname="landscape_unit_tests" name="test_commun_coords_nom" time="0.13"/>
+  <testcase classname="landscape_unit_tests" name="test_commun_coords_no" time="0.16"/>
+  <testcase classname="landscape_unit_tests" name="test_more_two" time="0.11"/>
+  <testcase classname="landscape_unit_tests" name="test_one_point" time="0.12"/>
  </testsuite>
 </testsuites>

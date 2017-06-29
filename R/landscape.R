@@ -80,14 +80,12 @@ getIdsSpatialPolygons <- function(land)
                 function(x) slot(x, "ID")))
 }
 
-# Give a type at each polygon
-#
-#Parameters:
-#landscape (SpatialPolygoneDataFrame): the landscape whose affect types
-#nb_type (int) : number types are affect
-#
-#Return:
-#landscape (SpatialPolygoneDataFrame): the landscape with types
+#' @title affect polygon type
+#' @description Give a type at each polygon (ramdom)
+#' @param landscape (SpatialPolygonsDataFrame): the landscape whose affect types
+#' @param nb_type (int) : number types are affect
+#' @return landscape (SpatialPolygoneDataFrame): the landscape with types
+#' @export
 affect_polygons_type <- function(landscape, nb_type)
 {
   # min number type is 1
@@ -100,8 +98,31 @@ affect_polygons_type <- function(landscape, nb_type)
   return(landscape)
 }
 
-#give neighbours of each polygon
+#' @title affect line type
+#' @description Give a type at each line (ramdom)
+#' @param lt_lines (list to named row): the line landscape whose affect types
+#' @param nb_type (int) : number types are affect
+#' @return lt_lines (list to named row): the line landscape with types
+#' @export
+affect_lines_type <- function(lt_lines, nb_type)
+{
+  # min number type is 1
+  nb_type = max(1,nb_type)
+  # create random list of type
+  lt_id_types = sample(1:nb_type,length(lt_lines$id_poly1),replace = T)
+  # affect type 
+  lt_lines$id_type = lt_id_types
+  # affect type 0 for border
+  lt_lines$id_type[which(lt_lines$id_poly1 %in% 0)] = 0
+  lt_lines$id_type[which(lt_lines$id_poly2 %in% 0)] = 0
+  
+  return(lt_lines)
+}
 
+#' @title get neighbours
+#' @description give neighbours of each polygon
+#' @param landscape (SpatialPolygons*): the landscape
+#' @return list of list: one row by polygon. In each list of neighbours polygons
 get_neighbours <- function(landscape)
 {
   return(poly2nb(landscape, queen = TRUE,
@@ -181,7 +202,7 @@ extract_lines <- function(landscape)
   # take all ids of landscape
   lt_ids = getIdsSpatialPolygons(landscape)
   
-  dic_lines =  list(id = c(), id_poly1 = c(), id_poly2 = c(),
+  dic_lines =  list(id_poly1 = c(), id_poly2 = c(),
                    x0 = c(), x1 = c(), y0 = c(), y1 = c() )
   for (id in lt_ids)
   {
@@ -746,6 +767,7 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
   private = list(
     landscape = NULL,
     neighbours = NULL,
+    lt_lines = NULL,
     interaction_model = NULL,
     #Create potentiel function of each polycon
     calculate_potential = function()
