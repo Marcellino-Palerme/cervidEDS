@@ -1,6 +1,6 @@
-options("testthat.junit.output_file" = "result/landscape.xml")
-#delete warning 
-options(warn = -1)
+options("testthat.junit.output_file" = "result/landscape_function.xml")
+
+with_reporter("silent",{
 land_test_type <- gen_land(38, 457, 965)
 land_default <- gen_land()
 land_high <- gen_land(75, 3450, 2680)
@@ -9,6 +9,7 @@ land_min <- gen_land(10, 60, 60)
 land_omin <- gen_land(0, 0, 0)
 land_neg <- gen_land(-256, -8840, -755550)
 land_float <- gen_land(45.23, 545.36, 843.9)  
+})
 
 with_reporter("junit",{
 context('landscape unit tests')
@@ -80,23 +81,25 @@ test_that("test.gen_land_float", {
 check_lines <- function(land, line)
 {
   ids_poly = getIdsSpatialPolygons(land)
+  ids_lines = getIdsSpatialLines(line)
   for (id_poly in ids_poly)
   {
     # take index of all line of polygon
-    ids_lines = c(which(line$id_poly1 %in% id_poly),
-                  which(line$id_poly2 %in% id_poly))
-
+    keep_ids = ids_lines[c(which(line$id_poly1 %in% id_poly),
+                           which(line$id_poly2 %in% id_poly))]
+    print(keep_ids)
+    # Verify if line exist
+    expect_false(unique(is.na(keep_ids)))
+  
     # take coordinate of polygon
     coords = getCoordsSpatialPolygons(land, id_poly)
-    for (id_line in ids_lines)
+    for (id_line in keep_ids)
     {
-      # Verify if line exist
-      expect_true(id_line != 0)
-  
-      index_x0 = line$x0[id_line] == coords[,1]
-      index_x1 = line$x1[id_line] == coords[,1]
-      index_y0 = line$y0[id_line] == coords[,2]
-      index_y1 = line$y1[id_line] == coords[,2]
+      line_coords = getCoordsSpatialLines(line, id_line)
+      index_x0 = line_coords[1,1] == coords[,1]
+      index_x1 = line_coords[2,1] == coords[,1]
+      index_y0 = line_coords[1,2] == coords[,2]
+      index_y1 = line_coords[2,2] == coords[,2]
       print(coords)
       # Verify if points of line are in polygon
       index_p0 = match(1,index_x0 * index_y0)
