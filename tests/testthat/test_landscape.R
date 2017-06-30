@@ -1,5 +1,6 @@
 options("testthat.junit.output_file" = "result/landscape.xml")
-
+#delete warning 
+options(warn = -1)
 land_test_type <- gen_land(38, 457, 965)
 land_default <- gen_land()
 land_high <- gen_land(75, 3450, 2680)
