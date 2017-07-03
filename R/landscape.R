@@ -349,17 +349,18 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
   public = list(
     #initialize PotentialLandscape object
     #Parameter
-    #landscape (SpatialPolygonDataFrame): Typing landscape
+    #land_poly (SpatialPolygonDataFrame): Typing polygon landscape
+    #land_lines (SpatialLinesDataFrame): Typing line landscape
     #interaction_model (TypeInteractModel): interaction of each type with 
     #                                          others
-    initialize = function(landscape, interaction_model)
+    initialize = function(land_poly, land_lines, interaction_model)
     {
       #initialize  at empty PotentialPolygons
       super$initialize(list())
       if (is_TypeInteractModel(interaction_model))
       {
         private$interaction_model = interaction_model
-        self$set_landscape(landscape)
+        self$set_landscape(land_poly, land_lines)
       }
     },
     #Give the landscape
@@ -367,7 +368,7 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     #(SpatialPolygonsDataFrame)
     get_landscape = function()
     {
-      return(private$landscape) 
+      return(private$land_poly) 
     },
     #Give the interaction_model
     #Return
@@ -471,11 +472,13 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     #and
     #potential function of each polygon calculated
     #Parameter
-    #landscape (SpatialPolygonsDataFrame): Typing landscape
-    set_landscape = function(landscape)
+    #land_poly (SpatialPolygonDataFrame): Typing polygon landscape
+    #land_lines (SpatialLinesDataFrame): Typing line landscape
+    set_landscape = function(land_poly, land_lines)
     {
-      private$landscape = landscape
-      private$neighbours = get_neighbours(landscape)
+      private$land_poly = land_poly
+      private$land_lines = land_lines
+      private$neighbours = get_neighbours(land_poly)
       private$calculate_potential()
       
     },
@@ -500,10 +503,10 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     plot_potential = function(precision = 1, with_lanscape = TRUE)
     {
       #Take extrem value of landscape
-      min_x = attr(private$landscape,"bbox")[1,1]
-      max_x = attr(private$landscape,"bbox")[1,2]
-      min_y = attr(private$landscape,"bbox")[2,1]
-      max_y = attr(private$landscape,"bbox")[2,2]
+      min_x = attr(private$land_poly,"bbox")[1,1]
+      max_x = attr(private$land_poly,"bbox")[1,2]
+      min_y = attr(private$land_poly,"bbox")[2,1]
+      max_y = attr(private$land_poly,"bbox")[2,2]
       pot = c()
       for (x in seq(min_x,max_x,precision))
       {
@@ -521,104 +524,67 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
       #superimpose
       if (isTRUE(with_lanscape))
       {
-        plot(private$landscape, add = TRUE)
+        plot(private$land_poly, add = TRUE)
       }
       return(pot)
     }
   ),
   private = list(
-    landscape = NULL,
+    land_poly = NULL,
     neighbours = NULL,
-    lt_lines = NULL,
+    land_lines = NULL,
     interaction_model = NULL,
     #Create potentiel function of each polycon
     calculate_potential = function()
     {
-      for (id_poly in attr(private$neighbours, "region.id"))
+      ids_lines = getIdsSpatialLines(private$land_lines)
+      ids_poly = getIdsSpatialPolygons(private$land_poly)
+      index = 1
+      potent = list()
+      for (id_poly in ids_poly)
       {
-        landscape = private$landscape
-
-        #create coordonate of line of polygon
-        poly_coords = getCoordsSpatialPolygons(landscape, id_poly)
-        poly_lines = cbind(poly_coords,c(poly_coords[,1][-1],0))
-        poly_lines = cbind(poly_lines,c(poly_coords[,2][-1],0))
         
-        index = 1
-        potent = list()
-        pos_poly = get_index(id_poly, getIdsSpatialPolygons(landscape))
-        type_poly = landscape$id_type[pos_poly]
+        # take index of all line of polygon
+        keep_ids = ids_lines[c(which(private$land_lines$id_poly1 %in% id_poly),
+                               which(private$land_lines$id_poly2 %in% id_poly))]
         
-        for (nei in private$neighbours[[pos_poly]])
+        # Impossible polygon without lines
+        if (is.na(keep_ids))
         {
-          #verify if polygon have neighbour.
-          if (nei > 0)
+          next
+        }
+        
+        pos_poly = which(ids_poly %in% id_poly)
+        type_poly = private$land_poly$id_type[pos_poly]
+        
+        for (id_line in keep_ids)
+        {
+          pos_line = which(ids_lines %in% id_line) 
+          types = private$land_lines$id_type[pos_line]
+          coords = getCoordsSpatialLines(private$land_lines, id_line)
+          
+          # if line is not a border 
+          if (types != 0)
           {
-            id_nei = attr(private$neighbours, "region.id")[nei]
-            type_nei = landscape$id_type[nei]
-            
+            # take the neighbour polygon
+            id_nei = sub(id_poly,"", paste(private$land_lines$id_poly1[pos_line],
+                                           private$land_lines$id_poly2[pos_line],
+                                           sep = ""))
+            pos_nei = which(ids_poly %in% id_nei)
+            types = list(types, private$land_poly$id_type[pos_nei])
+          }
+          
+          for (type in types)
+          {
             # Take function and parameters of function for interact 
             # between the two type
             func =  private$interaction_model$get_func_interact(type_poly, 
-                                                                type_nei)
+                                                                type)
             param = private$interaction_model$get_params(type_poly, 
-                                                            type_nei)
-            
-            # take coordonate of commun line between two polygone
-            coords = commun_coords(landscape, c(id_poly,id_nei))
-            
-            for (ind_coord in 2:length(coords[,1]))
-            {
-              potent[[index]] = func(param[[1]],param[[2]],param[[3]],
-                                     coords[ind_coord - 1,1],
-                                     coords[ind_coord - 1,2], 
-                                     coords[ind_coord,1],coords[ind_coord,2])
-              index = index + 1
-              
-              num_line = 1
-              repeat
-              {
-                #it is just a point
-                a_point = unique(coords[1,] == coords[2,])
-                if (length(a_point) == 1 & a_point)
-                {
-                  break
-                }
-                
-                if (num_line > length(poly_lines[,1]))
-                {
-                  break
-                }
-                
-                diff1 = unique(poly_lines[num_line,] == c(coords[ind_coord - 1,]
-                                                          ,coords[2,])) 
-                diff2 = unique(poly_lines[num_line,] == c(coords[2,],
-                                                          coords[ind_coord - 1,]))
-                if (length(diff1) == 1 & diff1
-                    || length(diff2) == 1 & diff2 )
-                {
-                  poly_lines = poly_lines[-num_line,]
-                  break
-                }
-                num_line = num_line + 1 
-              }
-            }
-          }
-          
-          
-        }
-        
-        if (length(poly_lines) > 4)
-        {
-          for (num_line in 1:(length(poly_lines[,1]) - 1))
-          {
-            # take function and parameters of function for border
-            func =  private$interaction_model$get_func_interact(type_poly,0)
-            param = private$interaction_model$get_params(type_poly,0)
-            
-            # take coordonate of commun line between two polygone
+                                                         type)
             potent[[index]] = func(param[[1]],param[[2]],param[[3]],
-                                   poly_lines[num_line,1],poly_lines[num_line,2], 
-                                   poly_lines[num_line,3],poly_lines[num_line,4])
+                                   coords[1,1],coords[1,2], 
+                                   coords[2,1],coords[2,2])
             index = index + 1
           }
         }
@@ -637,7 +603,7 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     which_polygon = function(x,y)
     {
       #verify if coordinate in landscape
-      limit_land = bbox(private$landscape)
+      limit_land = bbox(private$land_poly)
       if (findInterval(x, limit_land[1,], rightmost.closed = TRUE) != 1 &&
           findInterval(y, limit_land[2,], rightmost.closed = TRUE) != 1)
       {
@@ -648,7 +614,7 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
       id_polys = attr(private$neighbours, "region.id")
       for (id_poly in id_polys)
       {
-        poly_coords = getCoordsSpatialPolygons(private$landscape,
+        poly_coords = getCoordsSpatialPolygons(private$land_poly,
                                                id_poly)
         if (point.in.polygon(x,y,
                              poly_coords[,1],
