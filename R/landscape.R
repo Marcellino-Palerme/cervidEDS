@@ -478,7 +478,11 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     {
       private$land_poly = land_poly
       private$land_lines = land_lines
-      private$neighbours = get_neighbours(land_poly)
+      # no neighbours when you are alone
+      if (length(land_poly$id_type) > 1)
+      {
+        private$neighbours = get_neighbours(land_poly) 
+      }
       private$calculate_potential()
       
     },
@@ -513,7 +517,7 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
         row_pot = c()
         for (y in seq(min_y,max_y,precision))
         {
-          row_pot = c(pp$get_potential_coord(x, y),row_pot)
+          row_pot = c(self$get_potential_coord(x, y),row_pot)
         }
         #add new colunm
         pot = cbind(pot,row_pot)
@@ -539,10 +543,11 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     {
       ids_lines = getIdsSpatialLines(private$land_lines)
       ids_poly = getIdsSpatialPolygons(private$land_poly)
-      index = 1
-      potent = list()
+      
       for (id_poly in ids_poly)
       {
+        index = 1
+        potent = list()
         
         # take index of all line of polygon
         keep_ids = ids_lines[c(which(private$land_lines$id_poly1 %in% id_poly),
@@ -625,6 +630,8 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
           index_poly = get_index(id_poly, id_polys)
           for (index_nei in private$neighbours[[index_poly]])
           {
+            poly_coords = getCoordsSpatialPolygons(private$land_poly,
+                                                   id_polys[index_nei])
             if (point.in.polygon(x,y,
                                  poly_coords[,1],
                                  poly_coords[,2]) > 0)
@@ -635,10 +642,17 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
           break
         }
       }
-      # point (x,y) is
+
+      # point (x,y) is out of landscape
       if (length(ids) == 0)
       {
         ids = NULL
+      }
+
+      # The landscape composed of one polygone
+      if (is.null(id_polys))
+      {
+        ids = getIdsSpatialPolygons(private$land_poly)
       }
       
       return(ids)

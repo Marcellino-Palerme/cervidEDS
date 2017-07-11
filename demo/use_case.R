@@ -11,8 +11,8 @@ int0_2 = Interact$new(2,potentiel_0,list(0,0,0))
 int0_3 = Interact$new(3,potentiel_0,list(0,0,0))
 
 #Interact dans type 1 pres 0 bordure
-int1_0 = Interact$new(0,potentiel_0,list(runif(1,20,20),
-                                            runif(1,46,46),#bordure
+int1_0 = Interact$new(0,potentiel_0,list(runif(1,2,2),
+                                            runif(1,4,4),#bordure
                                             runif(1,0,0)))
 #Interact dans type 1 pres 1
 int1_1 = Interact$new(1,potentiel_0,list(0,0,0))
@@ -25,8 +25,8 @@ int1_3 = Interact$new(3,potentiel_0,list(runif(1,1,1),
                                             runif(1,0.07,0.07),#3réplusif
                                             runif(1,0,0)))
 #Interact dans type 2 pres 0 bordure
-int2_0 = Interact$new(0,potentiel_0,list(runif(1,20,20),
-                                            runif(1,46,46),#bordure
+int2_0 = Interact$new(0,potentiel_0,list(runif(1,2,2),
+                                            runif(1,4,4),#bordure
                                             runif(1,0,0)))
 #Interact dans type 2 pres 1
 int2_1 = Interact$new(1,potentiel_0,list(runif(1,1,1),
@@ -39,8 +39,8 @@ int2_3 = Interact$new(3,potentiel_0,list(runif(1,1,1),
                                             runif(1,0.07,0.07),
                                             runif(1,0,0)))
 #Interact dans type 3 pres 0 bordure
-int3_0 = Interact$new(0,potentiel_0,list(runif(1,20,20),
-                                            runif(1,46,46),#bordure
+int3_0 = Interact$new(0,potentiel_0,list(runif(1,2,2),
+                                            runif(1,4,4),#bordure
                                             runif(1,0,0)))
 #Interact dans type 3 pres 1
 int3_1 = Interact$new(1,potentiel_0,list(runif(1,1,1),
@@ -66,7 +66,7 @@ type_3 = TypeInteract$new(3, agglo_0,list(int3_0, int3_1,int3_2,int3_3))
 my_model = TypeInteractModel$new(list(type_0,type_1,type_2, type_3))
 
 #def paysage
-my_land = gen_land(60)
+my_land = gen_land()
 
 # coords=matrix(c(0,0,60,0,60,30,0,30,0,0),5,2,byrow=T)
 # p=Polygon(coords)
@@ -127,11 +127,13 @@ my_land = gen_land(60)
                              #border1,border2,border3,border4,
                              #border12,border22,border32,border42))
 
-
+my_line = extract_lines(my_land)
 my_land = affect_polygons_type(my_land, 3)
-# my_land$id_type = c(1,2,3,1)#,0,0,0,0,0,0,0,0)
+my_line = affect_lines_type(my_line,3)
+# my_land$id_type = c(1,2)#,3,1)#,0,0,0,0,0,0,0,0)
+# my_line$id_type = c(0,3,0,0,0,0,0)
 
-pp = PotentialLandscape$new(my_land, my_model)
+pp = PotentialLandscape$new(my_land, my_line, my_model)
 
 #pose une bete
 
