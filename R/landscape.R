@@ -343,7 +343,9 @@ is_PotentialPolygons = function(x)
 }
 
 #----------PotentialLandscape class-------------#
-#Define a landscape with potential function of each polygon
+#' @title  PotentialLandscape
+#' @description  Define a landscape with potential function of each polygon
+#' @export
 PotentialLandscape = R6::R6Class("PotentialLandscape",
   inherit = PotentialPolygons,
   public = list(
@@ -512,6 +514,7 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
       min_y = attr(private$land_poly,"bbox")[2,1]
       max_y = attr(private$land_poly,"bbox")[2,2]
       pot = c()
+
       for (x in seq(min_x,max_x,precision))
       {
         row_pot = c()
@@ -529,6 +532,24 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
       if (isTRUE(with_lanscape))
       {
         plot(private$land_poly, add = TRUE)
+      }
+      
+      # number of different type
+      nb_type = max(c(my_land$id_type,my_line$id_type)) + 1
+      
+      # def color for each type 
+      type_color = rainbow(nb_type)
+      
+      centroid = getSpPPolygonsLabptSlots(private$land_poly)
+      text(centroid, labels = private$land_poly$id_type,
+           col = type_color[strtoi(private$land_poly$id_type) + 1])
+      
+      
+      coord_lines = coordinates(private$land_lines)
+      for (index in seq_along(coord_lines))
+      {
+        lines(coord_lines[[index]][[1]],
+              col = type_color[strtoi(private$land_lines$id_type[index]) + 1])
       }
       return(pot)
     }
@@ -581,6 +602,10 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
           
           for (type in types)
           {
+            if (type == -1)
+            {
+              next()
+            }
             # Take function and parameters of function for interact 
             # between the two type
             func =  private$interaction_model$get_func_interact(type_poly, 

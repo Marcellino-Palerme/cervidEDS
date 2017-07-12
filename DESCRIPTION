@@ -16,7 +16,8 @@ Depends: R6,
          deldir,
          rgeos,
          spdep,
-         methods
+         methods,
+         raster
 Suggests: testthat,
     covr
 RoxygenNote: 6.0.1

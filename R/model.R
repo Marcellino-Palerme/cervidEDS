@@ -156,6 +156,7 @@ is_Interact = function(x)
 
 #----------TypeInteract class-------------#
 #Define Interact of type with others
+#' @export
 TypeInteract = R6::R6Class("TypeInteract",
    public = list(
      initialize = function(id, func_agglo, interacts)
@@ -372,6 +373,7 @@ is_TypeInteract = function(x)
 
 #----------TypeInteractModel class-------------#
 #Define interaction of all types with others
+#' @export 
 TypeInteractModel = R6::R6Class("TypeInteractModel",
   public = list(
     initialize = function(typeinteracts)

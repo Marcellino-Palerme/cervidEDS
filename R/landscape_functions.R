@@ -127,7 +127,9 @@ affect_lines_type <- function(lt_lines, nb_type)
   # min number type is 1
   nb_type = max(1,nb_type)
   # create random list of type
-  lt_id_types = sample(1:nb_type,length(lt_lines$id_poly1),replace = T)
+  lt_id_types = sample(0:nb_type,length(lt_lines$id_poly1),replace = T)
+  # All 0 replace by -1 mean the line don't have type
+  lt_id_types[lt_id_types == 0] = -1
   # affect type 
   lt_lines$id_type = lt_id_types
   # affect type 0 for border
@@ -259,18 +261,20 @@ extract_lines <- function(landscape)
       y0 = lt_coords[i - 1,2]
       x1 = lt_coords[i ,1]
       y1 = lt_coords[i ,2]
-      index_00 = match(1,(x0 == dic_lines$x0) * (y0 == dic_lines$y0))
-      index_01 = match(1,(x0 == dic_lines$x1) * (y0 == dic_lines$y1))
-      index_10 = match(1,(x1 == dic_lines$x0) * (y1 == dic_lines$y0))
-      index_11 = match(1,(x1 == dic_lines$x1) * (y1 == dic_lines$y1))
+      index_01 = match(1,(x0 == dic_lines$x0) * (y0 == dic_lines$y0) *
+                         (x1 == dic_lines$x1) * (y1 == dic_lines$y1))
       
-      if (!is.na(index_00) && !is.na(index_11) && index_00 == index_11)
-      {
-        dic_lines$id_poly2[index_00] = id
-      }
-      else if (!is.na(index_01) && !is.na(index_10) && index_01 == index_10)
+      index_10 = match(1,(x0 == dic_lines$x1) * (y0 == dic_lines$y1) *
+                         (x1 == dic_lines$x0) * (y1 == dic_lines$y0))
+
+      
+      if (!is.na(index_01))
       {
         dic_lines$id_poly2[index_01] = id
+      }
+      else if (!is.na(index_10))
+      {
+        dic_lines$id_poly2[index_10] = id
       }
       else
       {
