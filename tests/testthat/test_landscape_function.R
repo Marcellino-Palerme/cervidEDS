@@ -183,7 +183,7 @@ check_lines_type <- function(typed_element, nb_type)
 {
   print("check_type")
   # check if each value of id_type is a type
-  is_type = unique(typed_element$id_type %in% 0:nb_type)
+  is_type = unique(typed_element$id_type %in% -1:nb_type)
   expect_equal(1, length(is_type), info = "all type not used 1/2")
   expect_true(is_type, info = "all type not used 2/2")
 }

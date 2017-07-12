@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
- <testsuite hostname="palerme" name="model unit tests" timestamp="2017-07-12 17:36:05">
+ <testsuite hostname="palerme" name="model unit tests" timestamp="2017-07-12 18:02:22">
   <testcase classname="model_unit_tests" name="test_dist_expr_nom" time="0"/>
   <testcase classname="model_unit_tests" name="test_dist_expr_one_point" time="0.01"/>
  </testsuite>
