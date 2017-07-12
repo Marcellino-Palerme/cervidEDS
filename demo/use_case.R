@@ -1,69 +1,52 @@
 require("raster")
 #source("landscape.R",local = TRUE)
 
-#Interact dans type 0 pres 0
-int0_0 = Interact$new(0,potentiel_0,list(0,0,0))
-#Interact dans type 0 pres 0
-int0_1 = Interact$new(1,potentiel_0,list(0,0,0))
-#Interact dans type 0 pres 0
-int0_2 = Interact$new(2,potentiel_0,list(0,0,0))
-#Interact dans type 0 pres 0
-int0_3 = Interact$new(3,potentiel_0,list(0,0,0))
-
-#Interact dans type 1 pres 0 bordure
-int1_0 = Interact$new(0,potentiel_0,list(runif(1,2,2),
-                                            runif(1,4,4),#bordure
-                                            runif(1,0,0)))
-#Interact dans type 1 pres 1
+#Interact border
+border = Interact$new(0,potentiel_0,list(runif(1,2,2),
+                                         runif(1,4,4),
+                                         runif(1,0,0)))
+#Interact hote type 1 neighboor type 1
 int1_1 = Interact$new(1,potentiel_0,list(0,0,0))
-#Interact dans type 1 pres 2
-int1_2 = Interact$new(2,potentiel_0,list(runif(1,1,1),
+#Interact hote type 1 neighboor type 2
+int1_2 = Interact$new(2,potentiel_0,list(runif(1,-1,-1),
                                             runif(1,0.01,0.01),#2 attractif
-                                            runif(1,0,0)))
-#Interact dans type 1 pres 3
+                                            runif(1,2,2)))
+#Interact hote type 1 neighboor type 3
 int1_3 = Interact$new(3,potentiel_0,list(runif(1,1,1),
                                             runif(1,0.07,0.07),#3réplusif
                                             runif(1,0,0)))
-#Interact dans type 2 pres 0 bordure
-int2_0 = Interact$new(0,potentiel_0,list(runif(1,2,2),
-                                            runif(1,4,4),#bordure
-                                            runif(1,0,0)))
-#Interact dans type 2 pres 1
+
+#Interact hote type 2 neighboor type 1
 int2_1 = Interact$new(1,potentiel_0,list(runif(1,1,1),
                                             runif(1,0.04,0.04),#1 moyen
                                             runif(1,0,0)))
-#Interact dans type 2 pres 2
+#Interact hote type 2 neighboor type 2
 int2_2 = Interact$new(2,potentiel_0,list(0,0,0))
-#Interact dans type 2 pres 3
+#Interact hote type 2 neighboor type 3
 int2_3 = Interact$new(3,potentiel_0,list(runif(1,1,1),
                                             runif(1,0.07,0.07),
                                             runif(1,0,0)))
-#Interact dans type 3 pres 0 bordure
-int3_0 = Interact$new(0,potentiel_0,list(runif(1,2,2),
-                                            runif(1,4,4),#bordure
-                                            runif(1,0,0)))
-#Interact dans type 3 pres 1
-int3_1 = Interact$new(1,potentiel_0,list(runif(1,1,1),
+
+#Interact hote type 3 neighboor type 1
+int3_1 = Interact$new(1,potentiel_0,list(runif(1,-1,-1),
                                             runif(1,0.04,0.04),
-                                            runif(1,0,0)))
-#Interact dans type 3 pres 2
-int3_2 = Interact$new(2,potentiel_0,list(runif(1,1,1),
-                                            runif(1,0.01,0.01),
-                                            runif(1,0,0)))
-#Interact dans type 3 pres 3
+                                            runif(1,2,2)))
+#Interact hote type 3 neighboor type 2
+int3_2 = Interact$new(2,potentiel_0,list(runif(1,-1,-1),
+                                            runif(1,0.005,0.005),
+                                            runif(1,2,2)))
+#Interact hote type 3 neighboor type 3
 int3_3 = Interact$new(3,potentiel_0,list(0,0,0))
 
 #def type 1
-type_0 = TypeInteract$new(0, agglo_0,list(int0_0, int0_1, int0_2,int0_3))
-#def type 1
-type_1 = TypeInteract$new(1, agglo_0,list(int1_0, int1_1, int1_2,int1_3))
+type_1 = TypeInteract$new(1, agglo_0,list(border, int1_1, int1_2,int1_3))
 #def type 2
-type_2 = TypeInteract$new(2, agglo_0,list(int2_0, int2_1,int2_2,int2_3))
+type_2 = TypeInteract$new(2, agglo_0,list(border, int2_1,int2_2,int2_3))
 #def type 3
-type_3 = TypeInteract$new(3, agglo_0,list(int3_0, int3_1,int3_2,int3_3))
+type_3 = TypeInteract$new(3, agglo_0,list(border, int3_1,int3_2,int3_3))
 
 #def model
-my_model = TypeInteractModel$new(list(type_0,type_1,type_2, type_3))
+my_model = TypeInteractModel$new(list(type_1,type_2, type_3))
 
 #def paysage
 my_land = gen_land()
@@ -157,8 +140,8 @@ for(i in 1:(600/dt))
     print(tmpx)
     print(tmpy)
 
-  x_animal = x_animal + tmpx * dt + runif(1, -abs(tmpx), abs(tmpx)) * sig
-  y_animal = y_animal + tmpy * dt + runif(1, -abs(tmpy), abs(tmpy)) * sig
+  x_animal = x_animal - tmpx * dt + runif(1, -abs(tmpx), abs(tmpx)) * sig
+  y_animal = y_animal - tmpy * dt + runif(1, -abs(tmpy), abs(tmpy)) * sig
   x = c(x,x_animal)
   y = c(y,y_animal)
 }
