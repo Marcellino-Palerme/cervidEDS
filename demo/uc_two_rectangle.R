@@ -34,7 +34,7 @@ type_2 = TypeInteract$new(2, agglo_0,list(border, int2_1, int2_2, int2_3))
 
 
 #def model
-my_model = TypeInteractModel$new(list(type_1,type_2))
+model_two_rec = TypeInteractModel$new(list(type_1,type_2))
 
 coords = matrix(c(0,0,6,0,6,3,0,3,0,0),5,2,byrow = T)
 p = Polygon(coords)
@@ -42,12 +42,12 @@ coords = matrix(c(0,3,6,3,6,6,0,6,0,3),5,2,byrow = T)
 p1 = Polygon(coords)
 ps = Polygons(list(p),ID=c(1))
 ps1 = Polygons(list(p1),ID=c(2))
-my_land = SpatialPolygons(list(ps,ps1))
+land_two_rec = SpatialPolygons(list(ps,ps1))
 
-my_line = extract_lines(my_land)
+line_two_rec = extract_lines(land_two_rec)
 
-my_land$id_type = c(1,2)
-my_line$id_type = c(0,3,0,0,0,0,0)
+land_two_rec$id_type = c(1,2)
+line_two_rec$id_type = c(0,3,0,0,0,0,0)
 
-pl = PotentialLandscape$new(my_land, my_line, my_model)
-valu = pl$plot_potential(0.01, FALSE)
+pl_two_rec = PotentialLandscape$new(land_two_rec, line_two_rec, model_two_rec)
+valu = pl_two_rec$plot_potential(0.01, FALSE)

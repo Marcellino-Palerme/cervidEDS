@@ -1,5 +1,4 @@
-require("raster")
-#source("landscape.R",local = TRUE)
+require("cervideDS")
 
 #Interact border
 border = Interact$new(0,potentiel_0,list(runif(1,2,2),
@@ -46,10 +45,10 @@ type_2 = TypeInteract$new(2, agglo_0,list(border, int2_1,int2_2,int2_3))
 type_3 = TypeInteract$new(3, agglo_0,list(border, int3_1,int3_2,int3_3))
 
 #def model
-my_model = TypeInteractModel$new(list(type_1,type_2, type_3))
+model_uc = TypeInteractModel$new(list(type_1,type_2, type_3))
 
 #def paysage
-my_land = gen_land()
+land_uc = gen_land()
 
 # coords=matrix(c(0,0,60,0,60,30,0,30,0,0),5,2,byrow=T)
 # p=Polygon(coords)
@@ -110,13 +109,13 @@ my_land = gen_land()
                              #border1,border2,border3,border4,
                              #border12,border22,border32,border42))
 
-my_line = extract_lines(my_land)
-my_land = affect_polygons_type(my_land, 3)
-my_line = affect_lines_type(my_line,3)
+line_uc = extract_lines(land_uc)
+land_uc = affect_polygons_type(land_uc, 3)
+line_uc = affect_lines_type(line_uc, 3)
 # my_land$id_type = c(1,2)#,3,1)#,0,0,0,0,0,0,0,0)
 # my_line$id_type = c(0,3,0,0,0,0,0)
 
-pp = PotentialLandscape$new(my_land, my_line, my_model)
+pl_uc = PotentialLandscape$new(land_uc, line_uc, model_uc)
 
 #pose une bete
 
@@ -129,10 +128,10 @@ y = c(y_animal)
 for(i in 1:(600/dt))
 {
 
-  pot = pp$get_potential_coord(x_animal, y_animal)
+  pot = pl_uc$get_potential_coord(x_animal, y_animal)
 
-    tmpx = pp$get_dx_coord(x_animal, y_animal)
-    tmpy = pp$get_dy_coord(x_animal, y_animal)
+    tmpx = pl_uc$get_dx_coord(x_animal, y_animal)
+    tmpy = pl_uc$get_dy_coord(x_animal, y_animal)
     
     print("pot")
     print(x_animal)
@@ -146,7 +145,7 @@ for(i in 1:(600/dt))
   y = c(y,y_animal)
 }
 
-pp$plot_potential(0.5)
+pl_uc$plot_potential(0.5)
 points(x[1],y[1], col="green", lwd=5)
 points(x[length(x)],y[length(y)], col="red", lwd=5)
 lines(x,y, col="blue")

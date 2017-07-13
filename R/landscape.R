@@ -535,7 +535,8 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
       }
       
       # number of different type
-      nb_type = max(c(my_land$id_type,my_line$id_type)) + 1
+      nb_type = max(c(private$land_poly$id_type,
+                      private$land_lines$id_type)) + 1
       
       # def color for each type 
       type_color = rainbow(nb_type)
