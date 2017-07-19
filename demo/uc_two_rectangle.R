@@ -28,13 +28,16 @@ int2_3 = Interact$new(3,potentiel_0,list(0,0,0))
 
 
 #def type 1
-type_1 = TypeInteract$new(1, agglo_0,list(border, int1_1, int1_2, int1_3))
+type_1 = TypeInteract$new(1, "type_1", agglo_0,list(border, int1_1, int1_2,
+                                                    int1_3))
 #def type 2
-type_2 = TypeInteract$new(2, agglo_0,list(border, int2_1, int2_2, int2_3))
-
+type_2 = TypeInteract$new(2, "type_2", agglo_0,list(border, int2_1, int2_2,
+                                                    int2_3))
+#def type 3
+type_3 = TypeInteract$new(3, "line", NULL, list())
 
 #def model
-model_two_rec = TypeInteractModel$new(list(type_1,type_2))
+model_two_rec = TypeInteractModel$new(list(type_1, type_2, type_3))
 
 coords = matrix(c(0,0,6,0,6,3,0,3,0,0),5,2,byrow = T)
 p = Polygon(coords)
@@ -50,4 +53,4 @@ land_two_rec$id_type = c(1,2)
 line_two_rec$id_type = c(0,3,0,0,0,0,0)
 
 pl_two_rec = PotentialLandscape$new(land_two_rec, line_two_rec, model_two_rec)
-valu = pl_two_rec$plot_potential(0.01, FALSE)
+valu = pl_two_rec$plot_potential(0.1)

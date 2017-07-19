@@ -38,17 +38,17 @@ int3_2 = Interact$new(2,potentiel_0,list(runif(1,-1,-1),
 int3_3 = Interact$new(3,potentiel_0,list(0,0,0))
 
 #def type 1
-type_1 = TypeInteract$new(1, agglo_0,list(border, int1_1, int1_2,int1_3))
+type_1 = TypeInteract$new(1, "1", agglo_0,list(border, int1_1, int1_2,int1_3))
 #def type 2
-type_2 = TypeInteract$new(2, agglo_0,list(border, int2_1,int2_2,int2_3))
+type_2 = TypeInteract$new(2, "2", agglo_0,list(border, int2_1,int2_2,int2_3))
 #def type 3
-type_3 = TypeInteract$new(3, agglo_0,list(border, int3_1,int3_2,int3_3))
+type_3 = TypeInteract$new(3, "3", agglo_0,list(border, int3_1,int3_2,int3_3))
 
 #def model
 model_uc = TypeInteractModel$new(list(type_1,type_2, type_3))
 
 #def paysage
-land_uc = gen_land()
+land_uc = gen_land(10,80,80)
 
 # coords=matrix(c(0,0,60,0,60,30,0,30,0,0),5,2,byrow=T)
 # p=Polygon(coords)
