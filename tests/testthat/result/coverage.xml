@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage line-rate="0.380073800738007" branch-rate="0" version="2.2.2" timestamp="2017-07-19 11:08:15">
+<coverage line-rate="0.380073800738007" branch-rate="0" version="2.2.2" timestamp="2017-07-19 11:48:20">
   <sources>
     <source>R/extract_dynapop_oft.R</source>
     <source>R/landscape_functions.R</source>
@@ -174,7 +174,7 @@
             <method name="eval.func" signature="NA" line-rate="1" branch-rate="0">
               <lines>
                 <line number="254" hits="2400" branch="false"/>
-                <line number="256" hits="2239" branch="false"/>
+                <line number="256" hits="2270" branch="false"/>
               </lines>
             </method>
             <method name="crossover.func" signature="NA" line-rate="1" branch-rate="0">
@@ -516,7 +516,7 @@
             <line number="247" hits="8" branch="false"/>
             <line number="249" hits="8" branch="false"/>
             <line number="254" hits="2400" branch="false"/>
-            <line number="256" hits="2239" branch="false"/>
+            <line number="256" hits="2270" branch="false"/>
             <line number="261" hits="2400" branch="false"/>
             <line number="262" hits="2400" branch="false"/>
             <line number="263" hits="2400" branch="false"/>
@@ -759,8 +759,8 @@
             </method>
             <method name="getIdsSpatial_" signature="NA" line-rate="1" branch-rate="0">
               <lines>
-                <line number="77" hits="218" branch="false"/>
-                <line number="78" hits="218" branch="false"/>
+                <line number="77" hits="220" branch="false"/>
+                <line number="78" hits="220" branch="false"/>
               </lines>
             </method>
             <method name="getIdsSpatialPolygons" signature="NA" line-rate="1" branch-rate="0">
@@ -800,16 +800,16 @@
             </method>
             <method name="getCoordsSpatial_" signature="NA" line-rate="1" branch-rate="0">
               <lines>
-                <line number="164" hits="200" branch="false"/>
-                <line number="166" hits="200" branch="false"/>
-                <line number="168" hits="200" branch="false"/>
-                <line number="170" hits="200" branch="false"/>
-                <line number="171" hits="200" branch="false"/>
-                <line number="172" hits="200" branch="false"/>
-                <line number="173" hits="200" branch="false"/>
-                <line number="174" hits="200" branch="false"/>
-                <line number="175" hits="200" branch="false"/>
-                <line number="177" hits="200" branch="false"/>
+                <line number="164" hits="202" branch="false"/>
+                <line number="166" hits="202" branch="false"/>
+                <line number="168" hits="202" branch="false"/>
+                <line number="170" hits="202" branch="false"/>
+                <line number="171" hits="202" branch="false"/>
+                <line number="172" hits="202" branch="false"/>
+                <line number="173" hits="202" branch="false"/>
+                <line number="174" hits="202" branch="false"/>
+                <line number="175" hits="202" branch="false"/>
+                <line number="177" hits="202" branch="false"/>
               </lines>
             </method>
             <method name="getCoordsSpatialPolygons" signature="NA" line-rate="1" branch-rate="0">
@@ -819,7 +819,7 @@
             </method>
             <method name="getCoordsSpatialLines" signature="NA" line-rate="1" branch-rate="0">
               <lines>
-                <line number="205" hits="104" branch="false"/>
+                <line number="205" hits="106" branch="false"/>
               </lines>
             </method>
             <method name="commun_coords" signature="NA" line-rate="1" branch-rate="0">
@@ -933,8 +933,8 @@
             <line number="61" hits="8" branch="false"/>
             <line number="63" hits="8" branch="false"/>
             <line number="67" hits="8" branch="false"/>
-            <line number="77" hits="218" branch="false"/>
-            <line number="78" hits="218" branch="false"/>
+            <line number="77" hits="220" branch="false"/>
+            <line number="78" hits="220" branch="false"/>
             <line number="88" hits="17" branch="false"/>
             <line number="98" hits="1" branch="false"/>
             <line number="110" hits="3" branch="false"/>
@@ -950,18 +950,18 @@
             <line number="139" hits="3" branch="false"/>
             <line number="148" hits="5" branch="false"/>
             <line number="149" hits="5" branch="false"/>
-            <line number="164" hits="200" branch="false"/>
-            <line number="166" hits="200" branch="false"/>
-            <line number="168" hits="200" branch="false"/>
-            <line number="170" hits="200" branch="false"/>
-            <line number="171" hits="200" branch="false"/>
-            <line number="172" hits="200" branch="false"/>
-            <line number="173" hits="200" branch="false"/>
-            <line number="174" hits="200" branch="false"/>
-            <line number="175" hits="200" branch="false"/>
-            <line number="177" hits="200" branch="false"/>
+            <line number="164" hits="202" branch="false"/>
+            <line number="166" hits="202" branch="false"/>
+            <line number="168" hits="202" branch="false"/>
+            <line number="170" hits="202" branch="false"/>
+            <line number="171" hits="202" branch="false"/>
+            <line number="172" hits="202" branch="false"/>
+            <line number="173" hits="202" branch="false"/>
+            <line number="174" hits="202" branch="false"/>
+            <line number="175" hits="202" branch="false"/>
+            <line number="177" hits="202" branch="false"/>
             <line number="191" hits="96" branch="false"/>
-            <line number="205" hits="104" branch="false"/>
+            <line number="205" hits="106" branch="false"/>
             <line number="219" hits="4" branch="false"/>
             <line number="220" hits="4" branch="false"/>
             <line number="221" hits="4" branch="false"/>
