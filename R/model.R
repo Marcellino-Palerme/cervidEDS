@@ -159,9 +159,10 @@ is_Interact = function(x)
 #' @export
 TypeInteract = R6::R6Class("TypeInteract",
    public = list(
-     initialize = function(id, func_agglo, interacts)
+     initialize = function(id, name, func_agglo, interacts)
      {
        self$set_id(id)
+       self$set_name(name)
        self$set_func_agglo(func_agglo)
        for (interact in interacts)
        {
@@ -174,6 +175,13 @@ TypeInteract = R6::R6Class("TypeInteract",
      get_id = function()
      {
        return(private$id)
+     }, 
+     #Give name of type 
+     #return
+     #name: (str) name
+     get_name = function()
+     {
+       return(private$name)
      }, 
      #Give function of agglomeration, how agglomerate interaction of
      #different types 'around' this type 
@@ -263,6 +271,16 @@ TypeInteract = R6::R6Class("TypeInteract",
          private$id = id
        }
      }, 
+     #Define name of type 
+     #Parameter
+     #name: (str) name
+     set_name = function(name)
+     {
+       if (is.character(name))
+       {
+         private$name = name
+       }
+     }, 
      #Define function of agglomeration, how agglomerate interaction of
      #different types 'around' this type 
      #Parameter
@@ -338,6 +356,7 @@ TypeInteract = R6::R6Class("TypeInteract",
    ),
    private = list(
      id = "",
+     name = "",
      func_agglo = "",
      interacts = NULL,
 
@@ -392,7 +411,7 @@ TypeInteractModel = R6::R6Class("TypeInteractModel",
     },
     #Give interacted type
     #Return
-    #list of str
+    #list of int
     get_id_typeinteract = function()
     {
       lt_id = list()
@@ -435,6 +454,24 @@ TypeInteractModel = R6::R6Class("TypeInteractModel",
       else
       {
         return(NULL)
+      }
+    },
+    #Give name of type 
+    #Parameter
+    #id : (int) identifiant of type 
+    #Return
+    #(str)
+    get_name = function(id)
+    {
+      type_interact = self$get_typeinteract(id)
+      
+      if (is.null(type_interact))
+      {
+        return(NULL)
+      }
+      else
+      {
+        return(type_interact$get_name())
       }
     },
     #Give interact of type B on type A

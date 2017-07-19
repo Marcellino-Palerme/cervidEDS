@@ -506,15 +506,16 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     #Parameter
     #precision (float): 
     #with_landscape (bool): superimpose borders of polygons of landscape
-    plot_potential = function(precision = 1, with_lanscape = TRUE)
+    plot_potential = function(precision = 1)
     {
       #Take extrem value of landscape
       min_x = attr(private$land_poly,"bbox")[1,1]
       max_x = attr(private$land_poly,"bbox")[1,2]
       min_y = attr(private$land_poly,"bbox")[2,1]
       max_y = attr(private$land_poly,"bbox")[2,2]
+      
+      #calculate potential of each point
       pot = c()
-
       for (x in seq(min_x,max_x,precision))
       {
         row_pot = c()
@@ -525,33 +526,38 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
         #add new colunm
         pot = cbind(pot,row_pot)
       }
+
       #show matrix of potentials
-      plot(raster(pot, xmn = min_x, xmx = max_x, ymn = min_y, ymx = max_y))
-      
-      #superimpose
-      if (isTRUE(with_lanscape))
-      {
-        plot(private$land_poly, add = TRUE)
-      }
-      
+      plot(raster(pot, xmn = min_x, xmx = max_x, ymn = min_y, ymx = max_y),
+           xlim = c(min_x, max_x), ylim = c(min_y, max_y))
+
       # number of different type
       nb_type = max(c(private$land_poly$id_type,
-                      private$land_lines$id_type)) + 1
+                      private$land_lines$id_type)) + 2
       
       # def color for each type 
       type_color = rainbow(nb_type)
-      
+
+      # Add number of type of polygon with color of type
       centroid = getSpPPolygonsLabptSlots(private$land_poly)
       text(centroid, labels = private$land_poly$id_type,
-           col = type_color[strtoi(private$land_poly$id_type) + 1])
+           col = type_color[strtoi(private$land_poly$id_type) + 2])
       
-      
+      # Add lines in color of type
       coord_lines = coordinates(private$land_lines)
       for (index in seq_along(coord_lines))
       {
         lines(coord_lines[[index]][[1]],
-              col = type_color[strtoi(private$land_lines$id_type[index]) + 1])
+              col = type_color[strtoi(private$land_lines$id_type[index]) + 2])
       }
+
+      # add legend
+      legend(max_x,max_y,
+             legend = c("no type","border",
+                        sapply(1:(nb_type - 2),
+                               private$interaction_model$get_name)),
+             col = type_color, lty = 1,xpd = T, text.col = type_color)
+
       return(pot)
     }
   ),
