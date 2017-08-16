@@ -103,18 +103,33 @@ table.table-condensed {
     <div class="tabbable">
       <ul class="nav nav-tabs">
         <li class="active">
-          <a href="#tab-5236-1" data-toggle="tab" data-value="Files">Files</a>
+<<<<<<< HEAD
+          <a href="#tab-1109-1" data-toggle="tab" data-value="Files">Files</a>
         </li>
         <li>
-          <a href="#tab-5236-2" data-toggle="tab" data-value="Source">Source</a>
+          <a href="#tab-1109-2" data-toggle="tab" data-value="Source">Source</a>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane active" data-value="Files" id="tab-5236-1">
-          <div id="htmlwidget-21088a74e7f5ef119c4c" style="width:960px;height:500px;" class="datatables html-widget"></div>
-          <script type="application/json" data-for="htmlwidget-21088a74e7f5ef119c4c">{"x":{"filter":"none","data":[["<div class=\"coverage-box coverage-low\">0.00<\/div>","<div class=\"coverage-box coverage-low\">0.00<\/div>","<div class=\"coverage-box coverage-low\">3.18<\/div>","<div class=\"coverage-box coverage-medium\">82.31<\/div>","<div class=\"coverage-box coverage-high\">99.20<\/div>"],["<a href=\"#\">R/landscape.R<\/a>","<a href=\"#\">R/utility.R<\/a>","<a href=\"#\">R/model.R<\/a>","<a href=\"#\">R/extract_dynapop_oft.R<\/a>","<a href=\"#\">R/landscape_functions.R<\/a>"],[693,21,700,509,304],[305,4,283,294,125],[0,0,9,242,124],[305,4,274,52,1],["0","0","0","507","82"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Coverage<\/th>\n      <th>File<\/th>\n      <th>Lines<\/th>\n      <th>Relevant<\/th>\n      <th>Covered<\/th>\n      <th>Missed<\/th>\n      <th>Hits / Line<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"dom":"t","paging":false,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\ntable.on('click.dt', 'a', function() {\n  files = $('div#files div');\n  files.not('div.hidden').addClass('hidden');\n  id = $(this).text();\n  files.filter('div[id=\\'' + id + '\\']').removeClass('hidden');\n  $('ul.nav a[data-value=Source]').text(id).tab('show');\n});\n}","selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":["callback"],"jsHooks":[]}</script>
+        <div class="tab-pane active" data-value="Files" id="tab-1109-1">
+          <div id="htmlwidget-d9ec12321786138a6cdd" style="width:960px;height:500px;" class="datatables html-widget"></div>
+          <script type="application/json" data-for="htmlwidget-d9ec12321786138a6cdd">{"x":{"filter":"none","data":[["<div class=\"coverage-box coverage-low\">0.00<\/div>","<div class=\"coverage-box coverage-low\">0.00<\/div>","<div class=\"coverage-box coverage-low\">3.18<\/div>","<div class=\"coverage-box coverage-medium\">82.31<\/div>","<div class=\"coverage-box coverage-high\">99.20<\/div>"],["<a href=\"#\">R/landscape.R<\/a>","<a href=\"#\">R/utility.R<\/a>","<a href=\"#\">R/model.R<\/a>","<a href=\"#\">R/extract_dynapop_oft.R<\/a>","<a href=\"#\">R/landscape_functions.R<\/a>"],[693,21,700,509,304],[305,4,283,294,125],[0,0,9,242,124],[305,4,274,52,1],["0","0","0","507","82"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Coverage<\/th>\n      <th>File<\/th>\n      <th>Lines<\/th>\n      <th>Relevant<\/th>\n      <th>Covered<\/th>\n      <th>Missed<\/th>\n      <th>Hits / Line<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"dom":"t","paging":false,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\ntable.on('click.dt', 'a', function() {\n  files = $('div#files div');\n  files.not('div.hidden').addClass('hidden');\n  id = $(this).text();\n  files.filter('div[id=\\'' + id + '\\']').removeClass('hidden');\n  $('ul.nav a[data-value=Source]').text(id).tab('show');\n});\n}","selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":["callback"],"jsHooks":[]}</script>
         </div>
-        <div class="tab-pane" data-value="Source" id="tab-5236-2">
+        <div class="tab-pane" data-value="Source" id="tab-1109-2">
+=======
+          <a href="#tab-8375-1" data-toggle="tab" data-value="Files">Files</a>
+        </li>
+        <li>
+          <a href="#tab-8375-2" data-toggle="tab" data-value="Source">Source</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" data-value="Files" id="tab-8375-1">
+          <div id="htmlwidget-55d88a3f6e3ccff48f27" style="width:960px;height:500px;" class="datatables html-widget"></div>
+          <script type="application/json" data-for="htmlwidget-55d88a3f6e3ccff48f27">{"x":{"filter":"none","data":[["<div class=\"coverage-box coverage-low\">0.00<\/div>","<div class=\"coverage-box coverage-low\">0.00<\/div>","<div class=\"coverage-box coverage-low\">3.18<\/div>","<div class=\"coverage-box coverage-medium\">82.31<\/div>","<div class=\"coverage-box coverage-high\">99.20<\/div>"],["<a href=\"#\">R/landscape.R<\/a>","<a href=\"#\">R/utility.R<\/a>","<a href=\"#\">R/model.R<\/a>","<a href=\"#\">R/extract_dynapop_oft.R<\/a>","<a href=\"#\">R/landscape_functions.R<\/a>"],[693,21,700,509,304],[305,4,283,294,125],[0,0,9,242,124],[305,4,274,52,1],["0","0","0","507","82"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Coverage<\/th>\n      <th>File<\/th>\n      <th>Lines<\/th>\n      <th>Relevant<\/th>\n      <th>Covered<\/th>\n      <th>Missed<\/th>\n      <th>Hits / Line<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"dom":"t","paging":false,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\ntable.on('click.dt', 'a', function() {\n  files = $('div#files div');\n  files.not('div.hidden').addClass('hidden');\n  id = $(this).text();\n  files.filter('div[id=\\'' + id + '\\']').removeClass('hidden');\n  $('ul.nav a[data-value=Source]').text(id).tab('show');\n});\n}","selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":["callback"],"jsHooks":[]}</script>
+        </div>
+        <div class="tab-pane" data-value="Source" id="tab-8375-2">
+>>>>>>> landscape_open_close_road_hedge
           <div id="files">
             <div id="R/landscape_functions.R" class="hidden">
               <table class="table-condensed">
@@ -656,14 +671,22 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  return(sapply(slot(object, name_element),</pre>
                     </td>
-                    <td class="coverage">217<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">219<em>x</em></td>
+=======
+                    <td class="coverage">220<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">78</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                function(x) slot(x, "ID")))</pre>
                     </td>
-                    <td class="coverage">217<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">219<em>x</em></td>
+=======
+                    <td class="coverage">220<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="never">
                     <td class="num">79</td>
@@ -1265,7 +1288,11 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  pos_id = which(getIdsSpatial_(object, name_elements[1]) %in% id)</pre>
                     </td>
-                    <td class="coverage">199<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">201<em>x</em></td>
+=======
+                    <td class="coverage">202<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="never">
                     <td class="num">165</td>
@@ -1279,7 +1306,11 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  elements = attr(object,name_elements[1])</pre>
                     </td>
-                    <td class="coverage">199<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">201<em>x</em></td>
+=======
+                    <td class="coverage">202<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="never">
                     <td class="num">167</td>
@@ -1293,7 +1324,11 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  element = attr(elements[[pos_id]],name_elements[2])</pre>
                     </td>
-                    <td class="coverage">199<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">201<em>x</em></td>
+=======
+                    <td class="coverage">202<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="never">
                     <td class="num">169</td>
@@ -1307,21 +1342,33 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  coords = NULL</pre>
                     </td>
-                    <td class="coverage">199<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">201<em>x</em></td>
+=======
+                    <td class="coverage">202<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">171</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  for (elemt in element)</pre>
                     </td>
-                    <td class="coverage">199<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">201<em>x</em></td>
+=======
+                    <td class="coverage">202<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">172</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  {</pre>
                     </td>
-                    <td class="coverage">199<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">201<em>x</em></td>
+=======
+                    <td class="coverage">202<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="never">
                     <td class="num">173</td>
@@ -1335,14 +1382,22 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">    coords = rbind(coords,attr(elemt,"coords"))</pre>
                     </td>
-                    <td class="coverage">199<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">201<em>x</em></td>
+=======
+                    <td class="coverage">202<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">175</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  }</pre>
                     </td>
-                    <td class="coverage">199<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">201<em>x</em></td>
+=======
+                    <td class="coverage">202<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="never">
                     <td class="num">176</td>
@@ -1356,7 +1411,11 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  return(coords)</pre>
                     </td>
-                    <td class="coverage">199<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">201<em>x</em></td>
+=======
+                    <td class="coverage">202<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="never">
                     <td class="num">178</td>
@@ -1552,7 +1611,11 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  return(getCoordsSpatial_(my_lines,c("lines","Lines"),id))</pre>
                     </td>
-                    <td class="coverage">103<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">105<em>x</em></td>
+=======
+                    <td class="coverage">106<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="never">
                     <td class="num">206</td>
@@ -1937,42 +2000,66 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      x0 = lt_coords[i - 1,1]</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">307<em>x</em></td>
+=======
                     <td class="coverage">308<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">261</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      y0 = lt_coords[i - 1,2]</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">307<em>x</em></td>
+=======
                     <td class="coverage">308<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">262</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      x1 = lt_coords[i ,1]</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">307<em>x</em></td>
+=======
                     <td class="coverage">308<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">263</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      y1 = lt_coords[i ,2]</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">307<em>x</em></td>
+=======
                     <td class="coverage">308<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">264</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      index_01 = match(1,(x0 == dic_lines$x0) * (y0 == dic_lines$y0) *</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">307<em>x</em></td>
+=======
                     <td class="coverage">308<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">265</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                         (x1 == dic_lines$x1) * (y1 == dic_lines$y1))</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">307<em>x</em></td>
+=======
                     <td class="coverage">308<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="never">
                     <td class="num">266</td>
@@ -1986,14 +2073,22 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      index_10 = match(1,(x0 == dic_lines$x1) * (y0 == dic_lines$y1) *</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">307<em>x</em></td>
+=======
                     <td class="coverage">308<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">268</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                         (x1 == dic_lines$x0) * (y1 == dic_lines$y0))</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">307<em>x</em></td>
+=======
                     <td class="coverage">308<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="never">
                     <td class="num">269</td>
@@ -2014,14 +2109,22 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      if (!is.na(index_01))</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">307<em>x</em></td>
+=======
                     <td class="coverage">308<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">272</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      {</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">307<em>x</em></td>
+=======
                     <td class="coverage">308<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="missed">
                     <td class="num">273</td>
@@ -2035,49 +2138,77 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      }</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">307<em>x</em></td>
+=======
                     <td class="coverage">308<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">275</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      else if (!is.na(index_10))</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">307<em>x</em></td>
+=======
                     <td class="coverage">308<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">276</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      {</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">307<em>x</em></td>
+=======
                     <td class="coverage">308<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">277</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        dic_lines$id_poly2[index_10] = id</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">131<em>x</em></td>
+=======
                     <td class="coverage">132<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">278</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      }</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">307<em>x</em></td>
+=======
                     <td class="coverage">308<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">279</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      else</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">307<em>x</em></td>
+=======
                     <td class="coverage">308<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">280</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      {</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">307<em>x</em></td>
+=======
                     <td class="coverage">308<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">281</td>
@@ -2126,7 +2257,11 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      }</pre>
                     </td>
+<<<<<<< HEAD
+                    <td class="coverage">307<em>x</em></td>
+=======
                     <td class="coverage">308<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">288</td>
@@ -12490,49 +12625,61 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      if (sum(apply(matrix(round(line.mat, 12) %in% </pre>
                     </td>
-                    <td class="coverage">2350<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">2338<em>x</em></td>
+=======
+                    <td class="coverage">2342<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">69</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           round(cbind(a[-nrow(a),], a[-1,])[j,] + yscale, 12), ncol=4), FUN=sum, 1) == 4) == 0){</pre>
                     </td>
-                    <td class="coverage">2350<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">2338<em>x</em></td>
+=======
+                    <td class="coverage">2342<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">70</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        id &lt;- id + 1</pre>
                     </td>
-                    <td class="coverage">1324<em>x</em></td>
+                    <td class="coverage">1322<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">71</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        line.mat &lt;- rbind(line.mat, cbind(a[-nrow(a),], a[-1,])[j,] + yscale)</pre>
                     </td>
-                    <td class="coverage">1324<em>x</em></td>
+                    <td class="coverage">1322<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">72</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        line.list &lt;- c(line.list, Lines(list(Line(matrix(cbind(a[-nrow(a),], a[-1,])[j,],</pre>
                     </td>
-                    <td class="coverage">1324<em>x</em></td>
+                    <td class="coverage">1322<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">73</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                                                         nrow=2, byrow=TRUE))), ID=id))</pre>
                     </td>
-                    <td class="coverage">1324<em>x</em></td>
+                    <td class="coverage">1322<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">74</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      }</pre>
                     </td>
-                    <td class="coverage">2350<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">2338<em>x</em></td>
+=======
+                    <td class="coverage">2342<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">75</td>
@@ -12840,7 +12987,11 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      coord &lt;- old.coord</pre>
                     </td>
-                    <td class="coverage">660<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">649<em>x</em></td>
+=======
+                    <td class="coverage">664<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">119</td>
@@ -12854,7 +13005,11 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      old.eval &lt;- new.eval</pre>
                     </td>
-                    <td class="coverage">140<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">151<em>x</em></td>
+=======
+                    <td class="coverage">136<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">121</td>
@@ -13806,7 +13961,11 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  -sum(((x-targets)*scale)^2, na.rm=TRUE)</pre>
                     </td>
-                    <td class="coverage">2256<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">2267<em>x</em></td>
+=======
+                    <td class="coverage">2270<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="never">
                     <td class="num">257</td>
@@ -13869,7 +14028,11 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">    child &lt;- c(child, unlist(parents[[i %% 2 + 1]][tab[1, i]:tab[2, i]]))</pre>
                     </td>
-                    <td class="coverage">5974<em>x</em></td>
+<<<<<<< HEAD
+                    <td class="coverage">6009<em>x</em></td>
+=======
+                    <td class="coverage">5996<em>x</em></td>
+>>>>>>> landscape_open_close_road_hedge
                   </tr>
                   <tr class="covered">
                     <td class="num">266</td>
