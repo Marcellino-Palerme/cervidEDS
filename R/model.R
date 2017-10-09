@@ -154,15 +154,18 @@ is_Interact = function(x)
   return(class(x)[1] == "Interact")
 }
 
-#----------TypeInteract class-------------#
-#Define Interact of type with others
+#' @title TypeInteract class
+#' @description  Define Interact of type with others
 #' @export
 TypeInteract = R6::R6Class("TypeInteract",
    public = list(
      initialize = function(id, name, func_agglo, interacts)
      {
+       # Affect id
        self$set_id(id)
+       # Affect name
        self$set_name(name)
+       # Affect a agglomeration function
        self$set_func_agglo(func_agglo)
        for (interact in interacts)
        {

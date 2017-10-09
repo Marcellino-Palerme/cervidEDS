@@ -74,6 +74,7 @@ PotentialPolygon <- R6::R6Class('PotentialPolygon',
     #3 : impossible to create derivate in y
     set_potential = function(str_func)
     {
+      # Create Null function with her gradient
       if (str_func == "")
       {
         body(private$potential) <- 0
@@ -123,7 +124,7 @@ PotentialPolygon <- R6::R6Class('PotentialPolygon',
     #derivate in x return only the gradient
     dx = function(x,y) attr(private$deriv_x(x,y),"gradient"),
     deriv_y = NULL,
-    #derivate in x return only the gradient
+    #derivate in y return only the gradient
     dy = function(x,y) attr(private$deriv_y(x,y),"gradient")
   )
   
@@ -240,6 +241,7 @@ PotentialPolygons = R6::R6Class("PotentialPolygons",
         #Verify if creating is correct
         if (is_PotentialPolygon(pot_poly))
         {
+          # add new potentialpolygon
           private$pot_polys = append(private$pot_polys, pot_poly)
           private$ids = append(private$ids, id)
         }
@@ -413,7 +415,7 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
       {
         return(NA)
       }
-      
+      # Make average of potential if coordinate between two polygons
       potential = 0
       for (id in ids)
       {
@@ -437,7 +439,7 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
       {
         return(NA)
       }
-      
+      # Make average of dx if coordinate between two polygons
       dx = 0
       for (id in ids)
       {
@@ -461,7 +463,7 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
       {
         return(NA)
       }
-      
+      # Make average of dy if coordinate between two polygons
       dy = 0
       for (id in ids)
       {
@@ -480,20 +482,24 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     {
       private$land_poly = land_poly
       private$land_lines = land_lines
+      private$neighbours = NULL
       # no neighbours when you are alone
       if (length(land_poly$id_type) > 1)
       {
         private$neighbours = get_neighbours(land_poly) 
       }
+      # Recalculate potential of polygones
       private$calculate_potential()
       
     },
     #Add or modify interaction_model
     set_interaction_model = function(interaction_model)
     {
+      # Verify if it is interaction model
       if (is_TypeInteractModel(interaction_model))
       {
         private$interaction_model = interaction_model
+        # Recalculate potential with new interation model
         private$calculate_potential()
         return(0)
       }
@@ -569,7 +575,9 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     #Create potentiel function of each polycon
     calculate_potential = function()
     {
+      # Take ids of all lines
       ids_lines = getIdsSpatialLines(private$land_lines)
+      # Take ids of all polygones
       ids_poly = getIdsSpatialPolygons(private$land_poly)
       
       for (id_poly in ids_poly)
@@ -586,14 +594,19 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
         {
           next
         }
-        
+        # take position of polygon in the list of polygones
         pos_poly = which(ids_poly %in% id_poly)
+        # Take type of polygon
         type_poly = private$land_poly$id_type[pos_poly]
         
         for (id_line in keep_ids)
         {
+          # Get all information on line
+          # position
           pos_line = which(ids_lines %in% id_line) 
+          # Type
           types = private$land_lines$id_type[pos_line]
+          # And coordonate
           coords = getCoordsSpatialLines(private$land_lines, id_line)
           
           # if line is not a border 
