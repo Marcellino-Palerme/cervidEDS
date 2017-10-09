@@ -355,13 +355,18 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     #land_lines (SpatialLinesDataFrame): Typing line landscape
     #interaction_model (TypeInteractModel): interaction of each type with 
     #                                          others
-    initialize = function(land_poly, land_lines, interaction_model)
+    #perception (string): kind to calculate the potential.
+    #                   - n : see only neighbour
+    #                   - s : all element of landscape spread
+    initialize = function(land_poly, land_lines, interaction_model,
+                          perception="n")
     {
-      #initialize  at empty PotentialPolygons
+      #initialize at empty PotentialPolygons
       super$initialize(list())
       if (is_TypeInteractModel(interaction_model))
       {
         private$interaction_model = interaction_model
+        private$perception = perception
         self$set_landscape(land_poly, land_lines)
       }
     },
@@ -566,8 +571,18 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     neighbours = NULL,
     land_lines = NULL,
     interaction_model = NULL,
-    #Create potentiel function of each polycon
+    perception = "n",
+    # Select method to calculate potential
     calculate_potential = function()
+    {
+      switch(
+        private$perception,
+        "n" = private$neighbours_potential(),
+        "s" = private$spread_potential()
+      )
+    },
+    #Create potentiel function of each polycon
+    neighbours_potential = function()
     {
       ids_lines = getIdsSpatialLines(private$land_lines)
       ids_poly = getIdsSpatialPolygons(private$land_poly)
