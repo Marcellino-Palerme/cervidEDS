@@ -21,3 +21,5 @@ Depends: R6,
 Suggests: testthat,
     covr
 RoxygenNote: 6.0.1
+LinkingTo: Rcpp
+Imports: Rcpp
