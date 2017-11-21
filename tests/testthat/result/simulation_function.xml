@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="simulation unit tests" timestamp="2017-11-21 17:06:41" hostname="palerme">
+    <testcase time="0" classname="simulation_unit_tests" name="test_border_effect_center">
+      <failure type="failure" message="0 not equal to result[&quot;x&quot;].">0 not equal to result["x"].
+names for current but not for target
+</failure>
+    </testcase>
+    <testcase time="0" classname="simulation_unit_tests" name="test_border_effect_center">
+      <failure type="failure" message="0 not equal to result[&quot;y&quot;].">0 not equal to result["y"].
+names for current but not for target
+</failure>
+    </testcase>
+    <testcase time="0" classname="simulation_unit_tests" name="test_border_effect_centerleft"/>
+    <testcase time="0" classname="simulation_unit_tests" name="test_border_effect_centerleft">
+      <failure type="failure" message="0 not equal to result[&quot;y&quot;].">0 not equal to result["y"].
+names for current but not for target
+</failure>
+    </testcase>
+    <testcase time="0.01" classname="simulation_unit_tests" name="test_border_effect_cl_compare"/>
+    <testcase time="0" classname="simulation_unit_tests" name="test_border_effect_cl_compare">
+      <failure type="failure" message="0 not equal to result[&quot;y&quot;].">0 not equal to result["y"].
+names for current but not for target
+</failure>
+    </testcase>
+    <testcase time="0" classname="simulation_unit_tests" name="test_border_effect_cl_compare"/>
+    <testcase time="0" classname="simulation_unit_tests" name="test_border_effect_cl_compare"/>
+    <testcase time="0" classname="simulation_unit_tests" name="test_border_effect_cl_compare">
+      <failure type="failure" message="0 not equal to result[&quot;y&quot;].">0 not equal to result["y"].
+names for current but not for target
+</failure>
+    </testcase>
+  </testsuite>
+</testsuites>
