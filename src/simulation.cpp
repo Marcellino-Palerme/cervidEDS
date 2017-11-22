@@ -22,10 +22,24 @@ NumericVector border_effect (unsigned int ui_width,
                                                       _["y"] = 0 );
    
    d_coeff = d_sigma * 10;
+
    //calculate effect in x
-   ad_effect_xy["x"] = d_coeff * (pow(d_pos_x, -1) + pow(d_pos_x - ui_width, -1));
+   // only if it isn't on border
+   // if it is on or out border there isn't border effect
+   if(d_pos_x < ui_width && d_pos_x > 0 )
+   {
+     ad_effect_xy["x"] = d_coeff * (pow(d_pos_x, -1) + 
+                                    pow(d_pos_x - ui_width, -1));
+   }
+   
    //calculate effect in y
-   ad_effect_xy["y"] = d_coeff * (pow(d_pos_y, -1) + pow(d_pos_y - ui_heigth, -1));
+   // only if it isn't on border
+   // if it is on border there isn't border effect
+   if(d_pos_y < ui_heigth && d_pos_y > 0)
+   {
+     ad_effect_xy["y"] = d_coeff * (pow(d_pos_y, -1) + 
+                                    pow(d_pos_y - ui_heigth, -1)); 
+   }
    
    return ad_effect_xy;
 }
@@ -197,7 +211,9 @@ NumericVector potential_effect (NumericMatrix nm_coords_element,
 //' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
 //'                                      Matrix N*4 (x1,y1,x2,y2)
 //' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-//' 
+//' @param alpha1 (double) maximum potential amplitude
+//' @export
+// [[Rcpp::export]]
 NumericVector repulsive_effect (NumericMatrix nm_coords_rep,
                                 NumericVector nv_coords_point,
                                 double alpha1)

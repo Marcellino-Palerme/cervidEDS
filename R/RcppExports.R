@@ -14,15 +14,6 @@
 #'        on bound)
 NULL
 
-#' @title repulsive effect
-#' @description Give effect on x and y of all replusive elements 
-#' 
-#' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
-#'                                      Matrix N*4 (x1,y1,x2,y2)
-#' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-#' 
-NULL
-
 #'@title Border effect
 #'@description This function calculate the effect of border on mouvement
 #' 
@@ -76,5 +67,17 @@ grad_potential_func <- function(alpha_t, beta, dist, puiss, deriv) {
 #' @export
 alpha_func <- function(alpha1, alpha2, alpha3, t) {
     .Call('cervideDS_alpha_func', PACKAGE = 'cervideDS', alpha1, alpha2, alpha3, t)
+}
+
+#' @title repulsive effect
+#' @description Give effect on x and y of all replusive elements 
+#' 
+#' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
+#'                                      Matrix N*4 (x1,y1,x2,y2)
+#' @param nv_coords_point (NumericVector) coordinates of point (x,y)
+#' @param alpha1 (double) maximum potential amplitude
+#' @export
+repulsive_effect <- function(nm_coords_rep, nv_coords_point, alpha1) {
+    .Call('cervideDS_repulsive_effect', PACKAGE = 'cervideDS', nm_coords_rep, nv_coords_point, alpha1)
 }
 

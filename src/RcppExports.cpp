@@ -65,12 +65,26 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// repulsive_effect
+NumericVector repulsive_effect(NumericMatrix nm_coords_rep, NumericVector nv_coords_point, double alpha1);
+RcppExport SEXP cervideDS_repulsive_effect(SEXP nm_coords_repSEXP, SEXP nv_coords_pointSEXP, SEXP alpha1SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type nm_coords_rep(nm_coords_repSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type nv_coords_point(nv_coords_pointSEXP);
+    Rcpp::traits::input_parameter< double >::type alpha1(alpha1SEXP);
+    rcpp_result_gen = Rcpp::wrap(repulsive_effect(nm_coords_rep, nv_coords_point, alpha1));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"cervideDS_border_effect", (DL_FUNC) &cervideDS_border_effect, 5},
     {"cervideDS_distance2segment", (DL_FUNC) &cervideDS_distance2segment, 6},
     {"cervideDS_grad_potential_func", (DL_FUNC) &cervideDS_grad_potential_func, 5},
     {"cervideDS_alpha_func", (DL_FUNC) &cervideDS_alpha_func, 4},
+    {"cervideDS_repulsive_effect", (DL_FUNC) &cervideDS_repulsive_effect, 3},
     {NULL, NULL, 0}
 };
 

@@ -1,34 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <testsuites>
-  <testsuite name="simulation unit tests" timestamp="2017-11-21 17:06:41" hostname="palerme">
-    <testcase time="0" classname="simulation_unit_tests" name="test_border_effect_center">
-      <failure type="failure" message="0 not equal to result[&quot;x&quot;].">0 not equal to result["x"].
-names for current but not for target
-</failure>
-    </testcase>
-    <testcase time="0" classname="simulation_unit_tests" name="test_border_effect_center">
-      <failure type="failure" message="0 not equal to result[&quot;y&quot;].">0 not equal to result["y"].
-names for current but not for target
-</failure>
-    </testcase>
-    <testcase time="0" classname="simulation_unit_tests" name="test_border_effect_centerleft"/>
-    <testcase time="0" classname="simulation_unit_tests" name="test_border_effect_centerleft">
-      <failure type="failure" message="0 not equal to result[&quot;y&quot;].">0 not equal to result["y"].
-names for current but not for target
-</failure>
-    </testcase>
-    <testcase time="0.01" classname="simulation_unit_tests" name="test_border_effect_cl_compare"/>
-    <testcase time="0" classname="simulation_unit_tests" name="test_border_effect_cl_compare">
-      <failure type="failure" message="0 not equal to result[&quot;y&quot;].">0 not equal to result["y"].
-names for current but not for target
-</failure>
-    </testcase>
-    <testcase time="0" classname="simulation_unit_tests" name="test_border_effect_cl_compare"/>
-    <testcase time="0" classname="simulation_unit_tests" name="test_border_effect_cl_compare"/>
-    <testcase time="0" classname="simulation_unit_tests" name="test_border_effect_cl_compare">
-      <failure type="failure" message="0 not equal to result[&quot;y&quot;].">0 not equal to result["y"].
-names for current but not for target
-</failure>
-    </testcase>
-  </testsuite>
+ <testsuite hostname="palerme" name="simulation unit tests" timestamp="2017-11-22 18:09:07">
+  <testcase classname="simulation_unit_tests" name="test_border_effect_center" time="0.0"/>
+  <testcase classname="simulation_unit_tests" name="test_border_effect_centerleft" time="0.0"/>
+  <testcase classname="simulation_unit_tests" name="test_border_effect_cl_compare" time="0.0"/>
+  <testcase classname="simulation_unit_tests" name="test_border_effect_center_right" time="0.0"/>
+  <testcase classname="simulation_unit_tests" name="test_border_effect_cr_compare" time="0.0"/>
+  <testcase classname="simulation_unit_tests" name="test_border_effect_centerup" time="0.0"/>
+  <testcase classname="simulation_unit_tests" name="test_border_effect_cu_compare" time="0.0"/>
+  <testcase classname="simulation_unit_tests" name="test_border_effect_centerdown" time="0.0"/>
+  <testcase classname="simulation_unit_tests" name="test_border_effect_cd_compare" time="0.0"/>
+  <testcase classname="simulation_unit_tests" name="test_border_effect_border_rigth" time="0.0"/>
+  <testcase classname="simulation_unit_tests" name="test_border_effect_border_left" time="0.0"/>
+  <testcase classname="simulation_unit_tests" name="test_border_effect_border_up" time="0.0"/>
+  <testcase classname="simulation_unit_tests" name="test_border_effect_border_down" time="0.0"/>
+  <testcase classname="simulation_unit_tests" name="test_border_effect_corner_down" time="0.0"/>
+  <testcase classname="simulation_unit_tests" name="test_border_effect_corner_up" time="0.0"/>
+  <testcase classname="simulation_unit_tests" name="test_border_effect_nominal" time="0.0"/>
+ </testsuite>
 </testsuites>
