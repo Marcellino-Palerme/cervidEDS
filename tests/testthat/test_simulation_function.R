@@ -210,4 +210,14 @@ with_reporter("junit",{
     expect_true(result["y"] > 0, info = paste(result["y"], " inf or equal 0"))
     
   })
+  
+  #------test distance2segment-----#
+  # nominal case
+  test_that("test.distance2segment_nominal", {
+    result = distance2segment(4.5,3.5,2,4.5,5,7)
+    expect_true(result["dist"] > 2.3,
+                info = paste(result["dist"], " inf or equal 2.3"))
+    expect_true(result["dist"] < 2.5,
+                info = paste(result["dist"], " sup or equal 2.5"))
+  })
 },T)
