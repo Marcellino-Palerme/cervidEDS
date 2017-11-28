@@ -9,7 +9,7 @@ test_that("test.dist_expr_nom", {
   x = 0
   y = 1
   result = eval(parse(text = expr_dist))
-  expect_equal((1/sqrt(2)), result)
+  expect_equal(1, result)
 })
 
 # segment is one point case
