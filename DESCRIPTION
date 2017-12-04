@@ -17,7 +17,8 @@ Depends: R6,
          rgeos,
          spdep,
          methods,
-         raster
+         raster,
+         Ryacas
 Suggests: testthat,
     covr
 RoxygenNote: 6.0.1
