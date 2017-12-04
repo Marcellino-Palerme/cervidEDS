@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
- <testsuite hostname="palerme" name="simulation unit tests" timestamp="2017-11-24 16:53:58">
+ <testsuite hostname="palerme" name="simulation unit tests" timestamp="2017-12-04 11:44:48">
   <testcase classname="simulation_unit_tests" name="test_border_effect_center" time="0.0"/>
   <testcase classname="simulation_unit_tests" name="test_border_effect_centerleft" time="0.0"/>
   <testcase classname="simulation_unit_tests" name="test_border_effect_cl_compare" time="0.0"/>
@@ -17,11 +17,11 @@
   <testcase classname="simulation_unit_tests" name="test_border_effect_corner_down" time="0.0"/>
   <testcase classname="simulation_unit_tests" name="test_border_effect_corner_up" time="0.0"/>
   <testcase classname="simulation_unit_tests" name="test_border_effect_nominal" time="0.0"/>
-  <testcase classname="simulation_unit_tests" name="test_distance2segment_nominal" time="0.0">
-   <failure message="result[&quot;dist&quot;] &lt; 2.5 isn't true." type="failure">result[&quot;dist&quot;] &lt; 2.5 isn't true.
-5.61065573770492  sup or equal 2.5</failure>
-   
-    
-  </testcase>
+  <testcase classname="simulation_unit_tests" name="test_distance2segment_down" time="0.0"/>
+  <testcase classname="simulation_unit_tests" name="test_distance2segment_up" time="0.0"/>
+  <testcase classname="simulation_unit_tests" name="test_distance2segment_point_extrem" time="0.04"/>
+  <testcase classname="simulation_unit_tests" name="test_distance2segment_point" time="0.03"/>
+  <testcase classname="simulation_unit_tests" name="test_distance2segment_vertical" time="0.06"/>
+  <testcase classname="simulation_unit_tests" name="test_distance2segment_horizontal" time="0.06"/>
  </testsuite>
 </testsuites>

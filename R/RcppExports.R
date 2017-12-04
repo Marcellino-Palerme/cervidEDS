@@ -28,6 +28,39 @@ border_effect <- function(ui_width, ui_heigth, d_sigma, d_pos_x, d_pos_y) {
     .Call('cervideDS_border_effect', PACKAGE = 'cervideDS', ui_width, ui_heigth, d_sigma, d_pos_x, d_pos_y)
 }
 
+#' @title Distance to point
+#' @description Give distance a point to point and derivate in x and y
+#' 
+#' @param x (double) x of first point 
+#' @param y (double) y of first point 
+#' @param x1 (vector) x1 of second point 
+#' @param y1 (vector) y1 of second point
+#' @return (vector) distance to segment (dist),
+#'                  derivate in x (dx),
+#'                  derivate in y (dy)
+#' @export
+distance2point <- function(x, y, x1, y1) {
+    .Call('cervideDS_distance2point', PACKAGE = 'cervideDS', x, y, x1, y1)
+}
+
+#' @title shoter distance
+#' @description Give shoter distance a point to extrem point of segment and 
+#'              derivate in x and y
+#' 
+#' @param x (double) x of point 
+#' @param y (double) y of point 
+#' @param x1 (vector) x1 of segment 
+#' @param y1 (vector) y1 of segment
+#' @param x2 (vector) x2 of segment
+#' @param y2 (vector) y2 of segment
+#' @return (vector) distance to segment (dist),
+#'                  derivate in x (dx),
+#'                  derivate in y (dy)
+#' @export
+shorter_distance <- function(x, y, x1, y1, x2, y2) {
+    .Call('cervideDS_shorter_distance', PACKAGE = 'cervideDS', x, y, x1, y1, x2, y2)
+}
+
 #' @title Distance to Segment
 #' @description Give distance a point to segment and derivate in x and y
 #' 

@@ -13,6 +13,11 @@ NumericVector border_effect (unsigned int,
                              double,
                              double);
 
+NumericVector distance2point(double, 
+                             double, 
+                             double,
+                             double);
+
 NumericVector distance2segment(double , 
                                double , 
                                double ,

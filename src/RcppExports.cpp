@@ -20,6 +20,36 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// distance2point
+NumericVector distance2point(double x, double y, double x1, double y1);
+RcppExport SEXP cervideDS_distance2point(SEXP xSEXP, SEXP ySEXP, SEXP x1SEXP, SEXP y1SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type y(ySEXP);
+    Rcpp::traits::input_parameter< double >::type x1(x1SEXP);
+    Rcpp::traits::input_parameter< double >::type y1(y1SEXP);
+    rcpp_result_gen = Rcpp::wrap(distance2point(x, y, x1, y1));
+    return rcpp_result_gen;
+END_RCPP
+}
+// shorter_distance
+NumericVector shorter_distance(double x, double y, double x1, double y1, double x2, double y2);
+RcppExport SEXP cervideDS_shorter_distance(SEXP xSEXP, SEXP ySEXP, SEXP x1SEXP, SEXP y1SEXP, SEXP x2SEXP, SEXP y2SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type y(ySEXP);
+    Rcpp::traits::input_parameter< double >::type x1(x1SEXP);
+    Rcpp::traits::input_parameter< double >::type y1(y1SEXP);
+    Rcpp::traits::input_parameter< double >::type x2(x2SEXP);
+    Rcpp::traits::input_parameter< double >::type y2(y2SEXP);
+    rcpp_result_gen = Rcpp::wrap(shorter_distance(x, y, x1, y1, x2, y2));
+    return rcpp_result_gen;
+END_RCPP
+}
 // distance2segment
 NumericVector distance2segment(double x, double y, double x1, double y1, double x2, double y2);
 RcppExport SEXP cervideDS_distance2segment(SEXP xSEXP, SEXP ySEXP, SEXP x1SEXP, SEXP y1SEXP, SEXP x2SEXP, SEXP y2SEXP) {
@@ -81,6 +111,8 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"cervideDS_border_effect", (DL_FUNC) &cervideDS_border_effect, 5},
+    {"cervideDS_distance2point", (DL_FUNC) &cervideDS_distance2point, 4},
+    {"cervideDS_shorter_distance", (DL_FUNC) &cervideDS_shorter_distance, 6},
     {"cervideDS_distance2segment", (DL_FUNC) &cervideDS_distance2segment, 6},
     {"cervideDS_grad_potential_func", (DL_FUNC) &cervideDS_grad_potential_func, 5},
     {"cervideDS_alpha_func", (DL_FUNC) &cervideDS_alpha_func, 4},

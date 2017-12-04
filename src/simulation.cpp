@@ -44,6 +44,77 @@ NumericVector border_effect (unsigned int ui_width,
    return ad_effect_xy;
 }
 
+//' @title Distance to point
+//' @description Give distance a point to point and derivate in x and y
+//' 
+//' @param x (double) x of first point 
+//' @param y (double) y of first point 
+//' @param x1 (vector) x1 of second point 
+//' @param y1 (vector) y1 of second point
+//' @return (vector) distance to segment (dist),
+//'                  derivate in x (dx),
+//'                  derivate in y (dy)
+//' @export
+// [[Rcpp::export]]
+NumericVector distance2point(double x, 
+                             double y, 
+                             double x1,
+                             double y1)
+{
+  NumericVector return_values = NumericVector::create(_["dist"] = 0,
+                                                      _["dx"] = 0,
+                                                      _["dy"] = 0);
+  // Case 2 points are same point
+  if(x == x1 && y == y1)
+  {
+    return return_values;
+  }
+  return_values["dist"] = sqrt(pow(x1 - x, 2) + pow(y1 - y, 2));
+  return_values["dx"] = (-2 * (x1 - x)) /
+                        (2 * sqrt(pow(x1 - x, 2) + pow(y1 - y, 2)));
+  return_values["dy"] = (-2 * (y1 - y)) /
+                        (2 * sqrt(pow(x1 - x, 2) + pow(y1 - y, 2)));
+  return return_values;
+}
+
+//' @title shoter distance
+//' @description Give shoter distance a point to extrem point of segment and 
+//'              derivate in x and y
+//' 
+//' @param x (double) x of point 
+//' @param y (double) y of point 
+//' @param x1 (vector) x1 of segment 
+//' @param y1 (vector) y1 of segment
+//' @param x2 (vector) x2 of segment
+//' @param y2 (vector) y2 of segment
+//' @return (vector) distance to segment (dist),
+//'                  derivate in x (dx),
+//'                  derivate in y (dy)
+//' @export
+// [[Rcpp::export]]
+NumericVector shorter_distance(double x, 
+                               double y, 
+                               double x1,
+                               double y1,
+                               double x2,
+                               double y2)
+{
+  NumericVector distA, distB;
+  double tmpA, tmpB;
+
+  distA = distance2point(x, y, x1, y1);
+  distB = distance2point(x, y, x2, y2);
+  tmpA = distA["dist"];
+  tmpB = distB["dist"];
+
+  // shorter distance is point to A(x1,y1) or B(x2,y2)
+  if (tmpA < tmpB)
+  {
+    return distA;
+  }
+  return distB;
+}
+
 //' @title Distance to Segment
 //' @description Give distance a point to segment and derivate in x and y
 //' 
@@ -69,46 +140,74 @@ NumericVector distance2segment(double x,
                                                        _["dx"] = 0,
                                                        _["dy"] = 0);
    double sx, sy;
-   double ux, uy;
-   double dp;
-   double sn2;
-   double ah2;
-   double un2;
+   double slot_seg;
+   double slot_ortho;
+   double vert_inter_seg;
+   double xh, yh;
+   double limit_h [2];
+
    // case segment is a point
    if (x1==x2 && y1==y2)
    {
-      return_values["dist"] = (pow(x1 - x, 2) + pow(y1 - y, 2));
-      return_values["dx"] = (-2 * (x1 - x));
-      return_values["dy"] = (-2 * (y1 - y));
-      return return_values;
+      return distance2point(x, y, x1, y1);
+   }
+
+   // case segment is vertical
+   if( x1 == x2)
+   {
+     // if project of point is on segment
+     if((y< y1 && y> y2) || (y> y1 && y< y2))
+     {
+        return distance2point(x, y, x1, y);
+     }
+     
+     return shorter_distance(x, y, x1, y1, x2, y2);
+   }
+   // case segment is horizontal
+   if( y1 == y2)
+   {
+     // if project of point is on segment
+     if((x< x1 && x> x2) || (x> x1 && x< x2))
+     {
+       return distance2point(x, y, x, y1);
+     }
+     
+     return shorter_distance(x, y, x1, y1, x2, y2);
    }
    sx = x2 - x1;
    sy = y2 - y1;
-   ux = x - x1;
-   uy = y - y1;
-   dp = sx * ux + sy * uy;
-   if (dp < 0) 
+   // calculate slot of segment
+   slot_seg = sy / sx;
+   // Calculate slot of all orthogonal line to line segment
+   slot_ortho = -1 / slot_seg;
+
+   limit_h[0] = ((slot_ortho * x) + y1 - slot_ortho * x1);
+   limit_h[1] = ((slot_ortho * x) + y2 - slot_ortho * x2);
+   // case point is not between two orthogonal line to segment passing to 
+   // A(x1,y1) and B(x2,y2)
+   if( (y < limit_h[0] && y < limit_h[1])
+       || (y > limit_h[0] && y > limit_h[1]))
    {
-      return_values["dist"] = (pow(x1 - x, 2) + pow(y1 - y, 2));
-      return_values["dx"] = (-2 * (x1 - x));
-      return_values["dy"] = (-2 * (y1 - y));
-      return return_values;
+     // shorter distance is point to A(x1,y1) or B(x2,y2)
+     return shorter_distance(x, y, x1, y1, x2, y2);
    }
-   sn2 = sx * sx + sy * sy;
-   if (dp > sn2)
-   {
-      return_values["dist"] = (pow(x2 - x, 2) + pow(y2 - y, 2));
-      return_values["dx"] = (-2 * (x2 - x));
-      return_values["dy"] = (-2 * (y2 - y));
-      return return_values;
-   }
-   ah2 = dp * dp / sn2;
-   un2 = ux * ux + uy * uy;
-   return_values["dist"] = (un2 - ah2);
-   return_values["dx"] = (2 * (sy * sy / sn2) * ux - 2 * sx * sy * uy / sn2);
-   return_values["dy"] = (2 * (sx * sx / sn2) * uy - 2 * sx * sy * ux / sn2);
    
-   return return_values;
+   // calculate vertical intercept of line segment
+   vert_inter_seg = y1 - slot_seg * x1;
+   // Case point is on segment
+   if( y == ((slot_seg * x) + vert_inter_seg))
+   {
+     // Distance is zero
+     return return_values;
+   }
+   
+   // Other case
+   // Calculate coordonate of orthogonal projection of point on line segment
+   xh = ((y - slot_ortho * x) - vert_inter_seg) / (slot_seg - slot_ortho);
+   yh = slot_seg * xh + vert_inter_seg;
+   
+   // shorter distanc is point and this orthogonal projection on line segment
+   return distance2point(x, y, xh, yh);
 }
 
 //' @title gradient potential function
