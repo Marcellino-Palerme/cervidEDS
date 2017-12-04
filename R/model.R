@@ -10,15 +10,28 @@ NB_TYPE = 5
 AGGLO = "agglo_"
 GEN_POT = "generic_potentiel"
 
-
+#' @title Distance expression between two points
+#' @description Give expresssion of calcul of distance between two points
+#'
+#' @param x0 (float or characters): abscisse of first point of segment
+#' @param y0 (float or characters): ordonate of first point of segment
+#' @param x1 (float or characters): abscisse of second point of segment
+#' @param y1 (float or characters): ordonate of second point of segment
+#'
+#' @return string 
+#' @export
+dist_expr_two_points <- function(x0, y0, x1, y1)
+{
+  return(paste("(sqrt(((", x1, " - ",x0,")^2) + ((", y1, " - ",y0,")^2)))"))
+}
 
 #' @title Distance expression
-#' @description Give expresssion of calcul of distance between line and point
+#' @description Give expresssion of calcul of distance between segment and point
 #'
-#' @param x0 (float): abscisse of first point of line
-#' @param y0 (float): ordonate of first point of line
-#' @param x1 (float): abscisse of second point of line
-#' @param y1 (float): ordonate of second point of line
+#' @param x0 (float): abscisse of first point of segment
+#' @param y0 (float): ordonate of first point of segment
+#' @param x1 (float): abscisse of second point of segment
+#' @param y1 (float): ordonate of second point of segment
 #'
 #' @return string 
 #' @export
@@ -28,15 +41,69 @@ dist_expr <- function(x0, y0, x1, y1)
   # Calcute distance between two points
   if (x0 == x1 && y0 == y1)
   {
-    return(paste("sqrt((", x0, " - x)^2 + (", y0, " - y)^2)"))
+    return(dist_expr_two_points(x0, y0, "x", "y" ))
   }
-  #decompose expression
-  a <- paste("(",y1,"-",y0,")*x")
-  b <- paste("(",x1, "-", x0,")*y")
-  c <- paste("(",x1,"*",y0," - ",y1,"*",x0,")")
-  d <- paste("sqrt((",y1,"-",y0,")^2 + (", x1, "-", x0, ")^2)")
+  # segment is vertical
+  if (x0 == x1)
+  {
+    # Define coordinate orthogonal projection of point on line segment
+    Xh = as.character(x0)
+    Yh = "y"
+  }
+  else
+  {
+    # segment is horizontal
+    if (y0 == y1)
+    {
+      # Define coordinate orthogonal projection of point on line segment
+      Xh = "x"
+      Yh = as.character(y0)
+    }
+    else
+    {
+      # expression slot of segment
+      alpha = paste("((",y1,"-",y0,") / (",x1,"-",x0,"))")
+      
+      # expression slot of line create by point and orthogonal projection of 
+      # point on line segment
+      beta = paste("(-1/", alpha,")")
+      
+      # expression vertical intercept of line segment
+      bs = paste("(",y0,"-",alpha,"*",x0,")")
+      
+      # expression vertical intercept of lline create by point and orthogonal 
+      # projection of point on line segment
+      bp = paste("( y -",beta,"* x )")
+      
+      # expression coordinate of orthogonal projection of point on line segment
+      Xh = paste("((",bp,"-",bs,")/(",alpha,"-",beta,"))")
+      Yh = paste("((",alpha,"*",Xh,")+",bs,")")
+    }
+  }
+  
+  # expression distance between two point of segment
+  seg = dist_expr_two_points(x0, y0, x1, y1)
+  
+  # expression of distance between first point ofsegment and orthogonal 
+  # projection of point on line segment
+  h2first = dist_expr_two_points(x0, y0, Xh, Yh)
 
-  return(paste("(sqrt((",a, "-",b,"+",c,")^2) / ",d,")"))
+  # expression of distance between second point ofsegment and orthogonal 
+  # projection of point on line segment
+  h2snd = dist_expr_two_points(x1, y1, Xh, Yh)  
+
+  # expression of smaller distance between segment and orthogonal projection of 
+  # point on line segment
+  h2seg = paste("((",h2first,"+",h2snd,"-",seg,")/2)")
+  
+  # expression of distance between point and orthogonal projection of 
+  # point on line segment
+  h2p = dist_expr_two_points("x", "y", Xh, Yh) 
+  
+  # expression of square smaller distance between segment and point
+  square_dist = paste("((",h2seg,"^2)+(",h2p,"^2))")
+
+  return(paste("sqrt(",square_dist,")"))
 }
 
 #' @title potentiel function define by user

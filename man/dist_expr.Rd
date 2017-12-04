@@ -7,17 +7,17 @@
 dist_expr(x0, y0, x1, y1)
 }
 \arguments{
-\item{x0}{(float): abscisse of first point of line}
+\item{x0}{(float): abscisse of first point of segment}
 
-\item{y0}{(float): ordonate of first point of line}
+\item{y0}{(float): ordonate of first point of segment}
 
-\item{x1}{(float): abscisse of second point of line}
+\item{x1}{(float): abscisse of second point of segment}
 
-\item{y1}{(float): ordonate of second point of line}
+\item{y1}{(float): ordonate of second point of segment}
 }
 \value{
 string
 }
 \description{
-Give expresssion of calcul of distance between line and point
+Give expresssion of calcul of distance between segment and point
 }
