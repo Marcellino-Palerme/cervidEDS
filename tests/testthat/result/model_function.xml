@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
- <testsuite hostname="palerme" name="model unit tests" timestamp="2017-12-04 14:33:46">
-  <testcase classname="model_unit_tests" name="test_dist_expr_nom" time="0.14"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_one_point" time="0.17"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_down" time="3.14"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_up" time="6.25"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_point_extrem" time="21.8">
-   <failure message="dist == result isn't true." type="failure">dist == result isn't true.
-b) 5.3851648071345 not equal 5.3851648071345</failure>
-   
-    
-   <failure message="dist == result isn't true." type="failure">dist == result isn't true.
-c) 10.295630140987 not equal 10.295630140987</failure>
-   
-    
-  </testcase>
-  <testcase classname="model_unit_tests" name="test_dist_expr_point" time="1.19"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_vertical" time="4.88"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_horizontal" time="5.06"/>
+ <testsuite hostname="palerme" name="model unit tests" timestamp="2017-12-04 17:00:01">
+  <testcase classname="model_unit_tests" name="test_dist_expr_nom" time="0.17"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_one_point" time="0.22"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_down" time="3.3"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_up" time="6.1"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_point_extrem" time="21.53"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_point" time="1.12"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_vertical" time="4.46"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_horizontal" time="5.3"/>
  </testsuite>
 </testsuites>

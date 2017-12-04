@@ -79,16 +79,18 @@ test_that("test.dist_expr_point_extrem", {
   y = 0
   result = Eval(yacas(expr_dist))
   dist = sqrt(4 + 25)
-  expect_true( dist == result,
-               info = paste("b)", result, "not equal", dist))
+  expect_equal( dist, result,
+                tolerance = 1e-15,
+                info = paste("b)", result, "not equal", dist))
 
   expr_dist = dist_expr(1.5,8,4.5,3)
   x = 6.5
   y = 17
   result = Eval(yacas(expr_dist))
   dist = sqrt(25 + 81)
-  expect_true( dist == result,
-               info = paste("c)", result, "not equal", dist))
+  expect_equal( dist, result,
+                tolerance = 1e-15,
+                info = paste("c)", result, "not equal", dist))
 
   expr_dist = dist_expr(5,5,10.5,9.5)
   x = 6.5
