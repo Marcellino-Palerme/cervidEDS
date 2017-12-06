@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // border_effect
 NumericVector border_effect(unsigned int ui_width, unsigned int ui_heigth, double d_sigma, double d_pos_x, double d_pos_y);
-RcppExport SEXP cervideDS_border_effect(SEXP ui_widthSEXP, SEXP ui_heigthSEXP, SEXP d_sigmaSEXP, SEXP d_pos_xSEXP, SEXP d_pos_ySEXP) {
+RcppExport SEXP _cervideDS_border_effect(SEXP ui_widthSEXP, SEXP ui_heigthSEXP, SEXP d_sigmaSEXP, SEXP d_pos_xSEXP, SEXP d_pos_ySEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -22,7 +22,7 @@ END_RCPP
 }
 // distance2point
 NumericVector distance2point(double x, double y, double x1, double y1);
-RcppExport SEXP cervideDS_distance2point(SEXP xSEXP, SEXP ySEXP, SEXP x1SEXP, SEXP y1SEXP) {
+RcppExport SEXP _cervideDS_distance2point(SEXP xSEXP, SEXP ySEXP, SEXP x1SEXP, SEXP y1SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -36,7 +36,7 @@ END_RCPP
 }
 // shorter_distance
 NumericVector shorter_distance(double x, double y, double x1, double y1, double x2, double y2);
-RcppExport SEXP cervideDS_shorter_distance(SEXP xSEXP, SEXP ySEXP, SEXP x1SEXP, SEXP y1SEXP, SEXP x2SEXP, SEXP y2SEXP) {
+RcppExport SEXP _cervideDS_shorter_distance(SEXP xSEXP, SEXP ySEXP, SEXP x1SEXP, SEXP y1SEXP, SEXP x2SEXP, SEXP y2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -52,7 +52,7 @@ END_RCPP
 }
 // distance2segment
 NumericVector distance2segment(double x, double y, double x1, double y1, double x2, double y2);
-RcppExport SEXP cervideDS_distance2segment(SEXP xSEXP, SEXP ySEXP, SEXP x1SEXP, SEXP y1SEXP, SEXP x2SEXP, SEXP y2SEXP) {
+RcppExport SEXP _cervideDS_distance2segment(SEXP xSEXP, SEXP ySEXP, SEXP x1SEXP, SEXP y1SEXP, SEXP x2SEXP, SEXP y2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -68,7 +68,7 @@ END_RCPP
 }
 // grad_potential_func
 double grad_potential_func(double alpha_t, double beta, double dist, double puiss, double deriv);
-RcppExport SEXP cervideDS_grad_potential_func(SEXP alpha_tSEXP, SEXP betaSEXP, SEXP distSEXP, SEXP puissSEXP, SEXP derivSEXP) {
+RcppExport SEXP _cervideDS_grad_potential_func(SEXP alpha_tSEXP, SEXP betaSEXP, SEXP distSEXP, SEXP puissSEXP, SEXP derivSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -83,7 +83,7 @@ END_RCPP
 }
 // alpha_func
 double alpha_func(double alpha1, double alpha2, double alpha3, double t);
-RcppExport SEXP cervideDS_alpha_func(SEXP alpha1SEXP, SEXP alpha2SEXP, SEXP alpha3SEXP, SEXP tSEXP) {
+RcppExport SEXP _cervideDS_alpha_func(SEXP alpha1SEXP, SEXP alpha2SEXP, SEXP alpha3SEXP, SEXP tSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -95,9 +95,26 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// potential_effect
+NumericVector potential_effect(NumericMatrix nm_coords_element, NumericVector nv_coords_point, NumericVector bound, double alpha, double beta, double power, bool b_sum_sub);
+RcppExport SEXP _cervideDS_potential_effect(SEXP nm_coords_elementSEXP, SEXP nv_coords_pointSEXP, SEXP boundSEXP, SEXP alphaSEXP, SEXP betaSEXP, SEXP powerSEXP, SEXP b_sum_subSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type nm_coords_element(nm_coords_elementSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type nv_coords_point(nv_coords_pointSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type bound(boundSEXP);
+    Rcpp::traits::input_parameter< double >::type alpha(alphaSEXP);
+    Rcpp::traits::input_parameter< double >::type beta(betaSEXP);
+    Rcpp::traits::input_parameter< double >::type power(powerSEXP);
+    Rcpp::traits::input_parameter< bool >::type b_sum_sub(b_sum_subSEXP);
+    rcpp_result_gen = Rcpp::wrap(potential_effect(nm_coords_element, nv_coords_point, bound, alpha, beta, power, b_sum_sub));
+    return rcpp_result_gen;
+END_RCPP
+}
 // repulsive_effect
 NumericVector repulsive_effect(NumericMatrix nm_coords_rep, NumericVector nv_coords_point, double alpha1);
-RcppExport SEXP cervideDS_repulsive_effect(SEXP nm_coords_repSEXP, SEXP nv_coords_pointSEXP, SEXP alpha1SEXP) {
+RcppExport SEXP _cervideDS_repulsive_effect(SEXP nm_coords_repSEXP, SEXP nv_coords_pointSEXP, SEXP alpha1SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -110,13 +127,14 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"cervideDS_border_effect", (DL_FUNC) &cervideDS_border_effect, 5},
-    {"cervideDS_distance2point", (DL_FUNC) &cervideDS_distance2point, 4},
-    {"cervideDS_shorter_distance", (DL_FUNC) &cervideDS_shorter_distance, 6},
-    {"cervideDS_distance2segment", (DL_FUNC) &cervideDS_distance2segment, 6},
-    {"cervideDS_grad_potential_func", (DL_FUNC) &cervideDS_grad_potential_func, 5},
-    {"cervideDS_alpha_func", (DL_FUNC) &cervideDS_alpha_func, 4},
-    {"cervideDS_repulsive_effect", (DL_FUNC) &cervideDS_repulsive_effect, 3},
+    {"_cervideDS_border_effect", (DL_FUNC) &_cervideDS_border_effect, 5},
+    {"_cervideDS_distance2point", (DL_FUNC) &_cervideDS_distance2point, 4},
+    {"_cervideDS_shorter_distance", (DL_FUNC) &_cervideDS_shorter_distance, 6},
+    {"_cervideDS_distance2segment", (DL_FUNC) &_cervideDS_distance2segment, 6},
+    {"_cervideDS_grad_potential_func", (DL_FUNC) &_cervideDS_grad_potential_func, 5},
+    {"_cervideDS_alpha_func", (DL_FUNC) &_cervideDS_alpha_func, 4},
+    {"_cervideDS_potential_effect", (DL_FUNC) &_cervideDS_potential_effect, 7},
+    {"_cervideDS_repulsive_effect", (DL_FUNC) &_cervideDS_repulsive_effect, 3},
     {NULL, NULL, 0}
 };
 

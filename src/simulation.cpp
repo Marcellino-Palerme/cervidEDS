@@ -1,4 +1,5 @@
 #include "simulation.h"
+#include <cstdio>
 
 //'@title Border effect
 //'@description This function calculate the effect of border on mouvement
@@ -243,6 +244,10 @@ double alpha_func(double alpha1,
                   double alpha3,
                   double t)
 {
+  if (alpha2 == 0 || alpha3 == 0 || t == 0 || t*alpha3 < 0)
+  {
+    return 0;
+  }
   return alpha1 * exp(-0.5 * pow(log(t / alpha3) / alpha2, 2));
 }
 
@@ -257,6 +262,8 @@ double alpha_func(double alpha1,
 //' @param power (double)
 //' @param b_sum_sub (bool) use +gradiant(true) or -gradiant(false) (not effect 
 //'        on bound)
+//' @export
+// [[Rcpp::export]]
 NumericVector potential_effect (NumericMatrix nm_coords_element,
                                 NumericVector nv_coords_point,
                                 NumericVector bound,
@@ -278,24 +285,27 @@ NumericVector potential_effect (NumericMatrix nm_coords_element,
   for (int i = 0; i < nm_coords_element.nrow(); i++)
   {
     // Calculate distant point to segment and derivate in x and y
-    dist_grad_xy = distance2segment(nv_coords_point["x"],
-                                    nv_coords_point["y"],
-                                    nm_coords_element(i, 0),
-                                    nm_coords_element(i, 1),
-                                    nm_coords_element(i, 2),
-                                    nm_coords_element(i, 3));
-    //
-    effect["x"] = effect["x"] + sum_sub * grad_potential_func(alpha,
-                                                              beta,
-                                                              dist_grad_xy["dist"],
-                                                              power,
-                                                              dist_grad_xy["dx"]);
+    dist_grad_xy = distance2segment(nv_coords_point[0],
+                                    nv_coords_point[1],
+                                    nm_coords_element[(i*4) + 0],
+                                    nm_coords_element[(i*4) + 1],
+                                    nm_coords_element[(i*4) + 2],
+                                    nm_coords_element[(i*4) + 3]);
 
-    effect["y"] = effect["y"] + sum_sub * grad_potential_func(alpha,
-                                                              beta,
-                                                              dist_grad_xy["dist"],
-                                                              power,
-                                                              dist_grad_xy["dy"]);
+    effect["x"] = effect["x"] + 
+                  sum_sub * grad_potential_func(alpha,
+                                                beta,
+                                                dist_grad_xy["dist"],
+                                                power,
+                                                dist_grad_xy["dx"]);
+
+    effect["y"] = effect["y"] + 
+                  sum_sub * grad_potential_func(alpha,
+                                                beta,
+                                                dist_grad_xy["dist"],
+                                                power,
+                                                dist_grad_xy["dy"]);
+
   }
   // bound sum
   effect["x"] = fmin(fmax(bound["min"], effect["x"]), bound["max"]);
@@ -317,13 +327,14 @@ NumericVector repulsive_effect (NumericMatrix nm_coords_rep,
                                 NumericVector nv_coords_point,
                                 double alpha1)
 {
-  NumericVector bound = NumericVector::create(_["min"] = DBL_MIN,
-                                              _["max"] = DBL_MAX);
+  NumericVector bound = NumericVector::create(_["min"] = LLONG_MIN,
+                                              _["max"] = LLONG_MAX);
+
   return potential_effect(nm_coords_rep,
                           nv_coords_point,
                           bound,
                           alpha1,
                           0.1,
                           2,
-                          true);
+                          false);
 }

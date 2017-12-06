@@ -3,7 +3,7 @@ with_reporter("junit",{
   context('simulation unit tests')
 
   #------test border_effect-----#
-  
+
   # center of landscape case
   test_that("test.border_effect_center", {
     result = border_effect(30,72,0.5,15,36)
@@ -378,5 +378,279 @@ with_reporter("junit",{
                  info = paste("c)", result["dx"], "not equal 0"))
     expect_true( 0 > result["dy"],
                  info = paste("c)", result["dy"], "inf or equal 0"))
+  })
+
+  #------test grad_potential_func-----#
+  expr_deriv = deriv(~alpha*exp(-beta*(sqrt((x1-x)^2+(y1-y)^2)^puis)),
+                     c("x","y"))
+  #nominal case
+  test_that("test.grad_potential_func_nominal",{
+    alpha = 6
+    beta = 7
+    x1 = 4
+    y1 = 3
+    puis = 2
+    x = 9
+    y = 1
+    dist_deriv = distance2point(x,y,x1,y1)
+    eval_deriv = eval(parse(text = expr_deriv))
+    grad_in_x = grad_potential_func(alpha, beta, dist_deriv['dist'], puis,
+                                    dist_deriv['dx'])
+    grad_in_y = grad_potential_func(alpha, beta, dist_deriv['dist'], puis,
+                                    dist_deriv['dy'])
+    expect_equal(grad_in_x, attr(eval_deriv,"gradient")[1])
+    expect_equal(grad_in_y, attr(eval_deriv,"gradient")[2])
+  })
+  #derivate in x equal 0 case
+  test_that("test.grad_potential_func_dx0",{
+    alpha = 6
+    beta = 7
+    x1 = 4
+    y1 = 5
+    puis = 2
+    x = 4
+    y = 3
+    dist_deriv = distance2point(x,y,x1,y1)
+    eval_deriv = eval(parse(text = expr_deriv))
+    grad_in_x = grad_potential_func(alpha, beta, dist_deriv['dist'], puis,
+                                    dist_deriv['dx'])
+    grad_in_y = grad_potential_func(alpha, beta, dist_deriv['dist'], puis,
+                                    dist_deriv['dy'])
+    expect_equal(grad_in_x, 0)
+    expect_equal(grad_in_y, attr(eval_deriv,"gradient")[2])
+  })
+  #derivate in y equal 0 case
+  test_that("test.grad_potential_func_dy0",{
+    alpha = 6
+    beta = 7
+    x1 = 7
+    y1 = 3
+    puis = 2
+    x = 4
+    y = 3
+    dist_deriv = distance2point(x,y,x1,y1)
+    eval_deriv = eval(parse(text = expr_deriv))
+    grad_in_x = grad_potential_func(alpha, beta, dist_deriv['dist'], puis,
+                                    dist_deriv['dx'])
+    grad_in_y = grad_potential_func(alpha, beta, dist_deriv['dist'], puis,
+                                    dist_deriv['dy'])
+    expect_equal(grad_in_x, attr(eval_deriv,"gradient")[1])
+    expect_equal(grad_in_y, 0)
+  })
+    #distance nul case
+  test_that("test.grad_potential_func_nul",{
+    alpha = 6
+    beta = 7
+    x1 = 4
+    y1 = 3
+    puis = 2
+    x = 4
+    y = 3
+    dist_deriv = distance2point(x,y,x1,y1)
+    grad_in_x = grad_potential_func(alpha, beta, dist_deriv['dist'], puis,
+                                    dist_deriv['dx'])
+    grad_in_y = grad_potential_func(alpha, beta, dist_deriv['dist'], puis,
+                                    dist_deriv['dy'])
+    expect_equal(grad_in_x, 0)
+    expect_equal(grad_in_y, 0)
+  })
+  #beta negative case
+  test_that("test.grad_potential_func_beta_neg",{
+    alpha = 6
+    beta = -7
+    x1 = 4
+    y1 = 3
+    puis = 2
+    x = 9
+    y = 1
+    dist_deriv = distance2point(x,y,x1,y1)
+    eval_deriv = eval(parse(text = expr_deriv))
+    grad_in_x = grad_potential_func(alpha, beta, dist_deriv['dist'], puis,
+                                    dist_deriv['dx'])
+    grad_in_y = grad_potential_func(alpha, beta, dist_deriv['dist'], puis,
+                                    dist_deriv['dy'])
+    expect_equal(grad_in_x, attr(eval_deriv,"gradient")[1])
+    expect_equal(grad_in_y, attr(eval_deriv,"gradient")[2])
+  })
+  #puis negative case
+  test_that("test.grad_potential_func_puis_neg",{
+    alpha = 6
+    beta = 7
+    x1 = 4
+    y1 = 3
+    puis = -3
+    x = 9
+    y = 1
+    dist_deriv = distance2point(x,y,x1,y1)
+    eval_deriv = eval(parse(text = expr_deriv))
+    grad_in_x = grad_potential_func(alpha, beta, dist_deriv['dist'], puis,
+                                    dist_deriv['dx'])
+    grad_in_y = grad_potential_func(alpha, beta, dist_deriv['dist'], puis,
+                                    dist_deriv['dy'])
+    expect_equal(grad_in_x, attr(eval_deriv,"gradient")[1])
+    expect_equal(grad_in_y, attr(eval_deriv,"gradient")[2])
+  })
+
+  #------test alpha_func-----#
+  expr_alpha = expression(alpha_1 * exp(-0.5 * (log(t / alpha_3) / alpha_2)^2))
+  #nominal case
+  test_that("test.alpha_func_nominal",{
+    alpha_1 = 5
+    alpha_2 = 45
+    alpha_3 = 71
+    t = 90
+    eval_alpha = eval(parse(text = expr_alpha))
+    alpha = alpha_func(alpha_1, alpha_2, alpha_3, t)
+    expect_equal(alpha, eval_alpha)
+  })
+  #alpha_2 = zero case
+  test_that("test.alpha_func_alpha_2_zero",{
+    alpha_1 = 5
+    alpha_2 = 0
+    alpha_3 = 71
+    t = 90
+    alpha = alpha_func(alpha_1, alpha_2, alpha_3, t)
+    expect_equal(alpha, 0)
+  })
+  #alpha_3 = zero case
+  test_that("test.alpha_func_alpha_3_zero",{
+    alpha_1 = 5
+    alpha_2 = 7
+    alpha_3 = 0
+    t = 90
+    alpha = alpha_func(alpha_1, alpha_2, alpha_3, t)
+    expect_equal(alpha, 0)
+  })
+  #t = zero case
+  test_that("test.alpha_func_t_zero",{
+    alpha_1 = 5
+    alpha_2 = 7
+    alpha_3 = 74
+    t = 0
+    alpha = alpha_func(alpha_1, alpha_2, alpha_3, t)
+    expect_equal(alpha, 0)
+  })
+  #log negative case
+  test_that("test.alpha_func_log_negative",{
+    alpha_1 = 5
+    alpha_2 = 7
+    alpha_3 = -74
+    t = 45
+    alpha = alpha_func(alpha_1, alpha_2, alpha_3, t)
+    expect_equal(alpha, 0)
+    alpha_3 = 74
+    t = -45
+    alpha = alpha_func(alpha_1, alpha_2, alpha_3, t)
+    expect_equal(alpha, 0)
+  })
+  
+  #------test repulsive_effect-----#
+  #nominal case
+  test_that("test.repulsive_effect_nominal",{
+    coord_element = matrix(c(0,0,30,0,0,30,0,0),ncol = 4,nrow = 2, byrow = TRUE)
+    coord_point = c("x" = 15, "y" = 15)
+    result = repulsive_effect(coord_element, coord_point, 4)
+    expect_equal(as.double(result["x"]), as.double(result["y"]))
+    expect_true(as.double(result["x"]) > 0)
+  })
+  #effect abort case
+  test_that("test.repulsive_effect_abort",{
+    coord_element = matrix(c(0,0,30,0,0,30,0,0,30,0,30,30,30,30,0,30,0,30,0,0),
+                           ncol = 4,nrow = 4, byrow = TRUE)
+    coord_point = c("x" = 15, "y" = 15)
+    result = repulsive_effect(coord_element, coord_point, 4)
+    expect_equal(as.double(result["x"]), as.double(result["y"]))
+    expect_equal(as.double(result["x"]), 0)
+  })
+  #to up case
+  test_that("test.repulsive_effect_up",{
+    coord_element = matrix(c(0,0,30,0),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_point = c("x" = 4, "y" = 15)
+    result = repulsive_effect(coord_element, coord_point, 4)
+    expect_equal(as.double(result["x"]), 0)
+    expect_true(as.double(result["y"]) > 0)
+print(result)
+    # effect grow up if reduce distance
+    coord_point = c("x" = 4, "y" = 1)
+    new_result = repulsive_effect(coord_element, coord_point, 4)
+    expect_equal(as.double(new_result["x"]), 0)
+    expect_true(as.double(new_result["y"]) > 0)
+    expect_true(as.double(new_result["y"]) > as.double(result["y"]))
+print(new_result)
+    # effect reduce if grow up distance
+    coord_point = c("x" = 4, "y" = 25)
+    new_result = repulsive_effect(coord_element, coord_point, 4)
+    expect_equal(as.double(new_result["x"]), 0)
+    expect_true(as.double(new_result["y"]) > 0)
+    expect_true(as.double(new_result["y"]) < as.double(result["y"]))
+  })
+  #to down case
+  test_that("test.repulsive_effect_down",{
+    coord_element = matrix(c(0,30,30,30),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_point = c("x" = 4, "y" = 15)
+    result = repulsive_effect(coord_element, coord_point, 4)
+    expect_equal(as.double(result["x"]), 0)
+    expect_true(as.double(result["y"]) < 0)
+    
+    # effect grow up if reduce distance
+    coord_point = c("x" = 4, "y" = 25)
+    new_result = repulsive_effect(coord_element, coord_point, 4)
+    expect_equal(as.double(new_result["x"]), 0)
+    expect_true(as.double(new_result["y"]) < 0)
+    expect_true(as.double(new_result["y"]) < as.double(result["y"]))
+    
+    # effect reduce if grow up distance
+    coord_point = c("x" = 4, "y" = 7)
+    new_result = repulsive_effect(coord_element, coord_point, 4)
+    expect_equal(as.double(new_result["x"]), 0)
+    expect_true(as.double(new_result["y"]) < 0)
+    expect_true(as.double(new_result["y"]) > as.double(result["y"]))
+  })
+
+  #to right case
+  test_that("test.repulsive_effect_right",{
+    coord_element = matrix(c(0,30,0,0),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_point = c("x" = 9, "y" = 15)
+    result = repulsive_effect(coord_element, coord_point, 4)
+    expect_equal(as.double(result["y"]), 0)
+    expect_true(as.double(result["x"]) > 0)
+    
+    # effect grow up if reduce distance
+    coord_point = c("x" = 4, "y" = 15)
+    new_result = repulsive_effect(coord_element, coord_point, 4)
+    expect_equal(as.double(new_result["y"]), 0)
+    expect_true(as.double(new_result["x"]) > 0)
+    expect_true(as.double(new_result["x"]) > as.double(result["x"]))
+    
+    # effect reduce if grow up distance
+    coord_point = c("x" = 14, "y" = 7)
+    new_result = repulsive_effect(coord_element, coord_point, 4)
+    expect_equal(as.double(new_result["y"]), 0)
+    expect_true(as.double(new_result["x"]) > 0)
+    expect_true(as.double(new_result["x"]) < as.double(result["x"]))
+  })
+
+  #to mix case
+  test_that("test.repulsive_effect_mix",{
+    coord_element = matrix(c(5,5,10.5,9.5),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_point = c("x" = 3, "y" = 2)
+    result = repulsive_effect(coord_element, coord_point, 4)
+    expect_true(as.double(result["y"]) < 0)
+    expect_true(as.double(result["x"]) < 0)
+    
+    coord_point = c("x" = 7, "y" = 10.5)
+    new_result = repulsive_effect(coord_element, coord_point, 0.2)
+    expect_true(as.double(new_result["x"]) < 0)
+    expect_true(as.double(new_result["y"]) > 0)
+    
+    coord_point = c("x" = 9, "y" = 7)
+    new_result = repulsive_effect(coord_element, coord_point, 48)
+    expect_true(as.double(new_result["x"]) > 0)
+    expect_true(as.double(new_result["y"]) < 0)
+
+    coord_point = c("x" = 12.5, "y" = 10)
+    new_result = repulsive_effect(coord_element, coord_point, 78)
+    expect_true(as.double(new_result["x"]) > 0)
+    expect_true(as.double(new_result["y"]) > 0)
   })
 },T)
