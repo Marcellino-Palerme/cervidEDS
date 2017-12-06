@@ -117,3 +117,15 @@ repulsive_effect <- function(nm_coords_rep, nv_coords_point, alpha1) {
     .Call('_cervideDS_repulsive_effect', PACKAGE = 'cervideDS', nm_coords_rep, nv_coords_point, alpha1)
 }
 
+#' @title attractive effect
+#' @description Give effect on x and y of all attractive elements 
+#' 
+#' @param nm_coords_rep (NumericMatrix) all coordinates of attractive segment 
+#'                                      Matrix N*4 (x1,y1,x2,y2)
+#' @param nv_coords_point (NumericVector) coordinates of point (x,y)
+#' @param alpha1 (double) maximum potential amplitude
+#' @export
+attractive_effect <- function(nm_coords_rep, nv_coords_point, alpha1) {
+    .Call('_cervideDS_attractive_effect', PACKAGE = 'cervideDS', nm_coords_rep, nv_coords_point, alpha1)
+}
+

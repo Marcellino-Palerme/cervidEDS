@@ -338,3 +338,28 @@ NumericVector repulsive_effect (NumericMatrix nm_coords_rep,
                           2,
                           false);
 }
+
+//' @title attractive effect
+//' @description Give effect on x and y of all attractive elements 
+//' 
+//' @param nm_coords_rep (NumericMatrix) all coordinates of attractive segment 
+//'                                      Matrix N*4 (x1,y1,x2,y2)
+//' @param nv_coords_point (NumericVector) coordinates of point (x,y)
+//' @param alpha1 (double) maximum potential amplitude
+//' @export
+// [[Rcpp::export]]
+NumericVector attractive_effect (NumericMatrix nm_coords_rep,
+                                NumericVector nv_coords_point,
+                                double alpha1)
+{
+  NumericVector bound = NumericVector::create(_["min"] = LLONG_MIN,
+                                              _["max"] = LLONG_MAX);
+  
+  return potential_effect(nm_coords_rep,
+                          nv_coords_point,
+                          bound,
+                          alpha1,
+                          0.1,
+                          2,
+                          true);
+}
