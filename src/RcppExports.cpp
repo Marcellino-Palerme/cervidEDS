@@ -126,15 +126,34 @@ BEGIN_RCPP
 END_RCPP
 }
 // attractive_effect
-NumericVector attractive_effect(NumericMatrix nm_coords_rep, NumericVector nv_coords_point, double alpha1);
-RcppExport SEXP _cervideDS_attractive_effect(SEXP nm_coords_repSEXP, SEXP nv_coords_pointSEXP, SEXP alpha1SEXP) {
+NumericVector attractive_effect(NumericMatrix nm_coords_attrac, NumericVector nv_coords_point, double alpha1);
+RcppExport SEXP _cervideDS_attractive_effect(SEXP nm_coords_attracSEXP, SEXP nv_coords_pointSEXP, SEXP alpha1SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type nm_coords_rep(nm_coords_repSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type nm_coords_attrac(nm_coords_attracSEXP);
     Rcpp::traits::input_parameter< NumericVector >::type nv_coords_point(nv_coords_pointSEXP);
     Rcpp::traits::input_parameter< double >::type alpha1(alpha1SEXP);
-    rcpp_result_gen = Rcpp::wrap(attractive_effect(nm_coords_rep, nv_coords_point, alpha1));
+    rcpp_result_gen = Rcpp::wrap(attractive_effect(nm_coords_attrac, nv_coords_point, alpha1));
+    return rcpp_result_gen;
+END_RCPP
+}
+// all_effect
+NumericVector all_effect(NumericVector nv_coords_point, unsigned int ui_width, unsigned int ui_heigth, double d_sigma, NumericMatrix nm_coords_attrac, double alpha_a, NumericMatrix nm_coords_rep, double alpha_r, double time_step);
+RcppExport SEXP _cervideDS_all_effect(SEXP nv_coords_pointSEXP, SEXP ui_widthSEXP, SEXP ui_heigthSEXP, SEXP d_sigmaSEXP, SEXP nm_coords_attracSEXP, SEXP alpha_aSEXP, SEXP nm_coords_repSEXP, SEXP alpha_rSEXP, SEXP time_stepSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type nv_coords_point(nv_coords_pointSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type ui_width(ui_widthSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type ui_heigth(ui_heigthSEXP);
+    Rcpp::traits::input_parameter< double >::type d_sigma(d_sigmaSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type nm_coords_attrac(nm_coords_attracSEXP);
+    Rcpp::traits::input_parameter< double >::type alpha_a(alpha_aSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type nm_coords_rep(nm_coords_repSEXP);
+    Rcpp::traits::input_parameter< double >::type alpha_r(alpha_rSEXP);
+    Rcpp::traits::input_parameter< double >::type time_step(time_stepSEXP);
+    rcpp_result_gen = Rcpp::wrap(all_effect(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_attrac, alpha_a, nm_coords_rep, alpha_r, time_step));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -149,6 +168,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_cervideDS_potential_effect", (DL_FUNC) &_cervideDS_potential_effect, 7},
     {"_cervideDS_repulsive_effect", (DL_FUNC) &_cervideDS_repulsive_effect, 3},
     {"_cervideDS_attractive_effect", (DL_FUNC) &_cervideDS_attractive_effect, 3},
+    {"_cervideDS_all_effect", (DL_FUNC) &_cervideDS_all_effect, 9},
     {NULL, NULL, 0}
 };
 

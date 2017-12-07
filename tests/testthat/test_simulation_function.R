@@ -763,4 +763,24 @@ print(new_result)
     expect_true(as.double(new_result["x"]) < 0)
     expect_true(as.double(new_result["y"]) < 0)
   })
+
+  #------test all_effect-----#
+  
+  #nominal case
+  test_that("test.all_effect_nominal", {
+    coord_attrac = matrix(c(5,5,10.5,9.5),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_repul = matrix(c(1.5,8,4.5,3),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_point = c("x" = 5, "y" = 8)
+    result = all_effect(coord_point,
+                        15,
+                        15,
+                        0.2,
+                        coord_attrac,
+                        6,
+                        coord_repul,
+                        6,
+                        0.1)
+    expect_true(result["x"] > 0, info = paste(result["x"], "inf or equal 0"))
+    expect_true(result["y"] < 0, info = paste(result["y"], "sup or equal 0"))
+  })
 },T)

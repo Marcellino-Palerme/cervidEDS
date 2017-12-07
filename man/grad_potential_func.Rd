@@ -17,6 +17,9 @@ grad_potential_func(alpha_t, beta, dist, puiss, deriv)
 
 \item{deriv}{(double)}
 }
+\value{
+(double) gradiant of potential
+}
 \description{
 Fonction gradient du potentiel précédent
 }

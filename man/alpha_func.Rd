@@ -13,6 +13,9 @@ alpha_func(alpha1, alpha2, alpha3, t)
 
 \item{alpha3}{(double) time when potential amplitude is maximum}
 }
+\value{
+(double) miximum of potential at t
+}
 \description{
 evolution of maximum of potential in time
 }

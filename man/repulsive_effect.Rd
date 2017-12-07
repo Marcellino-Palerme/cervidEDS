@@ -14,6 +14,9 @@ Matrix N*4 (x1,y1,x2,y2)}
 
 \item{alpha1}{(double) maximum potential amplitude}
 }
+\value{
+(NumericVector) repulsif effect in x and y (['x'];['y'])
+}
 \description{
 Give effect on x and y of all replusive elements
 }

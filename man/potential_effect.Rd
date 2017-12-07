@@ -24,3 +24,6 @@ on bound)}
 \item{nm_coords_rep}{(NumericMatrix) all coordinates of repulsif segment 
 Matrix N*4 (x1,y1,x2,y2)}
 }
+\value{
+(NumericVector) effect potential in x and y (['x'];['y'])
+}
