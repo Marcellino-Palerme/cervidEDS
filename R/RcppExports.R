@@ -167,3 +167,14 @@ all_effect <- function(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_
     .Call('_cervideDS_all_effect', PACKAGE = 'cervideDS', nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_attrac, alpha_a, nm_coords_rep, alpha_r, time_step)
 }
 
+#' @title diffusion
+#' @description calculate the diffusion
+#' 
+#' @param d_sigma (double)
+#' @param time_step (double) step of time
+#' @return (double) diffusion
+#' @export
+diffusion <- function(d_sigma, time_step) {
+    .Call('_cervideDS_diffusion', PACKAGE = 'cervideDS', d_sigma, time_step)
+}
+

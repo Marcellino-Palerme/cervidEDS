@@ -171,6 +171,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// diffusion
+double diffusion(double d_sigma, double time_step);
+RcppExport SEXP _cervideDS_diffusion(SEXP d_sigmaSEXP, SEXP time_stepSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type d_sigma(d_sigmaSEXP);
+    Rcpp::traits::input_parameter< double >::type time_step(time_stepSEXP);
+    rcpp_result_gen = Rcpp::wrap(diffusion(d_sigma, time_step));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_cervideDS_border_effect", (DL_FUNC) &_cervideDS_border_effect, 5},
@@ -184,6 +196,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_cervideDS_repulsive_effect", (DL_FUNC) &_cervideDS_repulsive_effect, 3},
     {"_cervideDS_attractive_effect", (DL_FUNC) &_cervideDS_attractive_effect, 3},
     {"_cervideDS_all_effect", (DL_FUNC) &_cervideDS_all_effect, 9},
+    {"_cervideDS_diffusion", (DL_FUNC) &_cervideDS_diffusion, 2},
     {NULL, NULL, 0}
 };
 

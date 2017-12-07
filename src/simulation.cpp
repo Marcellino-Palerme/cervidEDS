@@ -451,3 +451,26 @@ NumericVector all_effect (NumericVector nv_coords_point,
 
   return effect;
 }
+
+//' @title diffusion
+//' @description calculate the diffusion
+//' 
+//' @param d_sigma (double)
+//' @param time_step (double) step of time
+//' @return (double) diffusion
+//' @export
+// [[Rcpp::export]]
+double diffusion (double d_sigma,
+                  double time_step)
+{
+  double diffu;
+  static RandomGenerator rng(0);
+  const double mean = 0;
+  const double sd = sqrt(time_step);
+  Normal weiner(mean,sd);
+  my_Generator my_weiner(rng,weiner);
+  
+  diffu = d_sigma * my_weiner();
+  
+  return diffu;
+}

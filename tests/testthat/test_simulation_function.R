@@ -797,7 +797,6 @@ print(new_result)
   })
 
   #------test all_effect-----#
-  
   #nominal case
   test_that("test.all_effect_nominal", {
     coord_attrac = matrix(c(5,5,10.5,9.5),ncol = 4,nrow = 1, byrow = TRUE)
@@ -814,5 +813,16 @@ print(new_result)
                         0.1)
     expect_true(result["x"] > 0, info = paste(result["x"], "inf or equal 0"))
     expect_true(result["y"] < 0, info = paste(result["y"], "sup or equal 0"))
+  })
+
+  #------test diffusion-----#
+  #nominal case
+  test_that("test.diffusion_nominal", {
+    #verify for same value generated different value
+    value_1 = diffusion(5,0.1)
+    value_2 = diffusion(5,0.1)
+    expect_true(value_1 != value_2)
+    value_1 = diffusion(5,0.1)
+    expect_true(value_1 != value_2)
   })
 },T)
