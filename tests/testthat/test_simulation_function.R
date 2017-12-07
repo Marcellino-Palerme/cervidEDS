@@ -380,6 +380,38 @@ with_reporter("junit",{
                  info = paste("c)", result["dy"], "inf or equal 0"))
   })
 
+  #------test potential_func-----#
+  expr_pot = expression(alpha*exp(-beta*(dist^puis)))
+  #nominal case
+  test_that("test.potential_func_nominal",{
+    alpha = 6
+    beta = 7
+    puis = 2
+    dist = 1.23
+    expect_equal(potential_func(alpha, beta, dist, puis),
+                 eval(parse(text = expr_pot)))
+
+    alpha = -3
+    beta = 7
+    puis = 2
+    dist = 1.23
+    expect_equal(potential_func(alpha, beta, dist, puis),
+                 eval(parse(text = expr_pot)))
+
+    alpha = 3
+    beta = 7
+    puis = -5
+    dist = 7.96
+    expect_equal(potential_func(alpha, beta, dist, puis),
+                 eval(parse(text = expr_pot)))
+
+    alpha = 3
+    beta = -0.23
+    puis = 1
+    dist = 7.96
+    expect_equal(potential_func(alpha, beta, dist, puis),
+                 eval(parse(text = expr_pot)))
+  })
   #------test grad_potential_func-----#
   expr_deriv = deriv(~alpha*exp(-beta*(sqrt((x1-x)^2+(y1-y)^2)^puis)),
                      c("x","y"))

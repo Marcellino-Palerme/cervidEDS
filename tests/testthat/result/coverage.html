@@ -101,20 +101,20 @@ table.table-condensed {
 }</style>
   <div class="col-sm-8 col-sm-offset-2">
     <div class="tabbable">
-      <ul class="nav nav-tabs" data-tabsetid="2869">
+      <ul class="nav nav-tabs" data-tabsetid="5113">
         <li class="active">
-          <a href="#tab-2869-1" data-toggle="tab" data-value="Files">Files</a>
+          <a href="#tab-5113-1" data-toggle="tab" data-value="Files">Files</a>
         </li>
         <li>
-          <a href="#tab-2869-2" data-toggle="tab" data-value="Source">Source</a>
+          <a href="#tab-5113-2" data-toggle="tab" data-value="Source">Source</a>
         </li>
       </ul>
-      <div class="tab-content" data-tabsetid="2869">
-        <div class="tab-pane active" data-value="Files" id="tab-2869-1">
-          <div id="htmlwidget-a554f5a11759bf8a4fee" style="width:960px;height:500px;" class="datatables html-widget"></div>
-          <script type="application/json" data-for="htmlwidget-a554f5a11759bf8a4fee">{"x":{"filter":"none","data":[["<div class=\"coverage-box coverage-low\">0.00<\/div>","<div class=\"coverage-box coverage-low\">0.00<\/div>","<div class=\"coverage-box coverage-low\">11.04<\/div>","<div class=\"coverage-box coverage-medium\">82.31<\/div>","<div class=\"coverage-box coverage-high\">99.20<\/div>","<div class=\"coverage-box coverage-high\">100.00<\/div>"],["<a href=\"#\">R/landscape.R<\/a>","<a href=\"#\">R/utility.R<\/a>","<a href=\"#\">R/model.R<\/a>","<a href=\"#\">R/extract_dynapop_oft.R<\/a>","<a href=\"#\">R/landscape_functions.R<\/a>","<a href=\"#\">src/simulation.cpp<\/a>"],[706,21,770,509,304,435],[306,4,308,294,125,121],[0,0,34,242,124,121],[306,4,274,52,1,0],["0","0","1","507","82","45"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Coverage<\/th>\n      <th>File<\/th>\n      <th>Lines<\/th>\n      <th>Relevant<\/th>\n      <th>Covered<\/th>\n      <th>Missed<\/th>\n      <th>Hits / Line<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"dom":"t","paging":false,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\ntable.on('click.dt', 'a', function() {\n  files = $('div#files div');\n  files.not('div.hidden').addClass('hidden');\n  id = $(this).text();\n  files.filter('div[id=\\'' + id + '\\']').removeClass('hidden');\n  $('ul.nav a[data-value=Source]').text(id).tab('show');\n});\n}","selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":["callback"],"jsHooks":[]}</script>
+      <div class="tab-content" data-tabsetid="5113">
+        <div class="tab-pane active" data-value="Files" id="tab-5113-1">
+          <div id="htmlwidget-28d1da22fe6acba4d344" style="width:960px;height:500px;" class="datatables html-widget"></div>
+          <script type="application/json" data-for="htmlwidget-28d1da22fe6acba4d344">{"x":{"filter":"none","data":[["<div class=\"coverage-box coverage-low\">0.00<\/div>","<div class=\"coverage-box coverage-low\">0.00<\/div>","<div class=\"coverage-box coverage-low\">11.04<\/div>","<div class=\"coverage-box coverage-medium\">82.31<\/div>","<div class=\"coverage-box coverage-high\">99.20<\/div>","<div class=\"coverage-box coverage-high\">100.00<\/div>"],["<a href=\"#\">R/landscape.R<\/a>","<a href=\"#\">R/utility.R<\/a>","<a href=\"#\">R/model.R<\/a>","<a href=\"#\">R/extract_dynapop_oft.R<\/a>","<a href=\"#\">R/landscape_functions.R<\/a>","<a href=\"#\">src/simulation.cpp<\/a>"],[706,21,770,509,304,453],[306,4,308,294,125,123],[0,0,34,242,124,123],[306,4,274,52,1,0],["0","0","1","507","82","44"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Coverage<\/th>\n      <th>File<\/th>\n      <th>Lines<\/th>\n      <th>Relevant<\/th>\n      <th>Covered<\/th>\n      <th>Missed<\/th>\n      <th>Hits / Line<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"dom":"t","paging":false,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\ntable.on('click.dt', 'a', function() {\n  files = $('div#files div');\n  files.not('div.hidden').addClass('hidden');\n  id = $(this).text();\n  files.filter('div[id=\\'' + id + '\\']').removeClass('hidden');\n  $('ul.nav a[data-value=Source]').text(id).tab('show');\n});\n}","selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":["callback"],"jsHooks":[]}</script>
         </div>
-        <div class="tab-pane" data-value="Source" id="tab-2869-2">
+        <div class="tab-pane" data-value="Source" id="tab-5113-2">
           <div id="files">
             <div id="R/extract_dynapop_oft.R" class="hidden">
               <table class="table-condensed">
@@ -593,14 +593,14 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      if (sum(apply(matrix(round(line.mat, 12) %in% </pre>
                     </td>
-                    <td class="coverage">2352<em>x</em></td>
+                    <td class="coverage">2346<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">69</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           round(cbind(a[-nrow(a),], a[-1,])[j,] + yscale, 12), ncol=4), FUN=sum, 1) == 4) == 0){</pre>
                     </td>
-                    <td class="coverage">2352<em>x</em></td>
+                    <td class="coverage">2346<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">70</td>
@@ -635,7 +635,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      }</pre>
                     </td>
-                    <td class="coverage">2352<em>x</em></td>
+                    <td class="coverage">2346<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">75</td>
@@ -943,7 +943,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      coord &lt;- old.coord</pre>
                     </td>
-                    <td class="coverage">655<em>x</em></td>
+                    <td class="coverage">658<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">119</td>
@@ -957,7 +957,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      old.eval &lt;- new.eval</pre>
                     </td>
-                    <td class="coverage">145<em>x</em></td>
+                    <td class="coverage">142<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">121</td>
@@ -1909,7 +1909,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  -sum(((x-targets)*scale)^2, na.rm=TRUE)</pre>
                     </td>
-                    <td class="coverage">2265<em>x</em></td>
+                    <td class="coverage">2252<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">257</td>
@@ -1972,7 +1972,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">    child &lt;- c(child, unlist(parents[[i %% 2 + 1]][tab[1, i]:tab[2, i]]))</pre>
                     </td>
-                    <td class="coverage">5968<em>x</em></td>
+                    <td class="coverage">6063<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">266</td>
@@ -17813,14 +17813,14 @@ table.table-condensed {
                   <tr class="never">
                     <td class="num">214</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @title gradient potential function</pre>
+                      <pre class="language-r">//' @title potential function</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">215</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @description Fonction gradient du potentiel précédent</pre>
+                      <pre class="language-r">//' @description potential function</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
@@ -17855,196 +17855,196 @@ table.table-condensed {
                   <tr class="never">
                     <td class="num">220</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param puiss (double)</pre>
+                      <pre class="language-r">//' @param power (double)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">221</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param deriv (double)</pre>
+                      <pre class="language-r">//' @return (double) potential</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">222</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @return (double) gradiant of potential</pre>
+                      <pre class="language-r">//' @export</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">223</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @export</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">224</td>
-                    <td class="col-sm-12">
                       <pre class="language-r">// [[Rcpp::export]]</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
+                    <td class="num">224</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">double potential_func(double alpha_t,</pre>
+                    </td>
+                    <td class="coverage">4<em>x</em></td>
+                  </tr>
+                  <tr class="never">
                     <td class="num">225</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">double grad_potential_func (double alpha_t,</pre>
+                      <pre class="language-r">                      double beta,</pre>
                     </td>
-                    <td class="coverage">92<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">226</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                            double beta,</pre>
+                      <pre class="language-r">                      double dist,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">227</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                            double dist,</pre>
+                      <pre class="language-r">                      double power)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">228</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                            double puiss,</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">229</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                            double deriv)</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">230</td>
-                    <td class="col-sm-12">
                       <pre class="language-r">{</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">231</td>
+                    <td class="num">229</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">   return -puiss * beta * alpha_t * deriv * pow(dist, puiss - 1) * </pre>
+                      <pre class="language-r">  return alpha_t * exp(-beta * pow(dist, power));</pre>
                     </td>
-                    <td class="coverage">92<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">232</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          exp(-beta * pow(dist, puiss));</pre>
-                    </td>
-                    <td class="coverage">92<em>x</em></td>
+                    <td class="coverage">4<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">233</td>
+                    <td class="num">230</td>
                     <td class="col-sm-12">
                       <pre class="language-r">}</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">234</td>
+                    <td class="num">231</td>
                     <td class="col-sm-12">
                       <pre class="language-r"></pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">235</td>
+                    <td class="num">232</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @title alpha function</pre>
+                      <pre class="language-r">//' @title gradient potential function</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">236</td>
+                    <td class="num">233</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @description evolution of maximum of potential in time</pre>
+                      <pre class="language-r">//' @description Fonction gradient du potentiel précédent</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">237</td>
+                    <td class="num">234</td>
                     <td class="col-sm-12">
                       <pre class="language-r">//' </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
+                    <td class="num">235</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' @param alpha_t (double)</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">236</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' @param beta (double) spatial display of potential</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">237</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' @param dist (double) distance </pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
                     <td class="num">238</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param alpha1 (double) maximum potential amplitude</pre>
+                      <pre class="language-r">//' @param power (double)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">239</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param alpha2 (double) spatial display of potential in time</pre>
+                      <pre class="language-r">//' @param deriv (double)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">240</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param alpha3 (double) time when potential amplitude is maximum</pre>
+                      <pre class="language-r">//' @return (double) gradiant of potential</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">241</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @return (double) miximum of potential at t</pre>
+                      <pre class="language-r">//' @export</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">242</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @export</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">243</td>
-                    <td class="col-sm-12">
                       <pre class="language-r">// [[Rcpp::export]]</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
+                    <td class="num">243</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">double grad_potential_func (double alpha_t,</pre>
+                    </td>
+                    <td class="coverage">92<em>x</em></td>
+                  </tr>
+                  <tr class="never">
                     <td class="num">244</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">double alpha_func(double alpha1,</pre>
+                      <pre class="language-r">                            double beta,</pre>
                     </td>
-                    <td class="coverage">6<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">245</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                  double alpha2,</pre>
+                      <pre class="language-r">                            double dist,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">246</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                  double alpha3,</pre>
+                      <pre class="language-r">                            double power,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">247</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                  double t)</pre>
+                      <pre class="language-r">                            double deriv)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
@@ -18058,1206 +18058,1206 @@ table.table-condensed {
                   <tr class="covered">
                     <td class="num">249</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  if (alpha2 == 0 || alpha3 == 0 || t == 0 || t*alpha3 &lt; 0)</pre>
+                      <pre class="language-r">   return -power * beta * alpha_t * deriv * pow(dist, power - 1) * </pre>
                     </td>
-                    <td class="coverage">6<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">250</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  {</pre>
-                    </td>
-                    <td class="coverage"></td>
+                    <td class="coverage">92<em>x</em></td>
                   </tr>
                   <tr class="covered">
+                    <td class="num">250</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          exp(-beta * pow(dist, power));</pre>
+                    </td>
+                    <td class="coverage">92<em>x</em></td>
+                  </tr>
+                  <tr class="never">
                     <td class="num">251</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    return 0;</pre>
+                      <pre class="language-r">}</pre>
                     </td>
-                    <td class="coverage">5<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">252</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  }</pre>
+                      <pre class="language-r"></pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">253</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  return alpha1 * exp(-0.5 * pow(log(t / alpha3) / alpha2, 2));</pre>
+                      <pre class="language-r">//' @title alpha function</pre>
                     </td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">254</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">}</pre>
+                      <pre class="language-r">//' @description evolution of maximum of potential in time</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">255</td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">//' </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">256</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @title effect potential</pre>
+                      <pre class="language-r">//' @param alpha1 (double) maximum potential amplitude</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">257</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' </pre>
+                      <pre class="language-r">//' @param alpha2 (double) spatial display of potential in time</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">258</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment </pre>
+                      <pre class="language-r">//' @param alpha3 (double) time when potential amplitude is maximum</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">259</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//'                                      Matrix N*4 (x1,y1,x2,y2)</pre>
+                      <pre class="language-r">//' @return (double) miximum of potential at t</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">260</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param nv_coords_point (NumericVector) coordinates of point (x,y)</pre>
+                      <pre class="language-r">//' @export</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">261</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param bound (NumericVector) limit of effect potential ("min", "max")</pre>
+                      <pre class="language-r">// [[Rcpp::export]]</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">262</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param alpha (double) potential amplitude</pre>
+                      <pre class="language-r">double alpha_func(double alpha1,</pre>
                     </td>
-                    <td class="coverage"></td>
+                    <td class="coverage">6<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">263</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param beta (double) spatial display of potential</pre>
+                      <pre class="language-r">                  double alpha2,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">264</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param power (double)</pre>
+                      <pre class="language-r">                  double alpha3,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">265</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param b_sum_sub (bool) use +gradiant(true) or -gradiant(false) (not effect </pre>
+                      <pre class="language-r">                  double t)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">266</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//'        on bound)</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">267</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' @return (NumericVector) effect potential in x and y (['x'];['y'])</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">268</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' @export</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">269</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">// [[Rcpp::export]]</pre>
+                      <pre class="language-r">{</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">270</td>
+                    <td class="num">267</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">NumericVector potential_effect (NumericMatrix nm_coords_element,</pre>
+                      <pre class="language-r">  if (alpha2 == 0 || alpha3 == 0 || t == 0 || t*alpha3 &lt; 0)</pre>
                     </td>
-                    <td class="coverage">32<em>x</em></td>
+                    <td class="coverage">6<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">271</td>
+                    <td class="num">268</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                NumericVector nv_coords_point,</pre>
+                      <pre class="language-r">  {</pre>
                     </td>
                     <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">269</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    return 0;</pre>
+                    </td>
+                    <td class="coverage">5<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">270</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  }</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">271</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  return alpha1 * exp(-0.5 * pow(log(t / alpha3) / alpha2, 2));</pre>
+                    </td>
+                    <td class="coverage">1<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">272</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                NumericVector bound,</pre>
+                      <pre class="language-r">}</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">273</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                double alpha,</pre>
+                      <pre class="language-r"></pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">274</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                double beta,</pre>
+                      <pre class="language-r">//' @title effect potential</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">275</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                double power,</pre>
+                      <pre class="language-r">//' </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">276</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                bool b_sum_sub)</pre>
+                      <pre class="language-r">//' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">277</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">{</pre>
+                      <pre class="language-r">//'                                      Matrix N*4 (x1,y1,x2,y2)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">278</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  NumericVector effect = NumericVector::create(_["x"] = 0,</pre>
+                      <pre class="language-r">//' @param nv_coords_point (NumericVector) coordinates of point (x,y)</pre>
                     </td>
-                    <td class="coverage">64<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">279</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                               _["y"] = 0);</pre>
+                      <pre class="language-r">//' @param bound (NumericVector) limit of effect potential ("min", "max")</pre>
                     </td>
-                    <td class="coverage">96<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">280</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  NumericVector dist_grad_xy;</pre>
+                      <pre class="language-r">//' @param alpha (double) potential amplitude</pre>
                     </td>
-                    <td class="coverage">64<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">281</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  int sum_sub = -1;</pre>
+                      <pre class="language-r">//' @param beta (double) spatial display of potential</pre>
                     </td>
-                    <td class="coverage">32<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">282</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  </pre>
+                      <pre class="language-r">//' @param power (double)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">283</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  if(b_sum_sub)</pre>
+                      <pre class="language-r">//' @param b_sum_sub (bool) use +gradiant(true) or -gradiant(false) (not effect </pre>
                     </td>
-                    <td class="coverage">32<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">284</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  {</pre>
+                      <pre class="language-r">//'        on bound)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">285</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    sum_sub = 1;</pre>
+                      <pre class="language-r">//' @return (NumericVector) effect potential in x and y (['x'];['y'])</pre>
                     </td>
-                    <td class="coverage">16<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">286</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  }</pre>
+                      <pre class="language-r">//' @export</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">287</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  </pre>
+                      <pre class="language-r">// [[Rcpp::export]]</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">288</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  for (int i = 0; i &lt; nm_coords_element.nrow(); i++)</pre>
+                      <pre class="language-r">NumericVector potential_effect (NumericMatrix nm_coords_element,</pre>
                     </td>
-                    <td class="coverage">72<em>x</em></td>
+                    <td class="coverage">32<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">289</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  {</pre>
+                      <pre class="language-r">                                NumericVector nv_coords_point,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">290</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    // Calculate distant point to segment and derivate in x and y</pre>
+                      <pre class="language-r">                                NumericVector bound,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">291</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    dist_grad_xy = distance2segment(nv_coords_point[0],</pre>
+                      <pre class="language-r">                                double alpha,</pre>
                     </td>
-                    <td class="coverage">240<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">292</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                    nv_coords_point[1],</pre>
+                      <pre class="language-r">                                double beta,</pre>
                     </td>
-                    <td class="coverage">40<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">293</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                    nm_coords_element[(i*4) + 0],</pre>
+                      <pre class="language-r">                                double power,</pre>
                     </td>
-                    <td class="coverage">40<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">294</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                    nm_coords_element[(i*4) + 1],</pre>
+                      <pre class="language-r">                                bool b_sum_sub)</pre>
                     </td>
-                    <td class="coverage">40<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">295</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                    nm_coords_element[(i*4) + 2],</pre>
+                      <pre class="language-r">{</pre>
                     </td>
-                    <td class="coverage">40<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">296</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                    nm_coords_element[(i*4) + 3]);</pre>
+                      <pre class="language-r">  NumericVector effect = NumericVector::create(_["x"] = 0,</pre>
                     </td>
-                    <td class="coverage">80<em>x</em></td>
+                    <td class="coverage">64<em>x</em></td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">297</td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">                                               _["y"] = 0);</pre>
                     </td>
-                    <td class="coverage"></td>
+                    <td class="coverage">96<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">298</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    effect["x"] = effect["x"] + </pre>
+                      <pre class="language-r">  NumericVector dist_grad_xy;</pre>
                     </td>
-                    <td class="coverage">80<em>x</em></td>
+                    <td class="coverage">64<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">299</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                  sum_sub * grad_potential_func(alpha,</pre>
+                      <pre class="language-r">  int sum_sub = -1;</pre>
                     </td>
-                    <td class="coverage">80<em>x</em></td>
+                    <td class="coverage">32<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">300</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                                beta,</pre>
+                      <pre class="language-r">  </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">301</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                                dist_grad_xy["dist"],</pre>
+                      <pre class="language-r">  if(b_sum_sub)</pre>
                     </td>
-                    <td class="coverage"></td>
+                    <td class="coverage">32<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">302</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                                power,</pre>
+                      <pre class="language-r">  {</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">303</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                                dist_grad_xy["dx"]);</pre>
+                      <pre class="language-r">    sum_sub = 1;</pre>
                     </td>
-                    <td class="coverage">120<em>x</em></td>
+                    <td class="coverage">16<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">304</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">305</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    effect["y"] = effect["y"] + </pre>
-                    </td>
-                    <td class="coverage">80<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">306</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                  sum_sub * grad_potential_func(alpha,</pre>
-                    </td>
-                    <td class="coverage">80<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">307</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                                beta,</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">308</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                                dist_grad_xy["dist"],</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">309</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                                power,</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">310</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                                dist_grad_xy["dy"]);</pre>
-                    </td>
-                    <td class="coverage">120<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">311</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">312</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  }</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">313</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  // bound sum</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">314</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  effect["x"] = fmin(fmax(bound["min"], effect["x"]), bound["max"]);</pre>
-                    </td>
-                    <td class="coverage">32<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">315</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  effect["y"] = fmin(fmax(bound["min"], effect["y"]), bound["max"]);</pre>
-                    </td>
-                    <td class="coverage">32<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">316</td>
+                    <td class="num">305</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
+                    <td class="num">306</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  for (int i = 0; i &lt; nm_coords_element.nrow(); i++)</pre>
+                    </td>
+                    <td class="coverage">72<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">307</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  {</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">308</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    // Calculate distant point to segment and derivate in x and y</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">309</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    dist_grad_xy = distance2segment(nv_coords_point[0],</pre>
+                    </td>
+                    <td class="coverage">240<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">310</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                    nv_coords_point[1],</pre>
+                    </td>
+                    <td class="coverage">40<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">311</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                    nm_coords_element[(i*4) + 0],</pre>
+                    </td>
+                    <td class="coverage">40<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">312</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                    nm_coords_element[(i*4) + 1],</pre>
+                    </td>
+                    <td class="coverage">40<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">313</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                    nm_coords_element[(i*4) + 2],</pre>
+                    </td>
+                    <td class="coverage">40<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">314</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                    nm_coords_element[(i*4) + 3]);</pre>
+                    </td>
+                    <td class="coverage">80<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">315</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">316</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    effect["x"] = effect["x"] + </pre>
+                    </td>
+                    <td class="coverage">80<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
                     <td class="num">317</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  return effect;</pre>
+                      <pre class="language-r">                  sum_sub * grad_potential_func(alpha,</pre>
                     </td>
-                    <td class="coverage">64<em>x</em></td>
+                    <td class="coverage">80<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">318</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">}</pre>
+                      <pre class="language-r">                                                beta,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">319</td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">                                                dist_grad_xy["dist"],</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">320</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @title repulsive effect</pre>
+                      <pre class="language-r">                                                power,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">321</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @description Give effect on x and y of all replusive elements </pre>
+                      <pre class="language-r">                                                dist_grad_xy["dx"]);</pre>
                     </td>
-                    <td class="coverage"></td>
+                    <td class="coverage">120<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">322</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' </pre>
+                      <pre class="language-r"></pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">323</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment </pre>
+                      <pre class="language-r">    effect["y"] = effect["y"] + </pre>
                     </td>
-                    <td class="coverage"></td>
+                    <td class="coverage">80<em>x</em></td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">324</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//'                                      Matrix N*4 (x1,y1,x2,y2)</pre>
+                      <pre class="language-r">                  sum_sub * grad_potential_func(alpha,</pre>
                     </td>
-                    <td class="coverage"></td>
+                    <td class="coverage">80<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">325</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param nv_coords_point (NumericVector) coordinates of point (x,y)</pre>
+                      <pre class="language-r">                                                beta,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">326</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param alpha1 (double) maximum potential amplitude</pre>
+                      <pre class="language-r">                                                dist_grad_xy["dist"],</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">327</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @return (NumericVector) repulsif effect in x and y (['x'];['y'])</pre>
+                      <pre class="language-r">                                                power,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">328</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @export</pre>
+                      <pre class="language-r">                                                dist_grad_xy["dy"]);</pre>
                     </td>
-                    <td class="coverage"></td>
+                    <td class="coverage">120<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">329</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">// [[Rcpp::export]]</pre>
+                      <pre class="language-r"></pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">330</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">NumericVector repulsive_effect (NumericMatrix nm_coords_rep,</pre>
+                      <pre class="language-r">  }</pre>
                     </td>
-                    <td class="coverage">16<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">331</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                NumericVector nv_coords_point,</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">332</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                double alpha1)</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">333</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">{</pre>
+                      <pre class="language-r">  // bound sum</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">334</td>
+                    <td class="num">332</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  NumericVector bound = NumericVector::create(_["min"] = LLONG_MIN,</pre>
+                      <pre class="language-r">  effect["x"] = fmin(fmax(bound["min"], effect["x"]), bound["max"]);</pre>
                     </td>
                     <td class="coverage">32<em>x</em></td>
                   </tr>
                   <tr class="covered">
+                    <td class="num">333</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  effect["y"] = fmin(fmax(bound["min"], effect["y"]), bound["max"]);</pre>
+                    </td>
+                    <td class="coverage">32<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">334</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  </pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
                     <td class="num">335</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                              _["max"] = LLONG_MAX);</pre>
+                      <pre class="language-r">  return effect;</pre>
                     </td>
                     <td class="coverage">64<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">336</td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">}</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">337</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  return potential_effect(nm_coords_rep,</pre>
+                      <pre class="language-r"></pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">338</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                          nv_coords_point,</pre>
+                      <pre class="language-r">//' @title repulsive effect</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">339</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                          bound,</pre>
+                      <pre class="language-r">//' @description Give effect on x and y of all replusive elements </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">340</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                          alpha1,</pre>
+                      <pre class="language-r">//' </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">341</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                          0.1,</pre>
+                      <pre class="language-r">//' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">342</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                          2,</pre>
+                      <pre class="language-r">//'                                      Matrix N*4 (x1,y1,x2,y2)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">343</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                          false);</pre>
-                    </td>
-                    <td class="coverage">32<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">344</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">}</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">345</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">346</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' @title attractive effect</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">347</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' @description Give effect on x and y of all attractive elements </pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">348</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' </pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">349</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' @param nm_coords_attrac (NumericMatrix) all coordinates of attractive </pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">350</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//'                                         segment matrix N*4 (x1,y1,x2,y2)</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">351</td>
                     <td class="col-sm-12">
                       <pre class="language-r">//' @param nv_coords_point (NumericVector) coordinates of point (x,y)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">352</td>
+                    <td class="num">344</td>
                     <td class="col-sm-12">
                       <pre class="language-r">//' @param alpha1 (double) maximum potential amplitude</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">353</td>
+                    <td class="num">345</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @return (NumericVector) attractive effect in x and y (['x'];['y'])</pre>
+                      <pre class="language-r">//' @return (NumericVector) repulsif effect in x and y (['x'];['y'])</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">354</td>
+                    <td class="num">346</td>
                     <td class="col-sm-12">
                       <pre class="language-r">//' @export</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">355</td>
+                    <td class="num">347</td>
                     <td class="col-sm-12">
                       <pre class="language-r">// [[Rcpp::export]]</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">356</td>
+                    <td class="num">348</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">NumericVector attractive_effect (NumericMatrix nm_coords_attrac,</pre>
+                      <pre class="language-r">NumericVector repulsive_effect (NumericMatrix nm_coords_rep,</pre>
                     </td>
                     <td class="coverage">16<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">357</td>
+                    <td class="num">349</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                                NumericVector nv_coords_point,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">358</td>
+                    <td class="num">350</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                                double alpha1)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">359</td>
+                    <td class="num">351</td>
                     <td class="col-sm-12">
                       <pre class="language-r">{</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">360</td>
+                    <td class="num">352</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  NumericVector bound = NumericVector::create(_["min"] = LLONG_MIN,</pre>
                     </td>
                     <td class="coverage">32<em>x</em></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">361</td>
+                    <td class="num">353</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                                              _["max"] = LLONG_MAX);</pre>
                     </td>
                     <td class="coverage">64<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">362</td>
+                    <td class="num">354</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  </pre>
+                      <pre class="language-r"></pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">363</td>
+                    <td class="num">355</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  return potential_effect(nm_coords_attrac,</pre>
+                      <pre class="language-r">  return potential_effect(nm_coords_rep,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">364</td>
+                    <td class="num">356</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                          nv_coords_point,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">365</td>
+                    <td class="num">357</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                          bound,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">366</td>
+                    <td class="num">358</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                          alpha1,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">367</td>
+                    <td class="num">359</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                          0.1,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">368</td>
+                    <td class="num">360</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                          2,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">369</td>
+                    <td class="num">361</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                          true);</pre>
+                      <pre class="language-r">                          false);</pre>
                     </td>
                     <td class="coverage">32<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">370</td>
+                    <td class="num">362</td>
                     <td class="col-sm-12">
                       <pre class="language-r">}</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">371</td>
+                    <td class="num">363</td>
                     <td class="col-sm-12">
                       <pre class="language-r"></pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">372</td>
+                    <td class="num">364</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @title all effect</pre>
+                      <pre class="language-r">//' @title attractive effect</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">373</td>
+                    <td class="num">365</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @description Give complete effect of landscape on x and y</pre>
+                      <pre class="language-r">//' @description Give effect on x and y of all attractive elements </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">374</td>
+                    <td class="num">366</td>
                     <td class="col-sm-12">
                       <pre class="language-r">//' </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">375</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' @param nv_coords_point (NumericVector) coordinates of point (x,y)</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">376</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' @param ui_land_width (unsigned int) width of landscape.</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">377</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' @param ui_land_heigth (unsigned int) heigth of landscape.</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">378</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' @param d_sigma (double) repulsif effect adaptor</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">379</td>
+                    <td class="num">367</td>
                     <td class="col-sm-12">
                       <pre class="language-r">//' @param nm_coords_attrac (NumericMatrix) all coordinates of attractive </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">380</td>
+                    <td class="num">368</td>
                     <td class="col-sm-12">
                       <pre class="language-r">//'                                         segment matrix N*4 (x1,y1,x2,y2)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">381</td>
+                    <td class="num">369</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param alpha_a (double) maximum potential amplitude of attrativity</pre>
+                      <pre class="language-r">//' @param nv_coords_point (NumericVector) coordinates of point (x,y)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">382</td>
+                    <td class="num">370</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment </pre>
+                      <pre class="language-r">//' @param alpha1 (double) maximum potential amplitude</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">383</td>
+                    <td class="num">371</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//'                                      Matrix N*4 (x1,y1,x2,y2)</pre>
+                      <pre class="language-r">//' @return (NumericVector) attractive effect in x and y (['x'];['y'])</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">384</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' @param alpha_r (double) maximum potential amplitude of repulsivity</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">385</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' @param time_step (double) step of time</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">386</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' @return (NumericVector) effect in x and y (['x'];['y'])</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">387</td>
+                    <td class="num">372</td>
                     <td class="col-sm-12">
                       <pre class="language-r">//' @export</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">388</td>
+                    <td class="num">373</td>
                     <td class="col-sm-12">
                       <pre class="language-r">// [[Rcpp::export]]</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">389</td>
+                    <td class="num">374</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">NumericVector all_effect (NumericVector nv_coords_point,</pre>
+                      <pre class="language-r">NumericVector attractive_effect (NumericMatrix nm_coords_attrac,</pre>
                     </td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage">16<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">390</td>
+                    <td class="num">375</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                          unsigned int ui_width,</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">391</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                          unsigned int ui_heigth,</pre>
+                      <pre class="language-r">                                NumericVector nv_coords_point,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">392</td>
+                    <td class="num">376</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                          double d_sigma,</pre>
+                      <pre class="language-r">                                double alpha1)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">393</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                          NumericMatrix nm_coords_attrac,</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">394</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                          double alpha_a,</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">395</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                          NumericMatrix nm_coords_rep,</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">396</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                          double alpha_r,</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">397</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                          double time_step)</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">398</td>
+                    <td class="num">377</td>
                     <td class="col-sm-12">
                       <pre class="language-r">{</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
+                    <td class="num">378</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  NumericVector bound = NumericVector::create(_["min"] = LLONG_MIN,</pre>
+                    </td>
+                    <td class="coverage">32<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">379</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                              _["max"] = LLONG_MAX);</pre>
+                    </td>
+                    <td class="coverage">64<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">380</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  </pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">381</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  return potential_effect(nm_coords_attrac,</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">382</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                          nv_coords_point,</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">383</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                          bound,</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">384</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                          alpha1,</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">385</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                          0.1,</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">386</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                          2,</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">387</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                          true);</pre>
+                    </td>
+                    <td class="coverage">32<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">388</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">}</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">389</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">390</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' @title all effect</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">391</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' @description Give complete effect of landscape on x and y</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">392</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' </pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">393</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' @param nv_coords_point (NumericVector) coordinates of point (x,y)</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">394</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' @param ui_land_width (unsigned int) width of landscape.</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">395</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' @param ui_land_heigth (unsigned int) heigth of landscape.</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">396</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' @param d_sigma (double) repulsif effect adaptor</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">397</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' @param nm_coords_attrac (NumericMatrix) all coordinates of attractive </pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">398</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//'                                         segment matrix N*4 (x1,y1,x2,y2)</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
                     <td class="num">399</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  NumericVector effect = NumericVector::create(_["x"] = 0,</pre>
+                      <pre class="language-r">//' @param alpha_a (double) maximum potential amplitude of attrativity</pre>
                     </td>
-                    <td class="coverage">2<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">400</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                               _["y"] = 0);</pre>
+                      <pre class="language-r">//' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment </pre>
                     </td>
-                    <td class="coverage">3<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">401</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  NumericVector tmp_effect = NumericVector::create(_["x"] = 0,</pre>
+                      <pre class="language-r">//'                                      Matrix N*4 (x1,y1,x2,y2)</pre>
                     </td>
-                    <td class="coverage">2<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">402</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                                   _["y"] = 0);</pre>
+                      <pre class="language-r">//' @param alpha_r (double) maximum potential amplitude of repulsivity</pre>
                     </td>
-                    <td class="coverage">4<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">403</td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">//' @param time_step (double) step of time</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">404</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  // border effect</pre>
+                      <pre class="language-r">//' @return (NumericVector) effect in x and y (['x'];['y'])</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">405</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  tmp_effect = border_effect (ui_width,</pre>
+                      <pre class="language-r">//' @export</pre>
                     </td>
-                    <td class="coverage">3<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">406</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                              ui_heigth,</pre>
+                      <pre class="language-r">// [[Rcpp::export]]</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">407</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">NumericVector all_effect (NumericVector nv_coords_point,</pre>
+                    </td>
+                    <td class="coverage">1<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">408</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                          unsigned int ui_width,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">407</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                              d_sigma,</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">408</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                              nv_coords_point[0],</pre>
-                    </td>
-                    <td class="coverage">1<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
                     <td class="num">409</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                              nv_coords_point[1]);</pre>
+                      <pre class="language-r">                          unsigned int ui_heigth,</pre>
                     </td>
-                    <td class="coverage">2<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">410</td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">                          double d_sigma,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">411</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  effect["x"] = tmp_effect["x"];</pre>
+                      <pre class="language-r">                          NumericMatrix nm_coords_attrac,</pre>
                     </td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">412</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  effect["y"] = tmp_effect["y"];</pre>
+                      <pre class="language-r">                          double alpha_a,</pre>
                     </td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">413</td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">                          NumericMatrix nm_coords_rep,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">414</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  // repulsive effect</pre>
+                      <pre class="language-r">                          double alpha_r,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">415</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  tmp_effect = repulsive_effect (nm_coords_rep,</pre>
+                      <pre class="language-r">                          double time_step)</pre>
                     </td>
-                    <td class="coverage">2<em>x</em></td>
+                    <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">416</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                 nv_coords_point,</pre>
+                      <pre class="language-r">{</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">417</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                 alpha_r);</pre>
+                      <pre class="language-r">  NumericVector effect = NumericVector::create(_["x"] = 0,</pre>
                     </td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage">2<em>x</em></td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">418</td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">                                               _["y"] = 0);</pre>
                     </td>
-                    <td class="coverage"></td>
+                    <td class="coverage">3<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">419</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  effect["x"] = effect["x"] + tmp_effect["x"];</pre>
+                      <pre class="language-r">  NumericVector tmp_effect = NumericVector::create(_["x"] = 0,</pre>
                     </td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage">2<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">420</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  effect["y"] = effect["y"] + tmp_effect["y"];</pre>
+                      <pre class="language-r">                                                   _["y"] = 0);</pre>
                     </td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage">4<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">421</td>
@@ -19269,96 +19269,222 @@ table.table-condensed {
                   <tr class="never">
                     <td class="num">422</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  // attarctive effect</pre>
+                      <pre class="language-r">  // border effect</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">423</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  tmp_effect = attractive_effect (nm_coords_attrac,</pre>
+                      <pre class="language-r">  tmp_effect = border_effect (ui_width,</pre>
                     </td>
-                    <td class="coverage">2<em>x</em></td>
+                    <td class="coverage">3<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">424</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                  nv_coords_point,</pre>
+                      <pre class="language-r">                              ui_heigth,</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">425</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                              d_sigma,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">425</td>
+                    <td class="num">426</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                  alpha_a);</pre>
+                      <pre class="language-r">                              nv_coords_point[0],</pre>
                     </td>
                     <td class="coverage">1<em>x</em></td>
                   </tr>
+                  <tr class="covered">
+                    <td class="num">427</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                              nv_coords_point[1]);</pre>
+                    </td>
+                    <td class="coverage">2<em>x</em></td>
+                  </tr>
                   <tr class="never">
-                    <td class="num">426</td>
+                    <td class="num">428</td>
                     <td class="col-sm-12">
                       <pre class="language-r"></pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">427</td>
+                    <td class="num">429</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  effect["x"] = tmp_effect["x"];</pre>
+                    </td>
+                    <td class="coverage">1<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">430</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  effect["y"] = tmp_effect["y"];</pre>
+                    </td>
+                    <td class="coverage">1<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">431</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">432</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  // repulsive effect</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">433</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  tmp_effect = repulsive_effect (nm_coords_rep,</pre>
+                    </td>
+                    <td class="coverage">2<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">434</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                 nv_coords_point,</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">435</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                 alpha_r);</pre>
+                    </td>
+                    <td class="coverage">1<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">436</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">437</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  effect["x"] = effect["x"] + tmp_effect["x"];</pre>
                     </td>
                     <td class="coverage">1<em>x</em></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">428</td>
+                    <td class="num">438</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  effect["y"] = effect["y"] + tmp_effect["y"];</pre>
                     </td>
                     <td class="coverage">1<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">429</td>
+                    <td class="num">439</td>
                     <td class="col-sm-12">
                       <pre class="language-r"></pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">430</td>
+                    <td class="num">440</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  // attarctive effect</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">441</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  tmp_effect = attractive_effect (nm_coords_attrac,</pre>
+                    </td>
+                    <td class="coverage">2<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">442</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                  nv_coords_point,</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">443</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                  alpha_a);</pre>
+                    </td>
+                    <td class="coverage">1<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">444</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">445</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  effect["x"] = effect["x"] + tmp_effect["x"];</pre>
+                    </td>
+                    <td class="coverage">1<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">446</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  effect["y"] = effect["y"] + tmp_effect["y"];</pre>
+                    </td>
+                    <td class="coverage">1<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">447</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">448</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  // effect proportional to step of time</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">431</td>
+                    <td class="num">449</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  effect["x"] = effect["x"] * time_step;</pre>
                     </td>
                     <td class="coverage">1<em>x</em></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">432</td>
+                    <td class="num">450</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  effect["y"] = effect["y"] * time_step;</pre>
                     </td>
                     <td class="coverage">1<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">433</td>
+                    <td class="num">451</td>
                     <td class="col-sm-12">
                       <pre class="language-r"></pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">434</td>
+                    <td class="num">452</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  return effect;</pre>
                     </td>
                     <td class="coverage">2<em>x</em></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">435</td>
+                    <td class="num">453</td>
                     <td class="col-sm-12">
                       <pre class="language-r">}</pre>
                     </td>

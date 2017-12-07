@@ -4,7 +4,7 @@
 \alias{grad_potential_func}
 \title{gradient potential function}
 \usage{
-grad_potential_func(alpha_t, beta, dist, puiss, deriv)
+grad_potential_func(alpha_t, beta, dist, power, deriv)
 }
 \arguments{
 \item{alpha_t}{(double)}
@@ -13,7 +13,7 @@ grad_potential_func(alpha_t, beta, dist, puiss, deriv)
 
 \item{dist}{(double) distance}
 
-\item{puiss}{(double)}
+\item{power}{(double)}
 
 \item{deriv}{(double)}
 }

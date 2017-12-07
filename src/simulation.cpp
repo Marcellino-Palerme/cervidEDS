@@ -211,13 +211,31 @@ NumericVector distance2segment(double x,
    return distance2point(x, y, xh, yh);
 }
 
+//' @title potential function
+//' @description potential function
+//' 
+//' @param alpha_t (double)
+//' @param beta (double) spatial display of potential
+//' @param dist (double) distance 
+//' @param power (double)
+//' @return (double) potential
+//' @export
+// [[Rcpp::export]]
+double potential_func(double alpha_t,
+                      double beta,
+                      double dist,
+                      double power)
+{
+  return alpha_t * exp(-beta * pow(dist, power));
+}
+
 //' @title gradient potential function
 //' @description Fonction gradient du potentiel précédent
 //' 
 //' @param alpha_t (double)
 //' @param beta (double) spatial display of potential
 //' @param dist (double) distance 
-//' @param puiss (double)
+//' @param power (double)
 //' @param deriv (double)
 //' @return (double) gradiant of potential
 //' @export
@@ -225,11 +243,11 @@ NumericVector distance2segment(double x,
 double grad_potential_func (double alpha_t,
                             double beta,
                             double dist,
-                            double puiss,
+                            double power,
                             double deriv)
 {
-   return -puiss * beta * alpha_t * deriv * pow(dist, puiss - 1) * 
-          exp(-beta * pow(dist, puiss));
+   return -power * beta * alpha_t * deriv * pow(dist, power - 1) * 
+          exp(-beta * pow(dist, power));
 }
 
 //' @title alpha function

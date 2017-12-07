@@ -65,18 +65,31 @@ distance2segment <- function(x, y, x1, y1, x2, y2) {
     .Call('_cervideDS_distance2segment', PACKAGE = 'cervideDS', x, y, x1, y1, x2, y2)
 }
 
+#' @title potential function
+#' @description potential function
+#' 
+#' @param alpha_t (double)
+#' @param beta (double) spatial display of potential
+#' @param dist (double) distance 
+#' @param power (double)
+#' @return (double) potential
+#' @export
+potential_func <- function(alpha_t, beta, dist, power) {
+    .Call('_cervideDS_potential_func', PACKAGE = 'cervideDS', alpha_t, beta, dist, power)
+}
+
 #' @title gradient potential function
 #' @description Fonction gradient du potentiel précédent
 #' 
 #' @param alpha_t (double)
 #' @param beta (double) spatial display of potential
 #' @param dist (double) distance 
-#' @param puiss (double)
+#' @param power (double)
 #' @param deriv (double)
 #' @return (double) gradiant of potential
 #' @export
-grad_potential_func <- function(alpha_t, beta, dist, puiss, deriv) {
-    .Call('_cervideDS_grad_potential_func', PACKAGE = 'cervideDS', alpha_t, beta, dist, puiss, deriv)
+grad_potential_func <- function(alpha_t, beta, dist, power, deriv) {
+    .Call('_cervideDS_grad_potential_func', PACKAGE = 'cervideDS', alpha_t, beta, dist, power, deriv)
 }
 
 #' @title alpha function

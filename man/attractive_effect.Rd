@@ -4,15 +4,18 @@
 \alias{attractive_effect}
 \title{attractive effect}
 \usage{
-attractive_effect(nm_coords_rep, nv_coords_point, alpha1)
+attractive_effect(nm_coords_attrac, nv_coords_point, alpha1)
 }
 \arguments{
-\item{nm_coords_rep}{(NumericMatrix) all coordinates of attractive segment 
-Matrix N*4 (x1,y1,x2,y2)}
+\item{nm_coords_attrac}{(NumericMatrix) all coordinates of attractive 
+segment matrix N*4 (x1,y1,x2,y2)}
 
 \item{nv_coords_point}{(NumericVector) coordinates of point (x,y)}
 
 \item{alpha1}{(double) maximum potential amplitude}
+}
+\value{
+(NumericVector) attractive effect in x and y (['x'];['y'])
 }
 \description{
 Give effect on x and y of all attractive elements

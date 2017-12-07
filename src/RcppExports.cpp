@@ -66,18 +66,32 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// grad_potential_func
-double grad_potential_func(double alpha_t, double beta, double dist, double puiss, double deriv);
-RcppExport SEXP _cervideDS_grad_potential_func(SEXP alpha_tSEXP, SEXP betaSEXP, SEXP distSEXP, SEXP puissSEXP, SEXP derivSEXP) {
+// potential_func
+double potential_func(double alpha_t, double beta, double dist, double power);
+RcppExport SEXP _cervideDS_potential_func(SEXP alpha_tSEXP, SEXP betaSEXP, SEXP distSEXP, SEXP powerSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< double >::type alpha_t(alpha_tSEXP);
     Rcpp::traits::input_parameter< double >::type beta(betaSEXP);
     Rcpp::traits::input_parameter< double >::type dist(distSEXP);
-    Rcpp::traits::input_parameter< double >::type puiss(puissSEXP);
+    Rcpp::traits::input_parameter< double >::type power(powerSEXP);
+    rcpp_result_gen = Rcpp::wrap(potential_func(alpha_t, beta, dist, power));
+    return rcpp_result_gen;
+END_RCPP
+}
+// grad_potential_func
+double grad_potential_func(double alpha_t, double beta, double dist, double power, double deriv);
+RcppExport SEXP _cervideDS_grad_potential_func(SEXP alpha_tSEXP, SEXP betaSEXP, SEXP distSEXP, SEXP powerSEXP, SEXP derivSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type alpha_t(alpha_tSEXP);
+    Rcpp::traits::input_parameter< double >::type beta(betaSEXP);
+    Rcpp::traits::input_parameter< double >::type dist(distSEXP);
+    Rcpp::traits::input_parameter< double >::type power(powerSEXP);
     Rcpp::traits::input_parameter< double >::type deriv(derivSEXP);
-    rcpp_result_gen = Rcpp::wrap(grad_potential_func(alpha_t, beta, dist, puiss, deriv));
+    rcpp_result_gen = Rcpp::wrap(grad_potential_func(alpha_t, beta, dist, power, deriv));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -163,6 +177,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_cervideDS_distance2point", (DL_FUNC) &_cervideDS_distance2point, 4},
     {"_cervideDS_shorter_distance", (DL_FUNC) &_cervideDS_shorter_distance, 6},
     {"_cervideDS_distance2segment", (DL_FUNC) &_cervideDS_distance2segment, 6},
+    {"_cervideDS_potential_func", (DL_FUNC) &_cervideDS_potential_func, 4},
     {"_cervideDS_grad_potential_func", (DL_FUNC) &_cervideDS_grad_potential_func, 5},
     {"_cervideDS_alpha_func", (DL_FUNC) &_cervideDS_alpha_func, 4},
     {"_cervideDS_potential_effect", (DL_FUNC) &_cervideDS_potential_effect, 7},
