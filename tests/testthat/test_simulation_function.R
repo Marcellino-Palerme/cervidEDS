@@ -825,4 +825,23 @@ print(new_result)
     value_1 = diffusion(5,0.1)
     expect_true(value_1 != value_2)
   })
+
+  #------test next_coord-----#
+  #nominal case
+  test_that("test.next_coord_nominal", {
+    coord_attrac = matrix(c(5,5,10.5,9.5),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_repul = matrix(c(1.5,8,4.5,3),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_point = c("x" = 5, "y" = 8)
+    result = next_coord(coord_point,
+                        15,
+                        15,
+                        0.2,
+                        coord_attrac,
+                        6,
+                        coord_repul,
+                        6,
+                        0.1)
+    expect_true(result["x"] > 5, info = paste(result["x"], "inf or equal 5"))
+    expect_true(result["y"] < 8, info = paste(result["y"], "sup or equal 8"))
+  })
 },T)

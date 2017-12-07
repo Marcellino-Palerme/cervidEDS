@@ -82,4 +82,14 @@ NumericVector all_effect (NumericVector,
 
 double diffusion (double,
                   double);
+
+NumericVector next_coord (NumericVector,
+                          unsigned int,
+                          unsigned int,
+                          double,
+                          NumericMatrix,
+                          double,
+                          NumericMatrix,
+                          double,
+                          double);
 #endif /*SIMULATION_H*/

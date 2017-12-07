@@ -474,3 +474,52 @@ double diffusion (double d_sigma,
   
   return diffu;
 }
+
+//' @title next coord
+//' @description calculate next coordinates 
+//' 
+//' @param nv_coords_point (NumericVector) coordinates of point (x,y)
+//' @param ui_land_width (unsigned int) width of landscape.
+//' @param ui_land_heigth (unsigned int) heigth of landscape.
+//' @param d_sigma (double) repulsif effect adaptor
+//' @param nm_coords_attrac (NumericMatrix) all coordinates of attractive 
+//'                                         segment matrix N*4 (x1,y1,x2,y2)
+//' @param alpha_a (double) maximum potential amplitude of attrativity
+//' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
+//'                                      Matrix N*4 (x1,y1,x2,y2)
+//' @param alpha_r (double) maximum potential amplitude of repulsivity
+//' @param time_step (double) step of time
+//' @return (NumericVector) next coord in x and y (['x'];['y'])
+//' @export
+// [[Rcpp::export]]
+
+NumericVector next_coord (NumericVector nv_coords_point,
+                          unsigned int ui_width,
+                          unsigned int ui_heigth,
+                          double d_sigma,
+                          NumericMatrix nm_coords_attrac,
+                          double alpha_a,
+                          NumericMatrix nm_coords_rep,
+                          double alpha_r,
+                          double time_step)
+{
+  NumericVector effect;
+  NumericVector new_coord = NumericVector::create(_["x"] = 0,
+                                                  _["y"] = 0);
+  effect = all_effect (nv_coords_point,
+                       ui_width,
+                       ui_heigth,
+                       d_sigma,
+                       nm_coords_attrac,
+                       alpha_a,
+                       nm_coords_rep,
+                       alpha_r,
+                       time_step);
+
+  new_coord["x"] = nv_coords_point[0] + effect[0] + diffusion (d_sigma,
+                                                               time_step);
+  new_coord["y"] = nv_coords_point[1] + effect[1] + diffusion (d_sigma,
+                                                               time_step);
+
+  return new_coord;
+}

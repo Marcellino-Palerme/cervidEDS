@@ -178,3 +178,23 @@ diffusion <- function(d_sigma, time_step) {
     .Call('_cervideDS_diffusion', PACKAGE = 'cervideDS', d_sigma, time_step)
 }
 
+#' @title next coord
+#' @description calculate next coordinates 
+#' 
+#' @param nv_coords_point (NumericVector) coordinates of point (x,y)
+#' @param ui_land_width (unsigned int) width of landscape.
+#' @param ui_land_heigth (unsigned int) heigth of landscape.
+#' @param d_sigma (double) repulsif effect adaptor
+#' @param nm_coords_attrac (NumericMatrix) all coordinates of attractive 
+#'                                         segment matrix N*4 (x1,y1,x2,y2)
+#' @param alpha_a (double) maximum potential amplitude of attrativity
+#' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
+#'                                      Matrix N*4 (x1,y1,x2,y2)
+#' @param alpha_r (double) maximum potential amplitude of repulsivity
+#' @param time_step (double) step of time
+#' @return (NumericVector) next coord in x and y (['x'];['y'])
+#' @export
+next_coord <- function(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_attrac, alpha_a, nm_coords_rep, alpha_r, time_step) {
+    .Call('_cervideDS_next_coord', PACKAGE = 'cervideDS', nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_attrac, alpha_a, nm_coords_rep, alpha_r, time_step)
+}
+
