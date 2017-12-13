@@ -106,45 +106,56 @@ alpha_func <- function(alpha1, alpha2, alpha3, t) {
 
 #' @title effect potential
 #' 
-#' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
-#'                                      Matrix N*4 (x1,y1,x2,y2)
+#' @param nm_coords_element (NumericMatrix) all coordinates of segment 
+#'                                          Matrix N*7 (x1,y1,x2,y2,
+#'                                          alpha, beta, power) where
+#'                                          alpha_a (double) maximum potential 
+#'                                          amplitude,
+#'                                          beta (double) spatial display of 
+#'                                          potential,
+#'                                          and power (double)
 #' @param nv_coords_point (NumericVector) coordinates of point (x,y)
 #' @param bound (NumericVector) limit of effect potential ("min", "max")
-#' @param alpha (double) potential amplitude
-#' @param beta (double) spatial display of potential
-#' @param power (double)
 #' @param b_sum_sub (bool) use +gradiant(true) or -gradiant(false) (not effect 
 #'        on bound)
 #' @return (NumericVector) effect potential in x and y (['x'];['y'])
 #' @export
-potential_effect <- function(nm_coords_element, nv_coords_point, bound, alpha, beta, power, b_sum_sub) {
-    .Call('_cervideDS_potential_effect', PACKAGE = 'cervideDS', nm_coords_element, nv_coords_point, bound, alpha, beta, power, b_sum_sub)
+potential_effect <- function(nm_coords_element, nv_coords_point, bound, b_sum_sub) {
+    .Call('_cervideDS_potential_effect', PACKAGE = 'cervideDS', nm_coords_element, nv_coords_point, bound, b_sum_sub)
 }
 
 #' @title repulsive effect
 #' @description Give effect on x and y of all replusive elements 
 #' 
 #' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
-#'                                      Matrix N*4 (x1,y1,x2,y2)
+#'                                      Matrix N*7 (x1,y1,x2,y2,
+#'                                      alpha, beta, power) where
+#'                                         alpha_a (double) maximum potential 
+#'                                         amplitude of repulsivity
+#'                                         beta (double) spatial display of 
+#'                                         potential, and power (double)
 #' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-#' @param alpha1 (double) maximum potential amplitude
 #' @return (NumericVector) repulsif effect in x and y (['x'];['y'])
 #' @export
-repulsive_effect <- function(nm_coords_rep, nv_coords_point, alpha1) {
-    .Call('_cervideDS_repulsive_effect', PACKAGE = 'cervideDS', nm_coords_rep, nv_coords_point, alpha1)
+repulsive_effect <- function(nm_coords_rep, nv_coords_point) {
+    .Call('_cervideDS_repulsive_effect', PACKAGE = 'cervideDS', nm_coords_rep, nv_coords_point)
 }
 
 #' @title attractive effect
 #' @description Give effect on x and y of all attractive elements 
 #' 
 #' @param nm_coords_attrac (NumericMatrix) all coordinates of attractive 
-#'                                         segment matrix N*4 (x1,y1,x2,y2)
+#'                                         segment matrix N*7 (x1,y1,x2,y2,
+#'                                         alpha, beta, power) where
+#'                                         alpha_a (double) maximum potential 
+#'                                         amplitude of attractivity
+#'                                         beta (double) spatial display of 
+#'                                         potential, and power (double)
 #' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-#' @param alpha1 (double) maximum potential amplitude
 #' @return (NumericVector) attractive effect in x and y (['x'];['y'])
 #' @export
-attractive_effect <- function(nm_coords_attrac, nv_coords_point, alpha1) {
-    .Call('_cervideDS_attractive_effect', PACKAGE = 'cervideDS', nm_coords_attrac, nv_coords_point, alpha1)
+attractive_effect <- function(nm_coords_attrac, nv_coords_point) {
+    .Call('_cervideDS_attractive_effect', PACKAGE = 'cervideDS', nm_coords_attrac, nv_coords_point)
 }
 
 #' @title all effect
@@ -155,16 +166,24 @@ attractive_effect <- function(nm_coords_attrac, nv_coords_point, alpha1) {
 #' @param ui_land_heigth (unsigned int) heigth of landscape.
 #' @param d_sigma (double) repulsif effect adaptor
 #' @param nm_coords_attrac (NumericMatrix) all coordinates of attractive 
-#'                                         segment matrix N*4 (x1,y1,x2,y2)
-#' @param alpha_a (double) maximum potential amplitude of attrativity
+#'                                         segment matrix N*7 (x1,y1,x2,y2,
+#'                                         alpha, beta, power) where
+#'                                         alpha_a (double) maximum potential 
+#'                                         amplitude of attractivity
+#'                                         beta (double) spatial display of 
+#'                                         potential, and power (double)
 #' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
-#'                                      Matrix N*4 (x1,y1,x2,y2)
-#' @param alpha_r (double) maximum potential amplitude of repulsivity
+#'                                      Matrix N*7 (x1,y1,x2,y2,
+#'                                      alpha, beta, power) where
+#'                                         alpha_a (double) maximum potential 
+#'                                         amplitude of repulsivity
+#'                                         beta (double) spatial display of 
+#'                                         potential, and power (double)
 #' @param time_step (double) step of time
 #' @return (NumericVector) effect in x and y (['x'];['y'])
 #' @export
-all_effect <- function(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_attrac, alpha_a, nm_coords_rep, alpha_r, time_step) {
-    .Call('_cervideDS_all_effect', PACKAGE = 'cervideDS', nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_attrac, alpha_a, nm_coords_rep, alpha_r, time_step)
+all_effect <- function(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_attrac, nm_coords_rep, time_step) {
+    .Call('_cervideDS_all_effect', PACKAGE = 'cervideDS', nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_attrac, nm_coords_rep, time_step)
 }
 
 #' @title diffusion
@@ -186,15 +205,23 @@ diffusion <- function(d_sigma, time_step) {
 #' @param ui_land_heigth (unsigned int) heigth of landscape.
 #' @param d_sigma (double) repulsif effect adaptor
 #' @param nm_coords_attrac (NumericMatrix) all coordinates of attractive 
-#'                                         segment matrix N*4 (x1,y1,x2,y2)
-#' @param alpha_a (double) maximum potential amplitude of attrativity
+#'                                         segment matrix N*7 (x1,y1,x2,y2,
+#'                                         alpha, beta, power) where
+#'                                         alpha_a (double) maximum potential 
+#'                                         amplitude of repulsivity
+#'                                         beta (double) spatial display of 
+#'                                         potential, and power (double)
 #' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
-#'                                      Matrix N*4 (x1,y1,x2,y2)
-#' @param alpha_r (double) maximum potential amplitude of repulsivity
+#'                                      Matrix N*7 (x1,y1,x2,y2,
+#'                                      alpha, beta, power) where
+#'                                         alpha_a (double) maximum potential 
+#'                                         amplitude of attractivity
+#'                                         beta (double) spatial display of 
+#'                                         potential, and power (double)
 #' @param time_step (double) step of time
 #' @return (NumericVector) next coord in x and y (['x'];['y'])
 #' @export
-next_coord <- function(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_attrac, alpha_a, nm_coords_rep, alpha_r, time_step) {
-    .Call('_cervideDS_next_coord', PACKAGE = 'cervideDS', nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_attrac, alpha_a, nm_coords_rep, alpha_r, time_step)
+next_coord <- function(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_attrac, nm_coords_rep, time_step) {
+    .Call('_cervideDS_next_coord', PACKAGE = 'cervideDS', nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_attrac, nm_coords_rep, time_step)
 }
 

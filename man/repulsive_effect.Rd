@@ -4,15 +4,18 @@
 \alias{repulsive_effect}
 \title{repulsive effect}
 \usage{
-repulsive_effect(nm_coords_rep, nv_coords_point, alpha1)
+repulsive_effect(nm_coords_rep, nv_coords_point)
 }
 \arguments{
 \item{nm_coords_rep}{(NumericMatrix) all coordinates of repulsif segment 
-Matrix N*4 (x1,y1,x2,y2)}
+Matrix N*7 (x1,y1,x2,y2,
+alpha, beta, power) where
+   alpha_a (double) maximum potential 
+   amplitude of repulsivity
+   beta (double) spatial display of 
+   potential, and power (double)}
 
 \item{nv_coords_point}{(NumericVector) coordinates of point (x,y)}
-
-\item{alpha1}{(double) maximum potential amplitude}
 }
 \value{
 (NumericVector) repulsif effect in x and y (['x'];['y'])

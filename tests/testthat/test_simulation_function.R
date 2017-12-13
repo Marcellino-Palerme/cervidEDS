@@ -579,61 +579,65 @@ with_reporter("junit",{
   #------test repulsive_effect-----#
   #nominal case
   test_that("test.repulsive_effect_nominal",{
-    coord_element = matrix(c(0,0,30,0,0,30,0,0),ncol = 4,nrow = 2, byrow = TRUE)
+    coord_element = matrix(c(0,0,30,0,4,0.1,2,
+                             0,30,0,0,4,0.1,2),ncol = 7,nrow = 2, byrow = TRUE)
     coord_point = c("x" = 15, "y" = 15)
-    result = repulsive_effect(coord_element, coord_point, 4)
+    result = repulsive_effect(coord_element, coord_point)
     expect_equal(as.double(result["x"]), as.double(result["y"]))
     expect_true(as.double(result["x"]) > 0)
   })
   #effect abort case
   test_that("test.repulsive_effect_abort",{
-    coord_element = matrix(c(0,0,30,0,0,30,0,0,30,0,30,30,30,30,0,30,0,30,0,0),
-                           ncol = 4,nrow = 4, byrow = TRUE)
+    coord_element = matrix(c(0,0,30,0,4,0.1,2,
+                             0,30,0,0,4,0.1,2,
+                             30,0,30,30,4,0.1,2,
+                             30,30,0,30,4,0.1,2,
+                             0,30,0,0,4,0.1,2), ncol = 7,nrow = 4, byrow = TRUE)
     coord_point = c("x" = 15, "y" = 15)
-    result = repulsive_effect(coord_element, coord_point, 4)
+    result = repulsive_effect(coord_element, coord_point)
     expect_equal(as.double(result["x"]), as.double(result["y"]))
     expect_equal(as.double(result["x"]), 0)
   })
   #to up case
   test_that("test.repulsive_effect_up",{
-    coord_element = matrix(c(0,0,30,0),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_element = matrix(c(0,0,30,0,4,0.1,2),ncol = 7,nrow = 1, byrow = TRUE)
     coord_point = c("x" = 4, "y" = 15)
-    result = repulsive_effect(coord_element, coord_point, 4)
+    result = repulsive_effect(coord_element, coord_point)
     expect_equal(as.double(result["x"]), 0)
     expect_true(as.double(result["y"]) > 0)
 print(result)
     # effect grow up if reduce distance
     coord_point = c("x" = 4, "y" = 1)
-    new_result = repulsive_effect(coord_element, coord_point, 4)
+    new_result = repulsive_effect(coord_element, coord_point)
     expect_equal(as.double(new_result["x"]), 0)
     expect_true(as.double(new_result["y"]) > 0)
     expect_true(as.double(new_result["y"]) > as.double(result["y"]))
 print(new_result)
     # effect reduce if grow up distance
     coord_point = c("x" = 4, "y" = 25)
-    new_result = repulsive_effect(coord_element, coord_point, 4)
+    new_result = repulsive_effect(coord_element, coord_point)
     expect_equal(as.double(new_result["x"]), 0)
     expect_true(as.double(new_result["y"]) > 0)
     expect_true(as.double(new_result["y"]) < as.double(result["y"]))
   })
   #to down case
   test_that("test.repulsive_effect_down",{
-    coord_element = matrix(c(0,30,30,30),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_element = matrix(c(0,30,30,30,4,0.1,2),ncol = 7,nrow = 1, byrow = TRUE)
     coord_point = c("x" = 4, "y" = 15)
-    result = repulsive_effect(coord_element, coord_point, 4)
+    result = repulsive_effect(coord_element, coord_point)
     expect_equal(as.double(result["x"]), 0)
     expect_true(as.double(result["y"]) < 0)
     
     # effect grow up if reduce distance
     coord_point = c("x" = 4, "y" = 25)
-    new_result = repulsive_effect(coord_element, coord_point, 4)
+    new_result = repulsive_effect(coord_element, coord_point)
     expect_equal(as.double(new_result["x"]), 0)
     expect_true(as.double(new_result["y"]) < 0)
     expect_true(as.double(new_result["y"]) < as.double(result["y"]))
     
     # effect reduce if grow up distance
     coord_point = c("x" = 4, "y" = 7)
-    new_result = repulsive_effect(coord_element, coord_point, 4)
+    new_result = repulsive_effect(coord_element, coord_point)
     expect_equal(as.double(new_result["x"]), 0)
     expect_true(as.double(new_result["y"]) < 0)
     expect_true(as.double(new_result["y"]) > as.double(result["y"]))
@@ -641,22 +645,22 @@ print(new_result)
 
   #to right case
   test_that("test.repulsive_effect_right",{
-    coord_element = matrix(c(0,30,0,0),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_element = matrix(c(0,30,0,0,4,0.1,2),ncol = 7,nrow = 1, byrow = TRUE)
     coord_point = c("x" = 9, "y" = 15)
-    result = repulsive_effect(coord_element, coord_point, 4)
+    result = repulsive_effect(coord_element, coord_point)
     expect_equal(as.double(result["y"]), 0)
     expect_true(as.double(result["x"]) > 0)
     
     # effect grow up if reduce distance
     coord_point = c("x" = 4, "y" = 15)
-    new_result = repulsive_effect(coord_element, coord_point, 4)
+    new_result = repulsive_effect(coord_element, coord_point)
     expect_equal(as.double(new_result["y"]), 0)
     expect_true(as.double(new_result["x"]) > 0)
     expect_true(as.double(new_result["x"]) > as.double(result["x"]))
     
     # effect reduce if grow up distance
     coord_point = c("x" = 14, "y" = 7)
-    new_result = repulsive_effect(coord_element, coord_point, 4)
+    new_result = repulsive_effect(coord_element, coord_point)
     expect_equal(as.double(new_result["y"]), 0)
     expect_true(as.double(new_result["x"]) > 0)
     expect_true(as.double(new_result["x"]) < as.double(result["x"]))
@@ -664,24 +668,35 @@ print(new_result)
 
   #to mix case
   test_that("test.repulsive_effect_mix",{
-    coord_element = matrix(c(5,5,10.5,9.5),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_element = matrix(c(5,5,10.5,9.5,4,0.1,2),ncol = 7,
+                                                   nrow = 1,
+                                                   byrow = TRUE)
     coord_point = c("x" = 3, "y" = 2)
-    result = repulsive_effect(coord_element, coord_point, 4)
+    result = repulsive_effect(coord_element, coord_point)
     expect_true(as.double(result["y"]) < 0)
     expect_true(as.double(result["x"]) < 0)
     
     coord_point = c("x" = 7, "y" = 10.5)
-    new_result = repulsive_effect(coord_element, coord_point, 0.2)
+    coord_element = matrix(c(5,5,10.5,9.5,0.2,0.1,2),ncol = 7,
+                                                     nrow = 1,
+                                                     byrow = TRUE)
+    new_result = repulsive_effect(coord_element, coord_point)
     expect_true(as.double(new_result["x"]) < 0)
     expect_true(as.double(new_result["y"]) > 0)
     
     coord_point = c("x" = 9, "y" = 7)
-    new_result = repulsive_effect(coord_element, coord_point, 48)
+    coord_element = matrix(c(5,5,10.5,9.5,48,0.1,2),ncol = 7,
+                                                    nrow = 1,
+                                                    byrow = TRUE)
+    new_result = repulsive_effect(coord_element, coord_point)
     expect_true(as.double(new_result["x"]) > 0)
     expect_true(as.double(new_result["y"]) < 0)
 
     coord_point = c("x" = 12.5, "y" = 10)
-    new_result = repulsive_effect(coord_element, coord_point, 78)
+    coord_element = matrix(c(5,5,10.5,9.5,78,0.1,2),ncol = 7,
+                                                    nrow = 1,
+                                                    byrow = TRUE)
+    new_result = repulsive_effect(coord_element, coord_point)
     expect_true(as.double(new_result["x"]) > 0)
     expect_true(as.double(new_result["y"]) > 0)
   })
@@ -690,68 +705,73 @@ print(new_result)
   test_that("test.repulsive_effect_no_element",{
     coord_element = matrix()
     coord_point = c("x" = 15, "y" = 15)
-    result = repulsive_effect(coord_element, coord_point, 4)
+    result = repulsive_effect(coord_element, coord_point)
     expect_equal(as.double(result["x"]), as.double(result["y"]))
     expect_equal(as.double(result["x"]), 0)
   })
   #------test attractive_effect-----#
   #nominal case
   test_that("test.attractive_effect_nominal",{
-    coord_element = matrix(c(0,0,30,0,0,30,0,0),ncol = 4,nrow = 2, byrow = TRUE)
+    coord_element = matrix(c(0,0,30,0,4,0.1,2,
+                             0,30,0,0,4,0.1,2),ncol = 7,nrow = 2, byrow = TRUE)
     coord_point = c("x" = 15, "y" = 15)
-    result = attractive_effect(coord_element, coord_point, 4)
+    result = attractive_effect(coord_element, coord_point)
     expect_equal(as.double(result["x"]), as.double(result["y"]))
     expect_true(as.double(result["x"]) < 0)
   })
   #effect abort case
   test_that("test.attractive_effect_abort",{
-    coord_element = matrix(c(0,0,30,0,0,30,0,0,30,0,30,30,30,30,0,30,0,30,0,0),
-                           ncol = 4,nrow = 4, byrow = TRUE)
+    coord_element = matrix(c(0,0,30,0,4,0.1,2,
+                             0,30,0,0,4,0.1,2,
+                             30,0,30,30,4,0.1,2,
+                             30,30,0,30,4,0.1,2,
+                             0,30,0,0,4,0.1,2),
+                           ncol = 7,nrow = 4, byrow = TRUE)
     coord_point = c("x" = 15, "y" = 15)
-    result = attractive_effect(coord_element, coord_point, 4)
+    result = attractive_effect(coord_element, coord_point)
     expect_equal(as.double(result["x"]), as.double(result["y"]))
     expect_equal(as.double(result["x"]), 0)
   })
   #to down case
   test_that("test.attractive_effect_down",{
-    coord_element = matrix(c(0,0,30,0),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_element = matrix(c(0,0,30,0,4,0.1,2),ncol = 7,nrow = 1, byrow = TRUE)
     coord_point = c("x" = 4, "y" = 15)
-    result = attractive_effect(coord_element, coord_point, 4)
+    result = attractive_effect(coord_element, coord_point)
     expect_equal(as.double(result["x"]), 0)
     expect_true(as.double(result["y"]) < 0)
     print(result)
     # effect grow up if reduce distance
     coord_point = c("x" = 4, "y" = 1)
-    new_result = attractive_effect(coord_element, coord_point, 4)
+    new_result = attractive_effect(coord_element, coord_point)
     expect_equal(as.double(new_result["x"]), 0)
     expect_true(as.double(new_result["y"]) < 0)
     expect_true(as.double(new_result["y"]) < as.double(result["y"]))
     print(new_result)
     # effect reduce if grow up distance
     coord_point = c("x" = 4, "y" = 25)
-    new_result = attractive_effect(coord_element, coord_point, 4)
+    new_result = attractive_effect(coord_element, coord_point)
     expect_equal(as.double(new_result["x"]), 0)
     expect_true(as.double(new_result["y"]) < 0)
     expect_true(as.double(new_result["y"]) > as.double(result["y"]))
   })
   #to up case
   test_that("test.attractive_effect_up",{
-    coord_element = matrix(c(0,30,30,30),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_element = matrix(c(0,30,30,30,4,0.1,2),ncol = 7,nrow = 1, byrow = TRUE)
     coord_point = c("x" = 4, "y" = 15)
-    result = attractive_effect(coord_element, coord_point, 4)
+    result = attractive_effect(coord_element, coord_point)
     expect_equal(as.double(result["x"]), 0)
     expect_true(as.double(result["y"]) > 0)
     
     # effect grow up if reduce distance
     coord_point = c("x" = 4, "y" = 25)
-    new_result = attractive_effect(coord_element, coord_point, 4)
+    new_result = attractive_effect(coord_element, coord_point)
     expect_equal(as.double(new_result["x"]), 0)
     expect_true(as.double(new_result["y"]) > 0)
     expect_true(as.double(new_result["y"]) > as.double(result["y"]))
     
     # effect reduce if grow up distance
     coord_point = c("x" = 4, "y" = 7)
-    new_result = attractive_effect(coord_element, coord_point, 4)
+    new_result = attractive_effect(coord_element, coord_point)
     expect_equal(as.double(new_result["x"]), 0)
     expect_true(as.double(new_result["y"]) > 0)
     expect_true(as.double(new_result["y"]) < as.double(result["y"]))
@@ -759,22 +779,22 @@ print(new_result)
   
   #to left case
   test_that("test.attractive_effect_left",{
-    coord_element = matrix(c(0,30,0,0),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_element = matrix(c(0,30,0,0,4,0.1,2),ncol = 7,nrow = 1, byrow = TRUE)
     coord_point = c("x" = 9, "y" = 15)
-    result = attractive_effect(coord_element, coord_point, 4)
+    result = attractive_effect(coord_element, coord_point)
     expect_equal(as.double(result["y"]), 0)
     expect_true(as.double(result["x"]) < 0)
     
     # effect grow up if reduce distance
     coord_point = c("x" = 4, "y" = 15)
-    new_result = attractive_effect(coord_element, coord_point, 4)
+    new_result = attractive_effect(coord_element, coord_point)
     expect_equal(as.double(new_result["y"]), 0)
     expect_true(as.double(new_result["x"]) < 0)
     expect_true(as.double(new_result["x"]) < as.double(result["x"]))
     
     # effect reduce if grow up distance
     coord_point = c("x" = 14, "y" = 7)
-    new_result = attractive_effect(coord_element, coord_point, 4)
+    new_result = attractive_effect(coord_element, coord_point)
     expect_equal(as.double(new_result["y"]), 0)
     expect_true(as.double(new_result["x"]) < 0)
     expect_true(as.double(new_result["x"]) > as.double(result["x"]))
@@ -782,24 +802,31 @@ print(new_result)
   
   #to mix case
   test_that("test.attractive_effect_mix",{
-    coord_element = matrix(c(5,5,10.5,9.5),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_element = matrix(c(5,5,10.5,9.5,4,0.1,2),
+                           ncol = 7,nrow = 1, byrow = TRUE)
     coord_point = c("x" = 3, "y" = 2)
-    result = attractive_effect(coord_element, coord_point, 4)
+    result = attractive_effect(coord_element, coord_point)
     expect_true(as.double(result["y"]) > 0)
     expect_true(as.double(result["x"]) > 0)
     
     coord_point = c("x" = 7, "y" = 10.5)
-    new_result = attractive_effect(coord_element, coord_point, 0.2)
+    coord_element = matrix(c(5,5,10.5,9.5,0.2,0.1,2),
+                           ncol = 7,nrow = 1, byrow = TRUE)
+    new_result = attractive_effect(coord_element, coord_point)
     expect_true(as.double(new_result["x"]) > 0)
     expect_true(as.double(new_result["y"]) < 0)
     
     coord_point = c("x" = 9, "y" = 7)
-    new_result = attractive_effect(coord_element, coord_point, 48)
+    coord_element = matrix(c(5,5,10.5,9.5,48,0.1,2),
+                           ncol = 7,nrow = 1, byrow = TRUE)
+    new_result = attractive_effect(coord_element, coord_point)
     expect_true(as.double(new_result["x"]) < 0)
     expect_true(as.double(new_result["y"]) > 0)
     
     coord_point = c("x" = 12.5, "y" = 10)
-    new_result = attractive_effect(coord_element, coord_point, 78)
+    coord_element = matrix(c(5,5,10.5,9.5,78,0.1,2),
+                           ncol = 7,nrow = 1, byrow = TRUE)
+    new_result = attractive_effect(coord_element, coord_point)
     expect_true(as.double(new_result["x"]) < 0)
     expect_true(as.double(new_result["y"]) < 0)
   })
@@ -808,7 +835,7 @@ print(new_result)
   test_that("test.attractive_effect_no_element",{
     coord_element = matrix()
     coord_point = c("x" = 44, "y" = 10.21)
-    result = attractive_effect(coord_element, coord_point, 4)
+    result = attractive_effect(coord_element, coord_point)
     expect_equal(as.double(result["x"]), as.double(result["y"]))
     expect_equal(as.double(result["x"]), 0)
   })
@@ -816,17 +843,17 @@ print(new_result)
   #------test all_effect-----#
   #nominal case
   test_that("test.all_effect_nominal", {
-    coord_attrac = matrix(c(5,5,10.5,9.5),ncol = 4,nrow = 1, byrow = TRUE)
-    coord_repul = matrix(c(1.5,8,4.5,3),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_attrac = matrix(c(5,5,10.5,9.5,6,0.1,2),
+                          ncol = 7,nrow = 1, byrow = TRUE)
+    coord_repul = matrix(c(1.5,8,4.5,3,6,0.1,2),
+                         ncol = 7,nrow = 1, byrow = TRUE)
     coord_point = c("x" = 5, "y" = 8)
     result = all_effect(coord_point,
                         15,
                         15,
                         0.2,
                         coord_attrac,
-                        6,
                         coord_repul,
-                        6,
                         0.1)
     expect_true(result["x"] > 0, info = paste(result["x"], "inf or equal 0"))
     expect_true(result["y"] < 0, info = paste(result["y"], "sup or equal 0"))
@@ -846,17 +873,17 @@ print(new_result)
   #------test next_coord-----#
   #nominal case
   test_that("test.next_coord_nominal", {
-    coord_attrac = matrix(c(5,5,10.5,9.5),ncol = 4,nrow = 1, byrow = TRUE)
-    coord_repul = matrix(c(1.5,8,4.5,3),ncol = 4,nrow = 1, byrow = TRUE)
+    coord_attrac = matrix(c(5,5,10.5,9.5,6,0.1,2),
+                          ncol = 7,nrow = 1, byrow = TRUE)
+    coord_repul = matrix(c(1.5,8,4.5,3,6,0.1,2),
+                         ncol = 7,nrow = 1, byrow = TRUE)
     coord_point = c("x" = 5, "y" = 8)
     result = next_coord(coord_point,
                         15,
                         15,
                         0.2,
                         coord_attrac,
-                        6,
                         coord_repul,
-                        6,
                         0.1)
     expect_true(result["x"] > 5, info = paste(result["x"], "inf or equal 5"))
     expect_true(result["y"] < 8, info = paste(result["y"], "sup or equal 8"))

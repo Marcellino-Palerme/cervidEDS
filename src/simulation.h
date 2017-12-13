@@ -57,27 +57,20 @@ double alpha_func(double,
 NumericVector potential_effect (NumericMatrix,
                                 NumericVector,
                                 NumericVector,
-                                double,
-                                double,
-                                double,
                                 bool);
 
 NumericVector repulsive_effect (NumericMatrix,
-                                NumericVector,
-                                double);
+                                NumericVector);
 
 NumericVector attractive_effect (NumericMatrix,
-                                 NumericVector,
-                                 double);
+                                 NumericVector);
 
 NumericVector all_effect (NumericVector,
                           unsigned int,
                           unsigned int,
                           double,
                           NumericMatrix,
-                          double,
                           NumericMatrix,
-                          double,
                           double);
 
 double diffusion (double,
@@ -88,8 +81,6 @@ NumericVector next_coord (NumericVector,
                           unsigned int,
                           double,
                           NumericMatrix,
-                          double,
                           NumericMatrix,
-                          double,
                           double);
 #endif /*SIMULATION_H*/
