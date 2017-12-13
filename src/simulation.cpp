@@ -1,6 +1,5 @@
 #include "simulation.h"
-#include <cstdio>
-
+#include <stdio.h>
 //'@title Border effect
 //'@description This function calculate the effect of border on mouvement
 //' 
@@ -303,6 +302,11 @@ NumericVector potential_effect (NumericMatrix nm_coords_element,
     sum_sub = 1;
   }
   
+  // Verify if element is correct
+  if (nm_coords_element.ncol() != 4)
+  {
+    return effect;
+  }
   for (int i = 0; i < nm_coords_element.nrow(); i++)
   {
     // Calculate distant point to segment and derivate in x and y

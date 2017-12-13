@@ -685,7 +685,15 @@ print(new_result)
     expect_true(as.double(new_result["x"]) > 0)
     expect_true(as.double(new_result["y"]) > 0)
   })
-  
+
+  #no element case
+  test_that("test.repulsive_effect_no_element",{
+    coord_element = matrix()
+    coord_point = c("x" = 15, "y" = 15)
+    result = repulsive_effect(coord_element, coord_point, 4)
+    expect_equal(as.double(result["x"]), as.double(result["y"]))
+    expect_equal(as.double(result["x"]), 0)
+  })
   #------test attractive_effect-----#
   #nominal case
   test_that("test.attractive_effect_nominal",{
@@ -796,6 +804,15 @@ print(new_result)
     expect_true(as.double(new_result["y"]) < 0)
   })
 
+  #no element case
+  test_that("test.attractive_effect_no_element",{
+    coord_element = matrix()
+    coord_point = c("x" = 44, "y" = 10.21)
+    result = attractive_effect(coord_element, coord_point, 4)
+    expect_equal(as.double(result["x"]), as.double(result["y"]))
+    expect_equal(as.double(result["x"]), 0)
+  })
+  
   #------test all_effect-----#
   #nominal case
   test_that("test.all_effect_nominal", {
