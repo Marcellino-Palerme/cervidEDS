@@ -502,6 +502,44 @@ NumericVector attractive_effect (NumericMatrix nm_coords_attrac,
                           true);
 }
 
+//' @title all value
+//' @description Give complete potential value of landscape on x and y
+//' 
+//' @param nv_coords_point (NumericVector) coordinates of point (x,y)
+//' @param nm_coords_attrac (NumericMatrix) all coordinates of attractive 
+//'                                         segment matrix N*7 (x1,y1,x2,y2,
+//'                                         alpha, beta, power) where
+//'                                         alpha_a (double) maximum potential 
+//'                                         amplitude of attractivity
+//'                                         beta (double) spatial display of 
+//'                                         potential, and power (double)
+//' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
+//'                                      Matrix N*7 (x1,y1,x2,y2,
+//'                                      alpha, beta, power) where
+//'                                         alpha_a (double) maximum potential 
+//'                                         amplitude of repulsivity
+//'                                         beta (double) spatial display of 
+//'                                         potential, and power (double)
+//' @return (double) potential value of landscape on x and y
+//' @export
+// [[Rcpp::export]]
+double all_value (NumericVector nv_coords_point,
+                  NumericMatrix nm_coords_attrac,
+                  NumericMatrix nm_coords_rep)
+{
+  double value;
+
+  // repulsive value
+  value = repulsive_value (nm_coords_rep,
+                           nv_coords_point);
+  
+  // attarctive effect
+  value = value + attractive_value (nm_coords_attrac,
+                                    nv_coords_point);
+
+  return value;
+}
+
 //' @title all effect
 //' @description Give complete effect of landscape on x and y
 //' 

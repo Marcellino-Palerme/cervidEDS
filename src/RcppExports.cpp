@@ -185,6 +185,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// all_value
+double all_value(NumericVector nv_coords_point, NumericMatrix nm_coords_attrac, NumericMatrix nm_coords_rep);
+RcppExport SEXP _cervideDS_all_value(SEXP nv_coords_pointSEXP, SEXP nm_coords_attracSEXP, SEXP nm_coords_repSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type nv_coords_point(nv_coords_pointSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type nm_coords_attrac(nm_coords_attracSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type nm_coords_rep(nm_coords_repSEXP);
+    rcpp_result_gen = Rcpp::wrap(all_value(nv_coords_point, nm_coords_attrac, nm_coords_rep));
+    return rcpp_result_gen;
+END_RCPP
+}
 // all_effect
 NumericVector all_effect(NumericVector nv_coords_point, unsigned int ui_width, unsigned int ui_heigth, double d_sigma, NumericMatrix nm_coords_attrac, NumericMatrix nm_coords_rep, double time_step);
 RcppExport SEXP _cervideDS_all_effect(SEXP nv_coords_pointSEXP, SEXP ui_widthSEXP, SEXP ui_heigthSEXP, SEXP d_sigmaSEXP, SEXP nm_coords_attracSEXP, SEXP nm_coords_repSEXP, SEXP time_stepSEXP) {
@@ -246,6 +259,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_cervideDS_repulsive_effect", (DL_FUNC) &_cervideDS_repulsive_effect, 2},
     {"_cervideDS_attractive_value", (DL_FUNC) &_cervideDS_attractive_value, 2},
     {"_cervideDS_attractive_effect", (DL_FUNC) &_cervideDS_attractive_effect, 2},
+    {"_cervideDS_all_value", (DL_FUNC) &_cervideDS_all_value, 3},
     {"_cervideDS_all_effect", (DL_FUNC) &_cervideDS_all_effect, 7},
     {"_cervideDS_diffusion", (DL_FUNC) &_cervideDS_diffusion, 2},
     {"_cervideDS_next_coord", (DL_FUNC) &_cervideDS_next_coord, 7},

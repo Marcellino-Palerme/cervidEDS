@@ -901,7 +901,7 @@ print(new_result)
 
     coord_repul = matrix(c(5,5,10.5,9.5,0.4,1,3,
                            8,4,0,1,9,0.74,1),
-                         ncol = 7,nrow = 1, byrow = TRUE)
+                         ncol = 7,nrow = 2, byrow = TRUE)
     coord_point = c("x" = 2, "y" = 4)
     new_result = repulsive_value(coord_repul,
                                  coord_point)
@@ -911,7 +911,7 @@ print(new_result)
 
   #------test attractive value-----#
   #nominal case
-  test_that("test.attractive_value", {
+  test_that("test.attractive_value_nominal", {
     coord_attr = matrix(c(5,5,10.5,9.5,0.4,1,3),
                          ncol = 7,nrow = 1, byrow = TRUE)
     coord_point = c("x" = 2, "y" = 4)
@@ -921,10 +921,31 @@ print(new_result)
 
     coord_attr = matrix(c(5,5,10.5,9.5,0.4,1,3,
                            8,4,0,1,9,0.74,1),
-                         ncol = 7,nrow = 1, byrow = TRUE)
+                         ncol = 7,nrow = 2, byrow = TRUE)
     coord_point = c("x" = 2, "y" = 4)
     new_result = attractive_value(coord_attr,
                                   coord_point)
+    expect_lt(new_result, 0)
+    expect_lt(new_result, result)
+  })
+
+  #------test all value-----#
+  #nominal case
+  test_that("test.all_value_nominal", {
+    coord_repul = matrix(c(1,3,2,1,0.4,1,3),
+                         ncol = 7,nrow = 1, byrow = TRUE)
+    coord_attr = matrix(c(2,3,4,1,0.4,1,3),
+                        ncol = 7,nrow = 1, byrow = TRUE)
+    coord_point = c("x" = 2.5, "y" = 1.5)
+    result = all_value(coord_point,
+                       coord_attr,
+                       coord_repul)
+    expect_gt(result, 0)
+    
+    coord_point = c("x" = 2, "y" = 4)
+    new_result = all_value(coord_point,
+                           coord_attr,
+                           coord_repul)
     expect_lt(new_result, 0)
     expect_lt(new_result, result)
   })

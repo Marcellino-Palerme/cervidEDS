@@ -212,6 +212,30 @@ attractive_effect <- function(nm_coords_attrac, nv_coords_point) {
     .Call('_cervideDS_attractive_effect', PACKAGE = 'cervideDS', nm_coords_attrac, nv_coords_point)
 }
 
+#' @title all value
+#' @description Give complete potential value of landscape on x and y
+#' 
+#' @param nv_coords_point (NumericVector) coordinates of point (x,y)
+#' @param nm_coords_attrac (NumericMatrix) all coordinates of attractive 
+#'                                         segment matrix N*7 (x1,y1,x2,y2,
+#'                                         alpha, beta, power) where
+#'                                         alpha_a (double) maximum potential 
+#'                                         amplitude of attractivity
+#'                                         beta (double) spatial display of 
+#'                                         potential, and power (double)
+#' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
+#'                                      Matrix N*7 (x1,y1,x2,y2,
+#'                                      alpha, beta, power) where
+#'                                         alpha_a (double) maximum potential 
+#'                                         amplitude of repulsivity
+#'                                         beta (double) spatial display of 
+#'                                         potential, and power (double)
+#' @return (double) potential value of landscape on x and y
+#' @export
+all_value <- function(nv_coords_point, nm_coords_attrac, nm_coords_rep) {
+    .Call('_cervideDS_all_value', PACKAGE = 'cervideDS', nv_coords_point, nm_coords_attrac, nm_coords_rep)
+}
+
 #' @title all effect
 #' @description Give complete effect of landscape on x and y
 #' 

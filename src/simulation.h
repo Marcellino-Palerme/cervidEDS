@@ -76,6 +76,10 @@ double attractive_value (NumericMatrix,
 NumericVector attractive_effect (NumericMatrix,
                                  NumericVector);
 
+double all_value (NumericVector,
+                  NumericMatrix,
+                  NumericMatrix);
+
 NumericVector all_effect (NumericVector,
                           unsigned int,
                           unsigned int,
