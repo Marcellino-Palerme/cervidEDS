@@ -270,6 +270,65 @@ double alpha_func(double alpha1,
   return alpha1 * exp(-0.5 * pow(log(t / alpha3) / alpha2, 2));
 }
 
+//' @title value potential
+//' 
+//' @param nm_coords_element (NumericMatrix) all coordinates of segment 
+//'                                          Matrix N*7 (x1,y1,x2,y2,
+//'                                          alpha, beta, power) where
+//'                                          alpha_a (double) maximum potential 
+//'                                          amplitude,
+//'                                          beta (double) spatial display of 
+//'                                          potential,
+//'                                          and power (double)
+//' @param nv_coords_point (NumericVector) coordinates of point (x,y)
+//' @param bound (NumericVector) limit of value potential ("min", "max")
+//' @param b_sum_sub (bool) use sum potential(true) or sub potential(false) 
+//'        (not effect on bound)
+//' @return (double) value potential
+//' @export
+// [[Rcpp::export]]
+double potential_value (NumericMatrix nm_coords_element,
+                        NumericVector nv_coords_point,
+                        NumericVector bound,
+                        bool b_sum_sub)
+{
+  double value = 0;
+  NumericVector dist_grad_xy;
+  int sum_sub = -1;
+  
+  if(b_sum_sub)
+  {
+    sum_sub = 1;
+  }
+  
+  // Verify if element is correct
+  if (nm_coords_element.ncol() != 7)
+  {
+    return value;
+  }
+  for (int i = 0; i < nm_coords_element.nrow(); i++)
+  {
+    // Calculate distant point to segment and derivate in x and y
+    dist_grad_xy = distance2segment(nv_coords_point[0],
+                                    nv_coords_point[1],
+                                                   nm_coords_element(i, 0),
+                                                   nm_coords_element(i, 1),
+                                                   nm_coords_element(i, 2),
+                                                   nm_coords_element(i, 3));
+    
+    value = value + sum_sub * potential_func(nm_coords_element(i, 4),
+                                             nm_coords_element(i, 5),
+                                             dist_grad_xy["dist"],
+                                             nm_coords_element(i, 6));
+
+    
+  }
+  // bound sum
+  value = fmin(fmax(bound["min"], value), bound["max"]);
+  
+  return value;
+}
+
 //' @title effect potential
 //' 
 //' @param nm_coords_element (NumericMatrix) all coordinates of segment 
@@ -339,6 +398,32 @@ NumericVector potential_effect (NumericMatrix nm_coords_element,
   return effect;
 }
 
+//' @title repulsive value
+//' @description Give value of potential on x and y of all replusive elements 
+//' 
+//' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
+//'                                      Matrix N*7 (x1,y1,x2,y2,
+//'                                      alpha, beta, power) where
+//'                                         alpha_a (double) maximum potential 
+//'                                         amplitude of repulsivity
+//'                                         beta (double) spatial display of 
+//'                                         potential, and power (double)
+//' @param nv_coords_point (NumericVector) coordinates of point (x,y)
+//' @return (double) repulsif value of potential
+//' @export
+// [[Rcpp::export]]
+double repulsive_value (NumericMatrix nm_coords_rep,
+                        NumericVector nv_coords_point)
+{
+  NumericVector bound = NumericVector::create(_["min"] = LLONG_MIN,
+                                              _["max"] = LLONG_MAX);
+  
+  return potential_value(nm_coords_rep,
+                         nv_coords_point,
+                         bound,
+                         true);
+}
+
 //' @title repulsive effect
 //' @description Give effect on x and y of all replusive elements 
 //' 
@@ -350,7 +435,7 @@ NumericVector potential_effect (NumericMatrix nm_coords_element,
 //'                                         beta (double) spatial display of 
 //'                                         potential, and power (double)
 //' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-//' @return (NumericVector) repulsif effect in x and y (['x'];['y'])
+//' @return (NumericVector) repulsif value in x and y (['x'];['y'])
 //' @export
 // [[Rcpp::export]]
 NumericVector repulsive_effect (NumericMatrix nm_coords_rep,
@@ -363,6 +448,32 @@ NumericVector repulsive_effect (NumericMatrix nm_coords_rep,
                           nv_coords_point,
                           bound,
                           false);
+}
+
+//' @title attractive value
+//' @description Give value of potential on x and y of all attractive elements 
+//' 
+//' @param nm_coords_attrac (NumericMatrix) all coordinates of attractive 
+//'                                         segment matrix N*7 (x1,y1,x2,y2,
+//'                                         alpha, beta, power) where
+//'                                         alpha_a (double) maximum potential 
+//'                                         amplitude of attractivity
+//'                                         beta (double) spatial display of 
+//'                                         potential, and power (double)
+//' @param nv_coords_point (NumericVector) coordinates of point (x,y)
+//' @return (NumericVector) attractive value of potential
+//' @export
+// [[Rcpp::export]]
+double attractive_value (NumericMatrix nm_coords_attrac,
+                         NumericVector nv_coords_point)
+{
+  NumericVector bound = NumericVector::create(_["min"] = LLONG_MIN,
+                                              _["max"] = LLONG_MAX);
+  
+  return potential_value(nm_coords_attrac,
+                         nv_coords_point,
+                         bound,
+                         false);
 }
 
 //' @title attractive effect

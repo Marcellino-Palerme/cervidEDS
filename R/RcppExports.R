@@ -104,6 +104,26 @@ alpha_func <- function(alpha1, alpha2, alpha3, t) {
     .Call('_cervideDS_alpha_func', PACKAGE = 'cervideDS', alpha1, alpha2, alpha3, t)
 }
 
+#' @title value potential
+#' 
+#' @param nm_coords_element (NumericMatrix) all coordinates of segment 
+#'                                          Matrix N*7 (x1,y1,x2,y2,
+#'                                          alpha, beta, power) where
+#'                                          alpha_a (double) maximum potential 
+#'                                          amplitude,
+#'                                          beta (double) spatial display of 
+#'                                          potential,
+#'                                          and power (double)
+#' @param nv_coords_point (NumericVector) coordinates of point (x,y)
+#' @param bound (NumericVector) limit of value potential ("min", "max")
+#' @param b_sum_sub (bool) use sum potential(true) or sub potential(false) 
+#'        (not effect on bound)
+#' @return (double) value potential
+#' @export
+potential_value <- function(nm_coords_element, nv_coords_point, bound, b_sum_sub) {
+    .Call('_cervideDS_potential_value', PACKAGE = 'cervideDS', nm_coords_element, nv_coords_point, bound, b_sum_sub)
+}
+
 #' @title effect potential
 #' 
 #' @param nm_coords_element (NumericMatrix) all coordinates of segment 
@@ -124,6 +144,23 @@ potential_effect <- function(nm_coords_element, nv_coords_point, bound, b_sum_su
     .Call('_cervideDS_potential_effect', PACKAGE = 'cervideDS', nm_coords_element, nv_coords_point, bound, b_sum_sub)
 }
 
+#' @title repulsive value
+#' @description Give value of potential on x and y of all replusive elements 
+#' 
+#' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
+#'                                      Matrix N*7 (x1,y1,x2,y2,
+#'                                      alpha, beta, power) where
+#'                                         alpha_a (double) maximum potential 
+#'                                         amplitude of repulsivity
+#'                                         beta (double) spatial display of 
+#'                                         potential, and power (double)
+#' @param nv_coords_point (NumericVector) coordinates of point (x,y)
+#' @return (double) repulsif value of potential
+#' @export
+repulsive_value <- function(nm_coords_rep, nv_coords_point) {
+    .Call('_cervideDS_repulsive_value', PACKAGE = 'cervideDS', nm_coords_rep, nv_coords_point)
+}
+
 #' @title repulsive effect
 #' @description Give effect on x and y of all replusive elements 
 #' 
@@ -135,10 +172,27 @@ potential_effect <- function(nm_coords_element, nv_coords_point, bound, b_sum_su
 #'                                         beta (double) spatial display of 
 #'                                         potential, and power (double)
 #' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-#' @return (NumericVector) repulsif effect in x and y (['x'];['y'])
+#' @return (NumericVector) repulsif value in x and y (['x'];['y'])
 #' @export
 repulsive_effect <- function(nm_coords_rep, nv_coords_point) {
     .Call('_cervideDS_repulsive_effect', PACKAGE = 'cervideDS', nm_coords_rep, nv_coords_point)
+}
+
+#' @title attractive value
+#' @description Give value of potential on x and y of all attractive elements 
+#' 
+#' @param nm_coords_attrac (NumericMatrix) all coordinates of attractive 
+#'                                         segment matrix N*7 (x1,y1,x2,y2,
+#'                                         alpha, beta, power) where
+#'                                         alpha_a (double) maximum potential 
+#'                                         amplitude of attractivity
+#'                                         beta (double) spatial display of 
+#'                                         potential, and power (double)
+#' @param nv_coords_point (NumericVector) coordinates of point (x,y)
+#' @return (NumericVector) attractive value of potential
+#' @export
+attractive_value <- function(nm_coords_attrac, nv_coords_point) {
+    .Call('_cervideDS_attractive_value', PACKAGE = 'cervideDS', nm_coords_attrac, nv_coords_point)
 }
 
 #' @title attractive effect

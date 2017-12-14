@@ -54,13 +54,24 @@ double alpha_func(double,
                   double,
                   double);
 
+double potential_value (NumericMatrix,
+                        NumericVector,
+                        NumericVector,
+                        bool);
+
 NumericVector potential_effect (NumericMatrix,
                                 NumericVector,
                                 NumericVector,
                                 bool);
 
+double repulsive_value (NumericMatrix,
+                        NumericVector);
+
 NumericVector repulsive_effect (NumericMatrix,
                                 NumericVector);
+
+double attractive_value (NumericMatrix,
+                        NumericVector);
 
 NumericVector attractive_effect (NumericMatrix,
                                  NumericVector);

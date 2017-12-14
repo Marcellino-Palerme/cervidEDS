@@ -888,4 +888,44 @@ print(new_result)
     expect_true(result["x"] > 5, info = paste(result["x"], "inf or equal 5"))
     expect_true(result["y"] < 8, info = paste(result["y"], "sup or equal 8"))
   })
+
+  #------test repulsive value-----#
+  #nominal case
+  test_that("test.repulsive_value_nominal", {
+    coord_repul = matrix(c(5,5,10.5,9.5,0.4,1,3),
+                          ncol = 7,nrow = 1, byrow = TRUE)
+    coord_point = c("x" = 2, "y" = 4)
+    result = repulsive_value(coord_repul,
+                             coord_point)
+    expect_gt(result, 0)
+
+    coord_repul = matrix(c(5,5,10.5,9.5,0.4,1,3,
+                           8,4,0,1,9,0.74,1),
+                         ncol = 7,nrow = 1, byrow = TRUE)
+    coord_point = c("x" = 2, "y" = 4)
+    new_result = repulsive_value(coord_repul,
+                                 coord_point)
+    expect_gt(new_result, 0)
+    expect_gt(new_result, result)
+  })
+
+  #------test attractive value-----#
+  #nominal case
+  test_that("test.attractive_value", {
+    coord_attr = matrix(c(5,5,10.5,9.5,0.4,1,3),
+                         ncol = 7,nrow = 1, byrow = TRUE)
+    coord_point = c("x" = 2, "y" = 4)
+    result = attractive_value(coord_attr,
+                              coord_point)
+    expect_lt(result, 0)
+
+    coord_attr = matrix(c(5,5,10.5,9.5,0.4,1,3,
+                           8,4,0,1,9,0.74,1),
+                         ncol = 7,nrow = 1, byrow = TRUE)
+    coord_point = c("x" = 2, "y" = 4)
+    new_result = attractive_value(coord_attr,
+                                  coord_point)
+    expect_lt(new_result, 0)
+    expect_lt(new_result, result)
+  })
 },T)
