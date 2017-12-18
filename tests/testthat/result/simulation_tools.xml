@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+ <testsuite hostname="palerme" name="simulation tools unit tests" timestamp="2017-12-18 18:09:25">
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_nominal" time="17.46"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_att" time="58.97"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_repul" time="89.17"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_lines" time="130.94"/>
+ </testsuite>
+</testsuites>

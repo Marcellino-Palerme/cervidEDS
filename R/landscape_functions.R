@@ -149,15 +149,14 @@ get_neighbours <- function(landscape)
                  row.names = getSpPPolygonsIDSlots(landscape)))
 }
 
-# get coordonnate of polygon in Spatial*
-#
-#Parameters:
-#object (Spatial*)
-#name_elements (vector str): two name to attain coords
-#id (str): id of element
-#
-#Return 
-# (matrix X*2): coordinates of polygon
+#' @title get coordonnate Spatial*
+#' @description get coordonnate of element of Spatial*
+#'
+#' @param (Spatial*)
+#' @param name_elements (vector str): two name to attain coords
+#' @param id (str): id of element
+#'
+#' @return (matrix X*2): coordinates of element
 getCoordsSpatial_ <- function(object, name_elements, id)
 {
   # get position of polygon with this id
@@ -177,42 +176,40 @@ getCoordsSpatial_ <- function(object, name_elements, id)
   return(coords)
 }
 
-# get coordonnate of polygon in SpatialPolygons
-#
-#Parameters:
-#landscape (SpatialPolygons)
-#id (int): id of polygon
-#
-#Return 
-# (matrix X*2): coordinates of polygon
+#' @title get coordonnate SpatialPolygons
+#' @description get coordonnate of polygon in SpatialPolygons
+#'
+#' @param landscape (SpatialPolygons)
+#' @param id (int): id of polygon
+#' @return (matrix X*2): coordinates of polygon
+#' @export
 getCoordsSpatialPolygons <- function(landscape, id)
 {
   #return coordinates
   return(getCoordsSpatial_(landscape,c("polygons","Polygons"),id))
 }
 
-# get coordonnate of line in Spatiallines
-#
-#Parameters:
-#landscape (SpatialPolygons)
-#id (int): id of polygon
-#
-#Return 
-# (matrix X*2): coordinates of polygon
+#' @title get coordonnate SpatialLines
+#' @description get coordonnate of line in Spatiallines
+#'
+#' @param landscape (SpatialPolygons)
+#' @param id (int): id of polygon
+#' @return (matrix X*2): coordinates of polygon
+#' @export
 getCoordsSpatialLines <- function(my_lines, id)
 {
   #return coordinates
   return(getCoordsSpatial_(my_lines,c("lines","Lines"),id))
 }
 
-# know commun coordonate between two polygons
-#
-#Parameters:
-#landscape (SpatialPolygonsDataFrame): SIG
-#ids (tupple of int): id of two polygons
-#
-#Return 
-# (matrix X*2): coordonate of commun points
+#' @title commun coords
+#' @description give commun coordonate between two polygons
+#'
+#' @param landscape (SpatialPolygonsDataFrame): SIG
+#' @param ids (tupple of int): id of two polygons
+#'
+#' @return (matrix X*2): coordonate of commun points
+#' @export
 commun_coords <- function(landscape, ids)
 {
   #transform polygons in poins
