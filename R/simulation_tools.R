@@ -63,6 +63,7 @@ extract_element_ <- function(object,
   if (class(object) == "SpatialPolygonsDataFrame")
   {
     info_object  = "Polygons"
+    centroid = getSpPPolygonsLabptSlots(object)
   }
   else
   {
@@ -83,10 +84,15 @@ extract_element_ <- function(object,
       next()
     }
     
-    # Get all coordonnate of polygon
-    coords = eval(parse(text = paste("getCoordsSpatial",info_object,
-                                     "(object, ids[index_obj])",
-                                     sep = "")))
+    if (info_types == "Lines")
+    {
+      # Get all coordonnate of polygon
+      coords = getCoordsSpatialLines(object, ids[index_obj])
+    }
+    else
+    {
+      coords = rbind(centroid[index_obj,], centroid[index_obj,])
+    }
     # Get all info on type
     info_type = info_types[which(info_types[,1] %in% id_type),] 
     # Indicate if type is repulsive or attractive effect
@@ -123,4 +129,47 @@ extract_element_ <- function(object,
                                       ncol = 7, byrow = TRUE)
   }    
   return(elements)
+}
+
+#' @title plot potential
+#' @description plot potential on landscape
+#' 
+#' @param landscape (SpatialPolygon): landscape
+#' @param land_component (list of 2 matrix) 
+#'            repulsive : M*7 (x1, y1, x2, y2, alpha, beta, power)
+#'            attractive : M*7 (x1, y1, x2, y2, alpha, beta, power)
+#' @param precision (float) plot precision
+#' @export
+plot_potential <- function(landscape,
+                           land_component,
+                           precision = 1)
+{
+  #Take extrem value of landscape
+  min_x = attr(landscape,"bbox")[1,1]
+  max_x = attr(landscape,"bbox")[1,2]
+  min_y = attr(landscape,"bbox")[2,1]
+  max_y = attr(landscape,"bbox")[2,2]
+
+  #calculate potential of each point
+  pot = c()
+  for (x in seq(min_x,max_x,precision))
+  {
+    row_pot = c()
+    for (y in seq(min_y,max_y,precision))
+    {
+      row_pot = c(all_value(c(x, y),
+                            land_component$attractive,
+                            land_component$repulsive)
+                  ,row_pot)
+    }
+    #add new colunm
+    pot = cbind(pot,row_pot)
+  }
+  
+  #show matrix of potentials
+  plot(raster(pot, xmn = min_x, xmx = max_x, ymn = min_y, ymx = max_y),
+       xlim = c(min_x, max_x), ylim = c(min_y, max_y))
+  # Add number of type of polygon with color of type
+  centroid = getSpPPolygonsLabptSlots(landscape)
+  text(centroid, labels = landscape$id_type)
 }
