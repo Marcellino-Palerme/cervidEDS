@@ -146,7 +146,7 @@ affect_lines_type <- function(lt_lines, nb_type)
 get_neighbours <- function(landscape)
 {
   return(poly2nb(landscape, queen = TRUE,
-                 row.names = getSpPPolygonsIDSlots(landscape)))
+                 row.names = getIdsSpatialPolygons(landscape)))
 }
 
 #' @title get coordonnate Spatial*
