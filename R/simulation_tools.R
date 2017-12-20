@@ -63,7 +63,7 @@ extract_element_ <- function(object,
   if (class(object) == "SpatialPolygonsDataFrame")
   {
     info_object  = "Polygons"
-    centroid = getSpPPolygonsLabptSlots(object)
+    centroid = coordinates(object)
   }
   else
   {
@@ -84,7 +84,7 @@ extract_element_ <- function(object,
       next()
     }
     
-    if (info_types == "Lines")
+    if (info_object == "Lines")
     {
       # Get all coordonnate of polygon
       coords = getCoordsSpatialLines(object, ids[index_obj])
@@ -170,6 +170,6 @@ plot_potential <- function(landscape,
   plot(raster(pot, xmn = min_x, xmx = max_x, ymn = min_y, ymx = max_y),
        xlim = c(min_x, max_x), ylim = c(min_y, max_y))
   # Add number of type of polygon with color of type
-  centroid = getSpPPolygonsLabptSlots(landscape)
+  centroid = coordinates(landscape)
   text(centroid, labels = landscape$id_type)
 }

@@ -545,7 +545,7 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
       type_color = rainbow(nb_type)
 
       # Add number of type of polygon with color of type
-      centroid = getSpPPolygonsLabptSlots(private$land_poly)
+      centroid = coordinates(private$land_poly)
       text(centroid, labels = private$land_poly$id_type,
            col = type_color[strtoi(private$land_poly$id_type) + 2])
       
