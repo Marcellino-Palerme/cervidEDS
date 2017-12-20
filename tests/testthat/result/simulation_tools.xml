@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
- <testsuite hostname="palerme" name="simulation tools unit tests" timestamp="2017-12-20 12:30:38">
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_nominal" time="0.05">
+ <testsuite hostname="palerme" name="simulation tools unit tests" timestamp="2017-12-20 12:37:46">
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_nominal" time="0.06">
    <error message="objet 'centroid' introuvable" type="error">objet 'centroid' introuvable
 1: extract_elements(my_poly, my_lines, info_types) at /home/palerme/Documents/EDS/cervideds/tests/testthat/test_simulation_tools.R:21
 2: extract_element_(land_lines, info_types) at /home/palerme/Documents/EDS/cervideds/R/simulation_tools.R:31
@@ -9,7 +9,7 @@
    
     
   </testcase>
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_att" time="0.03">
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_att" time="0.02">
    <error message="objet 'centroid' introuvable" type="error">objet 'centroid' introuvable
 1: extract_elements(my_poly, my_lines, info_types) at /home/palerme/Documents/EDS/cervideds/tests/testthat/test_simulation_tools.R:55
 2: extract_element_(land_lines, info_types) at /home/palerme/Documents/EDS/cervideds/R/simulation_tools.R:31
@@ -17,7 +17,7 @@
    
     
   </testcase>
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_repul" time="0.18">
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_repul" time="0.2">
    <error message="objet 'centroid' introuvable" type="error">objet 'centroid' introuvable
 1: extract_elements(my_poly, my_lines, info_types) at /home/palerme/Documents/EDS/cervideds/tests/testthat/test_simulation_tools.R:84
 2: extract_element_(land_lines, info_types) at /home/palerme/Documents/EDS/cervideds/R/simulation_tools.R:31
@@ -25,6 +25,6 @@
    
     
   </testcase>
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_lines" time="0.97"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_lines" time="0.95"/>
  </testsuite>
 </testsuites>
