@@ -33,11 +33,21 @@ extract_elements <- function(land_poly,
 
   # concatenate matrix
   elements_land$repulsive = rbind(element_poly$repulsive,
-                                 element_line$repulsive)
-
+                                  element_line$repulsive)
+  # Create empty element repulsive even if there aren't repulsive element
+  if (is.null(elements_land$repulsive))
+  {
+    elements_land$repulsive = matrix()
+  }
+  
+  # concatenate matrix
   elements_land$attractive = rbind(element_poly$attractive,
                                    element_line$attractive)
-
+  # Create empty element attractive even if there aren't attractive element
+  if (is.null(elements_land$attractive))
+  {
+    elements_land$attractive = matrix()
+  }
   return(elements_land)
 }
 

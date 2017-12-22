@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
- <testsuite hostname="palerme" name="model unit tests" timestamp="2017-12-20 18:38:46">
-  <testcase classname="model_unit_tests" name="test_dist_expr_nom" time="0.15"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_one_point" time="0.18"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_down" time="3.35"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_up" time="6.27"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_point_extrem" time="21.61"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_point" time="1.18"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_vertical" time="4.73"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_horizontal" time="5.08"/>
+ <testsuite hostname="palerme" name="model unit tests" timestamp="2017-12-22 16:35:39">
+  <testcase classname="model_unit_tests" name="test_dist_expr_nom" time="0.16"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_one_point" time="0.19"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_down" time="3.11"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_up" time="6.14"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_point_extrem" time="21.7"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_point" time="1.23"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_vertical" time="4.84"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_horizontal" time="5.13"/>
  </testsuite>
 </testsuites>
