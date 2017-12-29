@@ -1,4 +1,5 @@
 #include "simulation.h"
+#include <stdio.h>
 
 //'@title Border effect
 //'@description This function calculate the effect of border on mouvement
@@ -270,39 +271,40 @@ double alpha_func(double alpha1,
   return alpha1 * exp(-0.5 * pow(log(t / alpha3) / alpha2, 2));
 }
 
+// create dictionnary to indicate which line containt which type
+std::map<int, int> map_type (NumericMatrix nm_info_type) 
+{
+  std::map<int, int> index_type;
+  for (int i = 0; i < nm_info_type.nrow(); i++)
+  {
+    index_type[nm_info_type(i, INFO_TYPE_COL_ID)] = i;
+  }
+
+  return index_type;
+}
+
 //' @title value potential
 //' 
-//' @param nm_coords_element (NumericMatrix) all coordinates of segment 
-//'                                          Matrix N*7 (x1,y1,x2,y2,
-//'                                          alpha, beta, power) where
-//'                                          alpha_a (double) maximum potential 
-//'                                          amplitude,
-//'                                          beta (double) spatial display of 
-//'                                          potential,
-//'                                          and power (double)
 //' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-//' @param bound (NumericVector) limit of value potential ("min", "max")
-//' @param b_sum_sub (bool) use sum potential(true) or sub potential(false) 
-//'        (not effect on bound)
+//' @param nm_coords_element (NumericMatrix) all coordinates of segment 
+//'                                          Matrix N*5 (x1,y1,x2,y2,Id_type)
+//' @param nm_info_type (NumericMatrix) descript each type
+//'                                     Matrix M*5 (Id, rep (-1) or attr(1), 
+//'                                                 alpha, beta, power)
 //' @return (double) value potential
 //' @export
 // [[Rcpp::export]]
-double potential_value (NumericMatrix nm_coords_element,
-                        NumericVector nv_coords_point,
-                        NumericVector bound,
-                        bool b_sum_sub)
+double potential_value (NumericVector nv_coords_point,
+                        NumericMatrix nm_coords_element,
+                        NumericMatrix nm_info_type)
 {
   double value = 0;
   NumericVector dist_grad_xy;
-  int sum_sub = -1;
-  
-  if(b_sum_sub)
-  {
-    sum_sub = 1;
-  }
+  std::map<int, int> index_type = map_type(nm_info_type);
+  int line_type = 0;
   
   // Verify if element is correct
-  if (nm_coords_element.ncol() != 7)
+  if (nm_coords_element.ncol() != ELEMENT_NB_COL)
   {
     return value;
   }
@@ -311,58 +313,47 @@ double potential_value (NumericMatrix nm_coords_element,
     // Calculate distant point to segment and derivate in x and y
     dist_grad_xy = distance2segment(nv_coords_point[0],
                                     nv_coords_point[1],
-                                                   nm_coords_element(i, 0),
-                                                   nm_coords_element(i, 1),
-                                                   nm_coords_element(i, 2),
-                                                   nm_coords_element(i, 3));
-    
-    value = value + sum_sub * potential_func(nm_coords_element(i, 4),
-                                             nm_coords_element(i, 5),
-                                             dist_grad_xy["dist"],
-                                             nm_coords_element(i, 6));
+                                    nm_coords_element(i, ELEMENT_COL_X1),
+                                    nm_coords_element(i, ELEMENT_COL_Y1),
+                                    nm_coords_element(i, ELEMENT_COL_X2),
+                                    nm_coords_element(i, ELEMENT_COL_Y2));
+    line_type = index_type[nm_coords_element(i, ELEMENT_COL_ID_TYPE)];
 
-    
+    value = value 
+            - nm_info_type(line_type, INFO_TYPE_COL_REPATT)
+            * potential_func(nm_info_type(line_type, INFO_TYPE_COL_ALPHA),
+                             nm_info_type(line_type, INFO_TYPE_COL_BETA),
+                             dist_grad_xy["dist"],
+                             nm_info_type(line_type, INFO_TYPE_COL_POW));
+
   }
-  // bound sum
-  value = fmin(fmax(bound["min"], value), bound["max"]);
-  
+
   return value;
 }
 
 //' @title effect potential
 //' 
-//' @param nm_coords_element (NumericMatrix) all coordinates of segment 
-//'                                          Matrix N*7 (x1,y1,x2,y2,
-//'                                          alpha, beta, power) where
-//'                                          alpha_a (double) maximum potential 
-//'                                          amplitude,
-//'                                          beta (double) spatial display of 
-//'                                          potential,
-//'                                          and power (double)
 //' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-//' @param bound (NumericVector) limit of effect potential ("min", "max")
-//' @param b_sum_sub (bool) use +gradiant(true) or -gradiant(false) (not effect 
-//'        on bound)
+//' @param nm_coords_element (NumericMatrix) all coordinates of segment 
+//'                                          Matrix N*5 (x1,y1,x2,y2,Id_type)
+//' @param nm_info_type (NumericMatrix) descript each type
+//'                                     Matrix M*5 (Id, rep (-1) or attr(1), 
+//'                                                 alpha, beta, power)
 //' @return (NumericVector) effect potential in x and y (['x'];['y'])
 //' @export
 // [[Rcpp::export]]
-NumericVector potential_effect (NumericMatrix nm_coords_element,
-                                NumericVector nv_coords_point,
-                                NumericVector bound,
-                                bool b_sum_sub)
+NumericVector potential_effect (NumericVector nv_coords_point,
+                                NumericMatrix nm_coords_element,
+                                NumericMatrix nm_info_type)
 {
   NumericVector effect = NumericVector::create(_["x"] = 0,
                                                _["y"] = 0);
   NumericVector dist_grad_xy;
-  int sum_sub = -1;
-  
-  if(b_sum_sub)
-  {
-    sum_sub = 1;
-  }
+  std::map<int, int> index_type = map_type(nm_info_type);
+  int line_type = 0;
   
   // Verify if element is correct
-  if (nm_coords_element.ncol() != 7)
+  if (nm_coords_element.ncol() != ELEMENT_NB_COL)
   {
     return effect;
   }
@@ -371,173 +362,30 @@ NumericVector potential_effect (NumericMatrix nm_coords_element,
     // Calculate distant point to segment and derivate in x and y
     dist_grad_xy = distance2segment(nv_coords_point[0],
                                     nv_coords_point[1],
-                                    nm_coords_element(i, 0),
-                                    nm_coords_element(i, 1),
-                                    nm_coords_element(i, 2),
-                                    nm_coords_element(i, 3));
-
+                                    nm_coords_element(i, ELEMENT_COL_X1),
+                                    nm_coords_element(i, ELEMENT_COL_Y1),
+                                    nm_coords_element(i, ELEMENT_COL_X2),
+                                    nm_coords_element(i, ELEMENT_COL_Y2));
+    line_type = index_type[nm_coords_element(i, ELEMENT_COL_ID_TYPE)];
     effect["x"] = effect["x"] + 
-                  sum_sub * grad_potential_func(nm_coords_element(i, 4),
-                                                nm_coords_element(i, 5),
-                                                dist_grad_xy["dist"],
-                                                nm_coords_element(i, 6),
-                                                dist_grad_xy["dx"]);
+                  nm_info_type(line_type, INFO_TYPE_COL_REPATT) * 
+                  grad_potential_func(nm_info_type(line_type, INFO_TYPE_COL_ALPHA),
+                                      nm_info_type(line_type, INFO_TYPE_COL_BETA),
+                                      dist_grad_xy["dist"],
+                                      nm_info_type(line_type, INFO_TYPE_COL_POW),
+                                      dist_grad_xy["dx"]);
     
     effect["y"] = effect["y"] + 
-                  sum_sub * grad_potential_func(nm_coords_element(i, 4),
-                                                nm_coords_element(i, 5),
-                                                dist_grad_xy["dist"],
-                                                nm_coords_element(i, 6),
-                                                dist_grad_xy["dy"]);
+                  nm_info_type(line_type, INFO_TYPE_COL_REPATT) * 
+                  grad_potential_func(nm_info_type(line_type, INFO_TYPE_COL_ALPHA),
+                                      nm_info_type(line_type, INFO_TYPE_COL_BETA),
+                                      dist_grad_xy["dist"],
+                                      nm_info_type(line_type, INFO_TYPE_COL_POW),
+                                      dist_grad_xy["dy"]);
 
   }
-  // bound sum
-  effect["x"] = fmin(fmax(bound["min"], effect["x"]), bound["max"]);
-  effect["y"] = fmin(fmax(bound["min"], effect["y"]), bound["max"]);
-  
+
   return effect;
-}
-
-//' @title repulsive value
-//' @description Give value of potential on x and y of all replusive elements 
-//' 
-//' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
-//'                                      Matrix N*7 (x1,y1,x2,y2,
-//'                                      alpha, beta, power) where
-//'                                         alpha_a (double) maximum potential 
-//'                                         amplitude of repulsivity
-//'                                         beta (double) spatial display of 
-//'                                         potential, and power (double)
-//' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-//' @return (double) repulsif value of potential
-//' @export
-// [[Rcpp::export]]
-double repulsive_value (NumericMatrix nm_coords_rep,
-                        NumericVector nv_coords_point)
-{
-  NumericVector bound = NumericVector::create(_["min"] = LLONG_MIN,
-                                              _["max"] = LLONG_MAX);
-  
-  return potential_value(nm_coords_rep,
-                         nv_coords_point,
-                         bound,
-                         true);
-}
-
-//' @title repulsive effect
-//' @description Give effect on x and y of all replusive elements 
-//' 
-//' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
-//'                                      Matrix N*7 (x1,y1,x2,y2,
-//'                                      alpha, beta, power) where
-//'                                         alpha_a (double) maximum potential 
-//'                                         amplitude of repulsivity
-//'                                         beta (double) spatial display of 
-//'                                         potential, and power (double)
-//' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-//' @return (NumericVector) repulsif value in x and y (['x'];['y'])
-//' @export
-// [[Rcpp::export]]
-NumericVector repulsive_effect (NumericMatrix nm_coords_rep,
-                                NumericVector nv_coords_point)
-{
-  NumericVector bound = NumericVector::create(_["min"] = LLONG_MIN,
-                                              _["max"] = LLONG_MAX);
-
-  return potential_effect(nm_coords_rep,
-                          nv_coords_point,
-                          bound,
-                          false);
-}
-
-//' @title attractive value
-//' @description Give value of potential on x and y of all attractive elements 
-//' 
-//' @param nm_coords_attrac (NumericMatrix) all coordinates of attractive 
-//'                                         segment matrix N*7 (x1,y1,x2,y2,
-//'                                         alpha, beta, power) where
-//'                                         alpha_a (double) maximum potential 
-//'                                         amplitude of attractivity
-//'                                         beta (double) spatial display of 
-//'                                         potential, and power (double)
-//' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-//' @return (NumericVector) attractive value of potential
-//' @export
-// [[Rcpp::export]]
-double attractive_value (NumericMatrix nm_coords_attrac,
-                         NumericVector nv_coords_point)
-{
-  NumericVector bound = NumericVector::create(_["min"] = LLONG_MIN,
-                                              _["max"] = LLONG_MAX);
-  
-  return potential_value(nm_coords_attrac,
-                         nv_coords_point,
-                         bound,
-                         false);
-}
-
-//' @title attractive effect
-//' @description Give effect on x and y of all attractive elements 
-//' 
-//' @param nm_coords_attrac (NumericMatrix) all coordinates of attractive 
-//'                                         segment matrix N*7 (x1,y1,x2,y2,
-//'                                         alpha, beta, power) where
-//'                                         alpha_a (double) maximum potential 
-//'                                         amplitude of attractivity
-//'                                         beta (double) spatial display of 
-//'                                         potential, and power (double)
-//' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-//' @return (NumericVector) attractive effect in x and y (['x'];['y'])
-//' @export
-// [[Rcpp::export]]
-NumericVector attractive_effect (NumericMatrix nm_coords_attrac,
-                                NumericVector nv_coords_point)
-{
-  NumericVector bound = NumericVector::create(_["min"] = LLONG_MIN,
-                                              _["max"] = LLONG_MAX);
-  
-  return potential_effect(nm_coords_attrac,
-                          nv_coords_point,
-                          bound,
-                          true);
-}
-
-//' @title all value
-//' @description Give complete potential value of landscape on x and y
-//' 
-//' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-//' @param nm_coords_attrac (NumericMatrix) all coordinates of attractive 
-//'                                         segment matrix N*7 (x1,y1,x2,y2,
-//'                                         alpha, beta, power) where
-//'                                         alpha_a (double) maximum potential 
-//'                                         amplitude of attractivity
-//'                                         beta (double) spatial display of 
-//'                                         potential, and power (double)
-//' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
-//'                                      Matrix N*7 (x1,y1,x2,y2,
-//'                                      alpha, beta, power) where
-//'                                         alpha_a (double) maximum potential 
-//'                                         amplitude of repulsivity
-//'                                         beta (double) spatial display of 
-//'                                         potential, and power (double)
-//' @return (double) potential value of landscape on x and y
-//' @export
-// [[Rcpp::export]]
-double all_value (NumericVector nv_coords_point,
-                  NumericMatrix nm_coords_attrac,
-                  NumericMatrix nm_coords_rep)
-{
-  double value;
-
-  // repulsive value
-  value = repulsive_value (nm_coords_rep,
-                           nv_coords_point);
-  
-  // attarctive effect
-  value = value + attractive_value (nm_coords_attrac,
-                                    nv_coords_point);
-
-  return value;
 }
 
 //' @title all effect
@@ -547,20 +395,11 @@ double all_value (NumericVector nv_coords_point,
 //' @param ui_land_width (unsigned int) width of landscape.
 //' @param ui_land_heigth (unsigned int) heigth of landscape.
 //' @param d_sigma (double) repulsif effect adaptor
-//' @param nm_coords_attrac (NumericMatrix) all coordinates of attractive 
-//'                                         segment matrix N*7 (x1,y1,x2,y2,
-//'                                         alpha, beta, power) where
-//'                                         alpha_a (double) maximum potential 
-//'                                         amplitude of attractivity
-//'                                         beta (double) spatial display of 
-//'                                         potential, and power (double)
-//' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
-//'                                      Matrix N*7 (x1,y1,x2,y2,
-//'                                      alpha, beta, power) where
-//'                                         alpha_a (double) maximum potential 
-//'                                         amplitude of repulsivity
-//'                                         beta (double) spatial display of 
-//'                                         potential, and power (double)
+//' @param nm_coords_element (NumericMatrix) all coordinates of segment 
+//'                                          Matrix N*5 (x1,y1,x2,y2,Id_type)
+//' @param nm_info_type (NumericMatrix) descript each type
+//'                                     Matrix M*5 (Id, rep (-1) or attr(1), 
+//'                                                 alpha, beta, power)
 //' @param time_step (double) step of time
 //' @return (NumericVector) effect in x and y (['x'];['y'])
 //' @export
@@ -569,8 +408,8 @@ NumericVector all_effect (NumericVector nv_coords_point,
                           unsigned int ui_width,
                           unsigned int ui_heigth,
                           double d_sigma,
-                          NumericMatrix nm_coords_attrac,
-                          NumericMatrix nm_coords_rep,
+                          NumericMatrix nm_coords_element,
+                          NumericMatrix nm_info_type,
                           double time_step)
 {
   NumericVector effect = NumericVector::create(_["x"] = 0,
@@ -588,16 +427,10 @@ NumericVector all_effect (NumericVector nv_coords_point,
   effect["x"] = tmp_effect["x"];
   effect["y"] = tmp_effect["y"];
 
-  // repulsive effect
-  tmp_effect = repulsive_effect (nm_coords_rep,
-                                 nv_coords_point);
-
-  effect["x"] = effect["x"] + tmp_effect["x"];
-  effect["y"] = effect["y"] + tmp_effect["y"];
-
-  // attarctive effect
-  tmp_effect = attractive_effect (nm_coords_attrac,
-                                  nv_coords_point);
+  // potential effect
+  tmp_effect = potential_effect (nv_coords_point,
+                                 nm_coords_element,
+                                 nm_info_type);
 
   effect["x"] = effect["x"] + tmp_effect["x"];
   effect["y"] = effect["y"] + tmp_effect["y"];
@@ -639,20 +472,11 @@ double diffusion (double d_sigma,
 //' @param ui_land_width (unsigned int) width of landscape.
 //' @param ui_land_heigth (unsigned int) heigth of landscape.
 //' @param d_sigma (double) repulsif effect adaptor
-//' @param nm_coords_attrac (NumericMatrix) all coordinates of attractive 
-//'                                         segment matrix N*7 (x1,y1,x2,y2,
-//'                                         alpha, beta, power) where
-//'                                         alpha_a (double) maximum potential 
-//'                                         amplitude of repulsivity
-//'                                         beta (double) spatial display of 
-//'                                         potential, and power (double)
-//' @param nm_coords_rep (NumericMatrix) all coordinates of repulsif segment 
-//'                                      Matrix N*7 (x1,y1,x2,y2,
-//'                                      alpha, beta, power) where
-//'                                         alpha_a (double) maximum potential 
-//'                                         amplitude of attractivity
-//'                                         beta (double) spatial display of 
-//'                                         potential, and power (double)
+//' @param nm_coords_element (NumericMatrix) all coordinates of segment 
+//'                                          Matrix N*5 (x1,y1,x2,y2,Id_type)
+//' @param nm_info_type (NumericMatrix) descript each type
+//'                                     Matrix M*5 (Id, rep (-1) or attr(1), 
+//'                                                 alpha, beta, power)
 //' @param time_step (double) step of time
 //' @return (NumericVector) next coord in x and y (['x'];['y'])
 //' @export
@@ -662,8 +486,8 @@ NumericVector next_coord (NumericVector nv_coords_point,
                           unsigned int ui_width,
                           unsigned int ui_heigth,
                           double d_sigma,
-                          NumericMatrix nm_coords_attrac,
-                          NumericMatrix nm_coords_rep,
+                          NumericMatrix nm_coords_element,
+                          NumericMatrix nm_info_type,
                           double time_step)
 {
   NumericVector effect;
@@ -673,8 +497,8 @@ NumericVector next_coord (NumericVector nv_coords_point,
                        ui_width,
                        ui_heigth,
                        d_sigma,
-                       nm_coords_attrac,
-                       nm_coords_rep,
+                       nm_coords_element,
+                       nm_info_type,
                        time_step);
 
   new_coord["x"] = nv_coords_point[0] + effect[0] + diffusion (d_sigma,

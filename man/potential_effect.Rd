@@ -4,24 +4,17 @@
 \alias{potential_effect}
 \title{effect potential}
 \usage{
-potential_effect(nm_coords_element, nv_coords_point, bound, b_sum_sub)
+potential_effect(nv_coords_point, nm_coords_element, nm_info_type)
 }
 \arguments{
-\item{nm_coords_element}{(NumericMatrix) all coordinates of segment 
-Matrix N*7 (x1,y1,x2,y2,
-alpha, beta, power) where
-alpha_a (double) maximum potential 
-amplitude,
-beta (double) spatial display of 
-potential,
-and power (double)}
-
 \item{nv_coords_point}{(NumericVector) coordinates of point (x,y)}
 
-\item{bound}{(NumericVector) limit of effect potential ("min", "max")}
+\item{nm_coords_element}{(NumericMatrix) all coordinates of segment 
+Matrix N*5 (x1,y1,x2,y2,Id_type)}
 
-\item{b_sum_sub}{(bool) use +gradiant(true) or -gradiant(false) (not effect 
-on bound)}
+\item{nm_info_type}{(NumericMatrix) descript each type
+Matrix M*5 (Id, rep (-1) or attr(1), 
+            alpha, beta, power)}
 }
 \value{
 (NumericVector) effect potential in x and y (['x'];['y'])

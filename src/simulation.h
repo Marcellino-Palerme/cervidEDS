@@ -3,10 +3,12 @@
 
 #include <Rcpp.h>
 using namespace Rcpp;
+#include "simulation_const.h"
 #include <math.h>
 #include <vector>
 #include <cmath>
 #include <boost/random.hpp>
+#include <map>
 
 typedef boost::normal_distribution<double> Normal;
 typedef boost::mt19937 RandomGenerator;
@@ -54,31 +56,13 @@ double alpha_func(double,
                   double,
                   double);
 
-double potential_value (NumericMatrix,
-                        NumericVector,
-                        NumericVector,
-                        bool);
+double potential_value (NumericVector,
+                        NumericMatrix,
+                        NumericMatrix);
 
-NumericVector potential_effect (NumericMatrix,
-                                NumericVector,
-                                NumericVector,
-                                bool);
-
-double repulsive_value (NumericMatrix,
-                        NumericVector);
-
-NumericVector repulsive_effect (NumericMatrix,
-                                NumericVector);
-
-double attractive_value (NumericMatrix,
-                        NumericVector);
-
-NumericVector attractive_effect (NumericMatrix,
-                                 NumericVector);
-
-double all_value (NumericVector,
-                  NumericMatrix,
-                  NumericMatrix);
+NumericVector potential_effect (NumericVector,
+                                NumericMatrix,
+                                NumericMatrix);
 
 NumericVector all_effect (NumericVector,
                           unsigned int,

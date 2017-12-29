@@ -4,20 +4,15 @@
 \alias{extract_elements}
 \title{Extract elements}
 \usage{
-extract_elements(land_poly, land_lines, info_types)
+extract_elements(land_poly, land_lines)
 }
 \arguments{
 \item{land_poly}{(SpatialPolygonDataFrame): Typing polygon landscape}
 
 \item{land_lines}{(SpatialLinesDataFrame): Typing line landscape}
-
-\item{info_type}{(matrix): N*5 (id, repulsive=0 or attractive=1, alpha, beta,
-power) where N number of type.}
 }
 \value{
-(list of 2 matrix) 
-           repulsive : M*7 (x1, y1, x2, y2, alpha, beta, power)
-           attractive : M*7 (x1, y1, x2, y2, alpha, beta, power)
+(matrix) M*5 (x1, y1, x2, y2, id_type)
 }
 \description{
 Extract all element of typed landscape to create list of matrix

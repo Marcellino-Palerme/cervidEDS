@@ -4,29 +4,20 @@
 \alias{all_effect}
 \title{all effect}
 \usage{
-all_effect(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_attrac,
-  nm_coords_rep, time_step)
+all_effect(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_element,
+  nm_info_type, time_step)
 }
 \arguments{
 \item{nv_coords_point}{(NumericVector) coordinates of point (x,y)}
 
 \item{d_sigma}{(double) repulsif effect adaptor}
 
-\item{nm_coords_attrac}{(NumericMatrix) all coordinates of attractive 
-segment matrix N*7 (x1,y1,x2,y2,
-alpha, beta, power) where
-alpha_a (double) maximum potential 
-amplitude of attractivity
-beta (double) spatial display of 
-potential, and power (double)}
+\item{nm_coords_element}{(NumericMatrix) all coordinates of segment 
+Matrix N*5 (x1,y1,x2,y2,Id_type)}
 
-\item{nm_coords_rep}{(NumericMatrix) all coordinates of repulsif segment 
-Matrix N*7 (x1,y1,x2,y2,
-alpha, beta, power) where
-   alpha_a (double) maximum potential 
-   amplitude of repulsivity
-   beta (double) spatial display of 
-   potential, and power (double)}
+\item{nm_info_type}{(NumericMatrix) descript each type
+Matrix M*5 (Id, rep (-1) or attr(1), 
+            alpha, beta, power)}
 
 \item{time_step}{(double) step of time}
 

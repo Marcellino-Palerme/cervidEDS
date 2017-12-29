@@ -286,13 +286,13 @@ extract_lines <- function(landscape)
   }
   
   # create SpatialLinesDataFrame
-  lt_line = list()
+  lt_line = c()
   for (i in 1:length(dic_lines$x0))
   {
     coords = cbind(c(dic_lines$x0[i],dic_lines$x1[i]),
                      c(dic_lines$y0[i],dic_lines$y1[i]))
     my_line = Lines(Line(coords), ID = toString(i))
-    lt_line[i] = my_line
+    lt_line = c(lt_line, my_line)
   }
   sl = SpatialLines(lt_line, slot(landscape,"proj4string"))
   sldf = SpatialLinesDataFrame(sl,data.frame(id_poly1 = dic_lines$id_poly1,

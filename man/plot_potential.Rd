@@ -4,16 +4,21 @@
 \alias{plot_potential}
 \title{plot potential}
 \usage{
-plot_potential(landscape, land_component, precision = 1)
+plot_potential(landscape, land_component, info_type, precision = 1)
 }
 \arguments{
 \item{landscape}{(SpatialPolygon): landscape}
 
-\item{land_component}{(list of 2 matrix) 
-repulsive : M*7 (x1, y1, x2, y2, alpha, beta, power)
-attractive : M*7 (x1, y1, x2, y2, alpha, beta, power)}
+\item{land_component}{(matrix) all coordinates of segment 
+Matrix N*5 (x1,y1,x2,y2,Id_type)}
+
+\item{info_type}{(matrix): N*5 (id, repulsive=0 or attractive=1, alpha, beta,
+power) where N number of type.}
 
 \item{precision}{(float) plot precision}
+}
+\value{
+(matrix) matrix of potential
 }
 \description{
 plot potential on landscape
