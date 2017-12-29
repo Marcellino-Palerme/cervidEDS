@@ -1,6 +1,5 @@
-#' One square simulation tool use case
-#' The square have a attractive center
-
+#' One square repulsive simulation tool use case
+#' The square have a repulsive center
 
 require("cervideDS")
 
@@ -16,7 +15,7 @@ line_square = extract_lines(land_square)
 land_square = affect_polygons_type(land_square, 1)
 line_square = affect_lines_type(line_square,1)
 
-type_square = matrix(c(1, 1, 1, 0.001, 2),nrow = 1)
+type_square = matrix(c(1, -1, 1, 0.001, 2),nrow = 1)
 
 element_square = extract_elements(land_square,
                                   line_square)
@@ -26,13 +25,13 @@ plot_potential(land_square,
                type_square,
                0.1)
 
-nx = c(20,40)
+nx = c(40,20)
 
 for (i in 1:600)
 {
   nx = next_coord(nx,50,50,0.01,
-                 element_square,
-                 type_square,
-                 2)
+                  element_square,
+                  type_square,
+                  1)
   points(nx[1],nx[2])
 }

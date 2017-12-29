@@ -558,7 +558,7 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
       }
 
       # add legend
-      legend(max_x,max_y,
+      legend(max_x,min_y,
              legend = c("no type","border",
                         sapply(1:(nb_type - 2),
                                private$interaction_model$get_name)),

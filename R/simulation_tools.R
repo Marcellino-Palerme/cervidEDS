@@ -154,6 +154,12 @@ plot_potential <- function(landscape,
   # Add number of type of polygon with color of type
   centroid <- coordinates(landscape)
   text(centroid, labels = landscape$id_type)
+
+  # add legend
+  legend(max_x,min_y,
+         legend = c("no type or border",
+                    unique(info_type[,1])),
+         col = type_color, lty = 1,xpd = T, text.col = type_color)
   
   return(pot)
 }
