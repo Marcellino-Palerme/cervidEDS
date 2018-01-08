@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
- <testsuite hostname="palerme" name="simulation unit tests" timestamp="2017-12-29 18:18:56">
+ <testsuite hostname="palerme" name="simulation unit tests" timestamp="2018-01-08 11:58:12">
   <testcase classname="simulation_unit_tests" name="test_border_effect_center" time="0.0"/>
   <testcase classname="simulation_unit_tests" name="test_border_effect_centerleft" time="0.0"/>
   <testcase classname="simulation_unit_tests" name="test_border_effect_cl_compare" time="0.0"/>
@@ -19,26 +19,26 @@
   <testcase classname="simulation_unit_tests" name="test_border_effect_nominal" time="0.0"/>
   <testcase classname="simulation_unit_tests" name="test_distance2segment_down" time="0.0"/>
   <testcase classname="simulation_unit_tests" name="test_distance2segment_up" time="0.0"/>
-  <testcase classname="simulation_unit_tests" name="test_distance2segment_point_extrem" time="0.0"/>
-  <testcase classname="simulation_unit_tests" name="test_distance2segment_point" time="0.03"/>
-  <testcase classname="simulation_unit_tests" name="test_distance2segment_vertical" time="0.06"/>
-  <testcase classname="simulation_unit_tests" name="test_distance2segment_horizontal" time="0.04"/>
-  <testcase classname="simulation_unit_tests" name="test_potential_func_nominal" time="0.03"/>
+  <testcase classname="simulation_unit_tests" name="test_distance2segment_point_extrem" time="0.01"/>
+  <testcase classname="simulation_unit_tests" name="test_distance2segment_point" time="0.02"/>
+  <testcase classname="simulation_unit_tests" name="test_distance2segment_vertical" time="0.05"/>
+  <testcase classname="simulation_unit_tests" name="test_distance2segment_horizontal" time="0.01"/>
+  <testcase classname="simulation_unit_tests" name="test_potential_func_nominal" time="0.01"/>
   <testcase classname="simulation_unit_tests" name="test_grad_potential_func_nominal" time="0.01"/>
-  <testcase classname="simulation_unit_tests" name="test_grad_potential_func_dx0" time="0.02"/>
+  <testcase classname="simulation_unit_tests" name="test_grad_potential_func_dx0" time="0.01"/>
   <testcase classname="simulation_unit_tests" name="test_grad_potential_func_dy0" time="0.01"/>
-  <testcase classname="simulation_unit_tests" name="test_grad_potential_func_nul" time="0.02"/>
+  <testcase classname="simulation_unit_tests" name="test_grad_potential_func_nul" time="0.01"/>
   <testcase classname="simulation_unit_tests" name="test_grad_potential_func_beta_neg" time="0.01"/>
-  <testcase classname="simulation_unit_tests" name="test_grad_potential_func_puis_neg" time="0.01"/>
+  <testcase classname="simulation_unit_tests" name="test_grad_potential_func_puis_neg" time="0.02"/>
   <testcase classname="simulation_unit_tests" name="test_alpha_func_nominal" time="0"/>
-  <testcase classname="simulation_unit_tests" name="test_alpha_func_alpha_2_zero" time="0"/>
-  <testcase classname="simulation_unit_tests" name="test_alpha_func_alpha_3_zero" time="0.01"/>
+  <testcase classname="simulation_unit_tests" name="test_alpha_func_alpha_2_zero" time="0.01"/>
+  <testcase classname="simulation_unit_tests" name="test_alpha_func_alpha_3_zero" time="0"/>
   <testcase classname="simulation_unit_tests" name="test_alpha_func_t_zero" time="0.01"/>
   <testcase classname="simulation_unit_tests" name="test_alpha_func_log_negative" time="0.02"/>
-  <testcase classname="simulation_unit_tests" name="test_potential_effect_repulsive_nominal" time="0.02"/>
-  <testcase classname="simulation_unit_tests" name="test_potential_effect_repulsive_abort" time="0.03"/>
-  <testcase classname="simulation_unit_tests" name="test_potential_effect_repulsive_up" time="0.08"/>
-  <testcase classname="simulation_unit_tests" name="test_potential_effect_repulsive_down" time="0.08"/>
+  <testcase classname="simulation_unit_tests" name="test_potential_effect_repulsive_nominal" time="0.01"/>
+  <testcase classname="simulation_unit_tests" name="test_potential_effect_repulsive_abort" time="0.02"/>
+  <testcase classname="simulation_unit_tests" name="test_potential_effect_repulsive_up" time="0.07"/>
+  <testcase classname="simulation_unit_tests" name="test_potential_effect_repulsive_down" time="0.07"/>
   <testcase classname="simulation_unit_tests" name="test_potential_effect_repulsive_right" time="0.08"/>
   <testcase classname="simulation_unit_tests" name="test_potential_effect_repulsive_mix" time="0.08"/>
   <testcase classname="simulation_unit_tests" name="test_potential_effect_repulsive_no_element" time="0.02"/>

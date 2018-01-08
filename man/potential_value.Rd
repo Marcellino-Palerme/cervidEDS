@@ -19,3 +19,6 @@ Matrix M*5 (Id, rep (-1) or attr(1),
 \value{
 (double) value potential
 }
+\description{
+Calcualte potential value for a x and y
+}

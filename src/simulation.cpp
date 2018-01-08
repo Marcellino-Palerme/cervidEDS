@@ -284,6 +284,7 @@ std::map<int, int> map_type (NumericMatrix nm_info_type)
 }
 
 //' @title value potential
+//' @description Calcualte potential value for a x and y
 //' 
 //' @param nv_coords_point (NumericVector) coordinates of point (x,y)
 //' @param nm_coords_element (NumericMatrix) all coordinates of segment 
@@ -310,28 +311,32 @@ double potential_value (NumericVector nv_coords_point,
   }
   for (int i = 0; i < nm_coords_element.nrow(); i++)
   {
-    // Calculate distant point to segment and derivate in x and y
-    dist_grad_xy = distance2segment(nv_coords_point[0],
-                                    nv_coords_point[1],
-                                    nm_coords_element(i, ELEMENT_COL_X1),
-                                    nm_coords_element(i, ELEMENT_COL_Y1),
-                                    nm_coords_element(i, ELEMENT_COL_X2),
-                                    nm_coords_element(i, ELEMENT_COL_Y2));
-    line_type = index_type[nm_coords_element(i, ELEMENT_COL_ID_TYPE)];
+    // Don't process border type (0) and no type(-1)
+    if( nm_coords_element(i, ELEMENT_COL_ID_TYPE) > 0)
+    {
+      // Calculate distant point to segment and derivate in x and y
+      dist_grad_xy = distance2segment(nv_coords_point[0],
+                                      nv_coords_point[1],
+                                      nm_coords_element(i, ELEMENT_COL_X1),
+                                      nm_coords_element(i, ELEMENT_COL_Y1),
+                                      nm_coords_element(i, ELEMENT_COL_X2),
+                                      nm_coords_element(i, ELEMENT_COL_Y2));
+      line_type = index_type[nm_coords_element(i, ELEMENT_COL_ID_TYPE)];
 
-    value = value 
-            - nm_info_type(line_type, INFO_TYPE_COL_REPATT)
-            * potential_func(nm_info_type(line_type, INFO_TYPE_COL_ALPHA),
-                             nm_info_type(line_type, INFO_TYPE_COL_BETA),
-                             dist_grad_xy["dist"],
-                             nm_info_type(line_type, INFO_TYPE_COL_POW));
-
+      value = value 
+              - nm_info_type(line_type, INFO_TYPE_COL_REPATT)
+              * potential_func(nm_info_type(line_type, INFO_TYPE_COL_ALPHA),
+                               nm_info_type(line_type, INFO_TYPE_COL_BETA),
+                               dist_grad_xy["dist"],
+                               nm_info_type(line_type, INFO_TYPE_COL_POW));
+    }
   }
 
   return value;
 }
 
 //' @title effect potential
+//' @description Calcualte gradient potential value for a x and y
 //' 
 //' @param nv_coords_point (NumericVector) coordinates of point (x,y)
 //' @param nm_coords_element (NumericMatrix) all coordinates of segment 
@@ -359,30 +364,36 @@ NumericVector potential_effect (NumericVector nv_coords_point,
   }
   for (int i = 0; i < nm_coords_element.nrow(); i++)
   {
-    // Calculate distant point to segment and derivate in x and y
-    dist_grad_xy = distance2segment(nv_coords_point[0],
-                                    nv_coords_point[1],
-                                    nm_coords_element(i, ELEMENT_COL_X1),
-                                    nm_coords_element(i, ELEMENT_COL_Y1),
-                                    nm_coords_element(i, ELEMENT_COL_X2),
-                                    nm_coords_element(i, ELEMENT_COL_Y2));
-    line_type = index_type[nm_coords_element(i, ELEMENT_COL_ID_TYPE)];
-    effect["x"] = effect["x"] + 
-                  nm_info_type(line_type, INFO_TYPE_COL_REPATT) * 
-                  grad_potential_func(nm_info_type(line_type, INFO_TYPE_COL_ALPHA),
-                                      nm_info_type(line_type, INFO_TYPE_COL_BETA),
-                                      dist_grad_xy["dist"],
-                                      nm_info_type(line_type, INFO_TYPE_COL_POW),
-                                      dist_grad_xy["dx"]);
-    
-    effect["y"] = effect["y"] + 
-                  nm_info_type(line_type, INFO_TYPE_COL_REPATT) * 
-                  grad_potential_func(nm_info_type(line_type, INFO_TYPE_COL_ALPHA),
-                                      nm_info_type(line_type, INFO_TYPE_COL_BETA),
-                                      dist_grad_xy["dist"],
-                                      nm_info_type(line_type, INFO_TYPE_COL_POW),
-                                      dist_grad_xy["dy"]);
+    // Don't process border type (0) and no type(-1)
+    if( nm_coords_element(i, ELEMENT_COL_ID_TYPE) > 0)
+    {
+      // Calculate distant point to segment and derivate in x and y
+      dist_grad_xy = distance2segment(nv_coords_point[0],
+                                      nv_coords_point[1],
+                                      nm_coords_element(i, ELEMENT_COL_X1),
+                                      nm_coords_element(i, ELEMENT_COL_Y1),
+                                      nm_coords_element(i, ELEMENT_COL_X2),
+                                      nm_coords_element(i, ELEMENT_COL_Y2));
 
+      line_type = index_type[nm_coords_element(i, ELEMENT_COL_ID_TYPE)];
+
+      effect["x"] = effect["x"] + 
+                    nm_info_type(line_type, INFO_TYPE_COL_REPATT) * 
+                    grad_potential_func(nm_info_type(line_type, INFO_TYPE_COL_ALPHA),
+                                        nm_info_type(line_type, INFO_TYPE_COL_BETA),
+                                        dist_grad_xy["dist"],
+                                        nm_info_type(line_type, INFO_TYPE_COL_POW),
+                                        dist_grad_xy["dx"]);
+
+      effect["y"] = effect["y"] + 
+                    nm_info_type(line_type, INFO_TYPE_COL_REPATT) * 
+                    grad_potential_func(nm_info_type(line_type, INFO_TYPE_COL_ALPHA),
+                                        nm_info_type(line_type, INFO_TYPE_COL_BETA),
+                                        dist_grad_xy["dist"],
+                                        nm_info_type(line_type, INFO_TYPE_COL_POW),
+                                        dist_grad_xy["dy"]);
+
+    }
   }
 
   return effect;

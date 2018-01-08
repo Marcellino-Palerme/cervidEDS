@@ -19,3 +19,6 @@ Matrix M*5 (Id, rep (-1) or attr(1),
 \value{
 (NumericVector) effect potential in x and y (['x'];['y'])
 }
+\description{
+Calcualte gradient potential value for a x and y
+}
