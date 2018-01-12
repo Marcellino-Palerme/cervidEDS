@@ -152,7 +152,7 @@ get_neighbours <- function(landscape)
 #' @title get coordonnate Spatial*
 #' @description get coordonnate of element of Spatial*
 #'
-#' @param (Spatial*)
+#' @param object (Spatial*)
 #' @param name_elements (vector str): two name to attain coords
 #' @param id (str): id of element
 #'

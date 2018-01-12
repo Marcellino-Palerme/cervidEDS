@@ -4,13 +4,12 @@
 \alias{plot_potential}
 \title{plot potential}
 \usage{
-plot_potential(landscape, land_component, info_type, precision = 1)
+plot_potential(land_poly, land_lines, info_type, precision = 1)
 }
 \arguments{
-\item{landscape}{(SpatialPolygon): landscape}
+\item{land_poly}{(SpatialPolygonDataFrame): Typing polygon landscape}
 
-\item{land_component}{(matrix) all coordinates of segment 
-Matrix N*5 (x1,y1,x2,y2,Id_type)}
+\item{land_lines}{(SpatialLinesDataFrame): Typing line landscape}
 
 \item{info_type}{(matrix): N*5 (id, repulsive=0 or attractive=1, alpha, beta,
 power) where N number of type.}

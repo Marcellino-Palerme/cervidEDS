@@ -9,6 +9,8 @@ using namespace Rcpp;
 #include <cmath>
 #include <boost/random.hpp>
 #include <map>
+#include <list>
+#include <algorithm>
 
 typedef boost::normal_distribution<double> Normal;
 typedef boost::mt19937 RandomGenerator;
@@ -56,12 +58,10 @@ double alpha_func(double,
                   double,
                   double);
 
-double potential_value (NumericVector,
-                        NumericMatrix,
+double potential_value (NumericMatrix,
                         NumericMatrix);
 
-NumericVector potential_effect (NumericVector,
-                                NumericMatrix,
+NumericVector potential_effect (NumericMatrix,
                                 NumericMatrix);
 
 NumericVector all_effect (NumericVector,
@@ -75,11 +75,4 @@ NumericVector all_effect (NumericVector,
 double diffusion (double,
                   double);
 
-NumericVector next_coord (NumericVector,
-                          unsigned int,
-                          unsigned int,
-                          double,
-                          NumericMatrix,
-                          NumericMatrix,
-                          double);
 #endif /*SIMULATION_H*/

@@ -1,5 +1,5 @@
 #' two polygon simulation tool use case
-#' The smaller polygon is attrative and the taller is repulsive
+#' The smaller polygon is repulsive and the taller is attrative
 
 require("cervideDS")
 
@@ -25,7 +25,7 @@ type_two_poly = matrix(c(2, 1, 1, 0.001, 2,
 line_two_poly = extract_lines(land_two_poly)
 # affect types
 land_two_poly = affect_polygons_type(land_two_poly, 2)
-land_two_poly$id_type = c(1, 2)
+land_two_poly$id_type = c(2, 1)
 line_two_poly = affect_lines_type(line_two_poly,1)
 line_two_poly$id_type[1] = -1
 

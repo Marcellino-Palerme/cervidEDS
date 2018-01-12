@@ -17,21 +17,21 @@ line_square = affect_lines_type(line_square,1)
 
 type_square = matrix(c(1, -1, 1, 0.001, 2),nrow = 1)
 
-element_square = extract_elements(land_square,
-                                  line_square)
+# element_square = extract_elements(land_square,
+#                                   line_square)
 
 plot_potential(land_square,
-               element_square,
+               line_square,
                type_square,
-               0.1)
+               1)
 
-nx = c(40,20)
-
-for (i in 1:600)
-{
-  nx = next_coord(nx,50,50,0.01,
-                  element_square,
-                  type_square,
-                  1)
-  points(nx[1],nx[2])
-}
+# nx = c(40,20)
+# 
+# for (i in 1:600)
+# {
+#   nx = next_coord(nx,50,50,0.01,
+#                   element_square,
+#                   type_square,
+#                   1)
+#   points(nx[1],nx[2])
+# }

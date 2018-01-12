@@ -1,12 +1,7 @@
 options("testthat.junit.output_file" = "result/simulation_function.xml")
 
 with_reporter("silent",{
-  info_types = matrix(c(-1, 0, 0, 0, 0,
-                        0, 0, 0, 0, 0,
-                        1, 1, 1, 11, 111,
-                        2, 0, 2, 22, 222,
-                        3, 1, 3, 33, 333),
-                      ncol = 5, byrow = TRUE)
+
   require("stringr")
 })
 
@@ -590,61 +585,54 @@ with_reporter("junit",{
   #------test potential_effect-----#
   # potential_effect repulsive nominal case
   test_that("test.potential_effect_repulsive_nominal",{
-    coord_element = matrix(c(0, 0, 30, 0, 1,
-                             0, 30, 0, 0, 1),
+    dist_element = matrix(c(distance2segment(15, 15, 0, 0, 30, 0), 1,
+                            distance2segment(15, 15, 0, 30, 0, 0), 1),
                            nrow = 2, byrow = TRUE)
-    coord_point = c("x" = 15, "y" = 15)
     infos_type = matrix(c(1, -1, 4, 0.1, 2),
                         nrow = 1, byrow = TRUE)
-    result = potential_effect(coord_point,
-                              coord_element,
+    result = potential_effect(dist_element,
                               infos_type)
     expect_equal(as.double(result["x"]), as.double(result["y"]))
     expect_true(as.double(result["x"]) > 0)
   })
   # potential_effect repulsive effect abort case
   test_that("test.potential_effect_repulsive_abort",{
-    coord_element = matrix(c(0, 0, 30, 0, 5,
-                             0, 30, 0, 0, 5,
-                             30, 0, 30, 30, 5,
-                             30, 30, 0, 30, 5,
-                             0, 30, 0, 0, 5), 
+    dist_element = matrix(c(distance2segment(15, 15, 0, 0, 30, 0), 5,
+                            distance2segment(15, 15, 0, 30, 0, 0), 5,
+                            distance2segment(15, 15, 30, 0, 30, 30), 5,
+                            distance2segment(15, 15, 30, 30, 0, 30), 5), 
                            nrow = 4, byrow = TRUE)
-    coord_point = c("x" = 15, "y" = 15)
     infos_type = matrix(c(5, -1, 4, 0.1, 2),
                         nrow = 1, byrow = TRUE)
-    result = potential_effect(coord_point,
-                              coord_element,
+    result = potential_effect(dist_element,
                               infos_type)
     expect_equal(as.double(result["x"]), as.double(result["y"]))
     expect_equal(as.double(result["x"]), 0)
   })
   # potential_effect repulsive to up case
   test_that("test.potential_effect_repulsive_up",{
-    coord_element = matrix(c(0, 0, 30, 0, 5),
+    dist_element = matrix(c(distance2segment(4, 15, 0, 0, 30, 0), 5),
                            nrow = 1, byrow = TRUE)
-    coord_point = c("x" = 4, "y" = 15)
     infos_type = matrix(c(5, -1, 4, 0.1, 2),
                         nrow = 1, byrow = TRUE)
-    result = potential_effect(coord_point,
-                              coord_element,
+    result = potential_effect(dist_element,
                               infos_type)
     expect_equal(as.double(result["x"]), 0)
     expect_true(as.double(result["y"]) > 0)
 print(result)
     # effect grow up if reduce distance
-    coord_point = c("x" = 4, "y" = 1)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(4, 1, 0, 0, 30, 0), 5),
+                      nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_equal(as.double(new_result["x"]), 0)
     expect_true(as.double(new_result["y"]) > 0)
     expect_true(as.double(new_result["y"]) > as.double(result["y"]))
 print(new_result)
     # effect reduce if grow up distance
-    coord_point = c("x" = 4, "y" = 25)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(4, 25, 0, 0, 30, 0), 5),
+                      nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_equal(as.double(new_result["x"]), 0)
     expect_true(as.double(new_result["y"]) > 0)
@@ -652,107 +640,95 @@ print(new_result)
   })
   #to down case
   test_that("test.potential_effect_repulsive_down",{
-    coord_element = matrix(c(0, 30, 30, 30, 5),
-                           nrow = 1, byrow = TRUE)
-    coord_point = c("x" = 4, "y" = 15)
+    dist_element = matrix(c(distance2segment(4, 15, 0, 30, 30, 30), 5),
+                          nrow = 1, byrow = TRUE)
     infos_type = matrix(c(5, -1, 4, 0.1, 2),
                         nrow = 1, byrow = TRUE)
-    result = potential_effect(coord_point,
-                              coord_element,
+    result = potential_effect(dist_element,
                               infos_type)
     expect_equal(as.double(result["x"]), 0)
-    expect_true(as.double(result["y"]) < 0)
+    expect_lt(as.double(result["y"]), 0)
     
     # effect grow up if reduce distance
-    coord_point = c("x" = 4, "y" = 25)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(4, 25, 0, 30, 30, 30), 5),
+                          nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_equal(as.double(new_result["x"]), 0)
-    expect_true(as.double(new_result["y"]) < 0)
-    expect_true(as.double(new_result["y"]) < as.double(result["y"]))
+    expect_lt(as.double(new_result["y"]), 0)
+    expect_lt(as.double(new_result["y"]), as.double(result["y"]))
     
     # effect reduce if grow up distance
-    coord_point = c("x" = 4, "y" = 7)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(4, 7, 0, 30, 30, 30), 5),
+                          nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_equal(as.double(new_result["x"]), 0)
-    expect_true(as.double(new_result["y"]) < 0)
-    expect_true(as.double(new_result["y"]) > as.double(result["y"]))
+    expect_lt(as.double(new_result["y"]), 0)
+    expect_gt(as.double(new_result["y"]), as.double(result["y"]))
   })
 
   #to right case
   test_that("test.potential_effect_repulsive_right",{
-    coord_element = matrix(c(0, 30, 0, 0, 5),
-                           nrow = 1, byrow = TRUE)
-    coord_point = c("x" = 9, "y" = 15)
+    dist_element = matrix(c(distance2segment(9, 15, 0, 30, 0, 0), 5),
+                          nrow = 1, byrow = TRUE)
     infos_type = matrix(c(5, -1, 4, 0.1, 2),
                         nrow = 1, byrow = TRUE)
-    result = potential_effect(coord_point,
-                              coord_element,
+    result = potential_effect(dist_element,
                               infos_type)
     expect_equal(as.double(result["y"]), 0)
-    expect_true(as.double(result["x"]) > 0)
+    expect_gt(as.double(result["x"]), 0)
     
     # effect grow up if reduce distance
-    coord_point = c("x" = 4, "y" = 15)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(4, 15, 0, 30, 0, 0), 5),
+                          nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_equal(as.double(new_result["y"]), 0)
-    expect_true(as.double(new_result["x"]) > 0)
-    expect_true(as.double(new_result["x"]) > as.double(result["x"]))
+    expect_gt(as.double(new_result["x"]), 0)
+    expect_gt(as.double(new_result["x"]), as.double(result["x"]))
     
     # effect reduce if grow up distance
-    coord_point = c("x" = 14, "y" = 7)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(14, 7, 0, 30, 0, 0), 5),
+                          nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_equal(as.double(new_result["y"]), 0)
-    expect_true(as.double(new_result["x"]) > 0)
-    expect_true(as.double(new_result["x"]) < as.double(result["x"]))
+    expect_gt(as.double(new_result["x"]), 0)
+    expect_lt(as.double(new_result["x"]), as.double(result["x"]))
   })
 
   #to mix case
   test_that("test.potential_effect_repulsive_mix",{
-    coord_element = matrix(c(5, 5, 10.5, 9.5, 5),
-                           nrow = 1, byrow = TRUE)
-    coord_point = c("x" = 3, "y" = 2)
+    dist_element = matrix(c(distance2segment(3, 2, 5, 5, 10.5, 9.5), 5),
+                          nrow = 1, byrow = TRUE)
     infos_type = matrix(c(5, -1, 4, 0.1, 2,
                           7, -1, 78, 0.1, 2,
                           2, -1, 0.2, 0.1, 2,
                           8, -1, 48, 0.1, 2),
                         nrow = 4, byrow = TRUE)
-    result = potential_effect(coord_point,
-                              coord_element,
+    result = potential_effect(dist_element,
                               infos_type)
-    expect_true(as.double(result["y"]) < 0)
-    expect_true(as.double(result["x"]) < 0)
+    expect_lt(as.double(result["y"]), 0)
+    expect_lt(as.double(result["x"]), 0)
     
-    coord_point = c("x" = 7, "y" = 10.5)
-    coord_element = matrix(c(5, 5, 10.5, 9.5, 2),
-                           nrow = 1, byrow = TRUE)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(7, 10.5, 5, 5, 10.5, 9.5), 2),
+                          nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_true(as.double(new_result["x"]) < 0)
     expect_true(as.double(new_result["y"]) > 0)
     
-    coord_point = c("x" = 9, "y" = 7)
-    coord_element = matrix(c(5, 5, 10.5, 9.5, 8),
-                           nrow = 1, byrow = TRUE)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(9, 7, 5, 5, 10.5, 9.5), 8),
+                          nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_true(as.double(new_result["x"]) > 0)
     expect_true(as.double(new_result["y"]) < 0)
 
-    coord_point = c("x" = 12.5, "y" = 10)
-    coord_element = matrix(c(5, 5, 10.5, 9.5, 7),
-                           nrow = 1, byrow = TRUE)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(12.5, 10, 5, 5, 10.5, 9.5), 7),
+                          nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_true(as.double(new_result["x"]) > 0)
     expect_true(as.double(new_result["y"]) > 0)
@@ -760,15 +736,13 @@ print(new_result)
 
   #no element case
   test_that("test.potential_effect_repulsive_no_element",{
-    coord_element = matrix()
-    coord_point = c("x" = 15, "y" = 15)
+    dist_element = matrix()
     infos_type = matrix(c(5, -1, 4, 0.1, 2,
                           7, -1, 78, 0.1, 2,
                           2, -1, 0.2, 0.1, 2,
                           8, -1, 48, 0.1, 2),
                         nrow = 4, byrow = TRUE)
-    result = potential_effect(coord_point,
-                              coord_element,
+    result = potential_effect(dist_element,
                               infos_type)
     expect_equal(as.double(result["x"]), as.double(result["y"]))
     expect_equal(as.double(result["x"]), 0)
@@ -776,61 +750,54 @@ print(new_result)
 
   # potential_effect_attractive nominal case
   test_that("test.potential_effect_attractive_nominal",{
-    coord_element = matrix(c(0, 0, 30, 0, 5,
-                             0, 30, 0, 0, 5),
-                           nrow = 2, byrow = TRUE)
-    coord_point = c("x" = 15, "y" = 15)
+    dist_element = matrix(c(distance2segment(15, 15, 0, 0, 30, 0), 5,
+                            distance2segment(15, 15, 0, 30, 0, 0), 5),
+                          nrow = 2, byrow = TRUE)
     infos_type = matrix(c(5, 1, 4, 0.1, 2),
                         nrow = 1, byrow = TRUE)
-    result = potential_effect(coord_point,
-                              coord_element,
+    result = potential_effect(dist_element,
                               infos_type)
     expect_equal(as.double(result["x"]), as.double(result["y"]))
     expect_true(as.double(result["x"]) < 0)
   })
   #effect abort case
   test_that("test.potential_effect_attractive_abort",{
-    coord_element = matrix(c(0, 0, 30, 0, 5,
-                             0, 30, 0, 0, 5,
-                             30, 0, 30, 30, 5,
-                             30, 30, 0, 30, 5,
-                             0, 30, 0, 0, 5),
-                           nrow = 4, byrow = TRUE)
-    coord_point = c("x" = 15, "y" = 15)
+    dist_element = matrix(c(distance2segment(15, 15, 0, 0, 30, 0), 5,
+                            distance2segment(15, 15, 0, 30, 0, 0), 5,
+                            distance2segment(15, 15, 30, 0, 30, 30), 5,
+                            distance2segment(15, 15, 30, 30, 0, 30), 5),
+                          nrow = 4, byrow = TRUE)
     infos_type = matrix(c(5, 1, 4, 0.1, 2),
                         nrow = 1, byrow = TRUE)
-    result = potential_effect(coord_point,
-                              coord_element,
+    result = potential_effect(dist_element,
                               infos_type)
     expect_equal(as.double(result["x"]), as.double(result["y"]))
     expect_equal(as.double(result["x"]), 0)
   })
   #to down case
   test_that("test.potential_effect_attractive_down",{
-    coord_element = matrix(c(0, 0, 30, 0, 5),
-                           nrow = 1, byrow = TRUE)
-    coord_point = c("x" = 4, "y" = 15)
+    dist_element = matrix(c(distance2segment(4, 15, 0, 0, 30, 0), 5),
+                          nrow = 1, byrow = TRUE)
     infos_type = matrix(c(5, 1, 4, 0.1, 2),
                         nrow = 1, byrow = TRUE)
-    result = potential_effect(coord_point,
-                              coord_element,
+    result = potential_effect(dist_element,
                               infos_type)
     expect_equal(as.double(result["x"]), 0)
     expect_true(as.double(result["y"]) < 0)
     print(result)
     # effect grow up if reduce distance
-    coord_point = c("x" = 4, "y" = 1)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(4, 1, 0, 0, 30, 0), 5),
+                          nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_equal(as.double(new_result["x"]), 0)
     expect_true(as.double(new_result["y"]) < 0)
     expect_true(as.double(new_result["y"]) < as.double(result["y"]))
     print(new_result)
     # effect reduce if grow up distance
-    coord_point = c("x" = 4, "y" = 25)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(4, 25, 0, 0, 30, 0), 5),
+                          nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_equal(as.double(new_result["x"]), 0)
     expect_true(as.double(new_result["y"]) < 0)
@@ -838,30 +805,28 @@ print(new_result)
   })
   #to up case
   test_that("test.potential_effect_attractive_up",{
-    coord_element = matrix(c(0, 30, 30, 30, 5),
-                           nrow = 1, byrow = TRUE)
-    coord_point = c("x" = 4, "y" = 15)
+    dist_element = matrix(c(distance2segment(4, 15, 0, 30, 30, 30), 5),
+                          nrow = 1, byrow = TRUE)
     infos_type = matrix(c(5, 1, 4, 0.1, 2),
                         nrow = 1, byrow = TRUE)
-    result = potential_effect(coord_point,
-                              coord_element,
+    result = potential_effect(dist_element,
                               infos_type)
     expect_equal(as.double(result["x"]), 0)
     expect_true(as.double(result["y"]) > 0)
     
     # effect grow up if reduce distance
-    coord_point = c("x" = 4, "y" = 25)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(4, 25, 0, 30, 30, 30), 5),
+                          nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_equal(as.double(new_result["x"]), 0)
     expect_true(as.double(new_result["y"]) > 0)
     expect_true(as.double(new_result["y"]) > as.double(result["y"]))
     
     # effect reduce if grow up distance
-    coord_point = c("x" = 4, "y" = 7)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(4, 7, 0, 30, 30, 30), 5),
+                          nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_equal(as.double(new_result["x"]), 0)
     expect_true(as.double(new_result["y"]) > 0)
@@ -870,30 +835,28 @@ print(new_result)
   
   #to left case
   test_that("test.potential_effect_attractive_left",{
-    coord_element = matrix(c(0, 30, 0, 0, 5),
-                           nrow = 1, byrow = TRUE)
-    coord_point = c("x" = 9, "y" = 15)
+    dist_element = matrix(c(distance2segment(9, 15, 0, 30, 0, 0), 5),
+                          nrow = 1, byrow = TRUE)
     infos_type = matrix(c(5, 1, 4, 0.1, 2),
                         nrow = 1, byrow = TRUE)
-    result = potential_effect(coord_point,
-                              coord_element,
+    result = potential_effect(dist_element,
                               infos_type)
     expect_equal(as.double(result["y"]), 0)
     expect_true(as.double(result["x"]) < 0)
     
     # effect grow up if reduce distance
-    coord_point = c("x" = 4, "y" = 15)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(4, 15, 0, 30, 0, 0), 5),
+                          nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_equal(as.double(new_result["y"]), 0)
     expect_true(as.double(new_result["x"]) < 0)
     expect_true(as.double(new_result["x"]) < as.double(result["x"]))
     
     # effect reduce if grow up distance
-    coord_point = c("x" = 14, "y" = 7)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(14, 7, 0, 30, 0, 0), 5),
+                          nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_equal(as.double(new_result["y"]), 0)
     expect_true(as.double(new_result["x"]) < 0)
@@ -902,43 +865,35 @@ print(new_result)
   
   #to mix case
   test_that("test.potential_effect_attractive_mix",{
-    coord_element = matrix(c(5, 5, 10.5, 9.5, 5),
-                           nrow = 1, byrow = TRUE)
-    coord_point = c("x" = 3, "y" = 2)
+    dist_element = matrix(c(distance2segment(3, 2, 5, 5, 10.5, 9.5), 5),
+                          nrow = 1, byrow = TRUE)
     infos_type = matrix(c(5, 1, 4, 0.1, 2,
                           7, 1, 78, 0.1, 2,
                           2, 1, 0.2, 0.1, 2,
                           8, 1, 48, 0.1, 2),
                         nrow = 4, byrow = TRUE)
-    result = potential_effect(coord_point,
-                              coord_element,
+    result = potential_effect(dist_element,
                               infos_type)
     expect_true(as.double(result["y"]) > 0)
     expect_true(as.double(result["x"]) > 0)
     
-    coord_point = c("x" = 7, "y" = 10.5)
-    coord_element = matrix(c(5, 5, 10.5, 9.5, 2),
-                           nrow = 1, byrow = TRUE)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(7, 10.5, 5, 5, 10.5, 9.5), 2),
+                          nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_true(as.double(new_result["x"]) > 0)
     expect_true(as.double(new_result["y"]) < 0)
     
-    coord_point = c("x" = 9, "y" = 7)
-    coord_element = matrix(c(5, 5, 10.5, 9.5, 8),
-                           nrow = 1, byrow = TRUE)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(9, 7, 5, 5, 10.5, 9.5), 8),
+                          nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_true(as.double(new_result["x"]) < 0)
     expect_true(as.double(new_result["y"]) > 0)
     
-    coord_point = c("x" = 12.5, "y" = 10)
-    coord_element = matrix(c(5, 5, 10.5, 9.5, 7),
-                           nrow = 1, byrow = TRUE)
-    new_result = potential_effect(coord_point,
-                                  coord_element,
+    dist_element = matrix(c(distance2segment(12.5, 10, 5, 5, 10.5, 9.5), 7),
+                          nrow = 1, byrow = TRUE)
+    new_result = potential_effect(dist_element,
                                   infos_type)
     expect_true(as.double(new_result["x"]) < 0)
     expect_true(as.double(new_result["y"]) < 0)
@@ -946,15 +901,13 @@ print(new_result)
 
   #no element case
   test_that("test.potential_effect_attractive_no_element",{
-    coord_element = matrix()
-    coord_point = c("x" = 44, "y" = 10.21)
+    dist_element = matrix()
     infos_type = matrix(c(5, 1, 4, 0.1, 2,
                           7, 1, 78, 0.1, 2,
                           2, 1, 0.2, 0.1, 2,
                           8, 1, 48, 0.1, 2),
                         nrow = 4, byrow = TRUE)
-    result = potential_effect(coord_point,
-                              coord_element,
+    result = potential_effect(dist_element,
                               infos_type)
     expect_equal(as.double(result["x"]), as.double(result["y"]))
     expect_equal(as.double(result["x"]), 0)
@@ -963,8 +916,8 @@ print(new_result)
   #------test all_effect-----#
   #nominal case
   test_that("test.all_effect_nominal", {
-    coord_element = matrix(c(5, 5, 10.5, 9.5, 14,
-                             1.5, 8, 4.5, 3, 1),
+    dist_element = matrix(c(distance2segment(5, 8, 5, 5, 10.5, 9.5), 14,
+                             distance2segment(5, 8, 1.5, 8, 4.5, 3), 1),
                            nrow = 2, byrow = TRUE)
     infos_type = matrix(c(5, 1, 4, 0.1, 2,
                           7, 1, 78, 0.1, 2,
@@ -978,7 +931,7 @@ print(new_result)
                         15,
                         15,
                         0.2,
-                        coord_element,
+                        dist_element,
                         infos_type,
                         0.1)
     expect_true(result["x"] > 0, info = paste(result["x"], "inf or equal 0"))
@@ -996,46 +949,24 @@ print(new_result)
     expect_true(value_1 != value_2)
   })
 
-  #------test next_coord-----#
-  #nominal case
-  test_that("test.next_coord_nominal", {
-    coord_attrac = matrix(c(5,5,10.5,9.5,6,0.1,2),
-                          ncol = 7,nrow = 1, byrow = TRUE)
-    coord_repul = matrix(c(1.5,8,4.5,3,6,0.1,2),
-                         ncol = 7,nrow = 1, byrow = TRUE)
-    coord_point = c("x" = 5, "y" = 8)
-    result = next_coord(coord_point,
-                        15,
-                        15,
-                        0.2,
-                        coord_attrac,
-                        coord_repul,
-                        0.1)
-    expect_true(result["x"] > 5, info = paste(result["x"], "inf or equal 5"))
-    expect_true(result["y"] < 8, info = paste(result["y"], "sup or equal 8"))
-  })
-
   #------test potential value-----#
   #potential repulsive nominal case
   test_that("test.potential_value_repulsive_nominal", {
-    coord_repul = matrix(c(5,5,10.5,9.5,1),
-                         nrow = 1, byrow = TRUE)
+    dist_element = matrix(c(distance2segment(2, 4, 5, 5, 10.5, 9.5), 1),
+                          nrow = 1, byrow = TRUE)
     infos_type = matrix(c(1, -1, 0.4, 1, 3,
                           4, -1, 9, 0.74, 1),
                         nrow = 2, byrow = TRUE)
-    coord_point = c("x" = 2, "y" = 4)
-    result = potential_value(coord_point,
-                             coord_repul,
+
+    result = potential_value(dist_element,
                              infos_type)
     expect_gt(result, 0)
 
-    coord_repul = matrix(c(5, 5, 10.5, 9.5, 1,
-                           8, 4, 0, 1, 4),
-                         nrow = 2, byrow = TRUE)
+    dist_element = matrix(c(distance2segment(2, 4, 5, 5, 10.5, 9.5), 1,
+                            distance2segment(2, 4, 8, 4, 0, 1), 4),
+                          nrow = 2, byrow = TRUE)
 
-    coord_point = c("x" = 2, "y" = 4)
-    new_result = potential_value(coord_point,
-                                 coord_repul,
+    new_result = potential_value(dist_element,
                                  infos_type)
     expect_gt(new_result, 0)
     expect_gt(new_result, result)
@@ -1043,23 +974,21 @@ print(new_result)
 
   #potential attractive nominal case
   test_that("test.potential_value_attractive_nominal", {
-    coord_attr = matrix(c(5, 5, 10.5, 9.5, 1),
-                        nrow = 1, byrow = TRUE)
-    coord_point = c("x" = 2, "y" = 4)
+    dist_element = matrix(c(distance2segment(2, 4, 5, 5, 10.5, 9.5), 1),
+                          nrow = 1, byrow = TRUE)
+
     infos_type = matrix(c(1, 1, 0.4, 1, 3,
                           4, 1, 9, 0.74, 1),
                         nrow = 2, byrow = TRUE)
-    result = potential_value(coord_point,
-                             coord_attr,
+    result = potential_value(dist_element,
                              infos_type)
     expect_lt(result, 0)
 
-    coord_attr = matrix(c(5, 5, 10.5, 9.5, 1,
-                           8, 4, 0, 1, 4),
-                        nrow = 2, byrow = TRUE)
-    coord_point = c("x" = 2, "y" = 4)
-    new_result = potential_value(coord_point,
-                                 coord_attr,
+    dist_element = matrix(c(distance2segment(2, 4, 5, 5, 10.5, 9.5), 1,
+                            distance2segment(2, 4, 8, 4, 0, 1), 4),
+                          nrow = 2, byrow = TRUE)
+
+    new_result = potential_value(dist_element,
                                  infos_type)
     expect_lt(new_result, 0)
     expect_lt(new_result, result)
@@ -1067,23 +996,60 @@ print(new_result)
 
   # potential value nominal case
   test_that("test.potential_value_nominal", {
-    coord_element = matrix(c(1, 3, 2, 1, 4,
-                             2, 5, 4, 1, 7),
+    dist_element = matrix(c(distance2segment(2.5, 1.5, 1, 3, 2, 1), 4,
+                            distance2segment(2.5, 1.5, 2, 5, 4, 1), 7),
                            nrow = 2, byrow = TRUE)
-    coord_point = c("x" = 2.5, "y" = 1.5)
+
     infos_type = matrix(c(7, 1, 0.4, 1, 3,
                           4, -1, 0.4, 1, 3),
                         nrow = 2, byrow = TRUE)
-    result = potential_value(coord_point,
-                             coord_element,
+    result = potential_value(dist_element,
                              infos_type)
     expect_gt(result, 0)
     
-    coord_point = c("x" = 2, "y" = 4)
-    new_result = potential_value(coord_point,
-                                 coord_element,
+    dist_element = matrix(c(distance2segment(2, 4, 1, 3, 2, 1), 4,
+                            distance2segment(2, 4, 2, 5, 4, 1), 7),
+                          nrow = 2, byrow = TRUE)
+    new_result = potential_value(dist_element,
                                  infos_type)
     expect_lt(new_result, 0)
     expect_lt(new_result, result)
+  })
+  
+  #------test bound-----#
+  #bound nominal case
+  test_that("test.bound_nominal", {
+    result = bound(25,-7,40)
+    expect_equal(result, 25)
+
+    result = bound(-10,-7,40)
+    expect_equal(result, -7)
+
+    result = bound(100,-7,40)
+    expect_equal(result, 40)
+  })
+
+  #bound negative case
+  test_that("test.bound_negative", {
+    result = bound(-5,-6,-2)
+    expect_equal(result, -5)
+
+    result = bound(-7.2,-6,-2)
+    expect_equal(result, -6)
+
+    result = bound(-1.2,-6,-2)
+    expect_equal(result, -2)
+  })
+
+  #bound positive case
+  test_that("test.bound_positive", {
+    result = bound(75,14.2,265)
+    expect_equal(result, 75)
+    
+    result = bound(7.5,14.2,265.1)
+    expect_equal(result, 14.2)
+    
+    result = bound(755,14.2,265.1)
+    expect_equal(result, 265.1)
   })
 },T)

@@ -15,9 +15,9 @@ model_square = TypeInteractModel$new(list(type_1))
 
 # create a square
 coords = matrix(c(0,0,5,0,5,5,0,5,0,0),5,2,byrow = T)
-p = Polygon(coords)
-ps = Polygons(list(p),ID=c(1))
-land_square = SpatialPolygons(list(ps))
+p = sp::Polygon(coords)
+ps = sp::Polygons(list(p),ID = c(1))
+land_square = sp::SpatialPolygons(list(ps))
 
 # get lines of square
 line_square = extract_lines(land_square)

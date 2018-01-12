@@ -4,7 +4,7 @@
 \alias{all_effect}
 \title{all effect}
 \usage{
-all_effect(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_element,
+all_effect(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_dist_element,
   nm_info_type, time_step)
 }
 \arguments{
@@ -12,7 +12,7 @@ all_effect(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_element,
 
 \item{d_sigma}{(double) repulsif effect adaptor}
 
-\item{nm_coords_element}{(NumericMatrix) all coordinates of segment 
+\item{nm_dist_element}{(NumericMatrix) all coordinates of segment 
 Matrix N*5 (x1,y1,x2,y2,Id_type)}
 
 \item{nm_info_type}{(NumericMatrix) descript each type

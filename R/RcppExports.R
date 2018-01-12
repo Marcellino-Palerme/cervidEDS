@@ -104,32 +104,46 @@ alpha_func <- function(alpha1, alpha2, alpha3, t) {
     .Call('_cervideDS_alpha_func', PACKAGE = 'cervideDS', alpha1, alpha2, alpha3, t)
 }
 
-#' @title value potential
+#' @title bound
+#' @description stake value out
 #' 
-#' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-#' @param nm_coords_element (NumericMatrix) all coordinates of segment 
-#'                                          Matrix N*5 (x1,y1,x2,y2,Id_type)
+#' @param val (double) value must be staked
+#' @param bound_1 (double) first bound
+#' @param bound_2 (double) second bound
+#' @return (double) staked value
+#' @export
+bound <- function(val, bound_1, bound_2) {
+    .Call('_cervideDS_bound', PACKAGE = 'cervideDS', val, bound_1, bound_2)
+}
+
+#' @title value potential
+#' @description Calcualte potential value for a x and y
+#' 
+#' @param nm_dist_element (NumericMatrix) all distance and gradiant of segment 
+#'                                        and polygon 
+#'                                        (matrix) M*4 (dist, dx, dy, id_type)
 #' @param nm_info_type (NumericMatrix) descript each type
 #'                                     Matrix M*5 (Id, rep (-1) or attr(1), 
 #'                                                 alpha, beta, power)
 #' @return (double) value potential
 #' @export
-potential_value <- function(nv_coords_point, nm_coords_element, nm_info_type) {
-    .Call('_cervideDS_potential_value', PACKAGE = 'cervideDS', nv_coords_point, nm_coords_element, nm_info_type)
+potential_value <- function(nm_dist_element, nm_info_type) {
+    .Call('_cervideDS_potential_value', PACKAGE = 'cervideDS', nm_dist_element, nm_info_type)
 }
 
 #' @title effect potential
+#' @description Calcualte gradient potential value for a x and y
 #' 
-#' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-#' @param nm_coords_element (NumericMatrix) all coordinates of segment 
-#'                                          Matrix N*5 (x1,y1,x2,y2,Id_type)
+#' @param nm_dist_element (NumericMatrix) all distance and gradiant of segment 
+#'                                        and polygon 
+#'                                        (matrix) M*4 (dist, dx, dy, id_type)
 #' @param nm_info_type (NumericMatrix) descript each type
 #'                                     Matrix M*5 (Id, rep (-1) or attr(1), 
 #'                                                 alpha, beta, power)
 #' @return (NumericVector) effect potential in x and y (['x'];['y'])
 #' @export
-potential_effect <- function(nv_coords_point, nm_coords_element, nm_info_type) {
-    .Call('_cervideDS_potential_effect', PACKAGE = 'cervideDS', nv_coords_point, nm_coords_element, nm_info_type)
+potential_effect <- function(nm_dist_element, nm_info_type) {
+    .Call('_cervideDS_potential_effect', PACKAGE = 'cervideDS', nm_dist_element, nm_info_type)
 }
 
 #' @title all effect
@@ -139,7 +153,7 @@ potential_effect <- function(nv_coords_point, nm_coords_element, nm_info_type) {
 #' @param ui_land_width (unsigned int) width of landscape.
 #' @param ui_land_heigth (unsigned int) heigth of landscape.
 #' @param d_sigma (double) repulsif effect adaptor
-#' @param nm_coords_element (NumericMatrix) all coordinates of segment 
+#' @param nm_dist_element (NumericMatrix) all coordinates of segment 
 #'                                          Matrix N*5 (x1,y1,x2,y2,Id_type)
 #' @param nm_info_type (NumericMatrix) descript each type
 #'                                     Matrix M*5 (Id, rep (-1) or attr(1), 
@@ -147,8 +161,8 @@ potential_effect <- function(nv_coords_point, nm_coords_element, nm_info_type) {
 #' @param time_step (double) step of time
 #' @return (NumericVector) effect in x and y (['x'];['y'])
 #' @export
-all_effect <- function(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_element, nm_info_type, time_step) {
-    .Call('_cervideDS_all_effect', PACKAGE = 'cervideDS', nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_element, nm_info_type, time_step)
+all_effect <- function(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_dist_element, nm_info_type, time_step) {
+    .Call('_cervideDS_all_effect', PACKAGE = 'cervideDS', nv_coords_point, ui_width, ui_heigth, d_sigma, nm_dist_element, nm_info_type, time_step)
 }
 
 #' @title diffusion
@@ -160,24 +174,5 @@ all_effect <- function(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_
 #' @export
 diffusion <- function(d_sigma, time_step) {
     .Call('_cervideDS_diffusion', PACKAGE = 'cervideDS', d_sigma, time_step)
-}
-
-#' @title next coord
-#' @description calculate next coordinates 
-#' 
-#' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-#' @param ui_land_width (unsigned int) width of landscape.
-#' @param ui_land_heigth (unsigned int) heigth of landscape.
-#' @param d_sigma (double) repulsif effect adaptor
-#' @param nm_coords_element (NumericMatrix) all coordinates of segment 
-#'                                          Matrix N*5 (x1,y1,x2,y2,Id_type)
-#' @param nm_info_type (NumericMatrix) descript each type
-#'                                     Matrix M*5 (Id, rep (-1) or attr(1), 
-#'                                                 alpha, beta, power)
-#' @param time_step (double) step of time
-#' @return (NumericVector) next coord in x and y (['x'];['y'])
-#' @export
-next_coord <- function(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_element, nm_info_type, time_step) {
-    .Call('_cervideDS_next_coord', PACKAGE = 'cervideDS', nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_element, nm_info_type, time_step)
 }
 

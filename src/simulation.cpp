@@ -283,53 +283,93 @@ std::map<int, int> map_type (NumericMatrix nm_info_type)
   return index_type;
 }
 
+//' @title bound
+//' @description stake value out
+//' 
+//' @param val (double) value must be staked
+//' @param bound_1 (double) first bound
+//' @param bound_2 (double) second bound
+//' @return (double) staked value
+//' @export
+// [[Rcpp::export]]
+double bound (double val,
+              double bound_1,
+              double bound_2)
+{
+  std::list<double> my_list;
+  std::list<double>::iterator my_iter;
+
+  // Create list with three values
+  my_list.push_back(val);
+  my_list.push_back(bound_1);
+  my_list.push_back(bound_2);
+
+  // Sort the list
+  my_list.sort();
+
+  // Return the second value
+  my_iter = my_list.begin();
+  my_iter++;
+  return *my_iter;
+}
+
 //' @title value potential
 //' @description Calcualte potential value for a x and y
 //' 
-//' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-//' @param nm_coords_element (NumericMatrix) all coordinates of segment 
-//'                                          Matrix N*5 (x1,y1,x2,y2,Id_type)
+//' @param nm_dist_element (NumericMatrix) all distance and gradiant of segment 
+//'                                        and polygon 
+//'                                        (matrix) M*4 (dist, dx, dy, id_type)
 //' @param nm_info_type (NumericMatrix) descript each type
 //'                                     Matrix M*5 (Id, rep (-1) or attr(1), 
 //'                                                 alpha, beta, power)
 //' @return (double) value potential
 //' @export
 // [[Rcpp::export]]
-double potential_value (NumericVector nv_coords_point,
-                        NumericMatrix nm_coords_element,
+double potential_value (NumericMatrix nm_dist_element,
                         NumericMatrix nm_info_type)
 {
   double value = 0;
-  NumericVector dist_grad_xy;
   std::map<int, int> index_type = map_type(nm_info_type);
+  std::map<int, double> pot_type;
+  std::map<int, double>::iterator it_pot_type;
   int line_type = 0;
   
   // Verify if element is correct
-  if (nm_coords_element.ncol() != ELEMENT_NB_COL)
+  if (nm_dist_element.ncol() != ELEMENT_NB_COL)
   {
     return value;
   }
-  for (int i = 0; i < nm_coords_element.nrow(); i++)
+  for (int i = 0; i < nm_dist_element.nrow(); i++)
   {
     // Don't process border type (0) and no type(-1)
-    if( nm_coords_element(i, ELEMENT_COL_ID_TYPE) > 0)
+    if( nm_dist_element(i, ELEMENT_COL_ID_TYPE) > 0)
     {
-      // Calculate distant point to segment and derivate in x and y
-      dist_grad_xy = distance2segment(nv_coords_point[0],
-                                      nv_coords_point[1],
-                                      nm_coords_element(i, ELEMENT_COL_X1),
-                                      nm_coords_element(i, ELEMENT_COL_Y1),
-                                      nm_coords_element(i, ELEMENT_COL_X2),
-                                      nm_coords_element(i, ELEMENT_COL_Y2));
-      line_type = index_type[nm_coords_element(i, ELEMENT_COL_ID_TYPE)];
+      line_type = index_type[nm_dist_element(i, ELEMENT_COL_ID_TYPE)];
 
-      value = value 
-              - nm_info_type(line_type, INFO_TYPE_COL_REPATT)
-              * potential_func(nm_info_type(line_type, INFO_TYPE_COL_ALPHA),
-                               nm_info_type(line_type, INFO_TYPE_COL_BETA),
-                               dist_grad_xy["dist"],
-                               nm_info_type(line_type, INFO_TYPE_COL_POW));
+      // Sum potential of elements of same type
+      pot_type[line_type] -= nm_info_type(line_type, INFO_TYPE_COL_REPATT)
+                             * potential_func(nm_info_type(line_type,
+                                                           INFO_TYPE_COL_ALPHA),
+                                              nm_info_type(line_type,
+                                                           INFO_TYPE_COL_BETA),
+                                              nm_dist_element(i,
+                                                              ELEMENT_COL_DIST),
+                                              nm_info_type(line_type,
+                                                           INFO_TYPE_COL_POW));
     }
+  }
+  
+  for (it_pot_type=pot_type.begin();
+       it_pot_type!=pot_type.end();
+       it_pot_type++)
+  {
+    line_type = (*it_pot_type).first;
+    // staked potential out of each type
+    pot_type[line_type] = bound(pot_type[line_type],
+                                nm_info_type(line_type, INFO_TYPE_COL_ALPHA),
+                                - nm_info_type(line_type, INFO_TYPE_COL_ALPHA));
+    // Sum all staked potential
+    value += (*it_pot_type).second;
   }
 
   return value;
@@ -338,61 +378,74 @@ double potential_value (NumericVector nv_coords_point,
 //' @title effect potential
 //' @description Calcualte gradient potential value for a x and y
 //' 
-//' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-//' @param nm_coords_element (NumericMatrix) all coordinates of segment 
-//'                                          Matrix N*5 (x1,y1,x2,y2,Id_type)
+//' @param nm_dist_element (NumericMatrix) all distance and gradiant of segment 
+//'                                        and polygon 
+//'                                        (matrix) M*4 (dist, dx, dy, id_type)
 //' @param nm_info_type (NumericMatrix) descript each type
 //'                                     Matrix M*5 (Id, rep (-1) or attr(1), 
 //'                                                 alpha, beta, power)
 //' @return (NumericVector) effect potential in x and y (['x'];['y'])
 //' @export
 // [[Rcpp::export]]
-NumericVector potential_effect (NumericVector nv_coords_point,
-                                NumericMatrix nm_coords_element,
+NumericVector potential_effect (NumericMatrix nm_dist_element,
                                 NumericMatrix nm_info_type)
 {
   NumericVector effect = NumericVector::create(_["x"] = 0,
                                                _["y"] = 0);
-  NumericVector dist_grad_xy;
   std::map<int, int> index_type = map_type(nm_info_type);
+  std::map<int, double> grad_type;
+  std::map<int, double>::iterator it_grad_type;
   int line_type = 0;
+  std::map<int, double> grad_bound;
   
   // Verify if element is correct
-  if (nm_coords_element.ncol() != ELEMENT_NB_COL)
+  if (nm_dist_element.ncol() != ELEMENT_NB_COL)
   {
     return effect;
   }
-  for (int i = 0; i < nm_coords_element.nrow(); i++)
+  for (int j =0; j < 2; j++)
   {
-    // Don't process border type (0) and no type(-1)
-    if( nm_coords_element(i, ELEMENT_COL_ID_TYPE) > 0)
+    for (int i = 0; i < nm_dist_element.nrow(); i++)
     {
-      // Calculate distant point to segment and derivate in x and y
-      dist_grad_xy = distance2segment(nv_coords_point[0],
-                                      nv_coords_point[1],
-                                      nm_coords_element(i, ELEMENT_COL_X1),
-                                      nm_coords_element(i, ELEMENT_COL_Y1),
-                                      nm_coords_element(i, ELEMENT_COL_X2),
-                                      nm_coords_element(i, ELEMENT_COL_Y2));
+      // Don't process border type (0) and no type(-1)
+      if( nm_dist_element(i, ELEMENT_COL_ID_TYPE) > 0)
+      {
+  
+        line_type = index_type[nm_dist_element(i, ELEMENT_COL_ID_TYPE)];
 
-      line_type = index_type[nm_coords_element(i, ELEMENT_COL_ID_TYPE)];
-
-      effect["x"] = effect["x"] + 
-                    nm_info_type(line_type, INFO_TYPE_COL_REPATT) * 
-                    grad_potential_func(nm_info_type(line_type, INFO_TYPE_COL_ALPHA),
-                                        nm_info_type(line_type, INFO_TYPE_COL_BETA),
-                                        dist_grad_xy["dist"],
-                                        nm_info_type(line_type, INFO_TYPE_COL_POW),
-                                        dist_grad_xy["dx"]);
-
-      effect["y"] = effect["y"] + 
-                    nm_info_type(line_type, INFO_TYPE_COL_REPATT) * 
-                    grad_potential_func(nm_info_type(line_type, INFO_TYPE_COL_ALPHA),
-                                        nm_info_type(line_type, INFO_TYPE_COL_BETA),
-                                        dist_grad_xy["dist"],
-                                        nm_info_type(line_type, INFO_TYPE_COL_POW),
-                                        dist_grad_xy["dy"]);
-
+        // Sum potential gradient of elements of same type
+        grad_type[line_type] += nm_info_type(line_type, INFO_TYPE_COL_REPATT) * 
+                                grad_potential_func(
+                                  nm_info_type(line_type, INFO_TYPE_COL_ALPHA),
+                                  nm_info_type(line_type, INFO_TYPE_COL_BETA),
+                                  nm_dist_element(i, ELEMENT_COL_DIST),
+                                  nm_info_type(line_type, INFO_TYPE_COL_POW),
+                                  nm_dist_element(i, ELEMENT_COL_DX + j));
+        // Keep higher bound by type
+        grad_bound[line_type] = std::max(grad_bound[line_type],
+                                std::abs(- nm_info_type(line_type, INFO_TYPE_COL_POW)
+                                         * nm_info_type(line_type, INFO_TYPE_COL_BETA)
+                                         * nm_info_type(line_type, INFO_TYPE_COL_ALPHA)
+                                         * nm_dist_element(i, ELEMENT_COL_DX + j)
+                                         * pow(nm_dist_element(i, ELEMENT_COL_DIST),
+                                               nm_info_type(line_type, INFO_TYPE_COL_POW) - 1))); 
+      }
+    }
+    for (it_grad_type=grad_type.begin();
+         it_grad_type!=grad_type.end();
+         it_grad_type++)
+    {
+      line_type = (*it_grad_type).first;
+      // staked potential gradient out of each type
+      grad_type[line_type] = bound(grad_type[line_type],
+                                   grad_bound[line_type],
+                                  - grad_bound[line_type]);
+      // Sum all staked potential
+      effect[j] += (*it_grad_type).second;
+      
+      //reset value for second dimension
+      grad_type[line_type] = 0;
+      grad_bound[line_type] = 0;
     }
   }
 
@@ -406,7 +459,7 @@ NumericVector potential_effect (NumericVector nv_coords_point,
 //' @param ui_land_width (unsigned int) width of landscape.
 //' @param ui_land_heigth (unsigned int) heigth of landscape.
 //' @param d_sigma (double) repulsif effect adaptor
-//' @param nm_coords_element (NumericMatrix) all coordinates of segment 
+//' @param nm_dist_element (NumericMatrix) all coordinates of segment 
 //'                                          Matrix N*5 (x1,y1,x2,y2,Id_type)
 //' @param nm_info_type (NumericMatrix) descript each type
 //'                                     Matrix M*5 (Id, rep (-1) or attr(1), 
@@ -419,7 +472,7 @@ NumericVector all_effect (NumericVector nv_coords_point,
                           unsigned int ui_width,
                           unsigned int ui_heigth,
                           double d_sigma,
-                          NumericMatrix nm_coords_element,
+                          NumericMatrix nm_dist_element,
                           NumericMatrix nm_info_type,
                           double time_step)
 {
@@ -439,8 +492,7 @@ NumericVector all_effect (NumericVector nv_coords_point,
   effect["y"] = tmp_effect["y"];
 
   // potential effect
-  tmp_effect = potential_effect (nv_coords_point,
-                                 nm_coords_element,
+  tmp_effect = potential_effect (nm_dist_element,
                                  nm_info_type);
 
   effect["x"] = effect["x"] + tmp_effect["x"];
@@ -474,48 +526,4 @@ double diffusion (double d_sigma,
   diffu = d_sigma * my_weiner();
   
   return diffu;
-}
-
-//' @title next coord
-//' @description calculate next coordinates 
-//' 
-//' @param nv_coords_point (NumericVector) coordinates of point (x,y)
-//' @param ui_land_width (unsigned int) width of landscape.
-//' @param ui_land_heigth (unsigned int) heigth of landscape.
-//' @param d_sigma (double) repulsif effect adaptor
-//' @param nm_coords_element (NumericMatrix) all coordinates of segment 
-//'                                          Matrix N*5 (x1,y1,x2,y2,Id_type)
-//' @param nm_info_type (NumericMatrix) descript each type
-//'                                     Matrix M*5 (Id, rep (-1) or attr(1), 
-//'                                                 alpha, beta, power)
-//' @param time_step (double) step of time
-//' @return (NumericVector) next coord in x and y (['x'];['y'])
-//' @export
-// [[Rcpp::export]]
-
-NumericVector next_coord (NumericVector nv_coords_point,
-                          unsigned int ui_width,
-                          unsigned int ui_heigth,
-                          double d_sigma,
-                          NumericMatrix nm_coords_element,
-                          NumericMatrix nm_info_type,
-                          double time_step)
-{
-  NumericVector effect;
-  NumericVector new_coord = NumericVector::create(_["x"] = 0,
-                                                  _["y"] = 0);
-  effect = all_effect (nv_coords_point,
-                       ui_width,
-                       ui_heigth,
-                       d_sigma,
-                       nm_coords_element,
-                       nm_info_type,
-                       time_step);
-
-  new_coord["x"] = nv_coords_point[0] + effect[0] + diffusion (d_sigma,
-                                                               time_step);
-  new_coord["y"] = nv_coords_point[1] + effect[1] + diffusion (d_sigma,
-                                                               time_step);
-
-  return new_coord;
 }

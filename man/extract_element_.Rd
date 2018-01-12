@@ -4,13 +4,17 @@
 \alias{extract_element_}
 \title{Extract elements (generic)}
 \usage{
-extract_element_(object)
+extract_element_(x, y, object)
 }
 \arguments{
+\item{x}{(double) position in x}
+
+\item{y}{(double) position in y}
+
 \item{object}{(Spatial*DataFrame): Typing polygon or line landscape}
 }
 \value{
-(matrix) M*5 (x1, y1, x2, y2, id_type)
+(matrix) M*4 (dist, dx, dy, id_type)
 }
 \description{
 Extract all element of typed polygon or line to create list 

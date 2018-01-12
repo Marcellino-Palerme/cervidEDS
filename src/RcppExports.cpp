@@ -109,35 +109,46 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// potential_value
-double potential_value(NumericVector nv_coords_point, NumericMatrix nm_coords_element, NumericMatrix nm_info_type);
-RcppExport SEXP _cervideDS_potential_value(SEXP nv_coords_pointSEXP, SEXP nm_coords_elementSEXP, SEXP nm_info_typeSEXP) {
+// bound
+double bound(double val, double bound_1, double bound_2);
+RcppExport SEXP _cervideDS_bound(SEXP valSEXP, SEXP bound_1SEXP, SEXP bound_2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type nv_coords_point(nv_coords_pointSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type nm_coords_element(nm_coords_elementSEXP);
+    Rcpp::traits::input_parameter< double >::type val(valSEXP);
+    Rcpp::traits::input_parameter< double >::type bound_1(bound_1SEXP);
+    Rcpp::traits::input_parameter< double >::type bound_2(bound_2SEXP);
+    rcpp_result_gen = Rcpp::wrap(bound(val, bound_1, bound_2));
+    return rcpp_result_gen;
+END_RCPP
+}
+// potential_value
+double potential_value(NumericMatrix nm_dist_element, NumericMatrix nm_info_type);
+RcppExport SEXP _cervideDS_potential_value(SEXP nm_dist_elementSEXP, SEXP nm_info_typeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type nm_dist_element(nm_dist_elementSEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type nm_info_type(nm_info_typeSEXP);
-    rcpp_result_gen = Rcpp::wrap(potential_value(nv_coords_point, nm_coords_element, nm_info_type));
+    rcpp_result_gen = Rcpp::wrap(potential_value(nm_dist_element, nm_info_type));
     return rcpp_result_gen;
 END_RCPP
 }
 // potential_effect
-NumericVector potential_effect(NumericVector nv_coords_point, NumericMatrix nm_coords_element, NumericMatrix nm_info_type);
-RcppExport SEXP _cervideDS_potential_effect(SEXP nv_coords_pointSEXP, SEXP nm_coords_elementSEXP, SEXP nm_info_typeSEXP) {
+NumericVector potential_effect(NumericMatrix nm_dist_element, NumericMatrix nm_info_type);
+RcppExport SEXP _cervideDS_potential_effect(SEXP nm_dist_elementSEXP, SEXP nm_info_typeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type nv_coords_point(nv_coords_pointSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type nm_coords_element(nm_coords_elementSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type nm_dist_element(nm_dist_elementSEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type nm_info_type(nm_info_typeSEXP);
-    rcpp_result_gen = Rcpp::wrap(potential_effect(nv_coords_point, nm_coords_element, nm_info_type));
+    rcpp_result_gen = Rcpp::wrap(potential_effect(nm_dist_element, nm_info_type));
     return rcpp_result_gen;
 END_RCPP
 }
 // all_effect
-NumericVector all_effect(NumericVector nv_coords_point, unsigned int ui_width, unsigned int ui_heigth, double d_sigma, NumericMatrix nm_coords_element, NumericMatrix nm_info_type, double time_step);
-RcppExport SEXP _cervideDS_all_effect(SEXP nv_coords_pointSEXP, SEXP ui_widthSEXP, SEXP ui_heigthSEXP, SEXP d_sigmaSEXP, SEXP nm_coords_elementSEXP, SEXP nm_info_typeSEXP, SEXP time_stepSEXP) {
+NumericVector all_effect(NumericVector nv_coords_point, unsigned int ui_width, unsigned int ui_heigth, double d_sigma, NumericMatrix nm_dist_element, NumericMatrix nm_info_type, double time_step);
+RcppExport SEXP _cervideDS_all_effect(SEXP nv_coords_pointSEXP, SEXP ui_widthSEXP, SEXP ui_heigthSEXP, SEXP d_sigmaSEXP, SEXP nm_dist_elementSEXP, SEXP nm_info_typeSEXP, SEXP time_stepSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -145,10 +156,10 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< unsigned int >::type ui_width(ui_widthSEXP);
     Rcpp::traits::input_parameter< unsigned int >::type ui_heigth(ui_heigthSEXP);
     Rcpp::traits::input_parameter< double >::type d_sigma(d_sigmaSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type nm_coords_element(nm_coords_elementSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type nm_dist_element(nm_dist_elementSEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type nm_info_type(nm_info_typeSEXP);
     Rcpp::traits::input_parameter< double >::type time_step(time_stepSEXP);
-    rcpp_result_gen = Rcpp::wrap(all_effect(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_element, nm_info_type, time_step));
+    rcpp_result_gen = Rcpp::wrap(all_effect(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_dist_element, nm_info_type, time_step));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -164,23 +175,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// next_coord
-NumericVector next_coord(NumericVector nv_coords_point, unsigned int ui_width, unsigned int ui_heigth, double d_sigma, NumericMatrix nm_coords_element, NumericMatrix nm_info_type, double time_step);
-RcppExport SEXP _cervideDS_next_coord(SEXP nv_coords_pointSEXP, SEXP ui_widthSEXP, SEXP ui_heigthSEXP, SEXP d_sigmaSEXP, SEXP nm_coords_elementSEXP, SEXP nm_info_typeSEXP, SEXP time_stepSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type nv_coords_point(nv_coords_pointSEXP);
-    Rcpp::traits::input_parameter< unsigned int >::type ui_width(ui_widthSEXP);
-    Rcpp::traits::input_parameter< unsigned int >::type ui_heigth(ui_heigthSEXP);
-    Rcpp::traits::input_parameter< double >::type d_sigma(d_sigmaSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type nm_coords_element(nm_coords_elementSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type nm_info_type(nm_info_typeSEXP);
-    Rcpp::traits::input_parameter< double >::type time_step(time_stepSEXP);
-    rcpp_result_gen = Rcpp::wrap(next_coord(nv_coords_point, ui_width, ui_heigth, d_sigma, nm_coords_element, nm_info_type, time_step));
-    return rcpp_result_gen;
-END_RCPP
-}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_cervideDS_border_effect", (DL_FUNC) &_cervideDS_border_effect, 5},
@@ -190,11 +184,11 @@ static const R_CallMethodDef CallEntries[] = {
     {"_cervideDS_potential_func", (DL_FUNC) &_cervideDS_potential_func, 4},
     {"_cervideDS_grad_potential_func", (DL_FUNC) &_cervideDS_grad_potential_func, 5},
     {"_cervideDS_alpha_func", (DL_FUNC) &_cervideDS_alpha_func, 4},
-    {"_cervideDS_potential_value", (DL_FUNC) &_cervideDS_potential_value, 3},
-    {"_cervideDS_potential_effect", (DL_FUNC) &_cervideDS_potential_effect, 3},
+    {"_cervideDS_bound", (DL_FUNC) &_cervideDS_bound, 3},
+    {"_cervideDS_potential_value", (DL_FUNC) &_cervideDS_potential_value, 2},
+    {"_cervideDS_potential_effect", (DL_FUNC) &_cervideDS_potential_effect, 2},
     {"_cervideDS_all_effect", (DL_FUNC) &_cervideDS_all_effect, 7},
     {"_cervideDS_diffusion", (DL_FUNC) &_cervideDS_diffusion, 2},
-    {"_cervideDS_next_coord", (DL_FUNC) &_cervideDS_next_coord, 7},
     {NULL, NULL, 0}
 };
 

@@ -4,13 +4,12 @@
 \alias{potential_value}
 \title{value potential}
 \usage{
-potential_value(nv_coords_point, nm_coords_element, nm_info_type)
+potential_value(nm_dist_element, nm_info_type)
 }
 \arguments{
-\item{nv_coords_point}{(NumericVector) coordinates of point (x,y)}
-
-\item{nm_coords_element}{(NumericMatrix) all coordinates of segment 
-Matrix N*5 (x1,y1,x2,y2,Id_type)}
+\item{nm_dist_element}{(NumericMatrix) all distance and gradiant of segment 
+and polygon 
+(matrix) M*4 (dist, dx, dy, id_type)}
 
 \item{nm_info_type}{(NumericMatrix) descript each type
 Matrix M*5 (Id, rep (-1) or attr(1), 

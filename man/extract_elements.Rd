@@ -4,15 +4,19 @@
 \alias{extract_elements}
 \title{Extract elements}
 \usage{
-extract_elements(land_poly, land_lines)
+extract_elements(x, y, land_poly, land_lines)
 }
 \arguments{
+\item{x}{(double) position in x}
+
+\item{y}{(double) position in y}
+
 \item{land_poly}{(SpatialPolygonDataFrame): Typing polygon landscape}
 
 \item{land_lines}{(SpatialLinesDataFrame): Typing line landscape}
 }
 \value{
-(matrix) M*5 (x1, y1, x2, y2, id_type)
+(matrix) M*4 (dist, dx, dy, id_type)
 }
 \description{
 Extract all element of typed landscape to create list of matrix

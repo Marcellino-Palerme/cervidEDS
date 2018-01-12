@@ -7,6 +7,8 @@
 getCoordsSpatial_(object, name_elements, id)
 }
 \arguments{
+\item{object}{(Spatial*)}
+
 \item{name_elements}{(vector str): two name to attain coords}
 
 \item{id}{(str): id of element}
