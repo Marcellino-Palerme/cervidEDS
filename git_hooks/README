@@ -1,0 +1,1 @@
+Copy "pre-commit" in "../.git/hooks/" and make it executable
