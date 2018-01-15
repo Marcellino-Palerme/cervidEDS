@@ -21,14 +21,34 @@ lines_ochrst = affect_lines_type(lines_ochrst,2)
 lines_ochrst$id_type[lines_ochrst$id_type == 1] = 3
 lines_ochrst$id_type[lines_ochrst$id_type == 2] = 4
 
-# element_ochrst = extract_elements(land_ochrst,
-#                                   lines_ochrst)
-
 plot_potential(land_ochrst,
                lines_ochrst,
                type_ochrst,
                1)
 
+x_animal = runif(1,0,80)
+y_animal = runif(1,0,80)
+dt = 0.1
+sig = 0.2
+x = c(x_animal)
+y = c(y_animal)
+for (i in 1:(600/dt))
+{
+  
+  result = next_coord(x_animal,
+                      y_animal,
+                      land_ochrst,
+                      lines_ochrst,
+                      type_ochrst,
+                      sig,
+                      dt)
+  x_animal = result["x"]
+  y_animal = result["y"]
+  x = c(x,x_animal)
+  y = c(y,y_animal)
+}
 
-
+points(x[1],y[1], col = "green", lwd = 5)
+points(x[length(x)],y[length(y)], col = "red", lwd = 5)
+lines(x,y, col = "blue")
 
