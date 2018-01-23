@@ -178,4 +178,59 @@ test_that("test.dist_expr_horizontal", {
   expect_true( dist == result,
                info = paste("c)", result, "not equal", dist))
 })
+
+#------test potentiel_0-----#
+# nominal case
+test_that("test.potentiel_0_nominal", {
+  expr_pot = potentiel_0(4, 8, 9, 9.5, 8, 12.5, 8)
+  x = 9
+  y = 7
+  result = Eval(yacas(expr_pot))
+  pot = 4 * exp(-8 * (0.5^2 + 1)) + 9
+  expect_equal(pot, result)
+}) 
+
+#------test agglo_0-----#
+# nominal case
+test_that("test.agglo_0_nominal", {
+  expr_pot_a = potentiel_0(4, 8, 9, 9.5, 8, 12.5, 8)
+  expr_pot_b = potentiel_0(-1.8, 1, 1.2, 9, 3.5, 9, 0.5)
+  exp_agglo = agglo_0(list(expr_pot_a, expr_pot_b))
+  x = 9
+  y = 7
+  result = Eval(yacas(exp_agglo))
+  pot = 4 * exp(-8 * (0.5^2 + 1)) + 9 +
+        -1.8 * exp(-1 * (3.5 ^ 2) ) + 1.2
+  expect_equal( pot, result)
+}) 
+
+#------test Interact-----#
+
+check_Interact <- function(id,
+                           func,
+                           params,
+                           result)
+{
+  expect_equal(result$get_id(), id)
+  expect_equal(result$get_func_interact(), func)
+  expect_equal(result$get_params(), params)
+}
+# nominal case
+test_that("test.Interact_nominal", {
+  result = Interact$new(4, mean, list(7, 4))
+  check_Interact(4, mean, list(7, 4), result)
+
+  # modify id
+  result$set_id(7)
+  check_Interact(7, mean, list(7, 4), result)
+  
+  # modify function
+  result$set_func_interact(sqrt)
+  check_Interact(7, sqrt, list(7, 4), result)
+  
+  # modify params
+  result$set_params(list(25))
+  check_Interact(7, sqrt, list(25), result)
+})
+
 },T)
