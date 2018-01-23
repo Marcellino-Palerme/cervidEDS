@@ -9,7 +9,50 @@
 Interact
 }
 \description{
-Define Interact of type(undefined) with a other
-(defined : id_interact)
+Define interaction of type on other
 }
+\section{methods}{
+
+\itemize{
+\item{Interact$new(id_interact, func_interact, params)}{
+\describe{Create Interact object
+\itemize{
+\item{id_interact}{(integer) id type interact with other}
+\item{func_interact}{(function) interaction function}
+\item{params}{(list) list of constant parameters of function}
+}}}
+\item{$get_id()}{
+\describe{give id type interact with other
+\itemize{
+\item{(integer)}{id type interact with other}
+}}}
+\item{$get_func_interact()}{
+\describe{give id type interact with other
+\itemize{
+\item{(function)}{interaction function}
+}}}
+\item{$get_params()}{
+\describe{give id type interact with other
+\itemize{
+\item{(list)}{list of constant parameters of function}
+}}}
+\item{$set_id(id)}{
+\describe{Affect id_interact
+\itemize{
+\item{id}{(integer) id type interact with other}
+}}}
+\item{$set_func_interact(func_interact)}{
+\describe{Define Interact function
+\itemize{
+\item{func_interact}{(function) interaction function}
+\item{(integer)}{ 0: success, 1: fail}
+}}}
+\item{$set_params(params)}{
+\describe{Define parameters for the Interact function
+\itemize{
+\item{params}{(list) list of constant parameters of function}
+}}}
+}
+}
+
 \keyword{datasets}
