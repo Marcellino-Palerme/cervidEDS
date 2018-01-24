@@ -1,4 +1,4 @@
-options("testthat.junit.output_file" = "result/simulation_function.xml")
+options("testthat.output_file" = "result/simulation_function.xml")
 
 with_reporter("silent",{
 

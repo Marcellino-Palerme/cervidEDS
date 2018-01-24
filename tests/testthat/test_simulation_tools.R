@@ -1,4 +1,4 @@
-options("testthat.junit.output_file" = "result/simulation_tools.xml")
+options("testthat.output_file" = "result/simulation_tools.xml")
 
 with_reporter("silent",{
   my_landscape = gen_land()

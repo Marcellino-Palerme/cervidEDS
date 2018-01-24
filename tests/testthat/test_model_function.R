@@ -1,4 +1,4 @@
-options("testthat.junit.output_file" = "result/model_function.xml")
+options("testthat.output_file" = "result/model_function.xml")
 with_reporter("junit",{
 context('model unit tests')
 #------test dist_expr-----#
