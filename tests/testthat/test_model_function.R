@@ -221,16 +221,161 @@ test_that("test.Interact_nominal", {
   check_Interact(4, mean, list(7, 4), result)
 
   # modify id
-  result$set_id(7)
+  expect_equal(result$set_id(7), 0)
   check_Interact(7, mean, list(7, 4), result)
   
   # modify function
-  result$set_func_interact(sqrt)
+  expect_equal(result$set_func_interact(sqrt), 0)
   check_Interact(7, sqrt, list(7, 4), result)
   
   # modify params
-  result$set_params(list(25))
+  expect_equal(result$set_params(list(25)), 0)
   check_Interact(7, sqrt, list(25), result)
+})
+
+# error case
+test_that("test.Interact_error", {
+  # id isn't a numeric
+  expect_error(Interact$new('4', mean, list(7, 4)))
+  
+  # func_interact isn't a function
+  expect_error(Interact$new(4, 5, list(7, 4)))
+  
+  # params isn't a list
+  expect_error(Interact$new(4, mean, c(7, 4)))
+  
+  result = Interact$new(4, mean, list(7, 4))
+  check_Interact(4, mean, list(7, 4), result)
+  
+  # id isn't a numeric
+  expect_equal(result$set_id(mean), 1)
+  check_Interact(4, mean, list(7, 4), result)
+  
+  # func_interact isn't a function
+  expect_equal(result$set_func_interact("sqrt"), 1)
+  check_Interact(4, mean, list(7, 4), result)
+  
+  # modify params
+  expect_equal(result$set_params(25), 1)
+  check_Interact(4, mean, list(7, 4), result)
+})
+
+#------test TypeInteract-----#
+
+check_TypeInteract <- function(id,
+                               name,
+                               func,
+                               interacts,
+                               result)
+{
+  expect_equal(result$get_id(), id)
+  expect_equal(result$get_name(), name)
+  expect_equal(result$get_func_agglo(), func)
+  ids = c()
+  for (interact in interacts)
+  {
+    id_interact = interact$get_id()
+    check_Interact(id_interact,
+                   interact$get_func_interact(),
+                   interact$get_params(),
+                   result$get_interact(id_interact))
+    
+    expect_equal(result$get_func_interact(id_interact),
+                 interact$get_func_interact())
+    expect_equal(result$get_params(id_interact),
+                 interact$get_params())
+    ids = c(ids, id_interact)
+  }
+  expect_equal(length(ids), length(result$get_id_interacts()))
+  expect_true(all(ids %in% result$get_id_interacts()))
+
+}
+
+# nominal case
+test_that("test.TypeInteract_nomina", {
+  Inter4 = Interact$new(4, mean, list(7, 4))
+  Inter2 = Interact$new(2, sqrt, list(4))
+  
+  result = TypeInteract$new(8, "huit", agglo_0, list(Inter2, Inter4))
+  check_TypeInteract(8, "huit", agglo_0, list(Inter2, Inter4), result)
+  
+  # modify id
+  expect_equal(result$set_id(7), 0)
+  check_TypeInteract(7, "huit", agglo_0, list(Inter2, Inter4), result)
+  
+  # modify function
+  expect_equal(result$set_func_agglo(sqrt), 0)
+  check_TypeInteract(7, "huit", sqrt, list(Inter2, Inter4), result)
+  
+  # modify name
+  expect_equal(result$set_name("sept"), 0)
+  check_TypeInteract(7, "sept", sqrt, list(Inter2, Inter4), result)
+  
+  # Delete interact
+  expect_equal(result$remove_interact(4), 0)
+  check_TypeInteract(7, "sept", sqrt, list(Inter2), result)
+  
+  Inter8 = Interact$new(8, mean, list(28, 2))
+  # Add interact
+  expect_equal(result$set_interact(Inter8), 0)
+  check_TypeInteract(7, "sept", sqrt, list(Inter2, Inter8), result)
+  
+  Inter2_modif = Interact$new(2, all, list(4))
+  # Modify interaction function
+  expect_equal(result$set_func_interact(2, all), 0)
+  check_TypeInteract(7, "sept", sqrt, list(Inter2_modif, Inter8), result)
+  
+  Inter8_modif = Interact$new(8, mean, list(28, 2, 5))
+  # Modify interaction function
+  expect_equal(result$set_params(8, list(28, 2, 5)), 0)
+  check_TypeInteract(7, "sept", sqrt, list(Inter2_modif, Inter8_modif), result)
+})
+
+# error case
+test_that("test.TypeInteract_error", {
+  Inter4 = Interact$new(4, mean, list(7, 4))
+  Inter2 = Interact$new(2, sqrt, list(4))
+  
+  # Id isn't a numeric
+  expect_error(TypeInteract$new("8", "huit", agglo_0, list(Inter2, Inter4)))
+  
+  # name isn't a characters
+  expect_error(TypeInteract$new(8, 8, agglo_0, list(Inter2, Inter4)))
+  
+  # func_agglo isn't a function
+  expect_error(TypeInteract$new(8, 8, "agglo_0", list(Inter2, Inter4)))
+  
+  result = TypeInteract$new(8, "huit", agglo_0, list(Inter2, Inter4))
+  check_TypeInteract(8, "huit", agglo_0, list(Inter2, Inter4), result)
+  
+  # Id isn't a numeric
+  expect_equal(result$set_id("7"), 1)
+  check_TypeInteract(8, "huit", agglo_0, list(Inter2, Inter4), result)
+  
+  # func_agglo isn't a function
+  expect_equal(result$set_func_agglo(4), 1)
+  check_TypeInteract(8, "huit", agglo_0, list(Inter2, Inter4), result)
+  
+  # name isn't a characters
+  expect_equal(result$set_name(agglo_0), 0)
+  check_TypeInteract(8, "huit", agglo_0, list(Inter2, Inter4), result)
+  
+  # Delete interact
+  expect_equal(result$remove_interact(14), 1)
+  check_TypeInteract(8, "huit", agglo_0, list(Inter2, Inter4), result)
+  
+  # interact isn't interact
+  expect_equal(result$set_interact(mean), 1)
+  check_TypeInteract(8, "huit", agglo_0, list(Inter2, Inter4), result)
+  
+  Inter2_modif = Interact$new(2, all, list(4))
+  # interaction function isn't function
+  expect_equal(result$set_func_interact(2, "all"), 1)
+  check_TypeInteract(8, "huit", agglo_0, list(Inter2, Inter4), result)
+  
+  # params isn't a list
+  expect_equal(result$set_params(4, c(28, 2, 5)), 1)
+  check_TypeInteract(8, "huit", agglo_0, list(Inter2, Inter4), result)
 })
 
 },T)

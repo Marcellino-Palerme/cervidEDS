@@ -160,9 +160,18 @@ Interact <- R6::R6Class("Interact",
      #' }}}
       initialize = function(id_interact, func_interact, params)
       {
-        self$set_id(id_interact)
-        self$set_func_interact(func_interact)
-        self$set_params(params)
+        if (self$set_id(id_interact) > 0 )
+        {
+          stop("id_interact isn't a numeric")
+        }
+        if (self$set_func_interact(func_interact) > 0)
+        {
+          stop("func_interact isn't a function")
+        }
+        if (self$set_params(params) > 0)
+        {
+          stop("params isn't a list")
+        }
       
       },
       
@@ -197,13 +206,17 @@ Interact <- R6::R6Class("Interact",
       #' \describe{Affect id_interact
       #' \itemize{
       #' \item{id}{(integer) id type interact with other}
+      #' \item{(integer)}{ 0: success, 1: fail}
       #' }}}
       set_id = function(id)
       {
          if (is.numeric(id))
          {
             private$id = id
+            return(0)
          }
+        return(1)
+
       },
       #' \item{$set_func_interact(func_interact)}{
       #' \describe{Define Interact function
@@ -227,8 +240,12 @@ Interact <- R6::R6Class("Interact",
       #' }}}
       set_params = function(params)
       {
-        private$params = params
-  
+        if (is.list(params))
+        {
+          private$params = params
+          return(0)
+        }
+        return(1)
       }
       #' }
  ),
@@ -246,7 +263,7 @@ is_Interact = function(x)
 }
 
 #' @title TypeInteract class
-#' @description  Define interaction of several neightbour type on host type
+#' @description  Define interaction of several neighbor type on host type
 #' @export
 TypeInteract = R6::R6Class("TypeInteract",
    #' @section methods:
@@ -265,11 +282,21 @@ TypeInteract = R6::R6Class("TypeInteract",
      initialize = function(id, name, func_agglo, interacts)
      {
        # Affect id
-       self$set_id(id)
+       if (self$set_id(id) > 0)
+       {
+         stop("id isn't a numeric")
+       }
        # Affect name
-       self$set_name(name)
+       if (self$set_name(name) > 0)
+       {
+         stop("name isn't characters")
+       }
        # Affect a agglomeration function
-       self$set_func_agglo(func_agglo)
+       if (self$set_func_agglo(func_agglo) > 0)
+       {
+         stop("func_agglo isn't a function")
+       }
+       # Affect interacts
        for (interact in interacts)
        {
          self$set_interact(interact)
@@ -303,9 +330,9 @@ TypeInteract = R6::R6Class("TypeInteract",
        return(private$func_agglo)
      },
      #' \item{$get_interact(id)}{
-     #' \describe{Give a interaction of neightbour type on host type
+     #' \describe{Give a interaction of neighbor type on host type
      #' \itemize{
-     #' \item{id}{ (integer) id neightbour type}
+     #' \item{id}{ (integer) id neighbor type}
      #' \item{(Interact)}{ interaction}
      #' }}}
      get_interact = function(id)
@@ -322,9 +349,9 @@ TypeInteract = R6::R6Class("TypeInteract",
        }
      },
      #' \item{$get_id_interacts()}{
-     #' \describe{Give the list of id of neightbour type in interaction
+     #' \describe{Give the list of id of neighbor type in interaction
      #' \itemize{
-     #' \item{(list of integer)}{ list of id neightbour type}
+     #' \item{(list of integer)}{ list of id neighbor type}
      #' }}}
      get_id_interacts = function()
      {
@@ -340,7 +367,7 @@ TypeInteract = R6::R6Class("TypeInteract",
      #' \item{$get_function_interact(id)}{
      #' \describe{Give interaction function 
      #' \itemize{
-     #' \item{id}{ (integer) id neightbour type}
+     #' \item{id}{ (integer) id neighbor type}
      #' \item{(function)}{ interaction function}
      #' }}}
      get_function_interact = function(id)
@@ -360,7 +387,7 @@ TypeInteract = R6::R6Class("TypeInteract",
      #' \item{$get_params(id)}{
      #' \describe{Give parameters of interaction function
      #' \itemize{
-     #' \item{id}{ (integer) id neightbour type}
+     #' \item{id}{ (integer) id neighbor type}
      #' \item{(list)}{ list of constant parameters of function}
      #' }}}
      get_params = function(id)
@@ -381,42 +408,51 @@ TypeInteract = R6::R6Class("TypeInteract",
      #' \describe{Define identifiant of type
      #' \itemize{
      #' \item{id}{(integer) id of host type }
+     #' \item{(integer)}{ 0: success, 1: fail}
      #' }}}
      set_id = function(id)
      {
        if (is.numeric(id))
        {
          private$id = id
+         return(0)
        }
+       return(1)
      }, 
      #' \item{$set_name(name)}{
      #' \describe{Define name of host type
      #' \itemize{
      #' \item{name}{(character) name of host type }
+     #' \item{(integer)}{ 0: success, 1: fail}
      #' }}}
      set_name = function(name)
      {
        if (is.character(name))
        {
          private$name = name
+         return(0)
        }
+       return(1)
      }, 
      #' \item{$set_func_agglo(func_agglo)}{
      #' \describe{Define function of aggregate
      #' \itemize{
      #' \item{func_agglo}{(function) function define how aggregate interactions}
+     #' \item{(integer)}{ 0: success, 1: fail}
      #' }}}
      set_func_agglo = function(func_agglo)
      {
        if (is.function(func_agglo))
        {
          private$func_agglo = func_agglo
+         return(0)
        }
+       return(1)
      },
      #' \item{$set_interact(interact)}{
-     #' \describe{Add or modify a interaction of neightbour type on host type
+     #' \describe{Add or modify a interaction of neighbor type on host type
      #' \itemize{
-     #' \item{interact}{(Interact) interaction of neightbour type}
+     #' \item{interact}{(Interact) interaction of neighbor type}
      #' \item{(integer)}{ 0: success, 1: fail}
      #' }}}
      set_interact = function(interact)
@@ -445,7 +481,7 @@ TypeInteract = R6::R6Class("TypeInteract",
      #' \item{$set_func_interact(id, func)}{
      #' \describe{Modify interaction function of one interaction
      #' \itemize{
-     #' \item{id}{ (integer) id neightbour type}
+     #' \item{id}{ (integer) id neighbor type}
      #' \item{func}{ (function) interaction function}
      #' \item{(integer)}{ 0: success, 1: fail}
      #' }}}
@@ -463,21 +499,21 @@ TypeInteract = R6::R6Class("TypeInteract",
          return(1)
        }
      },
-     #' \item{$set_param(id, param)}{
+     #' \item{$set_params(id, params)}{
      #' \describe{Modify parameters of interaction function of one interaction
      #' \itemize{
-     #' \item{id}{ (integer) id neightbour type}
-     #' \item{param}{ (list) list of constant parameters of function}
+     #' \item{id}{ (integer) id neighbor type}
+     #' \item{params}{ (list) list of constant parameters of function}
      #' \item{(integer)}{ 0: success, 1: fail}
      #' }}}
-     set_param = function(id, param)
+     set_params = function(id, params)
      {
        # verify if Interact with this type exist
        index = private$get_index_interact(id)
        if (index > 0)
        {
          # Take interaction function
-         return(private$interacts[[index]]$set_param(param))
+         return(private$interacts[[index]]$set_params(params))
        }
        else
        {
@@ -485,9 +521,9 @@ TypeInteract = R6::R6Class("TypeInteract",
        }
      },
      #' \item{$remove_interact(id)}{
-     #' \describe{remove a interaction of neightbour typer
+     #' \describe{remove a interaction of neighbor typer
      #' \itemize{
-     #' \item{id}{ (integer) id neightbour type}
+     #' \item{id}{ (integer) id neighbor type}
      #' \item{(integer)}{ 0: success, 1: fail}
      #' }}}
      remove_interact = function(id)
@@ -607,10 +643,10 @@ TypeInteractModel = R6::R6Class("TypeInteractModel",
       }
     },
     #' \item{$get_id_interacts(id)}{
-    #' \describe{Give the list of id of neightbour type of a host type
+    #' \describe{Give the list of id of neighbor type of a host type
     #' \itemize{
     #' \item{id}{ (integer) id of host type}
-    #' \item{(list of integer)}{ list of id of neightbour type of a host type}
+    #' \item{(list of integer)}{ list of id of neighbor type of a host type}
     #' }}}
     get_id_interacts = function(id)
     {
@@ -644,16 +680,16 @@ TypeInteractModel = R6::R6Class("TypeInteractModel",
         return(type_interact$get_name())
       }
     },
-    #' \item{$get_interact(id_a, id_b)}{
-    #' \describe{Give interact of type B on type A
+    #' \item{$get_interact(id_host, id_neighbor)}{
+    #' \describe{Give interact of type neighbor on type host
     #' \itemize{
-    #' \item{id_a}{ (integer) id of type A}
-    #' \item{id_b}{ (integer) id of type B}
+    #' \item{id_host}{ (integer) id of type host}
+    #' \item{id_neighbor}{ (integer) id of type neighbor}
     #' \item{(Interact)}{ Interaction B on A}
     #' }}}
-    get_interact = function(id_a, id_b)
+    get_interact = function(id_host, id_neighbor)
     {
-      type_interact = self$get_typeinteract(id_a)
+      type_interact = self$get_typeinteract(id_host)
       
       if (is.null(type_interact))
       {
@@ -661,7 +697,7 @@ TypeInteractModel = R6::R6Class("TypeInteractModel",
       }
       else
       {
-        return(type_interact$get_interact(id_b))
+        return(type_interact$get_interact(id_neighbor))
       }
     },
     #' \item{$get_typeinteract(id)}{
@@ -683,16 +719,16 @@ TypeInteractModel = R6::R6Class("TypeInteractModel",
         return(type_interact$get_func_agglo())
       }
     },
-    #' \item{$get_func_interact(id_a, id_b)}{
-    #' \describe{Give interaction function of type B on type A
+    #' \item{$get_func_interact(id_host, id_neighbor)}{
+    #' \describe{Give interaction function of type neighbor on type host
     #' \itemize{
-    #' \item{id_a}{ (integer) id of type A}
-    #' \item{id_b}{ (integer) id of type B}
-    #' \item{(function)}{ interaction function of type B on type A}
+    #' \item{id_host}{ (integer) id of type host}
+    #' \item{id_neighbor}{ (integer) id of type neighbor}
+    #' \item{(function)}{ interaction function of type neighbor on type host}
     #' }}}
-    get_func_interact = function(id_a, id_b)
+    get_func_interact = function(id_host, id_neighbor)
     {
-      interact = self$get_interact(id_a, id_b)
+      interact = self$get_interact(id_host, id_neighbor)
       
       if (is.null(interact))
       {
@@ -703,17 +739,18 @@ TypeInteractModel = R6::R6Class("TypeInteractModel",
         return(interact$get_func_interact())
       }
     },
-    #' \item{$get_params(id_a, id_b)}{
-    #' \describe{Give parameters of interaction function of type B on type A
+    #' \item{$get_params(id_host, id_neighbor)}{
+    #' \describe{Give parameters of interaction function of type neighbor on 
+    #'           type host
     #' \itemize{
-    #' \item{id_a}{ (integer) id of type A}
-    #' \item{id_b}{ (integer) id of type B}
+    #' \item{id_host}{ (integer) id of type host}
+    #' \item{id_neighbor}{ (integer) id of type neighbor}
     #' \item{(list)}{ list of constant parameters of intraction function of 
-    #'                type B on type A}
+    #'                type neighbor on type host}
     #' }}}
-    get_params = function(id_a, id_b)
+    get_params = function(id_host, id_neighbor)
     {
-      interact = self$get_interact(id_a, id_b)
+      interact = self$get_interact(id_host, id_neighbor)
       
       if (is.null(interact))
       {
@@ -727,7 +764,7 @@ TypeInteractModel = R6::R6Class("TypeInteractModel",
     #' \item{$set_type_interact(typeinterat)}{
     #' \describe{Add or modify a TypeInteract to model
     #' \itemize{
-    #' \item{typeinterat}{ (TypeInteract) Interact of other neightbour type on 
+    #' \item{typeinterat}{ (TypeInteract) Interact of other neighbor type on 
     #'                     one host}
     #' \item{(integer)}{ 0: success, 1: fail}
     #' }}}
@@ -790,44 +827,45 @@ TypeInteractModel = R6::R6Class("TypeInteractModel",
         }
       }
     },
-    #' \item{$set_func_interact(id_a, id_b, func)}{
-    #' \describe{Modify interaction function of type B on type A
+    #' \item{$set_func_interact(id_host, id_neighbor, func)}{
+    #' \describe{Modify interaction function of type neighbor on type host
     #' \itemize{
-    #' \item{id_a}{(integer) identifiant of type A}
-    #' \item{id_b}{(integer) identifiant of type B}
+    #' \item{id_host}{(integer) identifiant of type host}
+    #' \item{id_neighbor}{(integer) identifiant of type neighbor}
     #' \item{func}{(function) interaction function}
     #' \item{(integer)}{ 0: success, 1: fail}
     #' }}}
-    set_func_interact = function(id_a, id_b, func)
+    set_func_interact = function(id_host, id_neighbor, func)
     {
       # verify if typeInteract exist 
-      index = private$get_index_typeinteract(id_a)
+      index = private$get_index_typeinteract(id_host)
       if (index > 0)
       {
-        return(private$model[[index]]$set_func_interact(id_b, func))
+        return(private$model[[index]]$set_func_interact(id_neighbor, func))
       }
       return(1)
     },
-    #' \item{$set_params(id_a, id_b, params)}{
-    #' \describe{Modify parameters of interaction function of type B on type A
+    #' \item{$set_params(id_host, id_neighbor, params)}{
+    #' \describe{Modify parameters of interaction function of type neighbor on
+    #'           type host
     #' \itemize{
-    #' \item{id_a}{(integer) identifiant of type A}
-    #' \item{id_b}{(integer) identifiant of type B}
+    #' \item{id_host}{(integer) identifiant of type host}
+    #' \item{id_neighbor}{(integer) identifiant of type neighbor}
     #' \item{params}{(list) parameters of interaction function}
     #' \item{(integer)}{ 0: success, 1: fail}
     #' }}}
-    set_params = function(id_a, id_b, params)
+    set_params = function(id_host, id_neighbor, params)
     {
       # verify if typeInteract exist 
-      index = private$get_index_typeinteract(id_a)
+      index = private$get_index_typeinteract(id_host)
       if (index > 0)
       {
-        return(private$model[[index]]$set_params(id_b, params))
+        return(private$model[[index]]$set_params(id_neighbor, params))
       }
       return(1)
     },
     #' \item{$remove_type_interact(id)}{
-    #' \describe{remove all interction of neightbour type on host type
+    #' \describe{remove all interction of neighbor type on host type
     #' \itemize{
     #' \item{id}{(integer) identifiant of host type}
     #' \item{(integer)}{ 0: success, 1: fail}
@@ -844,20 +882,20 @@ TypeInteractModel = R6::R6Class("TypeInteractModel",
       }
       return(1)
     },
-    #' \item{$remove_interact(id_a, id_b)}{
-    #' \describe{Remove a interaction of type B on type A
+    #' \item{$remove_interact(id_host, id_neighbor)}{
+    #' \describe{Remove a interaction of type neighbor on type host
     #' \itemize{
-    #' \item{id_a}{(integer) identifiant of type A}
-    #' \item{id_b}{(integer) identifiant of type B}
+    #' \item{id_host}{(integer) identifiant of type host}
+    #' \item{id_neighbor}{(integer) identifiant of type neighbor}
     #' \item{(integer)}{ 0: success, 1: fail}
     #' }}}
-    remove_interact = function(id_a, id_b)
+    remove_interact = function(id_host, id_neighbor)
     {
       # verify if typeInteract exist 
-      index = private$get_index_typeinteract(id_a)
+      index = private$get_index_typeinteract(id_host)
       if (index > 0)
       {
-        return(private$model[[index]]$remove_interact(id_b))
+        return(private$model[[index]]$remove_interact(id_neighbor))
       }
       return(1)
     }

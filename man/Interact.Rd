@@ -40,6 +40,7 @@ Define interaction of type on other
 \describe{Affect id_interact
 \itemize{
 \item{id}{(integer) id type interact with other}
+\item{(integer)}{ 0: success, 1: fail}
 }}}
 \item{$set_func_interact(func_interact)}{
 \describe{Define Interact function

@@ -36,10 +36,10 @@ Define interaction of all types with others
 \item{(TypeInteract)}{ TypeInteract of host type}
 }}}
 \item{$get_id_interacts(id)}{
-\describe{Give the list of id of neightbour type of a host type
+\describe{Give the list of id of neighbor type of a host type
 \itemize{
 \item{id}{ (integer) id of host type}
-\item{(list of integer)}{ list of id of neightbour type of a host type}
+\item{(list of integer)}{ list of id of neighbor type of a host type}
 }}}
 \item{$get_name(id)}{
 \describe{Give name of host type
@@ -47,11 +47,11 @@ Define interaction of all types with others
 \item{id}{ (integer) id of host type}
 \item{(character)}{ name of host type}
 }}}
-\item{$get_interact(id_a, id_b)}{
-\describe{Give interact of type B on type A
+\item{$get_interact(id_host, id_neighbor)}{
+\describe{Give interact of type neighbor on type host
 \itemize{
-\item{id_a}{ (integer) id of type A}
-\item{id_b}{ (integer) id of type B}
+\item{id_host}{ (integer) id of type host}
+\item{id_neighbor}{ (integer) id of type neighbor}
 \item{(Interact)}{ Interaction B on A}
 }}}
 \item{$get_typeinteract(id)}{
@@ -60,25 +60,26 @@ Define interaction of all types with others
 \item{id}{ (integer) id of host type}
 \item{(function)}{ function of agglomeration}
 }}}
-\item{$get_func_interact(id_a, id_b)}{
-\describe{Give interaction function of type B on type A
+\item{$get_func_interact(id_host, id_neighbor)}{
+\describe{Give interaction function of type neighbor on type host
 \itemize{
-\item{id_a}{ (integer) id of type A}
-\item{id_b}{ (integer) id of type B}
-\item{(function)}{ interaction function of type B on type A}
+\item{id_host}{ (integer) id of type host}
+\item{id_neighbor}{ (integer) id of type neighbor}
+\item{(function)}{ interaction function of type neighbor on type host}
 }}}
-\item{$get_params(id_a, id_b)}{
-\describe{Give parameters of interaction function of type B on type A
+\item{$get_params(id_host, id_neighbor)}{
+\describe{Give parameters of interaction function of type neighbor on 
+          type host
 \itemize{
-\item{id_a}{ (integer) id of type A}
-\item{id_b}{ (integer) id of type B}
+\item{id_host}{ (integer) id of type host}
+\item{id_neighbor}{ (integer) id of type neighbor}
 \item{(list)}{ list of constant parameters of intraction function of 
-               type B on type A}
+               type neighbor on type host}
 }}}
 \item{$set_type_interact(typeinterat)}{
 \describe{Add or modify a TypeInteract to model
 \itemize{
-\item{typeinterat}{ (TypeInteract) Interact of other neightbour type on 
+\item{typeinterat}{ (TypeInteract) Interact of other neighbor type on 
                     one host}
 \item{(integer)}{ 0: success, 1: fail}
 }}}
@@ -94,33 +95,34 @@ Define interaction of all types with others
 \item{id}{(integer) identifiant of host type}
 \item{interact}{(Interact) interaction}
 }}}
-\item{$set_func_interact(id_a, id_b, func)}{
-\describe{Modify interaction function of type B on type A
+\item{$set_func_interact(id_host, id_neighbor, func)}{
+\describe{Modify interaction function of type neighbor on type host
 \itemize{
-\item{id_a}{(integer) identifiant of type A}
-\item{id_b}{(integer) identifiant of type B}
+\item{id_host}{(integer) identifiant of type host}
+\item{id_neighbor}{(integer) identifiant of type neighbor}
 \item{func}{(function) interaction function}
 \item{(integer)}{ 0: success, 1: fail}
 }}}
-\item{$set_params(id_a, id_b, params)}{
-\describe{Modify parameters of interaction function of type B on type A
+\item{$set_params(id_host, id_neighbor, params)}{
+\describe{Modify parameters of interaction function of type neighbor on
+          type host
 \itemize{
-\item{id_a}{(integer) identifiant of type A}
-\item{id_b}{(integer) identifiant of type B}
+\item{id_host}{(integer) identifiant of type host}
+\item{id_neighbor}{(integer) identifiant of type neighbor}
 \item{params}{(list) parameters of interaction function}
 \item{(integer)}{ 0: success, 1: fail}
 }}}
 \item{$remove_type_interact(id)}{
-\describe{remove all interction of neightbour type on host type
+\describe{remove all interction of neighbor type on host type
 \itemize{
 \item{id}{(integer) identifiant of host type}
 \item{(integer)}{ 0: success, 1: fail}
 }}}
-\item{$remove_interact(id_a, id_b)}{
-\describe{Remove a interaction of type B on type A
+\item{$remove_interact(id_host, id_neighbor)}{
+\describe{Remove a interaction of type neighbor on type host
 \itemize{
-\item{id_a}{(integer) identifiant of type A}
-\item{id_b}{(integer) identifiant of type B}
+\item{id_host}{(integer) identifiant of type host}
+\item{id_neighbor}{(integer) identifiant of type neighbor}
 \item{(integer)}{ 0: success, 1: fail}
 }}}
 }

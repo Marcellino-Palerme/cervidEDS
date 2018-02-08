@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
- <testsuite hostname="palerme" name="simulation tools unit tests" timestamp="2018-01-24 10:48:51">
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_nominal" time="0.1"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_att" time="0.14"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_repul" time="0.04"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_lines" time="0.13"/>
+ <testsuite hostname="palerme" name="simulation tools unit tests" timestamp="2018-02-08 17:57:27">
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_nominal" time="0.07"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_att" time="0.1"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_repul" time="0.05"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_lines" time="0.1"/>
   <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_out_landscape" time="0.05"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_nomina" time="29.63"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_no_repul" time="29.36"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_no_lines" time="28.86"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_nomina" time="29.58"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_no_repul" time="30.67"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_no_lines" time="28.82"/>
   <testcase classname="simulation_tools_unit_tests" name="test_next_coord_nominal" time="0.01"/>
  </testsuite>
 </testsuites>

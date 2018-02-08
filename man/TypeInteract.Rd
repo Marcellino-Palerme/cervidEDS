@@ -9,7 +9,7 @@
 TypeInteract
 }
 \description{
-Define interaction of several neightbour type on host type
+Define interaction of several neighbor type on host type
 }
 \section{methods}{
 
@@ -39,67 +39,70 @@ Define interaction of several neightbour type on host type
 \item{(function)}{ function define how aggregate interactions}
 }}}
 \item{$get_interact(id)}{
-\describe{Give a interaction of neightbour type on host type
+\describe{Give a interaction of neighbor type on host type
 \itemize{
-\item{id}{ (integer) id neightbour type}
+\item{id}{ (integer) id neighbor type}
 \item{(Interact)}{ interaction}
 }}}
 \item{$get_id_interacts()}{
-\describe{Give the list of id of neightbour type in interaction
+\describe{Give the list of id of neighbor type in interaction
 \itemize{
-\item{(list of integer)}{ list of id neightbour type}
+\item{(list of integer)}{ list of id neighbor type}
 }}}
 \item{$get_function_interact(id)}{
 \describe{Give interaction function 
 \itemize{
-\item{id}{ (integer) id neightbour type}
+\item{id}{ (integer) id neighbor type}
 \item{(function)}{ interaction function}
 }}}
 \item{$get_params(id)}{
 \describe{Give parameters of interaction function
 \itemize{
-\item{id}{ (integer) id neightbour type}
+\item{id}{ (integer) id neighbor type}
 \item{(list)}{ list of constant parameters of function}
 }}}
 \item{$set_id(id)}{
 \describe{Define identifiant of type
 \itemize{
 \item{id}{(integer) id of host type }
+\item{(integer)}{ 0: success, 1: fail}
 }}}
 \item{$set_name(name)}{
 \describe{Define name of host type
 \itemize{
 \item{name}{(character) name of host type }
+\item{(integer)}{ 0: success, 1: fail}
 }}}
 \item{$set_func_agglo(func_agglo)}{
 \describe{Define function of aggregate
 \itemize{
 \item{func_agglo}{(function) function define how aggregate interactions}
+\item{(integer)}{ 0: success, 1: fail}
 }}}
 \item{$set_interact(interact)}{
-\describe{Add or modify a interaction of neightbour type on host type
+\describe{Add or modify a interaction of neighbor type on host type
 \itemize{
-\item{interact}{(Interact) interaction of neightbour type}
+\item{interact}{(Interact) interaction of neighbor type}
 \item{(integer)}{ 0: success, 1: fail}
 }}}
 \item{$set_func_interact(id, func)}{
 \describe{Modify interaction function of one interaction
 \itemize{
-\item{id}{ (integer) id neightbour type}
+\item{id}{ (integer) id neighbor type}
 \item{func}{ (function) interaction function}
 \item{(integer)}{ 0: success, 1: fail}
 }}}
-\item{$set_param(id, param)}{
+\item{$set_params(id, params)}{
 \describe{Modify parameters of interaction function of one interaction
 \itemize{
-\item{id}{ (integer) id neightbour type}
-\item{param}{ (list) list of constant parameters of function}
+\item{id}{ (integer) id neighbor type}
+\item{params}{ (list) list of constant parameters of function}
 \item{(integer)}{ 0: success, 1: fail}
 }}}
 \item{$remove_interact(id)}{
-\describe{remove a interaction of neightbour typer
+\describe{remove a interaction of neighbor typer
 \itemize{
-\item{id}{ (integer) id neightbour type}
+\item{id}{ (integer) id neighbor type}
 \item{(integer)}{ 0: success, 1: fail}
 }}}
 }

@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
- <testsuite hostname="palerme" name="model unit tests" timestamp="2018-01-24 10:47:57">
-  <testcase classname="model_unit_tests" name="test_dist_expr_nom" time="0.39"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_one_point" time="0.23"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_down" time="3.68"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_up" time="6.02"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_point_extrem" time="21.74"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_point" time="1.12"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_vertical" time="4.42"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_horizontal" time="5.16"/>
-  <testcase classname="model_unit_tests" name="test_potentiel_0_nominal" time="2.51"/>
-  <testcase classname="model_unit_tests" name="test_agglo_0_nominal" time="4.49"/>
-  <testcase classname="model_unit_tests" name="test_Interact_nominal" time="0.73"/>
+ <testsuite hostname="palerme" name="model unit tests" timestamp="2018-02-08 17:56:30">
+  <testcase classname="model_unit_tests" name="test_dist_expr_nom" time="0.19"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_one_point" time="0.28"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_down" time="3.51"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_up" time="6.5"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_point_extrem" time="21.91"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_point" time="1.49"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_vertical" time="4.43"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_horizontal" time="5.15"/>
+  <testcase classname="model_unit_tests" name="test_potentiel_0_nominal" time="2.64"/>
+  <testcase classname="model_unit_tests" name="test_agglo_0_nominal" time="4.46"/>
+  <testcase classname="model_unit_tests" name="test_Interact_nominal" time="0.99"/>
+  <testcase classname="model_unit_tests" name="test_Interact_error" time="1.19"/>
+  <testcase classname="model_unit_tests" name="test_TypeInteract_nomina" time="0.45">
+   <error message="tentative d'appliquer un objet qui n'est pas une fonction (@test_model_function.R#300)" type="error">tentative d'appliquer un objet qui n'est pas une fonction
+1: check_TypeInteract(8, &quot;huit&quot;, agglo_0, list(Inter2, Inter4), result) at /home/palerme/Documents/EDS/cervideds/tests/testthat/test_model_function.R:300
+2: expect_equal(result$get_func_interact(id_interact), interact$get_func_interact()) at /home/palerme/Documents/EDS/cervideds/tests/testthat/test_model_function.R:283
+3: quasi_label(enquo(object), label)
+4: eval_bare(get_expr(quo), get_env(quo))</error>
+   
+    
+  </testcase>
+  <testcase classname="model_unit_tests" name="test_TypeInteract_error" time="0.68">
+   <error message="tentative d'appliquer un objet qui n'est pas une fonction (@test_model_function.R#349)" type="error">tentative d'appliquer un objet qui n'est pas une fonction
+1: check_TypeInteract(8, &quot;huit&quot;, agglo_0, list(Inter2, Inter4), result) at /home/palerme/Documents/EDS/cervideds/tests/testthat/test_model_function.R:349
+2: expect_equal(result$get_func_interact(id_interact), interact$get_func_interact()) at /home/palerme/Documents/EDS/cervideds/tests/testthat/test_model_function.R:283
+3: quasi_label(enquo(object), label)
+4: eval_bare(get_expr(quo), get_env(quo))</error>
+   
+    
+  </testcase>
  </testsuite>
 </testsuites>
