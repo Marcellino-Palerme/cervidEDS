@@ -49,7 +49,7 @@ Define interaction of several neighbor type on host type
 \itemize{
 \item{(list of integer)}{ list of id neighbor type}
 }}}
-\item{$get_function_interact(id)}{
+\item{$get_func_interact(id)}{
 \describe{Give interaction function 
 \itemize{
 \item{id}{ (integer) id neighbor type}

@@ -292,7 +292,7 @@ check_TypeInteract <- function(id,
 }
 
 # nominal case
-test_that("test.TypeInteract_nomina", {
+test_that("test.TypeInteract_nominal", {
   Inter4 = Interact$new(4, mean, list(7, 4))
   Inter2 = Interact$new(2, sqrt, list(4))
   
@@ -326,7 +326,7 @@ test_that("test.TypeInteract_nomina", {
   check_TypeInteract(7, "sept", sqrt, list(Inter2_modif, Inter8), result)
   
   Inter8_modif = Interact$new(8, mean, list(28, 2, 5))
-  # Modify interaction function
+  # Modify params of interact
   expect_equal(result$set_params(8, list(28, 2, 5)), 0)
   check_TypeInteract(7, "sept", sqrt, list(Inter2_modif, Inter8_modif), result)
 })
@@ -343,7 +343,7 @@ test_that("test.TypeInteract_error", {
   expect_error(TypeInteract$new(8, 8, agglo_0, list(Inter2, Inter4)))
   
   # func_agglo isn't a function
-  expect_error(TypeInteract$new(8, 8, "agglo_0", list(Inter2, Inter4)))
+  expect_error(TypeInteract$new(8, "huit", "agglo_0", list(Inter2, Inter4)))
   
   result = TypeInteract$new(8, "huit", agglo_0, list(Inter2, Inter4))
   check_TypeInteract(8, "huit", agglo_0, list(Inter2, Inter4), result)
@@ -357,7 +357,7 @@ test_that("test.TypeInteract_error", {
   check_TypeInteract(8, "huit", agglo_0, list(Inter2, Inter4), result)
   
   # name isn't a characters
-  expect_equal(result$set_name(agglo_0), 0)
+  expect_equal(result$set_name(agglo_0), 1)
   check_TypeInteract(8, "huit", agglo_0, list(Inter2, Inter4), result)
   
   # Delete interact

@@ -364,13 +364,13 @@ TypeInteract = R6::R6Class("TypeInteract",
        
        return(lt_id)
      },
-     #' \item{$get_function_interact(id)}{
+     #' \item{$get_func_interact(id)}{
      #' \describe{Give interaction function 
      #' \itemize{
      #' \item{id}{ (integer) id neighbor type}
      #' \item{(function)}{ interaction function}
      #' }}}
-     get_function_interact = function(id)
+     get_func_interact = function(id)
      {
        # verify if Interact with this type exist
        index = private$get_index_interact(id)
@@ -533,7 +533,7 @@ TypeInteract = R6::R6Class("TypeInteract",
        if (index > 0)
        {
          # remove the Interact
-         private$interacts = private$interacts[[-index]]
+         private$interacts = private$interacts[-index]
          return(0)
        }
        return(1)
