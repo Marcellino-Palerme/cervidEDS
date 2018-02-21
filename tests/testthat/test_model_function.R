@@ -354,6 +354,15 @@ test_that("test.TypeInteract_error", {
   result = TypeInteract$new(8, "huit", agglo_0, list(Inter2, Inter4))
   check_TypeInteract(8, "huit", agglo_0, list(Inter2, Inter4), result)
   
+  # Get interact not exist
+  expect_equal(result$get_interact(8), NULL)
+  
+  # Get function of interact not exist
+  expect_equal(result$get_func_interact(1), NULL)
+
+  # Get function of interact not exist
+  expect_equal(result$get_params(0), NULL)
+
   # Id isn't a numeric
   expect_equal(result$set_id("7"), 1)
   check_TypeInteract(8, "huit", agglo_0, list(Inter2, Inter4), result)
@@ -389,6 +398,8 @@ test_that("test.TypeInteract_error", {
 check_TypeInteractModel <- function(Typeinteracts,
                                     result)
 {
+  # is TypeInteractModel
+  expect_true(is_TypeInteractModel(result))
   # take list of TypeInteract
   Typeinteracts_model = result$get_model()
   # Verify lists have same length
@@ -531,7 +542,37 @@ test_that("test.TypeInteractModel_error", {
 
   result = TypeInteractModel$new(list(TI32, TI8, TI24))
   check_TypeInteractModel(list(TI32, TI8, TI24), result)
+
+  # Get TypeInteract unexist
+  expect_equal(result$get_typeinteract(0), NULL)
+
+  # Get ids interact of TypeInteract unexist
+  expect_equal(result$get_id_interacts(-5), NULL)
+
+  # Get name of TypeInteract unexist
+  expect_equal(result$get_name(5), NULL)
+
+  # Get interact of TypeInteract unexist
+  expect_equal(result$get_id_interacts(77, 14), NULL)
   
+  # Get interact unexist
+  expect_equal(result$get_id_interacts(8, 25), 1)
+  
+  # Get function agglomeration of TypeInteract unexist
+  expect_equal(result$get_func_agglo(27), NULL)
+
+  # Get function of interact of TypeInteract unexist
+  expect_equal(result$get_func_interact(52, 12), NULL)
+
+  # Get function of interact not in typeinteract
+  expect_equal(result$get_func_interact(24, 4), 1)
+
+  # Get params of interact of TypeInteract unexist
+  expect_equal(result$get_func_interact(0, 12), NULL)
+  
+  # Get params of interact unexist
+  expect_equal(result$get_func_interact(32, 15), 1)
+
   # Add Interact instead of TypeInteract
   expect_equal(result$set_type_interact(Inter14), 1)
   check_TypeInteractModel(list(TI32, TI8, TI24), result)
@@ -593,5 +634,7 @@ test_that("test.TypeInteractModel_error", {
   expect_equal(result$remove_interact(24, 20), 1)
   check_TypeInteractModel(list(TI32, TI8, TI24), result)
   
+  # verify if element not a TypeInteractModel
+  expect_false(is_TypeInteractModel(1))
 })
 },T)
