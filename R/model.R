@@ -622,6 +622,7 @@ TypeInteractModel = R6::R6Class("TypeInteractModel",
       {
         lt_id = append(lt_id, type_interact$get_id())
       }
+      return(lt_id)
     },
     #' \item{$get_typeinteract(id)}{
     #' \describe{Give TypeInteract for one host type
@@ -794,6 +795,7 @@ TypeInteractModel = R6::R6Class("TypeInteractModel",
     #' \itemize{
     #' \item{id}{ (integer) identifiant of host type}
     #' \item{func_agglo}{ (function) function of agglomeration}
+    #' \item{(integer)}{ 0: success, 1: fail}
     #' }}}
     set_func_agglo = function(id, func_agglo)
     {
@@ -805,14 +807,17 @@ TypeInteractModel = R6::R6Class("TypeInteractModel",
         if (is.function(func_agglo) )
         {
           private$model[[index]]$set_func_agglo(func_agglo)
+          return(0)
         }
       }
+      return(1)
     },
     #' \item{$set_interact(id, interact)}{
     #' \describe{Add or modify a Interact for one host type
     #' \itemize{
     #' \item{id}{(integer) identifiant of host type}
     #' \item{interact}{(Interact) interaction}
+    #' \item{(integer)}{ 0: success, 1: fail}
     #' }}}
     set_interact = function(id, interact)
     {
@@ -824,8 +829,10 @@ TypeInteractModel = R6::R6Class("TypeInteractModel",
         if (is_Interact(interact) )
         {
           private$model[[index]]$set_interact(interact)
+          return(0)
         }
       }
+      return(1)
     },
     #' \item{$set_func_interact(id_host, id_neighbor, func)}{
     #' \describe{Modify interaction function of type neighbor on type host
@@ -877,7 +884,7 @@ TypeInteractModel = R6::R6Class("TypeInteractModel",
       if (index > 0)
       {
         # remove the Interact
-        private$model = private$model[[-index]]
+        private$model = private$model[-index]
         return(0)
       }
       return(1)

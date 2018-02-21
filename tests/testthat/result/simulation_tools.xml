@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
- <testsuite hostname="palerme" name="simulation tools unit tests" timestamp="2018-02-09 11:41:41">
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_nominal" time="0.16"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_att" time="0.26"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_repul" time="0.05"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_lines" time="0.14"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_out_landscape" time="0.05"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_nomina" time="32.32"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_no_repul" time="31.05"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_no_lines" time="30.79"/>
+ <testsuite hostname="palerme" name="simulation tools unit tests" timestamp="2018-02-21 14:31:03">
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_nominal" time="0.06"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_att" time="0.09"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_repul" time="0.04"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_lines" time="0.1"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_out_landscape" time="0.06"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_nomina" time="29.72"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_no_repul" time="29.52"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_no_lines" time="28.99"/>
   <testcase classname="simulation_tools_unit_tests" name="test_next_coord_nominal" time="0.02"/>
  </testsuite>
 </testsuites>

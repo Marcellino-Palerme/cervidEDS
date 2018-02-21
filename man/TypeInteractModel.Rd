@@ -88,12 +88,14 @@ Define interaction of all types with others
 \itemize{
 \item{id}{ (integer) identifiant of host type}
 \item{func_agglo}{ (function) function of agglomeration}
+\item{(integer)}{ 0: success, 1: fail}
 }}}
 \item{$set_interact(id, interact)}{
 \describe{Add or modify a Interact for one host type
 \itemize{
 \item{id}{(integer) identifiant of host type}
 \item{interact}{(Interact) interaction}
+\item{(integer)}{ 0: success, 1: fail}
 }}}
 \item{$set_func_interact(id_host, id_neighbor, func)}{
 \describe{Modify interaction function of type neighbor on type host
