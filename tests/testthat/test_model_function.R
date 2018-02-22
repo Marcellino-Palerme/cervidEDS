@@ -556,7 +556,7 @@ test_that("test.TypeInteractModel_error", {
   expect_equal(result$get_interact(52, 12), NULL)
   
   # Get interact not in typeinteract
-  expect_equal(result$get_interact(24, 4), 1)
+  expect_equal(result$get_interact(24, 4), NULL)
   
   # Get interact of TypeInteract unexist
   expect_equal(result$get_id_interacts(77), NULL)
@@ -568,13 +568,13 @@ test_that("test.TypeInteractModel_error", {
   expect_equal(result$get_func_interact(52, 12), NULL)
 
   # Get function of interact not in typeinteract
-  expect_equal(result$get_func_interact(24, 4), 1)
+  expect_equal(result$get_func_interact(24, 4), NULL)
 
   # Get params of interact of TypeInteract unexist
   expect_equal(result$get_params(0, 12), NULL)
   
   # Get params of interact unexist
-  expect_equal(result$get_params(32, 15), 1)
+  expect_equal(result$get_params(32, 15), NULL)
 
   # Add Interact instead of TypeInteract
   expect_equal(result$set_type_interact(Inter14), 1)
