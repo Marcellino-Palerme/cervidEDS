@@ -701,7 +701,7 @@ TypeInteractModel = R6::R6Class("TypeInteractModel",
         return(type_interact$get_interact(id_neighbor))
       }
     },
-    #' \item{$get_typeinteract(id)}{
+    #' \item{$get_func_agglo(id)}{
     #' \describe{Give agglomeration function of host type 
     #' \itemize{
     #' \item{id}{ (integer) id of host type}

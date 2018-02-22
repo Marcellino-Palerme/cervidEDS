@@ -54,7 +54,7 @@ Define interaction of all types with others
 \item{id_neighbor}{ (integer) id of type neighbor}
 \item{(Interact)}{ Interaction B on A}
 }}}
-\item{$get_typeinteract(id)}{
+\item{$get_func_agglo(id)}{
 \describe{Give agglomeration function of host type 
 \itemize{
 \item{id}{ (integer) id of host type}

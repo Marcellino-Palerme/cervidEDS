@@ -553,10 +553,13 @@ test_that("test.TypeInteractModel_error", {
   expect_equal(result$get_name(5), NULL)
 
   # Get interact of TypeInteract unexist
-  expect_equal(result$get_id_interacts(77, 14), NULL)
+  expect_equal(result$get_interact(52, 12), NULL)
   
-  # Get interact unexist
-  expect_equal(result$get_id_interacts(8, 25), 1)
+  # Get interact not in typeinteract
+  expect_equal(result$get_interact(24, 4), 1)
+  
+  # Get interact of TypeInteract unexist
+  expect_equal(result$get_id_interacts(77), NULL)
   
   # Get function agglomeration of TypeInteract unexist
   expect_equal(result$get_func_agglo(27), NULL)
@@ -568,10 +571,10 @@ test_that("test.TypeInteractModel_error", {
   expect_equal(result$get_func_interact(24, 4), 1)
 
   # Get params of interact of TypeInteract unexist
-  expect_equal(result$get_func_interact(0, 12), NULL)
+  expect_equal(result$get_params(0, 12), NULL)
   
   # Get params of interact unexist
-  expect_equal(result$get_func_interact(32, 15), 1)
+  expect_equal(result$get_params(32, 15), 1)
 
   # Add Interact instead of TypeInteract
   expect_equal(result$set_type_interact(Inter14), 1)
