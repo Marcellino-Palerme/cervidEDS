@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-<script src="lib/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="lib/htmlwidgets-1.0/htmlwidgets.js"></script>
 <script src="lib/jquery-1.12.4/jquery.min.js"></script>
 <script src="lib/datatables-binding-0.2/datatables.js"></script>
 <link href="lib/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -101,20 +101,20 @@ table.table-condensed {
 }</style>
   <div class="col-sm-8 col-sm-offset-2">
     <div class="tabbable">
-      <ul class="nav nav-tabs" data-tabsetid="9381">
+      <ul class="nav nav-tabs" data-tabsetid="4052">
         <li class="active">
-          <a href="#tab-9381-1" data-toggle="tab" data-value="Files">Files</a>
+          <a href="#tab-4052-1" data-toggle="tab" data-value="Files">Files</a>
         </li>
         <li>
-          <a href="#tab-9381-2" data-toggle="tab" data-value="Source">Source</a>
+          <a href="#tab-4052-2" data-toggle="tab" data-value="Source">Source</a>
         </li>
       </ul>
-      <div class="tab-content" data-tabsetid="9381">
-        <div class="tab-pane active" data-value="Files" id="tab-9381-1">
-          <div id="htmlwidget-44fbbfbc9ccd298b2114" style="width:960px;height:500px;" class="datatables html-widget"></div>
-          <script type="application/json" data-for="htmlwidget-44fbbfbc9ccd298b2114">{"x":{"filter":"none","data":[["<div class=\"coverage-box coverage-low\">0.00<\/div>","<div class=\"coverage-box coverage-low\">0.00<\/div>","<div class=\"coverage-box coverage-low\">11.04<\/div>","<div class=\"coverage-box coverage-medium\">82.31<\/div>","<div class=\"coverage-box coverage-high\">98.85<\/div>","<div class=\"coverage-box coverage-high\">99.20<\/div>","<div class=\"coverage-box coverage-high\">100.00<\/div>"],["<a href=\"#\">R/landscape.R<\/a>","<a href=\"#\">R/utility.R<\/a>","<a href=\"#\">R/model.R<\/a>","<a href=\"#\">R/extract_dynapop_oft.R<\/a>","<a href=\"#\">src/simulation.cpp<\/a>","<a href=\"#\">R/landscape_functions.R<\/a>","<a href=\"#\">R/simulation_tools.R<\/a>"],[706,21,770,509,529,301,291],[306,4,308,294,174,125,136],[0,0,34,242,172,124,136],[306,4,274,52,2,1,0],["0","0","1","566","402194","44679","109848"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Coverage<\/th>\n      <th>File<\/th>\n      <th>Lines<\/th>\n      <th>Relevant<\/th>\n      <th>Covered<\/th>\n      <th>Missed<\/th>\n      <th>Hits / Line<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"dom":"t","paging":false,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\ntable.on('click.dt', 'a', function() {\n  files = $('div#files div');\n  files.not('div.hidden').addClass('hidden');\n  id = $(this).text();\n  files.filter('div[id=\\'' + id + '\\']').removeClass('hidden');\n  $('ul.nav a[data-value=Source]').text(id).tab('show');\n});\n}","selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":["callback"],"jsHooks":[]}</script>
+      <div class="tab-content" data-tabsetid="4052">
+        <div class="tab-pane active" data-value="Files" id="tab-4052-1">
+          <div id="htmlwidget-a3f8bf5cf631609e5338" style="width:960px;height:500px;" class="datatables html-widget"></div>
+          <script type="application/json" data-for="htmlwidget-a3f8bf5cf631609e5338">{"x":{"filter":"none","data":[["<div class=\"coverage-box coverage-low\">0.00<\/div>","<div class=\"coverage-box coverage-low\">0.00<\/div>","<div class=\"coverage-box coverage-low\">11.04<\/div>","<div class=\"coverage-box coverage-medium\">82.31<\/div>","<div class=\"coverage-box coverage-high\">99.20<\/div>","<div class=\"coverage-box coverage-high\">100.00<\/div>","<div class=\"coverage-box coverage-high\">100.00<\/div>"],["<a href=\"#\">R/landscape.R<\/a>","<a href=\"#\">R/utility.R<\/a>","<a href=\"#\">R/model.R<\/a>","<a href=\"#\">R/extract_dynapop_oft.R<\/a>","<a href=\"#\">R/landscape_functions.R<\/a>","<a href=\"#\">src/simulation.cpp<\/a>","<a href=\"#\">R/simulation_tools.R<\/a>"],[706,21,770,509,301,531,291],[306,4,308,294,125,176,136],[0,0,34,242,124,176,136],[306,4,274,52,1,0,0],["0","0","1","566","44682","411166","111316"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Coverage<\/th>\n      <th>File<\/th>\n      <th>Lines<\/th>\n      <th>Relevant<\/th>\n      <th>Covered<\/th>\n      <th>Missed<\/th>\n      <th>Hits / Line<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"dom":"t","paging":false,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\ntable.on('click.dt', 'a', function() {\n  files = $('div#files div');\n  files.not('div.hidden').addClass('hidden');\n  id = $(this).text();\n  files.filter('div[id=\\'' + id + '\\']').removeClass('hidden');\n  $('ul.nav a[data-value=Source]').text(id).tab('show');\n});\n}","selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":["callback"],"jsHooks":[]}</script>
         </div>
-        <div class="tab-pane" data-value="Source" id="tab-9381-2">
+        <div class="tab-pane" data-value="Source" id="tab-4052-2">
           <div id="files">
             <div id="R/extract_dynapop_oft.R" class="hidden">
               <table class="table-condensed">
@@ -593,14 +593,14 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      if (sum(apply(matrix(round(line.mat, 12) %in% </pre>
                     </td>
-                    <td class="coverage">2446<em>x</em></td>
+                    <td class="coverage">2452<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">69</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           round(cbind(a[-nrow(a),], a[-1,])[j,] + yscale, 12), ncol=4), FUN=sum, 1) == 4) == 0){</pre>
                     </td>
-                    <td class="coverage">2446<em>x</em></td>
+                    <td class="coverage">2452<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">70</td>
@@ -635,7 +635,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      }</pre>
                     </td>
-                    <td class="coverage">2446<em>x</em></td>
+                    <td class="coverage">2452<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">75</td>
@@ -943,7 +943,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      coord &lt;- old.coord</pre>
                     </td>
-                    <td class="coverage">728<em>x</em></td>
+                    <td class="coverage">747<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">119</td>
@@ -957,7 +957,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      old.eval &lt;- new.eval</pre>
                     </td>
-                    <td class="coverage">172<em>x</em></td>
+                    <td class="coverage">153<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">121</td>
@@ -1909,7 +1909,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  -sum(((x-targets)*scale)^2, na.rm=TRUE)</pre>
                     </td>
-                    <td class="coverage">2528<em>x</em></td>
+                    <td class="coverage">2563<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">257</td>
@@ -1972,7 +1972,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">    child &lt;- c(child, unlist(parents[[i %% 2 + 1]][tab[1, i]:tab[2, i]]))</pre>
                     </td>
-                    <td class="coverage">6734<em>x</em></td>
+                    <td class="coverage">6692<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">266</td>
@@ -4015,42 +4015,42 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      tmp = distance2segment(x,</pre>
                     </td>
-                    <td class="coverage">490295<em>x</em></td>
+                    <td class="coverage">511076<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">48</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                             y,</pre>
                     </td>
-                    <td class="coverage">490295<em>x</em></td>
+                    <td class="coverage">511076<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">49</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                             poly_coords[index_coord, 1],</pre>
                     </td>
-                    <td class="coverage">490295<em>x</em></td>
+                    <td class="coverage">511076<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">50</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                             poly_coords[index_coord, 2],</pre>
                     </td>
-                    <td class="coverage">490295<em>x</em></td>
+                    <td class="coverage">511076<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">51</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                             poly_coords[index_coord + 1, 1],</pre>
                     </td>
-                    <td class="coverage">490295<em>x</em></td>
+                    <td class="coverage">511076<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">52</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                             poly_coords[index_coord + 1, 2])</pre>
                     </td>
-                    <td class="coverage">490295<em>x</em></td>
+                    <td class="coverage">511076<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">53</td>
@@ -4064,28 +4064,28 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      if (tmp["dist"] &lt; result["dist"])</pre>
                     </td>
-                    <td class="coverage">490295<em>x</em></td>
+                    <td class="coverage">511076<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">55</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      {</pre>
                     </td>
-                    <td class="coverage">490295<em>x</em></td>
+                    <td class="coverage">511076<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">56</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        result = tmp</pre>
                     </td>
-                    <td class="coverage">115689<em>x</em></td>
+                    <td class="coverage">128331<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">57</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      }</pre>
                     </td>
-                    <td class="coverage">490295<em>x</em></td>
+                    <td class="coverage">511076<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">58</td>
@@ -16612,14 +16612,14 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  return(sapply(slot(object, name_element),</pre>
                     </td>
-                    <td class="coverage">480601<em>x</em></td>
+                    <td class="coverage">480603<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">78</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                function(x) slot(x, "ID")))</pre>
                     </td>
-                    <td class="coverage">480601<em>x</em></td>
+                    <td class="coverage">480603<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">79</td>
@@ -17214,7 +17214,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  pos_id = which(getIdsSpatial_(object, name_elements[1]) %in% id)</pre>
                     </td>
-                    <td class="coverage">458228<em>x</em></td>
+                    <td class="coverage">458230<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">164</td>
@@ -17228,7 +17228,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  elements = attr(object,name_elements[1])</pre>
                     </td>
-                    <td class="coverage">458228<em>x</em></td>
+                    <td class="coverage">458230<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">166</td>
@@ -17242,7 +17242,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  element = attr(elements[[pos_id]],name_elements[2])</pre>
                     </td>
-                    <td class="coverage">458228<em>x</em></td>
+                    <td class="coverage">458230<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">168</td>
@@ -17256,21 +17256,21 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  coords = NULL</pre>
                     </td>
-                    <td class="coverage">458228<em>x</em></td>
+                    <td class="coverage">458230<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">170</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  for (elemt in element)</pre>
                     </td>
-                    <td class="coverage">458228<em>x</em></td>
+                    <td class="coverage">458230<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">171</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  {</pre>
                     </td>
-                    <td class="coverage">458228<em>x</em></td>
+                    <td class="coverage">458230<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">172</td>
@@ -17284,14 +17284,14 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">    coords = rbind(coords,attr(elemt,"coords"))</pre>
                     </td>
-                    <td class="coverage">458228<em>x</em></td>
+                    <td class="coverage">458230<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">174</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  }</pre>
                     </td>
-                    <td class="coverage">458228<em>x</em></td>
+                    <td class="coverage">458230<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">175</td>
@@ -17305,7 +17305,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  return(coords)</pre>
                     </td>
-                    <td class="coverage">458228<em>x</em></td>
+                    <td class="coverage">458230<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">177</td>
@@ -17487,7 +17487,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  return(getCoordsSpatial_(my_lines,c("lines","Lines"),id))</pre>
                     </td>
-                    <td class="coverage">346350<em>x</em></td>
+                    <td class="coverage">346352<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">203</td>
@@ -17872,42 +17872,42 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      x0 = lt_coords[i - 1,1]</pre>
                     </td>
-                    <td class="coverage">756<em>x</em></td>
+                    <td class="coverage">774<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">258</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      y0 = lt_coords[i - 1,2]</pre>
                     </td>
-                    <td class="coverage">756<em>x</em></td>
+                    <td class="coverage">774<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">259</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      x1 = lt_coords[i ,1]</pre>
                     </td>
-                    <td class="coverage">756<em>x</em></td>
+                    <td class="coverage">774<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">260</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      y1 = lt_coords[i ,2]</pre>
                     </td>
-                    <td class="coverage">756<em>x</em></td>
+                    <td class="coverage">774<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">261</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      index_01 = match(1,(x0 == dic_lines$x0) * (y0 == dic_lines$y0) *</pre>
                     </td>
-                    <td class="coverage">756<em>x</em></td>
+                    <td class="coverage">774<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">262</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                         (x1 == dic_lines$x1) * (y1 == dic_lines$y1))</pre>
                     </td>
-                    <td class="coverage">756<em>x</em></td>
+                    <td class="coverage">774<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">263</td>
@@ -17921,14 +17921,14 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      index_10 = match(1,(x0 == dic_lines$x1) * (y0 == dic_lines$y1) *</pre>
                     </td>
-                    <td class="coverage">756<em>x</em></td>
+                    <td class="coverage">774<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">265</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                         (x1 == dic_lines$x0) * (y1 == dic_lines$y0))</pre>
                     </td>
-                    <td class="coverage">756<em>x</em></td>
+                    <td class="coverage">774<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">266</td>
@@ -17949,14 +17949,14 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      if (!is.na(index_01))</pre>
                     </td>
-                    <td class="coverage">756<em>x</em></td>
+                    <td class="coverage">774<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">269</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      {</pre>
                     </td>
-                    <td class="coverage">756<em>x</em></td>
+                    <td class="coverage">774<em>x</em></td>
                   </tr>
                   <tr class="missed">
                     <td class="num">270</td>
@@ -17970,49 +17970,49 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      }</pre>
                     </td>
-                    <td class="coverage">756<em>x</em></td>
+                    <td class="coverage">774<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">272</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      else if (!is.na(index_10))</pre>
                     </td>
-                    <td class="coverage">756<em>x</em></td>
+                    <td class="coverage">774<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">273</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      {</pre>
                     </td>
-                    <td class="coverage">756<em>x</em></td>
+                    <td class="coverage">774<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">274</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        dic_lines$id_poly2[index_10] = id</pre>
                     </td>
-                    <td class="coverage">297<em>x</em></td>
+                    <td class="coverage">315<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">275</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      }</pre>
                     </td>
-                    <td class="coverage">756<em>x</em></td>
+                    <td class="coverage">774<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">276</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      else</pre>
                     </td>
-                    <td class="coverage">756<em>x</em></td>
+                    <td class="coverage">774<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">277</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      {</pre>
                     </td>
-                    <td class="coverage">756<em>x</em></td>
+                    <td class="coverage">774<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">278</td>
@@ -18061,7 +18061,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">      }</pre>
                     </td>
-                    <td class="coverage">756<em>x</em></td>
+                    <td class="coverage">774<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">285</td>
@@ -18759,7 +18759,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">NumericVector distance2point(double x, </pre>
                     </td>
-                    <td class="coverage">1672033<em>x</em></td>
+                    <td class="coverage">1713897<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">61</td>
@@ -18794,21 +18794,21 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  NumericVector return_values = NumericVector::create(_["dist"] = 0,</pre>
                     </td>
-                    <td class="coverage">3344066<em>x</em></td>
+                    <td class="coverage">3427794<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">66</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                                                      _["dx"] = 0,</pre>
                     </td>
-                    <td class="coverage">3344066<em>x</em></td>
+                    <td class="coverage">3427794<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">67</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                                                      _["dy"] = 0);</pre>
                     </td>
-                    <td class="coverage">8360165<em>x</em></td>
+                    <td class="coverage">8569485<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">68</td>
@@ -18822,7 +18822,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  if(x == x1 &amp;&amp; y == y1)</pre>
                     </td>
-                    <td class="coverage">1672033<em>x</em></td>
+                    <td class="coverage">1713897<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">70</td>
@@ -18850,42 +18850,42 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  return_values["dist"] = sqrt(pow(x1 - x, 2) + pow(y1 - y, 2));</pre>
                     </td>
-                    <td class="coverage">1671297<em>x</em></td>
+                    <td class="coverage">1713161<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">74</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  return_values["dx"] = (-2 * (x1 - x)) /</pre>
                     </td>
-                    <td class="coverage">5013891<em>x</em></td>
+                    <td class="coverage">5139483<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">75</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                        (2 * sqrt(pow(x1 - x, 2) + pow(y1 - y, 2)));</pre>
                     </td>
-                    <td class="coverage">3342594<em>x</em></td>
+                    <td class="coverage">3426322<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">76</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  return_values["dy"] = (-2 * (y1 - y)) /</pre>
                     </td>
-                    <td class="coverage">5013891<em>x</em></td>
+                    <td class="coverage">5139483<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">77</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                        (2 * sqrt(pow(x1 - x, 2) + pow(y1 - y, 2)));</pre>
                     </td>
-                    <td class="coverage">3342594<em>x</em></td>
+                    <td class="coverage">3426322<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">78</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  return return_values;</pre>
                     </td>
-                    <td class="coverage">1671297<em>x</em></td>
+                    <td class="coverage">1713161<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">79</td>
@@ -19011,7 +19011,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">NumericVector shorter_distance(double x, </pre>
                     </td>
-                    <td class="coverage">734899<em>x</em></td>
+                    <td class="coverage">755974<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">97</td>
@@ -19060,7 +19060,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  NumericVector distA, distB;</pre>
                     </td>
-                    <td class="coverage">1469798<em>x</em></td>
+                    <td class="coverage">1511948<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">104</td>
@@ -19081,28 +19081,28 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  distA = distance2point(x, y, x1, y1);</pre>
                     </td>
-                    <td class="coverage">734899<em>x</em></td>
+                    <td class="coverage">755974<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">107</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  distB = distance2point(x, y, x2, y2);</pre>
                     </td>
-                    <td class="coverage">734899<em>x</em></td>
+                    <td class="coverage">755974<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">108</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  tmpA = distA["dist"];</pre>
                     </td>
-                    <td class="coverage">734899<em>x</em></td>
+                    <td class="coverage">755974<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">109</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  tmpB = distB["dist"];</pre>
                     </td>
-                    <td class="coverage">734899<em>x</em></td>
+                    <td class="coverage">755974<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">110</td>
@@ -19123,7 +19123,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  if (tmpA &lt; tmpB)</pre>
                     </td>
-                    <td class="coverage">734899<em>x</em></td>
+                    <td class="coverage">755974<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">113</td>
@@ -19137,7 +19137,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">    return distA;</pre>
                     </td>
-                    <td class="coverage">374326<em>x</em></td>
+                    <td class="coverage">366629<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">115</td>
@@ -19151,7 +19151,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  return distB;</pre>
                     </td>
-                    <td class="coverage">360573<em>x</em></td>
+                    <td class="coverage">389345<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">117</td>
@@ -19270,7 +19270,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">NumericVector distance2segment(double x, </pre>
                     </td>
-                    <td class="coverage">937128<em>x</em></td>
+                    <td class="coverage">957918<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">134</td>
@@ -19319,21 +19319,21 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">   NumericVector return_values = NumericVector::create(_["dist"] = 0,</pre>
                     </td>
-                    <td class="coverage">1874256<em>x</em></td>
+                    <td class="coverage">1915836<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">141</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                                                       _["dx"] = 0,</pre>
                     </td>
-                    <td class="coverage">1874256<em>x</em></td>
+                    <td class="coverage">1915836<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">142</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                                                       _["dy"] = 0);</pre>
                     </td>
-                    <td class="coverage">5622768<em>x</em></td>
+                    <td class="coverage">5747508<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">143</td>
@@ -19396,7 +19396,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">   if (x1==x2 &amp;&amp; y1==y2)</pre>
                     </td>
-                    <td class="coverage">937128<em>x</em></td>
+                    <td class="coverage">957918<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">152</td>
@@ -19438,7 +19438,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">   if( x1 == x2)</pre>
                     </td>
-                    <td class="coverage">937126<em>x</em></td>
+                    <td class="coverage">957916<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">158</td>
@@ -19459,7 +19459,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">     if((y&lt; y1 &amp;&amp; y&gt; y2) || (y&gt; y1 &amp;&amp; y&lt; y2))</pre>
                     </td>
-                    <td class="coverage">180601<em>x</em></td>
+                    <td class="coverage">136317<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">161</td>
@@ -19473,7 +19473,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">        return distance2point(x, y, x1, y);</pre>
                     </td>
-                    <td class="coverage">46745<em>x</em></td>
+                    <td class="coverage">45705<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">163</td>
@@ -19494,7 +19494,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">     return shorter_distance(x, y, x1, y1, x2, y2);</pre>
                     </td>
-                    <td class="coverage">133856<em>x</em></td>
+                    <td class="coverage">90612<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">166</td>
@@ -19515,7 +19515,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">   if( y1 == y2)</pre>
                     </td>
-                    <td class="coverage">756525<em>x</em></td>
+                    <td class="coverage">821599<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">169</td>
@@ -19536,7 +19536,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">     if((x&lt; x1 &amp;&amp; x&gt; x2) || (x&gt; x1 &amp;&amp; x&lt; x2))</pre>
                     </td>
-                    <td class="coverage">127023<em>x</em></td>
+                    <td class="coverage">126943<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">172</td>
@@ -19550,7 +19550,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">       return distance2point(x, y, x, y1);</pre>
                     </td>
-                    <td class="coverage">37727<em>x</em></td>
+                    <td class="coverage">37295<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">174</td>
@@ -19571,7 +19571,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">     return shorter_distance(x, y, x1, y1, x2, y2);</pre>
                     </td>
-                    <td class="coverage">89296<em>x</em></td>
+                    <td class="coverage">89648<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">177</td>
@@ -19585,14 +19585,14 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">   sx = x2 - x1;</pre>
                     </td>
-                    <td class="coverage">629502<em>x</em></td>
+                    <td class="coverage">694656<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">179</td>
                     <td class="col-sm-12">
                       <pre class="language-r">   sy = y2 - y1;</pre>
                     </td>
-                    <td class="coverage">629502<em>x</em></td>
+                    <td class="coverage">694656<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">180</td>
@@ -19606,7 +19606,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">   slot_seg = sy / sx;</pre>
                     </td>
-                    <td class="coverage">629502<em>x</em></td>
+                    <td class="coverage">694656<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">182</td>
@@ -19620,7 +19620,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">   slot_ortho = -1 / slot_seg;</pre>
                     </td>
-                    <td class="coverage">629502<em>x</em></td>
+                    <td class="coverage">694656<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">184</td>
@@ -19634,14 +19634,14 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">   limit_h[0] = ((slot_ortho * x) + y1 - slot_ortho * x1);</pre>
                     </td>
-                    <td class="coverage">629502<em>x</em></td>
+                    <td class="coverage">694656<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">186</td>
                     <td class="col-sm-12">
                       <pre class="language-r">   limit_h[1] = ((slot_ortho * x) + y2 - slot_ortho * x2);</pre>
                     </td>
-                    <td class="coverage">629502<em>x</em></td>
+                    <td class="coverage">694656<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">187</td>
@@ -19662,14 +19662,14 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">   if( (y &lt; limit_h[0] &amp;&amp; y &lt; limit_h[1])</pre>
                     </td>
-                    <td class="coverage">629502<em>x</em></td>
+                    <td class="coverage">694656<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">190</td>
                     <td class="col-sm-12">
                       <pre class="language-r">       || (y &gt; limit_h[0] &amp;&amp; y &gt; limit_h[1]))</pre>
                     </td>
-                    <td class="coverage">442727<em>x</em></td>
+                    <td class="coverage">426820<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">191</td>
@@ -19690,7 +19690,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">     return shorter_distance(x, y, x1, y1, x2, y2);</pre>
                     </td>
-                    <td class="coverage">511747<em>x</em></td>
+                    <td class="coverage">575714<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">194</td>
@@ -19718,7 +19718,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">   vert_inter_seg = y1 - slot_seg * x1;</pre>
                     </td>
-                    <td class="coverage">117755<em>x</em></td>
+                    <td class="coverage">118942<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">198</td>
@@ -19732,7 +19732,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">   if( y == ((slot_seg * x) + vert_inter_seg))</pre>
                     </td>
-                    <td class="coverage">117755<em>x</em></td>
+                    <td class="coverage">118942<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">200</td>
@@ -19748,12 +19748,12 @@ table.table-condensed {
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="missed">
+                  <tr class="covered">
                     <td class="num">202</td>
                     <td class="col-sm-12">
                       <pre class="language-r">     return return_values;</pre>
                     </td>
-                    <td class="coverage">!</td>
+                    <td class="coverage">1<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">203</td>
@@ -19788,14 +19788,14 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">   xh = ((y - slot_ortho * x) - vert_inter_seg) / (slot_seg - slot_ortho);</pre>
                     </td>
-                    <td class="coverage">117755<em>x</em></td>
+                    <td class="coverage">118941<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">208</td>
                     <td class="col-sm-12">
                       <pre class="language-r">   yh = slot_seg * xh + vert_inter_seg;</pre>
                     </td>
-                    <td class="coverage">117755<em>x</em></td>
+                    <td class="coverage">118941<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">209</td>
@@ -19816,7 +19816,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">   return distance2point(x, y, xh, yh);</pre>
                     </td>
-                    <td class="coverage">117755<em>x</em></td>
+                    <td class="coverage">118941<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">212</td>
@@ -19907,7 +19907,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">double potential_func(double alpha_t,</pre>
                     </td>
-                    <td class="coverage">174901<em>x</em></td>
+                    <td class="coverage">193512<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">225</td>
@@ -19942,7 +19942,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  return alpha_t * exp(-beta * pow(dist, power));</pre>
                     </td>
-                    <td class="coverage">174901<em>x</em></td>
+                    <td class="coverage">193512<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">230</td>
@@ -20040,7 +20040,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">double grad_potential_func (double alpha_t,</pre>
                     </td>
-                    <td class="coverage">96<em>x</em></td>
+                    <td class="coverage">112<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">244</td>
@@ -20082,14 +20082,14 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">   return -power * beta * alpha_t * deriv * pow(dist, power - 1) * </pre>
                     </td>
-                    <td class="coverage">96<em>x</em></td>
+                    <td class="coverage">112<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">250</td>
                     <td class="col-sm-12">
                       <pre class="language-r">          exp(-beta * pow(dist, power));</pre>
                     </td>
-                    <td class="coverage">96<em>x</em></td>
+                    <td class="coverage">112<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">251</td>
@@ -20264,7 +20264,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">std::map&lt;int, int&gt; map_type (NumericMatrix nm_info_type) </pre>
                     </td>
-                    <td class="coverage">11203<em>x</em></td>
+                    <td class="coverage">11211<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">276</td>
@@ -20278,14 +20278,14 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  std::map&lt;int, int&gt; index_type;</pre>
                     </td>
-                    <td class="coverage">11203<em>x</em></td>
+                    <td class="coverage">11211<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">278</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  for (int i = 0; i &lt; nm_info_type.nrow(); i++)</pre>
                     </td>
-                    <td class="coverage">44778<em>x</em></td>
+                    <td class="coverage">44802<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">279</td>
@@ -20299,7 +20299,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">    index_type[nm_info_type(i, INFO_TYPE_COL_ID)] = i;</pre>
                     </td>
-                    <td class="coverage">33575<em>x</em></td>
+                    <td class="coverage">33591<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">281</td>
@@ -20320,7 +20320,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  return index_type;</pre>
                     </td>
-                    <td class="coverage">11203<em>x</em></td>
+                    <td class="coverage">11211<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">284</td>
@@ -20404,7 +20404,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">double bound (double val,</pre>
                     </td>
-                    <td class="coverage">26134<em>x</em></td>
+                    <td class="coverage">29874<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">296</td>
@@ -20432,14 +20432,14 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  std::list&lt;double&gt; my_list;</pre>
                     </td>
-                    <td class="coverage">52268<em>x</em></td>
+                    <td class="coverage">59748<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">300</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  std::list&lt;double&gt;::iterator my_iter;</pre>
                     </td>
-                    <td class="coverage">26134<em>x</em></td>
+                    <td class="coverage">29874<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">301</td>
@@ -20460,21 +20460,21 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  my_list.push_back(val);</pre>
                     </td>
-                    <td class="coverage">26134<em>x</em></td>
+                    <td class="coverage">29874<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">304</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  my_list.push_back(bound_1);</pre>
                     </td>
-                    <td class="coverage">26134<em>x</em></td>
+                    <td class="coverage">29874<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">305</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  my_list.push_back(bound_2);</pre>
                     </td>
-                    <td class="coverage">26134<em>x</em></td>
+                    <td class="coverage">29874<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">306</td>
@@ -20495,7 +20495,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  my_list.sort();</pre>
                     </td>
-                    <td class="coverage">26134<em>x</em></td>
+                    <td class="coverage">29874<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">309</td>
@@ -20516,21 +20516,21 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  my_iter = my_list.begin();</pre>
                     </td>
-                    <td class="coverage">26134<em>x</em></td>
+                    <td class="coverage">29874<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">312</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  my_iter++;</pre>
                     </td>
-                    <td class="coverage">26134<em>x</em></td>
+                    <td class="coverage">29874<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">313</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  return *my_iter;</pre>
                     </td>
-                    <td class="coverage">52268<em>x</em></td>
+                    <td class="coverage">59748<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">314</td>
@@ -20635,7 +20635,7 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">double potential_value (NumericMatrix nm_dist_element,</pre>
                     </td>
-                    <td class="coverage">11169<em>x</em></td>
+                    <td class="coverage">11173<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">329</td>
@@ -20656,35 +20656,35 @@ table.table-condensed {
                     <td class="col-sm-12">
                       <pre class="language-r">  double value = 0;</pre>
                     </td>
-                    <td class="coverage">11169<em>x</em></td>
+                    <td class="coverage">11173<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">332</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  std::map&lt;int, int&gt; index_type = map_type(nm_info_type);</pre>
                     </td>
-                    <td class="coverage">22338<em>x</em></td>
+                    <td class="coverage">22346<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">333</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  std::map&lt;int, double&gt; pot_type;</pre>
                     </td>
-                    <td class="coverage">22338<em>x</em></td>
+                    <td class="coverage">22346<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">334</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  std::map&lt;int, double&gt;::iterator it_pot_type;</pre>
                     </td>
-                    <td class="coverage">11169<em>x</em></td>
+                    <td class="coverage">11173<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">335</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  int line_type = 0;</pre>
                     </td>
-                    <td class="coverage">11169<em>x</em></td>
+                    <td class="coverage">11173<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">336</td>
@@ -20696,1330 +20696,1330 @@ table.table-condensed {
                   <tr class="never">
                     <td class="num">337</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  // Verify if element is correct</pre>
+                      <pre class="language-r">  // Verify if size of element and info type is correct</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">338</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  if (nm_dist_element.ncol() != ELEMENT_NB_COL)</pre>
+                      <pre class="language-r">  if (nm_dist_element.ncol() != ELEMENT_NB_COL &amp;&amp;</pre>
                     </td>
-                    <td class="coverage">11169<em>x</em></td>
+                    <td class="coverage">11177<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">339</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">      nm_info_type.ncol() != INFO_TYPE_NB_COL)</pre>
+                    </td>
+                    <td class="coverage">4<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">339</td>
+                    <td class="num">340</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  {</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="missed">
-                    <td class="num">340</td>
+                  <tr class="covered">
+                    <td class="num">341</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    return value;</pre>
                     </td>
-                    <td class="coverage">!</td>
+                    <td class="coverage">1<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">341</td>
+                    <td class="num">342</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  }</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">342</td>
+                    <td class="num">343</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  for (int i = 0; i &lt; nm_dist_element.nrow(); i++)</pre>
                     </td>
-                    <td class="coverage">468862<em>x</em></td>
+                    <td class="coverage">468871<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">343</td>
+                    <td class="num">344</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  {</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">344</td>
+                    <td class="num">345</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    // Don't process border type (0) and no type(-1)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">345</td>
+                    <td class="num">346</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    if( nm_dist_element(i, ELEMENT_COL_ID_TYPE) &gt; 0)</pre>
                     </td>
-                    <td class="coverage">457693<em>x</em></td>
+                    <td class="coverage">457699<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">346</td>
+                    <td class="num">347</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    {</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">347</td>
+                    <td class="num">348</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      line_type = index_type[nm_dist_element(i, ELEMENT_COL_ID_TYPE)];</pre>
                     </td>
-                    <td class="coverage">174897<em>x</em></td>
+                    <td class="coverage">193508<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">348</td>
+                    <td class="num">349</td>
                     <td class="col-sm-12">
                       <pre class="language-r"></pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">349</td>
+                    <td class="num">350</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      // Sum potential of elements of same type</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">350</td>
+                    <td class="num">351</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      pot_type[line_type] -= nm_info_type(line_type, INFO_TYPE_COL_REPATT)</pre>
                     </td>
-                    <td class="coverage">524691<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">351</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                             * potential_func(nm_info_type(line_type,</pre>
-                    </td>
-                    <td class="coverage">699588<em>x</em></td>
+                    <td class="coverage">580524<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">352</td>
                     <td class="col-sm-12">
+                      <pre class="language-r">                             * potential_func(nm_info_type(line_type,</pre>
+                    </td>
+                    <td class="coverage">774032<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">353</td>
+                    <td class="col-sm-12">
                       <pre class="language-r">                                                           INFO_TYPE_COL_ALPHA),</pre>
                     </td>
-                    <td class="coverage">349794<em>x</em></td>
+                    <td class="coverage">387016<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">353</td>
+                    <td class="num">354</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                                              nm_info_type(line_type,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">354</td>
+                    <td class="num">355</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                                                           INFO_TYPE_COL_BETA),</pre>
                     </td>
-                    <td class="coverage">349794<em>x</em></td>
+                    <td class="coverage">387016<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">355</td>
+                    <td class="num">356</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                                              nm_dist_element(i,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">356</td>
+                    <td class="num">357</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                                                              ELEMENT_COL_DIST),</pre>
                     </td>
-                    <td class="coverage">349794<em>x</em></td>
+                    <td class="coverage">387016<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">357</td>
+                    <td class="num">358</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                                              nm_info_type(line_type,</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">358</td>
+                    <td class="num">359</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                                                           INFO_TYPE_COL_POW));</pre>
                     </td>
-                    <td class="coverage">699588<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">359</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    }</pre>
-                    </td>
-                    <td class="coverage"></td>
+                    <td class="coverage">774032<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">360</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  }</pre>
+                      <pre class="language-r">    }</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">361</td>
                     <td class="col-sm-12">
+                      <pre class="language-r">  }</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">362</td>
+                    <td class="col-sm-12">
                       <pre class="language-r">  </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">362</td>
+                    <td class="num">363</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  for (it_pot_type=pot_type.begin();</pre>
                     </td>
-                    <td class="coverage">111678<em>x</em></td>
+                    <td class="coverage">122865<em>x</em></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">363</td>
+                    <td class="num">364</td>
                     <td class="col-sm-12">
                       <pre class="language-r">       it_pot_type!=pot_type.end();</pre>
                     </td>
-                    <td class="coverage">74452<em>x</em></td>
+                    <td class="coverage">81910<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">364</td>
+                    <td class="num">365</td>
                     <td class="col-sm-12">
                       <pre class="language-r">       it_pot_type++)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">365</td>
+                    <td class="num">366</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  {</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">366</td>
+                    <td class="num">367</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    line_type = (*it_pot_type).first;</pre>
                     </td>
-                    <td class="coverage">26057<em>x</em></td>
+                    <td class="coverage">29783<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">367</td>
+                    <td class="num">368</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    // staked potential out of each type</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">368</td>
+                    <td class="num">369</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    pot_type[line_type] = bound(pot_type[line_type],</pre>
                     </td>
-                    <td class="coverage">78171<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">369</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                nm_info_type(line_type, INFO_TYPE_COL_ALPHA),</pre>
-                    </td>
-                    <td class="coverage">52114<em>x</em></td>
+                    <td class="coverage">89349<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">370</td>
                     <td class="col-sm-12">
+                      <pre class="language-r">                                nm_info_type(line_type, INFO_TYPE_COL_ALPHA),</pre>
+                    </td>
+                    <td class="coverage">59566<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">371</td>
+                    <td class="col-sm-12">
                       <pre class="language-r">                                - nm_info_type(line_type, INFO_TYPE_COL_ALPHA));</pre>
                     </td>
-                    <td class="coverage">78171<em>x</em></td>
+                    <td class="coverage">89349<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">371</td>
+                    <td class="num">372</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    // Sum all staked potential</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">372</td>
+                    <td class="num">373</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    value += (*it_pot_type).second;</pre>
                     </td>
-                    <td class="coverage">26057<em>x</em></td>
+                    <td class="coverage">29783<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">373</td>
+                    <td class="num">374</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  }</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">374</td>
+                    <td class="num">375</td>
                     <td class="col-sm-12">
                       <pre class="language-r"></pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">375</td>
+                    <td class="num">376</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  return value;</pre>
                     </td>
-                    <td class="coverage">11169<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">376</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">}</pre>
-                    </td>
-                    <td class="coverage"></td>
+                    <td class="coverage">11172<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">377</td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">}</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">378</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @title effect potential</pre>
+                      <pre class="language-r"></pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">379</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @description Calcualte gradient potential value for a x and y</pre>
+                      <pre class="language-r">//' @title effect potential</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">380</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' </pre>
+                      <pre class="language-r">//' @description Calcualte gradient potential value for a x and y</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">381</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param nm_dist_element (NumericMatrix) all distance and gradiant of segment </pre>
+                      <pre class="language-r">//' </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">382</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//'                                        and polygon </pre>
+                      <pre class="language-r">//' @param nm_dist_element (NumericMatrix) all distance and gradiant of segment </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">383</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//'                                        (matrix) M*4 (dist, dx, dy, id_type)</pre>
+                      <pre class="language-r">//'                                        and polygon </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">384</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param nm_info_type (NumericMatrix) descript each type</pre>
+                      <pre class="language-r">//'                                        (matrix) M*4 (dist, dx, dy, id_type)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">385</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//'                                     Matrix M*5 (Id, rep (-1) or attr(1), </pre>
+                      <pre class="language-r">//' @param nm_info_type (NumericMatrix) descript each type</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">386</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//'                                                 alpha, beta, power)</pre>
+                      <pre class="language-r">//'                                     Matrix M*5 (Id, rep (-1) or attr(1), </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">387</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @return (NumericVector) effect potential in x and y (['x'];['y'])</pre>
+                      <pre class="language-r">//'                                                 alpha, beta, power)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">388</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @export</pre>
+                      <pre class="language-r">//' @return (NumericVector) effect potential in x and y (['x'];['y'])</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">389</td>
                     <td class="col-sm-12">
+                      <pre class="language-r">//' @export</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">390</td>
+                    <td class="col-sm-12">
                       <pre class="language-r">// [[Rcpp::export]]</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">390</td>
+                    <td class="num">391</td>
                     <td class="col-sm-12">
                       <pre class="language-r">NumericVector potential_effect (NumericMatrix nm_dist_element,</pre>
                     </td>
-                    <td class="coverage">34<em>x</em></td>
+                    <td class="coverage">38<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">391</td>
+                    <td class="num">392</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                                NumericMatrix nm_info_type)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">392</td>
+                    <td class="num">393</td>
                     <td class="col-sm-12">
                       <pre class="language-r">{</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">393</td>
+                    <td class="num">394</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  NumericVector effect = NumericVector::create(_["x"] = 0,</pre>
                     </td>
-                    <td class="coverage">68<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">394</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                               _["y"] = 0);</pre>
-                    </td>
-                    <td class="coverage">102<em>x</em></td>
+                    <td class="coverage">76<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">395</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  std::map&lt;int, int&gt; index_type = map_type(nm_info_type);</pre>
+                      <pre class="language-r">                                               _["y"] = 0);</pre>
                     </td>
-                    <td class="coverage">68<em>x</em></td>
+                    <td class="coverage">114<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">396</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  std::map&lt;int, double&gt; grad_type;</pre>
+                      <pre class="language-r">  std::map&lt;int, int&gt; index_type = map_type(nm_info_type);</pre>
                     </td>
-                    <td class="coverage">68<em>x</em></td>
+                    <td class="coverage">76<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">397</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  std::map&lt;int, double&gt;::iterator it_grad_type;</pre>
+                      <pre class="language-r">  std::map&lt;int, double&gt; grad_type;</pre>
                     </td>
-                    <td class="coverage">34<em>x</em></td>
+                    <td class="coverage">76<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">398</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  int line_type = 0;</pre>
+                      <pre class="language-r">  std::map&lt;int, double&gt;::iterator it_grad_type;</pre>
                     </td>
-                    <td class="coverage">34<em>x</em></td>
+                    <td class="coverage">38<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">399</td>
                     <td class="col-sm-12">
+                      <pre class="language-r">  int line_type = 0;</pre>
+                    </td>
+                    <td class="coverage">38<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">400</td>
+                    <td class="col-sm-12">
                       <pre class="language-r">  std::map&lt;int, double&gt; grad_bound;</pre>
                     </td>
-                    <td class="coverage">68<em>x</em></td>
+                    <td class="coverage">76<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">400</td>
+                    <td class="num">401</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">401</td>
+                    <td class="num">402</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  // Verify if element is correct</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">402</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  if (nm_dist_element.ncol() != ELEMENT_NB_COL)</pre>
-                    </td>
-                    <td class="coverage">34<em>x</em></td>
-                  </tr>
-                  <tr class="never">
                     <td class="num">403</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  {</pre>
+                      <pre class="language-r">  if (nm_dist_element.ncol() != ELEMENT_NB_COL &amp;&amp;</pre>
                     </td>
-                    <td class="coverage"></td>
+                    <td class="coverage">44<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">404</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    return effect;</pre>
+                      <pre class="language-r">      nm_info_type.ncol() != INFO_TYPE_NB_COL)</pre>
                     </td>
-                    <td class="coverage">2<em>x</em></td>
+                    <td class="coverage">6<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">405</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  }</pre>
+                      <pre class="language-r">  {</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">406</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  for (int j =0; j &lt; 2; j++)</pre>
+                      <pre class="language-r">    return effect;</pre>
                     </td>
-                    <td class="coverage">96<em>x</em></td>
+                    <td class="coverage">1<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">407</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  {</pre>
+                      <pre class="language-r">  }</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">408</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    for (int i = 0; i &lt; nm_dist_element.nrow(); i++)</pre>
+                      <pre class="language-r">  for (int j =0; j &lt; 2; j++)</pre>
                     </td>
-                    <td class="coverage">158<em>x</em></td>
+                    <td class="coverage">111<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">409</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  {</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">410</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    for (int i = 0; i &lt; nm_dist_element.nrow(); i++)</pre>
+                    </td>
+                    <td class="coverage">184<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">411</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    {</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">410</td>
+                    <td class="num">412</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      // Don't process border type (0) and no type(-1)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">411</td>
+                    <td class="num">413</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      if( nm_dist_element(i, ELEMENT_COL_ID_TYPE) &gt; 0)</pre>
                     </td>
-                    <td class="coverage">94<em>x</em></td>
+                    <td class="coverage">110<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">412</td>
+                    <td class="num">414</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      {</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">413</td>
+                    <td class="num">415</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">414</td>
+                    <td class="num">416</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        line_type = index_type[nm_dist_element(i, ELEMENT_COL_ID_TYPE)];</pre>
                     </td>
-                    <td class="coverage">84<em>x</em></td>
+                    <td class="coverage">100<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">415</td>
+                    <td class="num">417</td>
                     <td class="col-sm-12">
                       <pre class="language-r"></pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">416</td>
+                    <td class="num">418</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        // Sum potential gradient of elements of same type</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">417</td>
+                    <td class="num">419</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        grad_type[line_type] += nm_info_type(line_type, INFO_TYPE_COL_REPATT) * </pre>
                     </td>
-                    <td class="coverage">252<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">418</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                grad_potential_func(</pre>
-                    </td>
-                    <td class="coverage">420<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">419</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                  nm_info_type(line_type, INFO_TYPE_COL_ALPHA),</pre>
-                    </td>
-                    <td class="coverage">168<em>x</em></td>
+                    <td class="coverage">300<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">420</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                  nm_info_type(line_type, INFO_TYPE_COL_BETA),</pre>
+                      <pre class="language-r">                                grad_potential_func(</pre>
                     </td>
-                    <td class="coverage">168<em>x</em></td>
+                    <td class="coverage">500<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">421</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                  nm_dist_element(i, ELEMENT_COL_DIST),</pre>
+                      <pre class="language-r">                                  nm_info_type(line_type, INFO_TYPE_COL_ALPHA),</pre>
                     </td>
-                    <td class="coverage">168<em>x</em></td>
+                    <td class="coverage">200<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">422</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                  nm_info_type(line_type, INFO_TYPE_COL_POW),</pre>
+                      <pre class="language-r">                                  nm_info_type(line_type, INFO_TYPE_COL_BETA),</pre>
                     </td>
-                    <td class="coverage">168<em>x</em></td>
+                    <td class="coverage">200<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">423</td>
                     <td class="col-sm-12">
+                      <pre class="language-r">                                  nm_dist_element(i, ELEMENT_COL_DIST),</pre>
+                    </td>
+                    <td class="coverage">200<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">424</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                  nm_info_type(line_type, INFO_TYPE_COL_POW),</pre>
+                    </td>
+                    <td class="coverage">200<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">425</td>
+                    <td class="col-sm-12">
                       <pre class="language-r">                                  nm_dist_element(i, ELEMENT_COL_DX + j));</pre>
                     </td>
-                    <td class="coverage">336<em>x</em></td>
+                    <td class="coverage">400<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">424</td>
+                    <td class="num">426</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        // Keep higher bound by type</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">425</td>
+                    <td class="num">427</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        grad_bound[line_type] = std::max(grad_bound[line_type],</pre>
                     </td>
-                    <td class="coverage">168<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">426</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                std::abs(- nm_info_type(line_type, INFO_TYPE_COL_POW)</pre>
-                    </td>
-                    <td class="coverage">252<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">427</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                         * nm_info_type(line_type, INFO_TYPE_COL_BETA)</pre>
-                    </td>
-                    <td class="coverage">168<em>x</em></td>
+                    <td class="coverage">200<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">428</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                         * nm_info_type(line_type, INFO_TYPE_COL_ALPHA)</pre>
+                      <pre class="language-r">                                std::abs(- nm_info_type(line_type, INFO_TYPE_COL_POW)</pre>
                     </td>
-                    <td class="coverage">168<em>x</em></td>
+                    <td class="coverage">300<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">429</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                         * nm_dist_element(i, ELEMENT_COL_DX + j)</pre>
+                      <pre class="language-r">                                         * nm_info_type(line_type, INFO_TYPE_COL_BETA)</pre>
                     </td>
-                    <td class="coverage">168<em>x</em></td>
+                    <td class="coverage">200<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">430</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">                                         * pow(nm_dist_element(i, ELEMENT_COL_DIST),</pre>
+                      <pre class="language-r">                                         * nm_info_type(line_type, INFO_TYPE_COL_ALPHA)</pre>
                     </td>
-                    <td class="coverage">168<em>x</em></td>
+                    <td class="coverage">200<em>x</em></td>
                   </tr>
                   <tr class="covered">
                     <td class="num">431</td>
                     <td class="col-sm-12">
+                      <pre class="language-r">                                         * nm_dist_element(i, ELEMENT_COL_DX + j)</pre>
+                    </td>
+                    <td class="coverage">200<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">432</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                         * pow(nm_dist_element(i, ELEMENT_COL_DIST),</pre>
+                    </td>
+                    <td class="coverage">200<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">433</td>
+                    <td class="col-sm-12">
                       <pre class="language-r">                                               nm_info_type(line_type, INFO_TYPE_COL_POW) - 1))); </pre>
                     </td>
-                    <td class="coverage">336<em>x</em></td>
+                    <td class="coverage">400<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">432</td>
+                    <td class="num">434</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      }</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">433</td>
+                    <td class="num">435</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    }</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">434</td>
+                    <td class="num">436</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    for (it_grad_type=grad_type.begin();</pre>
                     </td>
-                    <td class="coverage">396<em>x</em></td>
+                    <td class="coverage">468<em>x</em></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">435</td>
+                    <td class="num">437</td>
                     <td class="col-sm-12">
                       <pre class="language-r">         it_grad_type!=grad_type.end();</pre>
                     </td>
-                    <td class="coverage">264<em>x</em></td>
+                    <td class="coverage">312<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">436</td>
+                    <td class="num">438</td>
                     <td class="col-sm-12">
                       <pre class="language-r">         it_grad_type++)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">437</td>
+                    <td class="num">439</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    {</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">438</td>
+                    <td class="num">440</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      line_type = (*it_grad_type).first;</pre>
                     </td>
-                    <td class="coverage">68<em>x</em></td>
+                    <td class="coverage">82<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">439</td>
+                    <td class="num">441</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      // staked potential gradient out of each type</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">440</td>
+                    <td class="num">442</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      grad_type[line_type] = bound(grad_type[line_type],</pre>
                     </td>
-                    <td class="coverage">204<em>x</em></td>
+                    <td class="coverage">246<em>x</em></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">441</td>
+                    <td class="num">443</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                                   grad_bound[line_type],</pre>
                     </td>
-                    <td class="coverage">68<em>x</em></td>
+                    <td class="coverage">82<em>x</em></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">442</td>
+                    <td class="num">444</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                                  - grad_bound[line_type]);</pre>
                     </td>
-                    <td class="coverage">136<em>x</em></td>
+                    <td class="coverage">164<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">443</td>
+                    <td class="num">445</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      // Sum all staked potential</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">444</td>
+                    <td class="num">446</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      effect[j] += (*it_grad_type).second;</pre>
                     </td>
-                    <td class="coverage">68<em>x</em></td>
+                    <td class="coverage">82<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">445</td>
+                    <td class="num">447</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">446</td>
+                    <td class="num">448</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      //reset value for second dimension</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">447</td>
+                    <td class="num">449</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      grad_type[line_type] = 0;</pre>
                     </td>
-                    <td class="coverage">68<em>x</em></td>
+                    <td class="coverage">82<em>x</em></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">448</td>
+                    <td class="num">450</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      grad_bound[line_type] = 0;</pre>
                     </td>
-                    <td class="coverage">68<em>x</em></td>
+                    <td class="coverage">82<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">449</td>
+                    <td class="num">451</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    }</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">450</td>
+                    <td class="num">452</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  }</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">451</td>
+                    <td class="num">453</td>
                     <td class="col-sm-12">
                       <pre class="language-r"></pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">452</td>
+                    <td class="num">454</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  return effect;</pre>
                     </td>
-                    <td class="coverage">32<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">453</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">}</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">454</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                    <td class="coverage"></td>
+                    <td class="coverage">37<em>x</em></td>
                   </tr>
                   <tr class="never">
                     <td class="num">455</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @title all effect</pre>
+                      <pre class="language-r">}</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">456</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @description Give complete effect of landscape on x and y</pre>
+                      <pre class="language-r"></pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">457</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' </pre>
+                      <pre class="language-r">//' @title all effect</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">458</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param nv_coords_point (NumericVector) coordinates of point (x,y)</pre>
+                      <pre class="language-r">//' @description Give complete effect of landscape on x and y</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">459</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param ui_land_width (unsigned int) width of landscape.</pre>
+                      <pre class="language-r">//' </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">460</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param ui_land_heigth (unsigned int) heigth of landscape.</pre>
+                      <pre class="language-r">//' @param nv_coords_point (NumericVector) coordinates of point (x,y)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">461</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param d_sigma (double) repulsif effect adaptor</pre>
+                      <pre class="language-r">//' @param ui_land_width (unsigned int) width of landscape.</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">462</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param nm_dist_element (NumericMatrix) all coordinates of segment </pre>
+                      <pre class="language-r">//' @param ui_land_heigth (unsigned int) heigth of landscape.</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">463</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//'                                          Matrix N*5 (x1,y1,x2,y2,Id_type)</pre>
+                      <pre class="language-r">//' @param d_sigma (double) repulsif effect adaptor</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">464</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param nm_info_type (NumericMatrix) descript each type</pre>
+                      <pre class="language-r">//' @param nm_dist_element (NumericMatrix) all coordinates of segment </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">465</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//'                                     Matrix M*5 (Id, rep (-1) or attr(1), </pre>
+                      <pre class="language-r">//'                                          Matrix N*5 (x1,y1,x2,y2,Id_type)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">466</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//'                                                 alpha, beta, power)</pre>
+                      <pre class="language-r">//' @param nm_info_type (NumericMatrix) descript each type</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">467</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @param time_step (double) step of time</pre>
+                      <pre class="language-r">//'                                     Matrix M*5 (Id, rep (-1) or attr(1), </pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">468</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @return (NumericVector) effect in x and y (['x'];['y'])</pre>
+                      <pre class="language-r">//'                                                 alpha, beta, power)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">469</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">//' @export</pre>
+                      <pre class="language-r">//' @param time_step (double) step of time</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
                     <td class="num">470</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">// [[Rcpp::export]]</pre>
+                      <pre class="language-r">//' @return (NumericVector) effect in x and y (['x'];['y'])</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">471</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">NumericVector all_effect (NumericVector nv_coords_point,</pre>
-                    </td>
-                    <td class="coverage">2<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">472</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                          unsigned int ui_width,</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">473</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                          unsigned int ui_heigth,</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">474</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                          double d_sigma,</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">475</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                          NumericMatrix nm_dist_element,</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">476</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                          NumericMatrix nm_info_type,</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">477</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                          double time_step)</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">478</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">{</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">479</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  NumericVector effect = NumericVector::create(_["x"] = 0,</pre>
-                    </td>
-                    <td class="coverage">4<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">480</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                               _["y"] = 0);</pre>
-                    </td>
-                    <td class="coverage">6<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">481</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  NumericVector tmp_effect = NumericVector::create(_["x"] = 0,</pre>
-                    </td>
-                    <td class="coverage">4<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">482</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                                   _["y"] = 0);</pre>
-                    </td>
-                    <td class="coverage">8<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">483</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">484</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  // border effect</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">485</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  tmp_effect = border_effect (ui_width,</pre>
-                    </td>
-                    <td class="coverage">6<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">486</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                              ui_heigth,</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">487</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                              d_sigma,</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">488</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                              nv_coords_point[0],</pre>
-                    </td>
-                    <td class="coverage">2<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">489</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                              nv_coords_point[1]);</pre>
-                    </td>
-                    <td class="coverage">4<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">490</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">491</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  effect["x"] = tmp_effect["x"];</pre>
-                    </td>
-                    <td class="coverage">2<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">492</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  effect["y"] = tmp_effect["y"];</pre>
-                    </td>
-                    <td class="coverage">2<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">493</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">494</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  // potential effect</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">495</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  tmp_effect = potential_effect (nm_dist_element,</pre>
-                    </td>
-                    <td class="coverage">4<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">496</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                 nm_info_type);</pre>
-                    </td>
-                    <td class="coverage">2<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">497</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">498</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  effect["x"] = effect["x"] + tmp_effect["x"];</pre>
-                    </td>
-                    <td class="coverage">2<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">499</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  effect["y"] = effect["y"] + tmp_effect["y"];</pre>
-                    </td>
-                    <td class="coverage">2<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">500</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">501</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  // effect proportional to step of time</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">502</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  effect["x"] = effect["x"] * time_step;</pre>
-                    </td>
-                    <td class="coverage">2<em>x</em></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">503</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  effect["y"] = effect["y"] * time_step;</pre>
-                    </td>
-                    <td class="coverage">2<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">504</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">505</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  return effect;</pre>
-                    </td>
-                    <td class="coverage">4<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">506</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">}</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">507</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">508</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' @title diffusion</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">509</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' @description calculate the diffusion</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">510</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' </pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">511</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' @param d_sigma (double)</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">512</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' @param time_step (double) step of time</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">513</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">//' @return (double) diffusion</pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">514</td>
                     <td class="col-sm-12">
                       <pre class="language-r">//' @export</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">515</td>
+                    <td class="num">472</td>
                     <td class="col-sm-12">
                       <pre class="language-r">// [[Rcpp::export]]</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
+                    <td class="num">473</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">NumericVector all_effect (NumericVector nv_coords_point,</pre>
+                    </td>
+                    <td class="coverage">2<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">474</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                          unsigned int ui_width,</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">475</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                          unsigned int ui_heigth,</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">476</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                          double d_sigma,</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">477</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                          NumericMatrix nm_dist_element,</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">478</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                          NumericMatrix nm_info_type,</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">479</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                          double time_step)</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">480</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">{</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">481</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  NumericVector effect = NumericVector::create(_["x"] = 0,</pre>
+                    </td>
+                    <td class="coverage">4<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">482</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                               _["y"] = 0);</pre>
+                    </td>
+                    <td class="coverage">6<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">483</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  NumericVector tmp_effect = NumericVector::create(_["x"] = 0,</pre>
+                    </td>
+                    <td class="coverage">4<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">484</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                                   _["y"] = 0);</pre>
+                    </td>
+                    <td class="coverage">8<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">485</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">486</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  // border effect</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">487</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  tmp_effect = border_effect (ui_width,</pre>
+                    </td>
+                    <td class="coverage">6<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">488</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                              ui_heigth,</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">489</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                              d_sigma,</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">490</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                              nv_coords_point[0],</pre>
+                    </td>
+                    <td class="coverage">2<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">491</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                              nv_coords_point[1]);</pre>
+                    </td>
+                    <td class="coverage">4<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">492</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">493</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  effect["x"] = tmp_effect["x"];</pre>
+                    </td>
+                    <td class="coverage">2<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">494</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  effect["y"] = tmp_effect["y"];</pre>
+                    </td>
+                    <td class="coverage">2<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">495</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">496</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  // potential effect</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">497</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  tmp_effect = potential_effect (nm_dist_element,</pre>
+                    </td>
+                    <td class="coverage">4<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">498</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                 nm_info_type);</pre>
+                    </td>
+                    <td class="coverage">2<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">499</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">500</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  effect["x"] = effect["x"] + tmp_effect["x"];</pre>
+                    </td>
+                    <td class="coverage">2<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">501</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  effect["y"] = effect["y"] + tmp_effect["y"];</pre>
+                    </td>
+                    <td class="coverage">2<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">502</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">503</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  // effect proportional to step of time</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">504</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  effect["x"] = effect["x"] * time_step;</pre>
+                    </td>
+                    <td class="coverage">2<em>x</em></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">505</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  effect["y"] = effect["y"] * time_step;</pre>
+                    </td>
+                    <td class="coverage">2<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">506</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">507</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  return effect;</pre>
+                    </td>
+                    <td class="coverage">4<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">508</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">}</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">509</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">510</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' @title diffusion</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">511</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' @description calculate the diffusion</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">512</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' </pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">513</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' @param d_sigma (double)</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">514</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' @param time_step (double) step of time</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">515</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' @return (double) diffusion</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
                     <td class="num">516</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">//' @export</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">517</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">// [[Rcpp::export]]</pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">518</td>
                     <td class="col-sm-12">
                       <pre class="language-r">double diffusion (double d_sigma,</pre>
                     </td>
                     <td class="coverage">5<em>x</em></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">517</td>
+                    <td class="num">519</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                  double time_step)</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">518</td>
+                    <td class="num">520</td>
                     <td class="col-sm-12">
                       <pre class="language-r">{</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="never">
-                    <td class="num">519</td>
+                    <td class="num">521</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  double diffu;</pre>
                     </td>
                     <td class="coverage"></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">520</td>
+                    <td class="num">522</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  static RandomGenerator rng(0);</pre>
                     </td>
                     <td class="coverage">5<em>x</em></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">521</td>
+                    <td class="num">523</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  const double mean = 0;</pre>
                     </td>
                     <td class="coverage">5<em>x</em></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">522</td>
+                    <td class="num">524</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  const double sd = sqrt(time_step);</pre>
                     </td>
                     <td class="coverage">5<em>x</em></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">523</td>
+                    <td class="num">525</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  Normal weiner(mean,sd);</pre>
                     </td>
                     <td class="coverage">5<em>x</em></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">524</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  my_Generator my_weiner(rng,weiner);</pre>
-                    </td>
-                    <td class="coverage">5<em>x</em></td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">525</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  </pre>
-                    </td>
-                    <td class="coverage"></td>
-                  </tr>
-                  <tr class="covered">
                     <td class="num">526</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  diffu = d_sigma * my_weiner();</pre>
+                      <pre class="language-r">  my_Generator my_weiner(rng,weiner);</pre>
                     </td>
                     <td class="coverage">5<em>x</em></td>
                   </tr>
@@ -22033,12 +22033,26 @@ table.table-condensed {
                   <tr class="covered">
                     <td class="num">528</td>
                     <td class="col-sm-12">
+                      <pre class="language-r">  diffu = d_sigma * my_weiner();</pre>
+                    </td>
+                    <td class="coverage">5<em>x</em></td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">529</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  </pre>
+                    </td>
+                    <td class="coverage"></td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">530</td>
+                    <td class="col-sm-12">
                       <pre class="language-r">  return diffu;</pre>
                     </td>
                     <td class="coverage">5<em>x</em></td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">529</td>
+                    <td class="num">531</td>
                     <td class="col-sm-12">
                       <pre class="language-r">}</pre>
                     </td>

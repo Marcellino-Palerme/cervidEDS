@@ -386,6 +386,14 @@ with_reporter("junit",{
                  info = paste("c)", result["dy"], "inf or equal 0"))
   })
 
+  # point on segment horizontal 
+  test_that("test.distance2segment_on_segment", {
+    result = distance2segment(5,5,1,1,10,10)
+    expect_equal(result["dist"],0)
+    expect_equal(result["dy"], 0)
+    expect_equal(result["dx"], 0)
+  })
+  
   #------test potential_func-----#
   expr_pot = expression(alpha*exp(-beta*(dist^puis)))
   #nominal case
@@ -913,6 +921,49 @@ print(new_result)
     expect_equal(as.double(result["x"]), 0)
   })
   
+  # potential effect bad size of parameter  case
+  test_that("test.potential_value_bad_size", {
+    # size element too short
+    dist_element = matrix(c(distance2segment(2.5, 1.5, 1, 3, 2, 1),
+                            distance2segment(2.5, 1.5, 2, 5, 4, 1)),
+                          nrow = 2, byrow = TRUE)
+    
+    infos_type = matrix(c(7, 1, 0.4, 1, 3,
+                          4, -1, 0.4, 1, 3),
+                        nrow = 2, byrow = TRUE)
+    result = potential_effect(dist_element,
+                              infos_type)
+    expect_equal(as.double(result["y"]), 0)
+    expect_equal(as.double(result["x"]), 0)
+    
+    # size element too long
+    dist_element = matrix(c(distance2segment(2, 4, 1, 3, 2, 1), 4, 5,
+                            distance2segment(2, 4, 2, 5, 4, 1), 7, 5),
+                          nrow = 2, byrow = TRUE)
+    result = potential_effect(dist_element,
+                              infos_type)
+    expect_equal(as.double(result["y"]), 0)
+    expect_equal(as.double(result["x"]), 0)
+    
+    # size info type too short
+    infos_type = matrix(c(7, 1, 0.4, 1,
+                          4, -1, 0.4, 1),
+                        nrow = 2, byrow = TRUE)
+    result = potential_effect(dist_element,
+                              infos_type)
+    expect_equal(as.double(result["y"]), 0)
+    expect_equal(as.double(result["x"]), 0)
+    
+    # size info type too long
+    infos_type = matrix(c(7, 1, 0.4, 1, 4,
+                          4, -1, 0.4, 1, 4),
+                        nrow = 2, byrow = TRUE)
+    result = potential_effect(dist_element,
+                              infos_type)
+    expect_equal(as.double(result["y"]), 0)
+    expect_equal(as.double(result["x"]), 0)
+  })
+  
   #------test all_effect-----#
   #nominal case
   test_that("test.all_effect_nominal", {
@@ -1015,7 +1066,46 @@ print(new_result)
     expect_lt(new_result, 0)
     expect_lt(new_result, result)
   })
-  
+
+  # potential value bad size of parameter  case
+  test_that("test.potential_value_bad_size", {
+    # size element too short
+    dist_element = matrix(c(distance2segment(2.5, 1.5, 1, 3, 2, 1),
+                            distance2segment(2.5, 1.5, 2, 5, 4, 1)),
+                          nrow = 2, byrow = TRUE)
+    
+    infos_type = matrix(c(7, 1, 0.4, 1, 3,
+                          4, -1, 0.4, 1, 3),
+                        nrow = 2, byrow = TRUE)
+    result = potential_value(dist_element,
+                             infos_type)
+    expect_equal(result, 0)
+    
+    # size element too long
+    dist_element = matrix(c(distance2segment(2, 4, 1, 3, 2, 1), 4, 5,
+                            distance2segment(2, 4, 2, 5, 4, 1), 7, 5),
+                          nrow = 2, byrow = TRUE)
+    result = potential_value(dist_element,
+                             infos_type)
+    expect_equal(result, 0)
+
+    # size info type too short
+    infos_type = matrix(c(7, 1, 0.4, 1,
+                          4, -1, 0.4, 1),
+                        nrow = 2, byrow = TRUE)
+    result = potential_value(dist_element,
+                             infos_type)
+    expect_equal(result, 0)
+
+    # size info type too long
+    infos_type = matrix(c(7, 1, 0.4, 1, 4,
+                          4, -1, 0.4, 1, 4),
+                        nrow = 2, byrow = TRUE)
+    result = potential_value(dist_element,
+                             infos_type)
+    expect_equal(result, 0)
+  })
+
   #------test bound-----#
   #bound nominal case
   test_that("test.bound_nominal", {
