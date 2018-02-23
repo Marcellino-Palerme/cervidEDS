@@ -1,4 +1,4 @@
-options("testthat.junit.output_file" = "result/landscape_function.xml")
+options("testthat.output_file" = "result/landscape_function.xml")
 
 with_reporter("silent",{
 land_test_type <- gen_land(38, 457, 965)

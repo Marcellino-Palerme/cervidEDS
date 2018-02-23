@@ -1,4 +1,4 @@
-options("testthat.junit.output_file" = "result/simulation_function.xml")
+options("testthat.output_file" = "result/simulation_function.xml")
 
 with_reporter("silent",{
 
@@ -13,10 +13,8 @@ with_reporter("junit",{
   # center of landscape case
   test_that("test.border_effect_center", {
     result = border_effect(30,72,0.5,15,36)
-    print(result)
-    print(result["x"])
-    expect_true(result["x"] == 0, info = paste(result["x"], " <> 0"))
-    expect_true(result["y"] == 0, info = paste(result["y"], " <> 0"))
+    expect_equal(as.double(result["x"]), 0)
+    expect_equal(as.double(result["y"]), 0)
   })
 
   # center left of landscape case

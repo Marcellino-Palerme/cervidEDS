@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
- <testsuite hostname="palerme" name="model unit tests" timestamp="2018-01-15 11:41:10">
-  <testcase classname="model_unit_tests" name="test_dist_expr_nom" time="0.14"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_one_point" time="0.26"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_down" time="3.21"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_up" time="6.04"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_point_extrem" time="20.48"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_point" time="1.14"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_vertical" time="4.51"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_horizontal" time="4.99"/>
+ <testsuite hostname="palerme" name="model unit tests" timestamp="2018-02-23 11:13:26">
+  <testcase classname="model_unit_tests" name="test_dist_expr_nom" time="0.46"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_one_point" time="0.27"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_down" time="3.38"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_up" time="6.43"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_point_extrem" time="21.24"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_point" time="1.5"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_vertical" time="4.28"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_horizontal" time="4.9"/>
+  <testcase classname="model_unit_tests" name="test_potentiel_0_nominal" time="2.25"/>
+  <testcase classname="model_unit_tests" name="test_agglo_0_nominal" time="5.0"/>
+  <testcase classname="model_unit_tests" name="test_Interact_nominal" time="0.83"/>
+  <testcase classname="model_unit_tests" name="test_Interact_error" time="0.99"/>
+  <testcase classname="model_unit_tests" name="test_TypeInteract_nominal" time="10.04"/>
+  <testcase classname="model_unit_tests" name="test_TypeInteract_error" time="10.41"/>
+  <testcase classname="model_unit_tests" name="test_TypeInteractModel_nominal" time="276.86"/>
+  <testcase classname="model_unit_tests" name="test_TypeInteractModel_error" time="668.33"/>
  </testsuite>
 </testsuites>
