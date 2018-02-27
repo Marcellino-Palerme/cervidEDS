@@ -335,7 +335,7 @@ double potential_value (NumericMatrix nm_dist_element,
   int line_type = 0;
   
   // Verify if size of element and info type is correct
-  if (nm_dist_element.ncol() != ELEMENT_NB_COL &&
+  if (nm_dist_element.ncol() != ELEMENT_NB_COL ||
       nm_info_type.ncol() != INFO_TYPE_NB_COL)
   {
     return value;
@@ -400,7 +400,7 @@ NumericVector potential_effect (NumericMatrix nm_dist_element,
   std::map<int, double> grad_bound;
   
   // Verify if element is correct
-  if (nm_dist_element.ncol() != ELEMENT_NB_COL &&
+  if (nm_dist_element.ncol() != ELEMENT_NB_COL ||
       nm_info_type.ncol() != INFO_TYPE_NB_COL)
   {
     return effect;

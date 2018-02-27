@@ -387,9 +387,9 @@ with_reporter("junit",{
   # point on segment horizontal 
   test_that("test.distance2segment_on_segment", {
     result = distance2segment(5,5,1,1,10,10)
-    expect_equal(result["dist"],0)
-    expect_equal(result["dy"], 0)
-    expect_equal(result["dx"], 0)
+    expect_equal(as.double(result["dist"]),0)
+    expect_equal(as.double(result["dy"], 0))
+    expect_equal(as.double(result["dx"], 0))
   })
   
   #------test potential_func-----#
@@ -944,6 +944,10 @@ print(new_result)
     expect_equal(as.double(result["x"]), 0)
     
     # size info type too short
+    dist_element = matrix(c(distance2segment(2, 4, 1, 3, 2, 1), 4,
+                            distance2segment(2, 4, 2, 5, 4, 1), 7),
+                          nrow = 2, byrow = TRUE)
+
     infos_type = matrix(c(7, 1, 0.4, 1,
                           4, -1, 0.4, 1),
                         nrow = 2, byrow = TRUE)
@@ -1088,6 +1092,9 @@ print(new_result)
     expect_equal(result, 0)
 
     # size info type too short
+    dist_element = matrix(c(distance2segment(2, 4, 1, 3, 2, 1), 4,
+                            distance2segment(2, 4, 2, 5, 4, 1), 7),
+                          nrow = 2, byrow = TRUE)
     infos_type = matrix(c(7, 1, 0.4, 1,
                           4, -1, 0.4, 1),
                         nrow = 2, byrow = TRUE)
