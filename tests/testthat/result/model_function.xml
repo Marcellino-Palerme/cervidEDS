@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
- <testsuite hostname="palerme" name="model unit tests" timestamp="2018-02-27 15:18:00">
-  <testcase classname="model_unit_tests" name="test_dist_expr_nom" time="0.4"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_one_point" time="0.25"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_down" time="3.55"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_up" time="6.51"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_point_extrem" time="21.45"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_point" time="1.16"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_vertical" time="4.48"/>
-  <testcase classname="model_unit_tests" name="test_dist_expr_horizontal" time="5.39"/>
-  <testcase classname="model_unit_tests" name="test_potentiel_0_nominal" time="2.19"/>
-  <testcase classname="model_unit_tests" name="test_agglo_0_nominal" time="4.51"/>
-  <testcase classname="model_unit_tests" name="test_Interact_nominal" time="0.91"/>
-  <testcase classname="model_unit_tests" name="test_Interact_error" time="1.22"/>
-  <testcase classname="model_unit_tests" name="test_TypeInteract_nominal" time="10.33"/>
-  <testcase classname="model_unit_tests" name="test_TypeInteract_error" time="10.86"/>
-  <testcase classname="model_unit_tests" name="test_TypeInteractModel_nominal" time="293.64"/>
-  <testcase classname="model_unit_tests" name="test_TypeInteractModel_error" time="702.73"/>
+ <testsuite hostname="palerme" name="model unit tests" timestamp="2018-03-06 10:54:09">
+  <testcase classname="model_unit_tests" name="test_dist_expr_nom" time="0.48"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_one_point" time="0.22"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_down" time="3.27"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_up" time="7.13"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_point_extrem" time="26.3"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_point" time="1.58"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_vertical" time="5.8"/>
+  <testcase classname="model_unit_tests" name="test_dist_expr_horizontal" time="6.57"/>
+  <testcase classname="model_unit_tests" name="test_potentiel_0_nominal" time="2.4"/>
+  <testcase classname="model_unit_tests" name="test_agglo_0_nominal" time="6.15"/>
+  <testcase classname="model_unit_tests" name="test_Interact_nominal" time="1.44"/>
+  <testcase classname="model_unit_tests" name="test_Interact_error" time="1.99"/>
+  <testcase classname="model_unit_tests" name="test_TypeInteract_nominal" time="12.34"/>
+  <testcase classname="model_unit_tests" name="test_TypeInteract_error" time="13.58"/>
+  <testcase classname="model_unit_tests" name="test_TypeInteractModel_nominal" time="350.93"/>
+  <testcase classname="model_unit_tests" name="test_TypeInteractModel_error" time="775.15"/>
  </testsuite>
 </testsuites>
