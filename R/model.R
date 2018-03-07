@@ -256,7 +256,12 @@ Interact <- R6::R6Class("Interact",
  )
 )
 
-#Indicate if element is a Interact
+#' @title Is Interact
+#' @description Indicate if element is a Interact
+#' 
+#' @param x element
+#' @return boolean
+#' @export 
 is_Interact = function(x)
 {
   return(class(x)[1] == "Interact")
@@ -574,7 +579,13 @@ TypeInteract = R6::R6Class("TypeInteract",
   
 )
 
-#Verify if is a TypeInteract
+
+#' @title Is TypeInteract
+#' @description Indicate if element is a TypeInteract
+#' 
+#' @param x element
+#' @return boolean
+#' @export 
 is_TypeInteract = function(x)
 {
   return(class(x)[1] == "TypeInteract")
@@ -934,7 +945,12 @@ TypeInteractModel = R6::R6Class("TypeInteractModel",
   )
 )
 
-#Indicate if element is a TypeInteractModel
+#' @title Is TypeInteractModel
+#' @description Indicate if element is a TypeInteractModel
+#' 
+#' @param x element
+#' @return boolean
+#' @export 
 is_TypeInteractModel = function(x)
 {
   return(class(x)[1] == "TypeInteractModel")
