@@ -22,7 +22,7 @@ PotentialPolygon <- R6::R6Class('PotentialPolygon',
     #'              2 : impossible to create derivate in x,
     #'              3 : impossible to create derivate in y}
     #' }}}
-    initialize = function(id = 0, str_func = "")
+    initialize = function(id = "0", str_func = "")
     {
       #initialize functions to modify
       private$potential = function(x,y) x + y
@@ -30,9 +30,15 @@ PotentialPolygon <- R6::R6Class('PotentialPolygon',
       private$deriv_y = function(x,y) x + y
       
       #Add id
-      self$set_id(id)
+      if (self$set_id(id) > 0)
+      {
+        stop("id isn't characters or numeric")
+      }
       #Add potential function
-      return(self$set_potential(str_func))
+      if (self$set_potential(str_func) > 0)
+      {
+        stop(paste("Can't use",str_func))
+      }
     },
     #' \item{$get_id()}{
     #' \describe{Give id of polygone
@@ -77,7 +83,18 @@ PotentialPolygon <- R6::R6Class('PotentialPolygon',
     #' }}}
     set_id = function(in_id)
     {
-      private$id = as.character(in_id)
+      if (is.numeric(in_id))
+      {
+        private$id = as.character(in_id)
+        return(0)
+      }
+
+      if (is.character(in_id))
+      {
+        private$id = in_id
+        return(0)
+      }
+      return(1)
     },
     #' \item{$set_potential(str_func)}{
     #' \describe{Modify potential function and derivate in x and y
@@ -86,10 +103,16 @@ PotentialPolygon <- R6::R6Class('PotentialPolygon',
     #' \item{(int)}{0 : sucess,
     #'              1 : impossible to transform str_func in function,
     #'              2 : impossible to create derivate in x,
-    #'              3 : impossible to create derivate in y}
+    #'              3 : impossible to create derivate in y,
+    #'              4 : str_func isn't characters}
     #' }}}
       set_potential = function(str_func)
     {
+      # Verify if is character
+      if (!is.character(str_func))
+      {
+        return(4)
+      }
       # Create Null function with her gradient
       if (str_func == "")
       {
@@ -169,14 +192,17 @@ PotentialPolygons = R6::R6Class("PotentialPolygons",
   public = list(
     #' \itemize{
 
-    #' \item{$()}{
+    #' \item{PotentialPolygons$new(lt_pot_poly)}{
     #' \describe{initialize PotentialPolygons object
     #' \itemize{
     #' \item{lt_pot_poly}{(list) list of PotentialPolygon}
     #' }}}
     initialize = function(lt_pot_poly)
     {
-      self$set_potentialpolygons(lt_pot_poly)
+      if (self$set_potentialpolygons(lt_pot_poly) > 0)
+      {
+        stop("Element(s) in list not PotentialPolygon")
+      }
     },
     #' \item{$get_potentialpolygon(id)}{
     #' \describe{Give a PotentialPolygon from this id
@@ -216,7 +242,7 @@ PotentialPolygons = R6::R6Class("PotentialPolygons",
     {
       return(private$get_potentials_(ids, "pot"))
     },
-    #' \item{$get_dxs()}{
+    #' \item{$get_dxs(ids)}{
     #' \describe{Give derivate in x of potential function  one or sereral
     #'           polygons
     #' \itemize{
@@ -230,7 +256,7 @@ PotentialPolygons = R6::R6Class("PotentialPolygons",
     {
       return(private$get_potentials_(ids, "dx"))
     },
-    #' \item{$get_dys()}{
+    #' \item{$get_dys(ids)}{
     #' \describe{Give derivate in y of potential function  one or sereral
     #'           polygons
     #' \itemize{
@@ -247,10 +273,15 @@ PotentialPolygons = R6::R6Class("PotentialPolygons",
     #' \describe{Add or modify one or several  PotentialPolygon
     #' \itemize{
     #' \item{lt_pot_poly}{(list) list of PotentialPolygon}
-    #' \item{(int)}{number of element of list not added}
+    #' \item{(int)}{number of element of list not added, -1 : input not a list}
     #' }}}
     set_potentialpolygons = function(lt_pot_poly)
     {
+      # Verify is a list
+      if (!is.list(lt_pot_poly))
+      {
+        return(-1)
+      }
       nb_error = 0 
       for (pot_poly in lt_pot_poly)
       {
@@ -259,7 +290,7 @@ PotentialPolygons = R6::R6Class("PotentialPolygons",
       
       return(nb_error)
     },
-    #' \item{$()}{
+    #' \item{$set_potential(id, str_func)}{
     #' \describe{Modify potential function of polygone. From this function
     #'           derivate in x and y are calculated. If id isn't in list, we 'll
     #'           create.
@@ -269,7 +300,8 @@ PotentialPolygons = R6::R6Class("PotentialPolygons",
     #' \item{(int)}{0 : sucess,
     #'              1 : impossible to transform str_func in function,
     #'              2 : impossible to create derivate in x,
-    #'              3 : impossible to create derivate in y}
+    #'              3 : impossible to create derivate in y,
+    #'              4 : impossible to create PotentialPolygon}
     #' }}}
     set_potential = function(id, str_func)
     {
@@ -278,19 +310,14 @@ PotentialPolygons = R6::R6Class("PotentialPolygons",
       if (index == 0)
       {
         #create a new potentialpolygon
-        pot_poly = PotentialPolygon$new(id, str_func)
-        #Verify if creating is correct
-        if (is_PotentialPolygon(pot_poly))
-        {
-          # add new potentialpolygon
-          private$pot_polys = append(private$pot_polys, pot_poly)
-          private$ids = append(private$ids, id)
-        }
-        else
-        {
-          #return error
-          return(pot_poly)
-        }
+        tryCatch(
+          {pot_poly = PotentialPolygon$new(id, str_func)},
+          error = function(err) 
+          {return(4)}
+        )
+        # add new potentialpolygon
+        private$pot_polys = append(private$pot_polys, pot_poly)
+        private$ids = append(private$ids, id)
       }
       else
       {
@@ -335,6 +362,13 @@ PotentialPolygons = R6::R6Class("PotentialPolygons",
     #if a polygon not exist, we add a NULL value in the list
     get_potentials_ = function(ids = list(), case)
     {
+      # verify if it is a list
+      if (is.list(ids))
+      {
+        return(-1)
+      }
+
+      # no asked ids so take all ids 
       if (length(ids) == 0)
       {
         #take all ids

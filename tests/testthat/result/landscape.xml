@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+ <testsuite hostname="palerme" name="landscape unit tests" timestamp="2018-03-09 14:11:35">
+  <testcase classname="landscape_unit_tests" name="test_PotentialPolygon_nominal" time="0.15"/>
+  <testcase classname="landscape_unit_tests" name="test_PotentialPolygon_error" time="0.14"/>
+  <testcase classname="landscape_unit_tests" name="test_PotentialPolygons_nominal" time="0.05">
+   <error message="impossible de trouver la fonction &quot;func_pot&quot; (@test_landscape.R#102)" type="error">impossible de trouver la fonction &quot;func_pot&quot;
+1: check_PotentialPolygons(list(PP1, PP0, PP2), result) at /home/palerme/Documents/EDS/cervideds/tests/testthat/test_landscape.R:102
+2: check_PotentialPolygon(id, result$get_potentials(list(id))[[1]], result$get_dxs(list(id))[[1]], 
+       result$get_dys(list(id))[[1]], PotentialPolygon) at /home/palerme/Documents/EDS/cervideds/tests/testthat/test_landscape.R:84
+3: expect_equal((result$get_potential())(x, y), func_pot(x, y)) at /home/palerme/Documents/EDS/cervideds/tests/testthat/test_landscape.R:16
+4: quasi_label(enquo(expected), expected.label)
+5: eval_bare(get_expr(quo), get_env(quo))</error>
+   
+    
+  </testcase>
+  <testcase classname="landscape_unit_tests" name="test_PotentialPolygons_error" time="0.11">
+   <failure message="`PotentialPolygons$new(PP0)` did not throw an error. (@test_landscape.R#132)" type="failure">`PotentialPolygons$new(PP0)` did not throw an error.</failure>
+   
+    
+   <failure message="`PotentialPolygons$new(list())` did not throw an error. (@test_landscape.R#138)" type="failure">`PotentialPolygons$new(list())` did not throw an error.</failure>
+   
+    
+   <error message="impossible de trouver la fonction &quot;func_pot&quot; (@test_landscape.R#142)" type="error">impossible de trouver la fonction &quot;func_pot&quot;
+1: check_PotentialPolygons(list(PP1, PP0, PP2), result) at /home/palerme/Documents/EDS/cervideds/tests/testthat/test_landscape.R:142
+2: check_PotentialPolygon(id, result$get_potentials(list(id))[[1]], result$get_dxs(list(id))[[1]], 
+       result$get_dys(list(id))[[1]], PotentialPolygon) at /home/palerme/Documents/EDS/cervideds/tests/testthat/test_landscape.R:84
+3: expect_equal((result$get_potential())(x, y), func_pot(x, y)) at /home/palerme/Documents/EDS/cervideds/tests/testthat/test_landscape.R:16
+4: quasi_label(enquo(expected), expected.label)
+5: eval_bare(get_expr(quo), get_env(quo))</error>
+   
+    
+  </testcase>
+ </testsuite>
+</testsuites>

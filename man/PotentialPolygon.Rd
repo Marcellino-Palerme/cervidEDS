@@ -56,7 +56,8 @@ Define the potential function of polygon
 \item{(int)}{0 : sucess,
              1 : impossible to transform str_func in function,
              2 : impossible to create derivate in x,
-             3 : impossible to create derivate in y}
+             3 : impossible to create derivate in y,
+             4 : str_func isn't characters}
 }}}
 }
 }

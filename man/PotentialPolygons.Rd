@@ -14,7 +14,7 @@ Define list of PotentialPolygon
 \section{methods}{
 
 \itemize{
-\item{$()}{
+\item{PotentialPolygons$new(lt_pot_poly)}{
 \describe{initialize PotentialPolygons object
 \itemize{
 \item{lt_pot_poly}{(list) list of PotentialPolygon}
@@ -38,7 +38,7 @@ Define list of PotentialPolygon
 \item{(list of function)}{if a polygon not exist, we add a NULL value in 
                           the list}
 }}}
-\item{$get_dxs()}{
+\item{$get_dxs(ids)}{
 \describe{Give derivate in x of potential function  one or sereral
           polygons
 \itemize{
@@ -48,7 +48,7 @@ Define list of PotentialPolygon
 \item{(list of function)}{if a polygon not exist, we add a NULL value in 
                           the list}
 }}}
-\item{$get_dys()}{
+\item{$get_dys(ids)}{
 \describe{Give derivate in y of potential function  one or sereral
           polygons
 \itemize{
@@ -61,9 +61,9 @@ Define list of PotentialPolygon
 \describe{Add or modify one or several  PotentialPolygon
 \itemize{
 \item{lt_pot_poly}{(list) list of PotentialPolygon}
-\item{(int)}{number of element of list not added}
+\item{(int)}{number of element of list not added, -1 : input not a list}
 }}}
-\item{$()}{
+\item{$set_potential(id, str_func)}{
 \describe{Modify potential function of polygone. From this function
           derivate in x and y are calculated. If id isn't in list, we 'll
           create.
@@ -73,7 +73,8 @@ Define list of PotentialPolygon
 \item{(int)}{0 : sucess,
              1 : impossible to transform str_func in function,
              2 : impossible to create derivate in x,
-             3 : impossible to create derivate in y}
+             3 : impossible to create derivate in y,
+             4 : impossible to create PotentialPolygon}
 }}}
 }
 }

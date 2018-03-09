@@ -4,11 +4,12 @@ Rscript -e "devtools::test()"
 
 Rscript -e "cov=covr::package_coverage(); covr::report(cov, paste(getwd(),'/tests/testthat/result/coverage.html',sep='')); covr::to_cobertura(cov,'tests/testthat/result/coverage.xml'); write(covr::percent_coverage(cov),'tests/testthat/result/coverage.txt',sep='')"
 
+./tests/testthat/result/script/testthat_junit_light.py ./tests/testthat/result/landscape.xml
 ./tests/testthat/result/script/testthat_junit_light.py ./tests/testthat/result/landscape_function.xml
+
 ./tests/testthat/result/script/testthat_junit_light.py ./tests/testthat/result/model_function.xml
 
 ./tests/testthat/result/script/testthat_junit_light.py ./tests/testthat/result/simulation_function.xml
-
 ./tests/testthat/result/script/testthat_junit_light.py ./tests/testthat/result/simulation_tools.xml
 
 git add tests/testthat/result/*
