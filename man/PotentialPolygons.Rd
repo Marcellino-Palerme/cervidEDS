@@ -17,13 +17,13 @@ Define list of PotentialPolygon
 \item{PotentialPolygons$new(lt_pot_poly)}{
 \describe{initialize PotentialPolygons object
 \itemize{
-\item{lt_pot_poly}{(list) list of PotentialPolygon}
+\item{lt_pot_poly }{(list) list of PotentialPolygon}
 }}}
 \item{$get_potentialpolygon(id)}{
 \describe{Give a PotentialPolygon from this id
 \itemize{
-\item{id}{(characters) id of PotentialPolygon}
-\item{(PotentialPolygon)}{Null : if polygon not find}
+\item{id }{(characters) id of PotentialPolygon}
+\item{(PotentialPolygon) }{Null : if polygon not find}
 }}}
 \item{$get_ids()}{
 \describe{Give list of ids
@@ -33,48 +33,48 @@ Define list of PotentialPolygon
 \item{$get_potentials(ids)}{
 \describe{Give potential function  one or sereral polygons
 \itemize{
-\item{ids(optional)}{(list) list of ids of polygons,
+\item{ids(optional) }{(list) list of ids of polygons,
                             if ids is empty is egal ask all ids}
-\item{(list of function)}{if a polygon not exist, we add a NULL value in 
-                          the list}
+\item{(list of function) }{if a polygon not exist, we add a constant 
+                           function (f(x,y) = 0) in the list}
 }}}
 \item{$get_dxs(ids)}{
 \describe{Give derivate in x of potential function  one or sereral
           polygons
 \itemize{
-\item{ids(optional)}{(list) list of ids of polygons
+\item{ids(optional) }{(list) list of ids of polygons
                             if ids is empty is egal ask all ids}
 \item{}{() }
-\item{(list of function)}{if a polygon not exist, we add a NULL value in 
+\item{(list of function) }{if a polygon not exist, we add a NULL value in 
                           the list}
 }}}
 \item{$get_dys(ids)}{
 \describe{Give derivate in y of potential function  one or sereral
           polygons
 \itemize{
-\item{ids(optional)}{(list) list of ids of polygons
-                            if ids is empty is egal ask all ids}
-\item{(list of function)}{if a polygon not exist, we add a NULL value in 
-                          the list}
+\item{ids(optional) }{(list) list of ids of polygons
+                             if ids is empty is egal ask all ids}
+\item{(list of function) }{if a polygon not exist, we add a NULL value in 
+                           the list}
 }}}
 \item{$set_potentialpolygons(lt_pot_poly)}{
 \describe{Add or modify one or several  PotentialPolygon
 \itemize{
-\item{lt_pot_poly}{(list) list of PotentialPolygon}
-\item{(int)}{number of element of list not added, -1 : input not a list}
+\item{lt_pot_poly }{(list) list of PotentialPolygon}
+\item{(int) }{number of element of list not added, -1 : input not a list}
 }}}
 \item{$set_potential(id, str_func)}{
 \describe{Modify potential function of polygone. From this function
           derivate in x and y are calculated. If id isn't in list, we 'll
           create.
 \itemize{
-\item{id}{identifiant of polygon}
-\item{str_func}{(char) litteral potential function (eg:"5*exp(-x*2)")}
-\item{(int)}{0 : sucess,
-             1 : impossible to transform str_func in function,
-             2 : impossible to create derivate in x,
-             3 : impossible to create derivate in y,
-             4 : impossible to create PotentialPolygon}
+\item{id }{identifiant of polygon}
+\item{str_func }{(char) litteral potential function (eg:"5*exp(-x*2)")}
+\item{(int) }{0 : sucess,
+              1 : impossible to transform str_func in function,
+              2 : impossible to create derivate in x,
+              3 : impossible to create derivate in y,
+              4 : impossible to create PotentialPolygon}
 }}}
 }
 }

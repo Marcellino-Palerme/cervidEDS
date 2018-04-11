@@ -50,11 +50,12 @@ type_open = TypeInteract$new(2, "open", agglo_0,list(border, h_open_n_close,
                                                      h_open_n_open,
                                                      h_open_n_hedge,
                                                      h_open_n_road))
+zero_func = function(x) 0
 #def type_hedge
-type_hedge = TypeInteract$new(3, "hedge", NULL, list())
+type_hedge = TypeInteract$new(3, "hedge", zero_func, list())
 
 #def type_road
-type_road = TypeInteract$new(4, "road", NULL, list())
+type_road = TypeInteract$new(4, "road", zero_func, list())
 
 #def model
 model_ochrs = TypeInteractModel$new(list(type_close, type_open,

@@ -195,20 +195,27 @@ PotentialPolygons = R6::R6Class("PotentialPolygons",
     #' \item{PotentialPolygons$new(lt_pot_poly)}{
     #' \describe{initialize PotentialPolygons object
     #' \itemize{
-    #' \item{lt_pot_poly}{(list) list of PotentialPolygon}
+    #' \item{lt_pot_poly }{(list) list of PotentialPolygon}
     #' }}}
     initialize = function(lt_pot_poly)
     {
-      if (self$set_potentialpolygons(lt_pot_poly) > 0)
+      result = self$set_potentialpolygons(lt_pot_poly)
+      # Verify process completely ok
+      if ( result > 0)
       {
         stop("Element(s) in list not PotentialPolygon")
       }
+      if ( result < 0)
+      {
+        stop("lt_pot_poly isn't a list")
+      }
+      
     },
     #' \item{$get_potentialpolygon(id)}{
     #' \describe{Give a PotentialPolygon from this id
     #' \itemize{
-    #' \item{id}{(characters) id of PotentialPolygon}
-    #' \item{(PotentialPolygon)}{Null : if polygon not find}
+    #' \item{id }{(characters) id of PotentialPolygon}
+    #' \item{(PotentialPolygon) }{Null : if polygon not find}
     #' }}}
     get_potentialpolygon = function(id)
     {
@@ -233,10 +240,10 @@ PotentialPolygons = R6::R6Class("PotentialPolygons",
     #' \item{$get_potentials(ids)}{
     #' \describe{Give potential function  one or sereral polygons
     #' \itemize{
-    #' \item{ids(optional)}{(list) list of ids of polygons,
+    #' \item{ids(optional) }{(list) list of ids of polygons,
     #'                             if ids is empty is egal ask all ids}
-    #' \item{(list of function)}{if a polygon not exist, we add a NULL value in 
-    #'                           the list}
+    #' \item{(list of function) }{if a polygon not exist, we add a constant 
+    #'                            function (f(x,y) = 0) in the list}
     #' }}}
     get_potentials = function(ids = list())
     {
@@ -246,10 +253,10 @@ PotentialPolygons = R6::R6Class("PotentialPolygons",
     #' \describe{Give derivate in x of potential function  one or sereral
     #'           polygons
     #' \itemize{
-    #' \item{ids(optional)}{(list) list of ids of polygons
+    #' \item{ids(optional) }{(list) list of ids of polygons
     #'                             if ids is empty is egal ask all ids}
     #' \item{}{() }
-    #' \item{(list of function)}{if a polygon not exist, we add a NULL value in 
+    #' \item{(list of function) }{if a polygon not exist, we add a NULL value in 
     #'                           the list}
     #' }}}
     get_dxs = function(ids = list())
@@ -260,10 +267,10 @@ PotentialPolygons = R6::R6Class("PotentialPolygons",
     #' \describe{Give derivate in y of potential function  one or sereral
     #'           polygons
     #' \itemize{
-    #' \item{ids(optional)}{(list) list of ids of polygons
-    #'                             if ids is empty is egal ask all ids}
-    #' \item{(list of function)}{if a polygon not exist, we add a NULL value in 
-    #'                           the list}
+    #' \item{ids(optional) }{(list) list of ids of polygons
+    #'                              if ids is empty is egal ask all ids}
+    #' \item{(list of function) }{if a polygon not exist, we add a NULL value in 
+    #'                            the list}
     #' }}}
     get_dys = function(ids = list())
     {
@@ -272,8 +279,8 @@ PotentialPolygons = R6::R6Class("PotentialPolygons",
     #' \item{$set_potentialpolygons(lt_pot_poly)}{
     #' \describe{Add or modify one or several  PotentialPolygon
     #' \itemize{
-    #' \item{lt_pot_poly}{(list) list of PotentialPolygon}
-    #' \item{(int)}{number of element of list not added, -1 : input not a list}
+    #' \item{lt_pot_poly }{(list) list of PotentialPolygon}
+    #' \item{(int) }{number of element of list not added, -1 : input not a list}
     #' }}}
     set_potentialpolygons = function(lt_pot_poly)
     {
@@ -295,13 +302,13 @@ PotentialPolygons = R6::R6Class("PotentialPolygons",
     #'           derivate in x and y are calculated. If id isn't in list, we 'll
     #'           create.
     #' \itemize{
-    #' \item{id}{identifiant of polygon}
-    #' \item{str_func}{(char) litteral potential function (eg:"5*exp(-x*2)")}
-    #' \item{(int)}{0 : sucess,
-    #'              1 : impossible to transform str_func in function,
-    #'              2 : impossible to create derivate in x,
-    #'              3 : impossible to create derivate in y,
-    #'              4 : impossible to create PotentialPolygon}
+    #' \item{id }{identifiant of polygon}
+    #' \item{str_func }{(char) litteral potential function (eg:"5*exp(-x*2)")}
+    #' \item{(int) }{0 : sucess,
+    #'               1 : impossible to transform str_func in function,
+    #'               2 : impossible to create derivate in x,
+    #'               3 : impossible to create derivate in y,
+    #'               4 : impossible to create PotentialPolygon}
     #' }}}
     set_potential = function(id, str_func)
     {
@@ -336,13 +343,14 @@ PotentialPolygons = R6::R6Class("PotentialPolygons",
     #id: () id of polygons
     #case : (str) pot = potential; dx = derivate in x; dr = derivate in y
     #Return
-    #(function)
+    #(function) 
+    #if a polygon not exist, we function is constant function (f(x,y) = 0)
     get_potential_ = function(id, case)
     {
       pot_poly = self$get_potentialpolygon(id)
       
       if (is.null(pot_poly))
-      {return(NULL)}
+      {return(function(x,y) 0)}
       
       switch(case,
              pot = {return(pot_poly$get_potential())},
@@ -359,11 +367,11 @@ PotentialPolygons = R6::R6Class("PotentialPolygons",
     #case : (str) pot = potential; dx = derivate in x; dr = derivate in y
     #Return
     #(list of function)
-    #if a polygon not exist, we add a NULL value in the list
+    #if a polygon not exist, we add a constant function (f(x,y) = 0) in the list
     get_potentials_ = function(ids = list(), case)
     {
       # verify if it is a list
-      if (is.list(ids))
+      if (!is.list(ids))
       {
         return(-1)
       }
@@ -433,10 +441,10 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     #' \item{PotentialLandscape$new()}{
     #' \describe{initialize PotentialLandscape object
     #' \itemize{
-    #' \item{land_poly}{(SpatialPolygonDataFrame): Typing polygon landscape}
-    #' \item{land_lines}{(SpatialLinesDataFrame): Typing line landscape}
-    #' \item{interaction_model}{(TypeInteractModel): interaction of each type
-    #'                                               with others}
+    #' \item{land_poly }{(SpatialPolygonDataFrame): Typing polygon landscape}
+    #' \item{land_lines }{(SpatialLinesDataFrame): Typing line landscape}
+    #' \item{interaction_model }{(TypeInteractModel): interaction of each type
+    #'                                                with others}
     #' }}}
     initialize = function(land_poly, land_lines, interaction_model)
     {
@@ -451,7 +459,7 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     #' \item{$get_landscape()}{
     #' \describe{Give the landscape
     #' \itemize{
-    #' \item{(SpatialPolygonsDataFrame)}{Landscape}
+    #' \item{(SpatialPolygonsDataFrame) }{Landscape}
     #' }}}
     get_landscape = function()
     {
@@ -460,7 +468,7 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     #' \item{$get_interaction_model()}{
     #' \describe{Give the interaction_model
     #' \itemize{
-    #' \item{(TypeInteractionModel)}{interaction model}
+    #' \item{(TypeInteractionModel) }{interaction model}
     #' }}}
     get_interaction_model = function()
     {
@@ -469,9 +477,9 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     #' \item{$get_neighbours_id(id)}{
     #' \describe{Give neighboors of polygon
     #' \itemize{
-    #' \item{id}{(str): identifiant of polygon}
-    #' \item{(list)}{ids of polygon,
-    #'               empty list if id isn't exist}
+    #' \item{id }{(str): identifiant of polygon}
+    #' \item{(list) }{ids of polygon,
+    #'                empty list if id isn't exist}
     #' }}}
     get_neighbours_id = function(id)
     {
@@ -489,9 +497,9 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     #' \item{$get_potential_coord(x, y)}{
     #' \describe{Give value of potential for a point
     #' \itemize{
-    #' \item{x}{(float) : abscisse}
-    #' \item{y}{(float) : ordonate}
-    #' \item{(float)}{NA if coordinate (x,y) out of landscape}
+    #' \item{x }{(float) : abscisse}
+    #' \item{y }{(float) : ordonate}
+    #' \item{(float) }{NA if coordinate (x,y) out of landscape}
     #' }}}
     get_potential_coord = function(x,y)
     {
@@ -510,12 +518,12 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
       
       return(potential/length(ids))
     },
-    #' \item{$get_dx_coord()}{
+    #' \item{$get_dx_coord(x, y)}{
     #' \describe{Give value of derivate in x for a point
     #' \itemize{
-    #' \item{x}{(float) : abscisse}
-    #' \item{y}{(float) : ordonate}
-    #' \item{(float)}{NA if coordinate (x,y) out of landscape}
+    #' \item{x }{(float) : abscisse}
+    #' \item{y }{(float) : ordonate}
+    #' \item{(float) }{NA if coordinate (x,y) out of landscape}
     #' }}}
     get_dx_coord = function(x,y)
     {
@@ -534,12 +542,12 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
       
       return(dx/length(ids))
     },
-    #' \item{$get_dy_coord()}{
+    #' \item{$get_dy_coord(x, y)}{
     #' \describe{Give value of derivate in y for a point
     #' \itemize{
-    #' \item{x}{(float) : abscisse}
-    #' \item{y}{(float) : ordonate}
-    #' \item{(float)}{NA if coordinate (x,y) out of landscape}
+    #' \item{x }{(float) : abscisse}
+    #' \item{y }{(float) : ordonate}
+    #' \item{(float) }{NA if coordinate (x,y) out of landscape}
     #' }}}
     get_dy_coord = function(x,y)
     {
@@ -562,8 +570,8 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     #' \describe{Add or modify landscape and potential function of each polygon
     #'           calculated
     #' \itemize{
-    #' \item{land_poly}{(SpatialPolygonDataFrame): Typing polygon landscape}
-    #' \item{land_lines}{(SpatialLinesDataFrame): Typing line landscape}
+    #' \item{land_poly }{(SpatialPolygonDataFrame): Typing polygon landscape}
+    #' \item{land_lines }{(SpatialLinesDataFrame): Typing line landscape}
     #' }}}
     set_landscape = function(land_poly, land_lines)
     {
@@ -579,7 +587,12 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
       private$calculate_potential()
       
     },
-    #Add or modify interaction_model
+    #' \item{$set_interaction_model(interaction_model)}{
+    #' \describe{Add or modify interaction_model
+    #' \itemize{
+    #' \item{interaction_model }{(TypeInteractModel): interaction of each type
+    #'                                                with others}
+    #' }}}
     set_interaction_model = function(interaction_model)
     {
       # Verify if it is interaction model
@@ -598,7 +611,7 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     #' \item{$plot_potential(precision)}{
     #' \describe{Plot the landscape with potential values
     #' \itemize{
-    #' \item{precision}{(float)}
+    #' \item{precision }{(float)}
     #' }}}
     plot_potential = function(precision = 1)
     {
@@ -717,6 +730,8 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
             }
             # Take function and parameters of function for interact 
             # between the two type
+            print(type_poly)
+            print(type)
             func =  private$interaction_model$get_func_interact(type_poly, 
                                                                 type)
             param = private$interaction_model$get_params(type_poly, 

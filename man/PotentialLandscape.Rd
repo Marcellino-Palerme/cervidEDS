@@ -17,60 +17,66 @@ Define a landscape with potential function of each polygon
 \item{PotentialLandscape$new()}{
 \describe{initialize PotentialLandscape object
 \itemize{
-\item{land_poly}{(SpatialPolygonDataFrame): Typing polygon landscape}
-\item{land_lines}{(SpatialLinesDataFrame): Typing line landscape}
-\item{interaction_model}{(TypeInteractModel): interaction of each type
-                                              with others}
+\item{land_poly }{(SpatialPolygonDataFrame): Typing polygon landscape}
+\item{land_lines }{(SpatialLinesDataFrame): Typing line landscape}
+\item{interaction_model }{(TypeInteractModel): interaction of each type
+                                               with others}
 }}}
 \item{$get_landscape()}{
 \describe{Give the landscape
 \itemize{
-\item{(SpatialPolygonsDataFrame)}{Landscape}
+\item{(SpatialPolygonsDataFrame) }{Landscape}
 }}}
 \item{$get_interaction_model()}{
 \describe{Give the interaction_model
 \itemize{
-\item{(TypeInteractionModel)}{interaction model}
+\item{(TypeInteractionModel) }{interaction model}
 }}}
 \item{$get_neighbours_id(id)}{
 \describe{Give neighboors of polygon
 \itemize{
-\item{id}{(str): identifiant of polygon}
-\item{(list)}{ids of polygon,
-              empty list if id isn't exist}
+\item{id }{(str): identifiant of polygon}
+\item{(list) }{ids of polygon,
+               empty list if id isn't exist}
 }}}
 \item{$get_potential_coord(x, y)}{
 \describe{Give value of potential for a point
 \itemize{
-\item{x}{(float) : abscisse}
-\item{y}{(float) : ordonate}
-\item{(float)}{NA if coordinate (x,y) out of landscape}
+\item{x }{(float) : abscisse}
+\item{y }{(float) : ordonate}
+\item{(float) }{NA if coordinate (x,y) out of landscape}
 }}}
-\item{$get_dx_coord()}{
+\item{$get_dx_coord(x, y)}{
 \describe{Give value of derivate in x for a point
 \itemize{
-\item{x}{(float) : abscisse}
-\item{y}{(float) : ordonate}
-\item{(float)}{NA if coordinate (x,y) out of landscape}
+\item{x }{(float) : abscisse}
+\item{y }{(float) : ordonate}
+\item{(float) }{NA if coordinate (x,y) out of landscape}
 }}}
-\item{$get_dy_coord()}{
+\item{$get_dy_coord(x, y)}{
 \describe{Give value of derivate in y for a point
 \itemize{
-\item{x}{(float) : abscisse}
-\item{y}{(float) : ordonate}
-\item{(float)}{NA if coordinate (x,y) out of landscape}
+\item{x }{(float) : abscisse}
+\item{y }{(float) : ordonate}
+\item{(float) }{NA if coordinate (x,y) out of landscape}
 }}}
 \item{$set_landscape(land_poly, land_lines)}{
 \describe{Add or modify landscape and potential function of each polygon
           calculated
 \itemize{
-\item{land_poly}{(SpatialPolygonDataFrame): Typing polygon landscape}
-\item{land_lines}{(SpatialLinesDataFrame): Typing line landscape}
+\item{land_poly }{(SpatialPolygonDataFrame): Typing polygon landscape}
+\item{land_lines }{(SpatialLinesDataFrame): Typing line landscape}
+}}}
+\item{$set_interaction_model(interaction_model)}{
+\describe{Add or modify interaction_model
+\itemize{
+\item{interaction_model }{(TypeInteractModel): interaction of each type
+                                               with others}
 }}}
 \item{$plot_potential(precision)}{
 \describe{Plot the landscape with potential values
 \itemize{
-\item{precision}{(float)}
+\item{precision }{(float)}
 }}}
 }
 }
