@@ -581,7 +581,7 @@ test_that("test.PotentialLandscape_nominal", {
   dy[[3]] = function(x, y) 2 * dy_border(x, y)
   
   # Modify interaction model
-  (result$set_interaction_model(model))
+  expect_equal(result$set_interaction_model(model), 0)
 
   check_PotentialLandscape(land_poly,
                            land_line,
@@ -594,12 +594,197 @@ test_that("test.PotentialLandscape_nominal", {
                            result)
 
   # Plot potentials
-  expect_silent(result$plot_potential())
+  test_plot = result$plot_potential()
+  expect_true(is.matrix(test_plot))
 })
 
 # error case
 test_that("test.PotentialLandscape_error", {
   init_val_landscape()
 
+  land_poly = sp::SpatialPolygons(list(P1, P2, P3, P4))
+  # get lines of landscape
+  land_line = extract_lines(land_poly)
+  
+  land_poly = affect_polygons_type(land_poly, 2)
+  land_poly$id_type = c(1, 2, 3, 1)
+  land_line = affect_lines_type(land_line,2)
+  land_line$id_type = c(0, 4, -1, 0, 0, 0, 5, 5, 4, 0, 0, 0, 0)
+  
+  
+  #def model
+  init_val_model()
+  model = TypeInteractModel$new(list(type_1, type_2, type_3, type_4,type_5))
+
+  # bad parameters for new
+  expect_error(PotentialLandscape$new(0, land_line, model))
+  expect_error(PotentialLandscape$new(land_line, land_line, model))
+  expect_error(PotentialLandscape$new(land_poly, 0, model))
+  expect_error(PotentialLandscape$new(land_poly, land_poly, model))
+  expect_error(PotentialLandscape$new(land_poly, land_line, 7))
+  expect_error(PotentialLandscape$new(land_poly, land_line, type_1))
+  
+  result = PotentialLandscape$new(land_poly, land_line, model)
+  
+  func_border = function(x, y) 2 * x * x * 4
+  func_attractive = function(x, y) 0.1 * x * x * 0.5 + 0.24 * y * y
+  func_repulsive = function(x, y) 1 * x * x * 2 + 3 * y * y
+  dx_border = function(x, y) 2 * 2 * x * 4
+  dx_attractive = function(x, y) 0.1 * 2 * x * 0.5 
+  dx_repulsive = function(x, y) 1 * 2 * x * 2 
+  dy_border = function(x, y) 0
+  dy_attractive = function(x, y) 0.24 * 2 * y
+  dy_repulsive = function(x, y) 3 * 2 * y
+  neighbour = list(c(2, 3), c(1, 3, 4), c(1, 2, 4), c(2, 3))
+  potential = list(function(x, y) 2 * func_repulsive(x,y) + 
+                     2 * func_border(x, y),
+                   function(x, y) 3 * func_attractive(x,y) + 
+                     2 * func_repulsive(x,y) + 
+                     2 * func_border(x, y),
+                   function(x, y) 4 * func_attractive(x,y) + 
+                     2 * func_border(x, y),
+                   function(x, y) 3 * func_repulsive(x,y) + 
+                     2 * func_border(x, y))
+  dx = list(function(x, y) 2 * dx_repulsive(x,y) + 2 * dx_border(x, y),
+            function(x, y) 3 * dx_attractive(x,y) + 2 * dx_repulsive(x,y) +
+              2 * dx_border(x, y),
+            function(x, y) 4 * dx_attractive(x,y) + 2 * dx_border(x, y),
+            function(x, y) 3 * dx_repulsive(x,y) + 2 * dx_border(x, y))
+  
+  dy = list(function(x, y) 2 * dy_repulsive(x,y) + 2 * dy_border(x, y),
+            function(x, y) 3 * dy_attractive(x,y) + 2 * dy_repulsive(x,y) +
+              2 * dy_border(x, y),
+            function(x, y) 4 * dy_attractive(x,y) + 2 * dy_border(x, y),
+            function(x, y) 3 * dy_repulsive(x,y) + 2 * dy_border(x, y))
+  coord = list(c(1, 24, 1, 19, 1),
+               c(1, 24, 21, 49, 2),
+               c(26, 49, 1, 24, 3),
+               c(26, 49, 26, 49, 4))
+  
+  check_PotentialLandscape(land_poly,
+                           land_line,
+                           model,
+                           neighbour,
+                           potential,
+                           dx,
+                           dy,
+                           coord,
+                           result)
+
+  coords = matrix(c(0, 0, 25, 0, 25, 25, 0, 25, 0, 0 ),
+                  ncol = 2,byrow = T)
+  P1 <<- sp::Polygon(coords)
+  P1 <<- sp::Polygons(list(P1),ID = c(1))
+  coords = matrix(c(0, 25, 25, 25, 25, 50, 0, 50, 0, 25 ),
+                  ncol = 2,byrow = T)
+  P2 <<- sp::Polygon(coords)
+  P2 <<- sp::Polygons(list(P2),ID = c(2))
+  coords = matrix(c(25, 0, 50, 0, 50, 25, 25, 25, 25, 0),
+                  ncol = 2,byrow = T)
+  P3 <<- sp::Polygon(coords)
+  P3 <<- sp::Polygons(list(P3),ID = c(3))
+  
+  land_poly = sp::SpatialPolygons(list(P1, P2, P3, P4))
+  # get lines of landscape
+  land_line = extract_lines(land_poly)
+  
+  land_poly = affect_polygons_type(land_poly, 2)
+  land_poly$id_type = c(2, 2, 1, 3)
+  land_line = affect_lines_type(land_line,2)
+  land_line$id_type = c(0, -1, 5, 0, 0, 0, 4, 4, 0, 0, 0, 0)
+  
+  # modify landscape bad polygon landscape
+  expect_error(result$set_landscape(sp::SpatialPolygons(list(P1, P2, P3, P4)),
+                                    land_line))
+  expect_error(result$set_landscape(land_line, land_line))
+  
+  # modify landscape bad line landscape
+  expect_error(result$set_landscape(land_poly, "land_line"))
+  expect_error(result$set_landscape(land_poly, land_poly))
+
+  # modify landscape
+  expect_silent(result$set_landscape(land_poly, land_line))
+  neighbour = list(c(2, 3, 4), c(1, 3, 4), c(1, 2, 4), c(1, 2, 3))
+  potential = list(function(x, y) func_repulsive(x,y) + 
+                     func_attractive(x,y) +
+                     2 * func_border(x, y),
+                   function(x, y) func_attractive(x,y) + 2 * func_border(x, y),
+                   function(x, y) 3 * func_repulsive(x,y) + 
+                     2 * func_border(x, y),
+                   function(x, y) 3 * func_attractive(x,y) + 
+                     2 * func_border(x, y))
+  dx = list(function(x, y) dx_repulsive(x,y) + dx_attractive(x,y) + 
+              2 * dx_border(x, y),
+            function(x, y) dx_attractive(x,y) + 2 * dx_border(x, y),
+            function(x, y) 3 * dx_repulsive(x,y) + 2 * dx_border(x, y),
+            function(x, y) 3 * dx_attractive(x,y) + 2 * dx_border(x, y))
+  
+  dy = list(function(x, y) dy_repulsive(x,y) + dy_attractive(x,y) +
+              2 * dy_border(x, y),
+            function(x, y) dy_attractive(x,y) + 2 * dy_border(x, y),
+            function(x, y) 3 * dy_repulsive(x,y) + 2 * dy_border(x, y),
+            function(x, y) 3 * dy_attractive(x,y) + 2 * dy_border(x, y))
+  coord = list(c(1, 24, 1, 24, 1),
+               c(1, 24, 26, 49, 2),
+               c(26, 49, 1, 24, 3),
+               c(26, 49, 26, 49, 4))
+  
+  check_PotentialLandscape(land_poly,
+                           land_line,
+                           model,
+                           neighbour,
+                           potential,
+                           dx,
+                           dy,
+                           coord,
+                           result)
+
+  #Interact hote type 1 neighbour type 1
+  int1_1 <<- Interact$new(1,potentiel_1, neutre)
+  #Interact hote type 1 neighbour type 2
+  int1_2 <<- Interact$new(2,potentiel_1, neutre)
+  #Interact hote type 1 neighbour type 3
+  int1_3 <<- Interact$new(3,potentiel_1, neutre)
+  #Interact hote type 1 neighbour type 4
+  int1_4 <<- Interact$new(4,potentiel_1, neutre)
+  #Interact hote type 1 neighbour type 5
+  int1_5 <<- Interact$new(5,potentiel_1, neutre)
+  
+  #def type 1
+  type_1 <<- TypeInteract$new(1, "type_1", agglo_0,list(border,
+                                                        int1_1,
+                                                        int1_2,
+                                                        int1_3,
+                                                        int1_4,
+                                                        int1_5))
+  
+  #def model
+  model = TypeInteractModel$new(list(type_1, type_2, type_3, type_4, type_5))
+  
+  potential[[3]] = function(x, y) 2 * func_border(x, y)
+  dx[[3]] = function(x, y) 2 * dx_border(x, y)
+  dy[[3]] = function(x, y) 2 * dy_border(x, y)
+
+  # bad Modify interaction model
+  expect_equal(result$set_interaction_model(type_5), 1)
+  expect_equal(result$set_interaction_model(int1_1), 1)
+  
+  # Modify interaction model
+  expect_equal(result$set_interaction_model(model), 0)
+
+  
+  check_PotentialLandscape(land_poly,
+                           land_line,
+                           model,
+                           neighbour,
+                           potential,
+                           dx,
+                           dy,
+                           coord,
+                           result)
+  
+  # Plot potentials with bad precision
+  expect_equal(result$plot_potential(-5), NULL)
+  expect_equal(result$plot_potential("5"), NULL)
 })
 },T)

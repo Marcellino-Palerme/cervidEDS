@@ -78,6 +78,8 @@ Define a landscape with potential function of each polygon
 \describe{Plot the landscape with potential values
 \itemize{
 \item{precision }{(float)}
+\item{(matrix of float)}{ values of plot}
+\item{(NULL)}{fail}
 }}}
 }
 }

@@ -624,9 +624,16 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     #' \describe{Plot the landscape with potential values
     #' \itemize{
     #' \item{precision }{(float)}
+    #' \item{(matrix of float)}{ values of plot}
+    #' \item{(NULL)}{fail}
     #' }}}
     plot_potential = function(precision = 1)
     {
+      # Verify precision
+      if (!is.numeric(precision) || precision <= 0 )
+      {
+        return(NULL)
+      }
       #Take extrem value of landscape
       min_x = attr(private$land_poly,"bbox")[1,1]
       max_x = attr(private$land_poly,"bbox")[1,2]
