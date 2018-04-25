@@ -436,6 +436,7 @@ test_that("test.PotentialLandscape_nominal", {
   #def model
   init_val_model()
   model = TypeInteractModel$new(list(type_1, type_2, type_3, type_4,type_5))
+  result = PotentialLandscape$new(land_poly, land_line, model)
 
   func_border = function(x, y) 2 * x * x * 4
   func_attractive = function(x, y) 0.1 * x * x * 0.5 + 0.24 * y * y
@@ -446,7 +447,6 @@ test_that("test.PotentialLandscape_nominal", {
   dy_border = function(x, y) 0
   dy_attractive = function(x, y) 0.24 * 2 * y
   dy_repulsive = function(x, y) 3 * 2 * y
-  result = PotentialLandscape$new(land_poly, land_line, model)
   neighbour = list(c(2, 3), c(1, 3, 4), c(1, 2, 4), c(2, 3))
   potential = list(function(x, y) 2 * func_repulsive(x,y) + 
                                   2 * func_border(x, y),
@@ -595,5 +595,11 @@ test_that("test.PotentialLandscape_nominal", {
 
   # Plot potentials
   expect_silent(result$plot_potential())
+})
+
+# error case
+test_that("test.PotentialLandscape_error", {
+  init_val_landscape()
+
 })
 },T)

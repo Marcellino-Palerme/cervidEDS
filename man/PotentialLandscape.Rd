@@ -72,6 +72,7 @@ Define a landscape with potential function of each polygon
 \itemize{
 \item{interaction_model }{(TypeInteractModel): interaction of each type
                                                with others}
+\item{(integer)}{ 0: success, 1: fail}
 }}}
 \item{$plot_potential(precision)}{
 \describe{Plot the landscape with potential values

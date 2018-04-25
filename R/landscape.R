@@ -455,6 +455,10 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
         private$interaction_model = interaction_model
         self$set_landscape(land_poly, land_lines)
       }
+      else
+      {
+        stop("parameter #3 isn't a TypeInteractModel")
+      }
     },
     #' \item{$get_landscape()}{
     #' \describe{Give the landscape
@@ -575,6 +579,14 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
     #' }}}
     set_landscape = function(land_poly, land_lines)
     {
+      if (class(land_poly)[1] != "SpatialPolygonsDataFrame" )
+      {
+        stop("parameter #1 isn't a SpatialPolygonsDataFrame")
+      }
+      if (class(land_lines)[1] != "SpatialLinesDataFrame")
+      {
+        stop("parameter #2 isn't a SpatialLinesDataFrame")
+      }
       private$land_poly = land_poly
       private$land_lines = land_lines
       private$neighbours = NULL
@@ -585,13 +597,13 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
       }
       # Recalculate potential of polygones
       private$calculate_potential()
-      
     },
     #' \item{$set_interaction_model(interaction_model)}{
     #' \describe{Add or modify interaction_model
     #' \itemize{
     #' \item{interaction_model }{(TypeInteractModel): interaction of each type
     #'                                                with others}
+    #' \item{(integer)}{ 0: success, 1: fail}
     #' }}}
     set_interaction_model = function(interaction_model)
     {
@@ -692,7 +704,7 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
                                which(private$land_lines$id_poly2 %in% id_poly))]
         
         # Impossible polygon without lines
-        if (is.na(keep_ids))
+        if (length(keep_ids) == 1 && is.na(keep_ids))
         {
           next
         }
@@ -730,8 +742,6 @@ PotentialLandscape = R6::R6Class("PotentialLandscape",
             }
             # Take function and parameters of function for interact 
             # between the two type
-            print(type_poly)
-            print(type)
             func =  private$interaction_model$get_func_interact(type_poly, 
                                                                 type)
             param = private$interaction_model$get_params(type_poly, 

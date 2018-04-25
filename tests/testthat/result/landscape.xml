@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
- <testsuite hostname="palerme" name="landscape unit tests" timestamp="2018-04-11 11:00:06">
-  <testcase classname="landscape_unit_tests" name="test_PotentialPolygon_nominal" time="0.3"/>
-  <testcase classname="landscape_unit_tests" name="test_PotentialPolygon_error" time="0.19"/>
-  <testcase classname="landscape_unit_tests" name="test_PotentialPolygons_nominal" time="2.07"/>
-  <testcase classname="landscape_unit_tests" name="test_PotentialPolygons_error" time="0.63"/>
-  <testcase classname="landscape_unit_tests" name="test_PotentialLandscape_nominal" time="36.78">
-   <failure message="`result$set_landscape(land_poly, land_line)` produced output, warnings. (@test_landscape.R#521)" type="failure">`result$set_landscape(land_poly, land_line)` produced output, warnings.</failure>
-   
-    
-  </testcase>
+ <testsuite hostname="palerme" name="landscape unit tests" timestamp="2018-04-25 08:30:02">
+  <testcase classname="landscape_unit_tests" name="test_PotentialPolygon_nominal" time="0.49"/>
+  <testcase classname="landscape_unit_tests" name="test_PotentialPolygon_error" time="0.22"/>
+  <testcase classname="landscape_unit_tests" name="test_PotentialPolygons_nominal" time="2.01"/>
+  <testcase classname="landscape_unit_tests" name="test_PotentialPolygons_error" time="0.46"/>
+  <testcase classname="landscape_unit_tests" name="test_PotentialLandscape_nominal" time="33.04"/>
+  <testcase classname="landscape_unit_tests" name="test_PotentialLandscape_error" time="0.06"/>
  </testsuite>
 </testsuites>
