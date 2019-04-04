@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
- <testsuite hostname="palerme" name="simulation tools unit tests" timestamp="2018-04-25 11:27:24">
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_nominal" time="0.06"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_att" time="0.09"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_repul" time="0.05"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_lines" time="0.11"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_out_landscape" time="0.06"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_nomina" time="30.75"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_no_repul" time="29.18"/>
-  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_no_lines" time="29.23"/>
+ <testsuite hostname="palerme" name="simulation tools unit tests" timestamp="2019-04-04 11:39:34">
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_nominal" time="0.1"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_att" time="0.13"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_repul" time="0.12"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_no_lines" time="0.12"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_extract_elements_out_landscape" time="0.07"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_nomina" time="30.27"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_no_repul" time="28.93"/>
+  <testcase classname="simulation_tools_unit_tests" name="test_plot_potential_no_lines" time="29.0"/>
   <testcase classname="simulation_tools_unit_tests" name="test_next_coord_nominal" time="0.01"/>
  </testsuite>
 </testsuites>

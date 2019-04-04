@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="math visual perception" timestamp="2019-04-04 11:21:11" hostname="palerme">
+    <testcase time="48.22" classname="math_visual_perception" name="(unnamed)"/>
+    <testcase time="0" classname="math_visual_perception" name="(unnamed)"/>
+  </testsuite>
+</testsuites>
