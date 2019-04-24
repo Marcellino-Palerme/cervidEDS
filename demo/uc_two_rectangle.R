@@ -33,8 +33,9 @@ type_1 = TypeInteract$new(1, "type_1", agglo_0,list(border, int1_1, int1_2,
 #def type 2
 type_2 = TypeInteract$new(2, "type_2", agglo_0,list(border, int2_1, int2_2,
                                                     int2_3))
+zero_func = function(x) 0
 #def type 3
-type_3 = TypeInteract$new(3, "line", NULL, list())
+type_3 = TypeInteract$new(3, "line", zero_func, list())
 
 #def model
 model_two_rec = TypeInteractModel$new(list(type_1, type_2, type_3))

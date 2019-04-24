@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
- <testsuite hostname="palerme" name="landscape unit tests" timestamp="2019-04-04 11:19:29">
-  <testcase classname="landscape_unit_tests" name="test_PotentialPolygon_nominal" time="0.26"/>
-  <testcase classname="landscape_unit_tests" name="test_PotentialPolygon_error" time="0.17"/>
-  <testcase classname="landscape_unit_tests" name="test_PotentialPolygons_nominal" time="1.99"/>
-  <testcase classname="landscape_unit_tests" name="test_PotentialPolygons_error" time="0.43"/>
-  <testcase classname="landscape_unit_tests" name="test_PotentialLandscape_nominal" time="32.01"/>
-  <testcase classname="landscape_unit_tests" name="test_PotentialLandscape_error" time="62.6"/>
+ <testsuite hostname="palerme" name="landscape unit tests" timestamp="2019-04-24 10:42:16">
+  <testcase classname="landscape_unit_tests" name="test_PotentialPolygon_nominal" time="0.4"/>
+  <testcase classname="landscape_unit_tests" name="test_PotentialPolygon_error" time="0.26"/>
+  <testcase classname="landscape_unit_tests" name="test_PotentialPolygons_nominal" time="2.01"/>
+  <testcase classname="landscape_unit_tests" name="test_PotentialPolygons_error" time="0.47"/>
+  <testcase classname="landscape_unit_tests" name="test_PotentialLandscape_nominal" time="33.49"/>
+  <testcase classname="landscape_unit_tests" name="test_PotentialLandscape_error" time="63.41"/>
  </testsuite>
 </testsuites>
