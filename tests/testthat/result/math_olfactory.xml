@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="math olfactory perception" timestamp="2019-04-24 10:43:56" hostname="palerme">
-    <testcase time="4.03" classname="math_olfactory_perception" name="(unnamed)">
-      <failure type="failure" message="result$par[1] not equal to 1. (@test_math_olfactory.R#2)">result$par[1] not equal to 1.
+  <testsuite name="math olfactory perception" timestamp="2019-04-25 09:38:24" hostname="palerme">
+    <testcase time="10.91" classname="math_olfactory_perception" name="test_nominal">
+      <failure type="failure" message="result$par[1] not equal to 0.1. (@test_math_olfactory.R#108)">result$par[1] not equal to 0.1.
 1/1 mismatches
-[1] -69 - 1 == -70</failure>
+[1] 0.139 - 0.1 == 0.0394</failure>
     </testcase>
-    <testcase time="0.02" classname="math_olfactory_perception" name="(unnamed)">
-      <failure type="failure" message="result$par[2] not equal to 0.1. (@test_math_olfactory.R#2)">result$par[2] not equal to 0.1.
-1/1 mismatches
-[1] 82.3 - 0.1 == 82.2</failure>
-    </testcase>
-    <testcase time="0.01" classname="math_olfactory_perception" name="(unnamed)">
-      <failure type="failure" message="result$par[3] not equal to 2. (@test_math_olfactory.R#2)">result$par[3] not equal to 2.
-1/1 mismatches
-[1] NA - 2 == NA</failure>
-    </testcase>
-    <testcase time="0" classname="math_olfactory_perception" name="(unnamed)">
-      <failure type="failure" message="abs(result$par[4]) not equal to 0.5. (@test_math_olfactory.R#2)">abs(result$par[4]) not equal to 0.5.
-1/1 mismatches
-[1] NA - 0.5 == NA</failure>
-    </testcase>
+    <testcase time="0" classname="math_olfactory_perception" name="test_nominal"/>
   </testsuite>
 </testsuites>

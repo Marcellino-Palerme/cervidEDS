@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
- <testsuite hostname="palerme" name="landscape unit tests" timestamp="2019-04-24 10:42:16">
-  <testcase classname="landscape_unit_tests" name="test_PotentialPolygon_nominal" time="0.4"/>
-  <testcase classname="landscape_unit_tests" name="test_PotentialPolygon_error" time="0.26"/>
+ <testsuite hostname="palerme" name="landscape unit tests" timestamp="2019-04-25 09:36:46">
+  <testcase classname="landscape_unit_tests" name="test_PotentialPolygon_nominal" time="0.31"/>
+  <testcase classname="landscape_unit_tests" name="test_PotentialPolygon_error" time="0.19"/>
   <testcase classname="landscape_unit_tests" name="test_PotentialPolygons_nominal" time="2.01"/>
-  <testcase classname="landscape_unit_tests" name="test_PotentialPolygons_error" time="0.47"/>
-  <testcase classname="landscape_unit_tests" name="test_PotentialLandscape_nominal" time="33.49"/>
-  <testcase classname="landscape_unit_tests" name="test_PotentialLandscape_error" time="63.41"/>
+  <testcase classname="landscape_unit_tests" name="test_PotentialPolygons_error" time="0.48"/>
+  <testcase classname="landscape_unit_tests" name="test_PotentialLandscape_nominal" time="32.67"/>
+  <testcase classname="landscape_unit_tests" name="test_PotentialLandscape_error" time="63.23"/>
  </testsuite>
 </testsuites>

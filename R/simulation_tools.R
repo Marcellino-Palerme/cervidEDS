@@ -242,6 +242,49 @@ plot_potential <- function(land_poly,
   return(pot)
 }
 
+#' @title derivate coord
+#' @description give values of derivate in x and y for a point 
+#' 
+#' @param x (double) position in x
+#' @param y (double) position in y
+#' @param land_poly (SpatialPolygonDataFrame): Typing polygon landscape
+#' @param land_lines (SpatialLinesDataFrame): Typing line landscape
+#' @param info_type (matrix): N*5 (id, repulsive=0 or attractive=1, alpha, beta,
+#'                                 power) where N number of type.
+#' @param sigma (double) repulsif effect adaptor
+#' @param time_step (double) step of time
+#' @return (NumericVector) derivate in x and y (['x'];['y'])
+#' @export
+d_coord <- function(x,
+                    y,
+                    land_poly,
+                    land_lines,
+                    info_type,
+                    sigma,
+                    time_step)
+{
+  #Take extrem value of landscape
+  min_x <- attr(land_poly,"bbox")[1,1]
+  max_x <- attr(land_poly,"bbox")[1,2]
+  min_y <- attr(land_poly,"bbox")[2,1]
+  max_y <- attr(land_poly,"bbox")[2,2]
+  
+  dist_element <- extract_elements(x,
+                                   y,
+                                   land_poly,
+                                   land_lines)
+
+  effect = all_effect(c(x,y),
+                      max_x - min_x,
+                      max_y - min_y,
+                      sigma,
+                      dist_element,
+                      info_type,
+                      time_step)
+
+  return(c(effect["x"] , effect["y"]))
+}
+
 #' @title next coord
 #' @description calculate next coordinates 
 #' 
@@ -263,28 +306,18 @@ next_coord <- function(x,
                        sigma,
                        time_step)
 {
-  #Take extrem value of landscape
-  min_x <- attr(land_poly,"bbox")[1,1]
-  max_x <- attr(land_poly,"bbox")[1,2]
-  min_y <- attr(land_poly,"bbox")[2,1]
-  max_y <- attr(land_poly,"bbox")[2,2]
-  
-  dist_element <- extract_elements(x,
-                                   y,
-                                   land_poly,
-                                   land_lines)
-
-  effect = all_effect(c(x,y),
-                      max_x - min_x,
-                      max_y - min_y,
-                      sigma,
-                      dist_element,
+  #Take derivate in x and y for a point 
+  derivate <- d_coord(x,
+                      y,
+                      land_poly,
+                      land_lines,
                       info_type,
+                      sigma,
                       time_step)
   
-  x = x + effect["x"] + diffusion(sigma,
+  x = x + derivate[1] + diffusion(sigma,
                                   time_step)
-  y = y + effect["y"] + diffusion(sigma,
+  y = y + derivate[2] + diffusion(sigma,
                                   time_step)
   
   return(c(x , y))

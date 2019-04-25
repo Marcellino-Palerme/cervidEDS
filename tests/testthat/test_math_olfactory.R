@@ -1,7 +1,9 @@
 options("testthat.output_file" = "result/math_olfactory.xml")
 with_reporter("junit",{
   context('math olfactory perception')
-  
+
+  # nominal case
+  test_that("test.nominal",{
   # Inference test on olfactory perception
   
   require(numDeriv)
@@ -21,9 +23,9 @@ with_reporter("junit",{
   land_maths = SpatialPolygons(list(ps,ps1))
   lines_maths = extract_lines(land_maths)
   # affect type of polygons and lines
-  land_maths$id_type = c(1,2)
-  lines_maths$id_type = c(0,-1,0,0,0,0,0)
-  
+  land_maths$id_type = c(2,2)
+  lines_maths$id_type = c(0,1,0,0,0,0,0)
+
   plot_potential(land_maths,
                  lines_maths,
                  type_math,
@@ -32,11 +34,12 @@ with_reporter("junit",{
   ## Put a animal and move it ##
   X = 8
   Y = 9 
-  sigma = 0.5
+  sigma = 0.3
   trajx = X
   trajy = Y
-  dt = 0.01
-  Nb_point = 50
+  Nb_point = 200
+  Tmax = 20
+  dt = Tmax/Nb_point
   for (i in seq(Nb_point))
   {
     traj = next_coord(X,
@@ -52,9 +55,9 @@ with_reporter("junit",{
     Y = traj[2]
   }
   lines(trajx, trajy)
-  
-  
-  
+
+
+
   log_likelihood = function(param, sigma, dt, dataX, dataY, land,
                                                             lines,
                                                             type_info)
@@ -68,18 +71,20 @@ with_reporter("junit",{
     for (i in seq(length(dataX) - 1))
     {
       # estimate mean of gaussian 2D
-      mu = as.vector(next_coord(dataX[i],
-                                dataY[i],
-                                land,
-                                lines,
-                                type_info,
-                                sigma,
-                                dt))
+      mu = as.vector(d_coord(dataX[i],
+                             dataY[i],
+                             land,
+                             lines,
+                             type_info,
+                             sigma,
+                             dt))
+
       # the observed moving of animal
       depX = dataX[i + 1] - dataX[i]
       depY = dataY[i + 1] - dataY[i]
       
       mat_sigma = matrix(c(sigma^2*dt, 0, 0, sigma^2*dt), 2, 2)
+
       # probability observed moving of animal in gaussian
       log_prob = c(log_prob, 
                    dmvnorm(x = as.vector(c(depX, depY)), 
@@ -89,8 +94,8 @@ with_reporter("junit",{
     return(sum(log_prob))
   }
   
-  esti_sigma = sqrt(mean((trajx[2:(Nb_point + 1)] - trajx[1:Nb_point])^2) / dt ) 
-  
+  esti_sigma = sqrt(mean((trajx[2:(Nb_point + 1)] - trajx[1:Nb_point])^2) / dt )
+
   result = optim(c(0.1, esti_sigma),function(x)  {return(-1*log_likelihood(
                                                  param = c(1, x[1]),
                                                  sigma = x[2], dt = dt, 
@@ -99,10 +104,8 @@ with_reporter("junit",{
                                                  lines = lines_maths,
                                                  type_info = type_math))},
                  control = list(trace = 1))
-  
-  expect_equal(result$par[1], 1, tolerance = 0.1)
-  expect_equal(result$par[2], 0.1, tolerance = 0.01)
-  expect_equal(result$par[3], 2, tolerance = 0.2)
-  expect_equal(abs(result$par[4]), 0.5, tolerance = 0.05)
-  
+
+  expect_equal(result$par[1], 0.1, tolerance = 0.01)
+  expect_equal(result$par[2], 0.3, tolerance = 0.03)
+  })
 },T)

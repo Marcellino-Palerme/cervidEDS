@@ -153,6 +153,47 @@ with_reporter("junit",{
     expect_equal(length(mat_pot), 61*61)
   })
 
+  #------test d_coord-----#
+  #nominal case
+  test_that("test.d_coord_nominal", {
+    coords = matrix(c(0,0,15,0,15,15,0,15,0,0),5,2,byrow = T)
+    p = sp::Polygon(coords)
+    ps = sp::Polygons(list(p),ID = c(1))
+    land_test = sp::SpatialPolygons(list(ps))
+    land_test = sp::SpatialPolygonsDataFrame(land_test,
+                                             data.frame(id_type = c(-1)))
+    line_test = extract_lines(land_test)
+    coord_attrac = matrix(c(5,5,10.5,9.5),
+                          ncol = 2,nrow = 2, byrow = TRUE)
+    line_attrac = sp::Line(coord_attrac)
+    line_attrac = sp::Lines(list(line_attrac),"5")
+    coord_repul = matrix(c(1.5,8,4.5,3),
+                         ncol = 2,nrow = 2, byrow = TRUE)
+    line_repul = sp::Line(coord_repul)
+    line_repul = sp::Lines(list(line_repul),"6")
+    
+    line_test = c(line_test@lines,line_attrac,line_repul)
+    line_test = sp::SpatialLines(line_test)
+    line_test = sp::SpatialLinesDataFrame(line_test,
+                                          data.frame(id_type = c(0, 0, 0, 0, 14, 1)))
+    coord_point = c("x" = 5, "y" = 8)
+    infos_type = matrix(c(5, 1, 4, 0.1, 2,
+                          7, 1, 78, 0.1, 2,
+                          14, 1, 6, 0.1, 2,
+                          2, 1, 0.2, 0.1, 2,
+                          1, -1, 6, 0.1, 2,
+                          8, 1, 48, 0.1, 2),
+                        nrow = 6, byrow = TRUE)
+    result = d_coord(5,
+                     8,
+                     land_test,
+                     line_test,
+                     infos_type,
+                     0.2,
+                     0.1)
+    expect_true(result[1] > 0)
+    expect_true(result[2] < 0)
+  })
   
   #------test next_coord-----#
   #nominal case
